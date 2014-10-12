@@ -1,0 +1,35 @@
+This ${CHAPTER} describes the file structure of book projects.
+
+======= Directory structure =======
+
+======= Newcommands =======
+
+Files with names `newcommands*.tex` are by DocOnce treated as files
+with definition of newcommands. These files must reside in the same
+directory as the DocOnce source files. However, for a book project,
+it is common to have one newcommands file. This file is placed
+in `doc/src/chapters/newcommands.p.tex` and copied to a specific
+chapter by the make script for that chapter. The extension of
+the file is `.p.tex`, indicating that the file has to be
+*preprocessed* by `preprocess` prior to being copied. The reason
+is that one occasionally wants the definitions of the newcommands
+to depend on the output format (standard LaTeX or MathJax).
+For example,
+
+!bc latexcod
+% #if FORMAT in ("latex", "pdflatex")
+% Use footnotesize in subscripts
+\newcommand{\subsc}[2]{#1_{\mbox{\footnotesize #2}}}
+% #else
+% In MathJax, a different construction is used
+\newcommand{\subsc}[2]{#1_{\small\mbox{#2}}}
+% #endif
+!ec
+The make script will then run `preprocess` on this file,
+typically
+
+!bc shcod
+preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands.tex
+# or
+preprocess -DFORMAT=html ../newcommands.p.tex > newcommands.tex
+!ec

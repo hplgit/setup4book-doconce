@@ -1,0 +1,50 @@
+* articles
+** {Python} for Scientific Computing
+   key:       NumPy:paper
+   author:    T. E. Oliphant
+   year:      2007
+   journal:   Computing in Science \& Engineering
+   volume:    9
+   status:    published
+   entrytype: article
+** {IPython}: a System for Interactive Scientific Computing
+   key:       IPython:paper
+   author:    F. Perez, B. E. Granger
+   year:      2007
+   journal:   Computing in Science \& Engineering
+   volume:    9
+   status:    published
+   entrytype: article
+** {Matplotlib}: a 2D Graphics Environment
+   key:       Matplotlib:paper
+   author:    J. D. Hunter
+   year:      2007
+   journal:   Computing in Science \& Engineering
+   volume:    9
+   status:    published
+   entrytype: article
+* books
+** A Primer on Scientific Programming With {P}ython
+   key:       Langtangen_2014
+   author:    H. P. Langtangen
+   year:      2014
+   publisher: Springer
+   status:    published
+   series:    Texts in Computational Science and Engineering
+   edition:   Fourth
+   entrytype: book
+* misc
+** {Python} Programming Language
+   key:       Python
+   url:       http://python.org
+   status:    published
+   sortkey:   Python
+   note:      \url{http://python.org}
+   entrytype: misc
+** Loops and lists
+   key:       Langtangen_TCSE6_looplist
+   author:    H. P. Langtangen
+   status:    published
+   note:      \emph{http://hplgit.github.io/primer.html/doc/pub/looplist}
+   url:       http://hplgit.github.io/primer.html/doc/pub/looplist
+   entrytype: misc
