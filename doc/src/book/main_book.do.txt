@@ -1,0 +1,25 @@
+# Note on the Springer T2 style: used the modifications in t2do.sty
+# and svmonodo.sty (comes bundled with DocOnce).
+
+TITLE:  Python for Probability, Statistics, and Machine Learning
+AUTHOR: Jose Unpingco
+DATE: today
+
+# #include "../chapters/mako_code.txt"
+
+========= Preface  =========
+
+# #include "../chapters/preface/preface.do.txt"
+
+TOC: on
+
+========= Intuition About Probability  =========
+
+# #include "../chapters/intuition/intuition.do.txt"
+
+
+======= References =======
+
+BIBFILE: ../chapters/papers.pub
+
+# 143-220,494-513,615-629,706-730,749-803

@@ -1,0 +1,42 @@
+The purpose of this ``book'' is to demonstrate a minimalistic setup
+for making books in the DocOnce format. The setup contains several
+useful features:
+
+ o Chapters can exist individually and appear in different formats
+   like HTML, Sphinx, and LaTeX-based PDF.
+ o Chapters are flexibly assembled into a traditional LaTeX-based
+   book in PDF format for a traditional publisher.
+ o The book and the individual chapter documents may have different
+   layouts.
+ o Active use of preprocessors like Preprocess and Mako makes it
+   easy to have different versions of the chapters (e.g., a
+   version of a chapter document tailored to the special needs in
+   a specific course at a specific institution).
+ o Study guides or slides can easily be developed from the running
+   text and stored along with the chapters.
+
+These features have the great advantage that a book can evolve from
+small documents, making the barrier for book writing much smaller.
+Also, several appealing ebook formats can be produced, both for the
+book and the individual chapter documents.
+
+Implementation of point 1 and 2 is not trivial and requires some
+rules that might not feel natural at first sight in the setup.
+However, the suggested setup works for large-scale books,
+including the Springer book ``A Primer on Scientific Programming
+with Python'' cite{Langtangen_2014}. Individual chapters in various
+ebook formats can be examined cite{Langtangen_TCSE6_looplist}.
+
+To use this setup, you should have some basic knowledge of DocOnce,
+including how to compile documents into the LaTeX format, how to use
+newcommands in LaTeX, how to use Mako functions, and how to deal with
+a bibliography, as these features are used in the setup. Some
+familiarity with basic Bash programming is necessary since there are
+many Bash scripts.
+
+# #if FORMAT in ("latex", "pdflatex")
+\vspace{1cm}
+
+\noindent
+{\it October 2014}  \hfill  {\it Hans Petter Langtangen \&\ Jose Unpingco}
+# #endif

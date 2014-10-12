@@ -1,0 +1,13 @@
+## Mako variables and functions
+
+<%
+# Note that goo.gl URLs cannot have slashes and continuation: goo.gl/decay.
+# Therefore we use tinyurl.
+
+src_path = 'https://github.com/hplgit/scipro-primer/tree/master/src'
+src_path = 'http://tinyurl.com/pwyasaa'
+doc_path = 'http://hplgit.github.io/scipro-primer/doc/'
+#doc_path = 'http://tinyurl.com/k3sdbuv'
+#doc_notes = doc_path + '/pub'
+
+%>
