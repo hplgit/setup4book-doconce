@@ -1,7 +1,37 @@
-This ${CHAPTER} describes the file structure of book projects.
+This ${CHAPTER} describes the file structure of book or thesis projects.
 
 ======= Directory structure =======
+label{sec:rules:dir:struct}
 
+We shall outline a directory structure that has been effective when
+assembling different DocOnce documents into a book.
+The root directory is called `doc`, with two subdirectories: `src` for
+all the DocOnce source code, and `pub` for compiled documents in
+various formats. Under `src` we may have a directory `chapters` for
+the individual chapters and a directory `book` for the assembly into
+a book. Each chapter has a short nickname, say `ch2` for simplicity
+for Chapter 2 (a more descriptive name related to the content is, of course,
+much better). Figures are placed in `fig-ch2` and computer code in `src-ch2`.
+These two latter directories may have subdirectories if desired.
+We may also include a directory `mov-ch2` for videos, `exer-ch2` for
+answers to exercises, etc.
+
+An outline of the directory structure is listed below.
+
+!bc
+doc
+  src
+    chapters
+      ch2
+        fig-ch2
+        src-ch2
+        mov-ch2
+        exer-ch2
+    book
+  pub
+    chapters
+    book
+!ec
 ======= Newcommands =======
 
 Files with names `newcommands*.tex` are by DocOnce treated as files
@@ -33,3 +63,139 @@ preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands.tex
 # or
 preprocess -DFORMAT=html ../newcommands.p.tex > newcommands.tex
 !ec
+
+======= Assembling different pieces to a single document =======
+
+DocOnce is support assembling many smaller writings into a single,
+large document such as a book or thesis. The recipe for doing this
+appears below.
+
+===== Description of a part of the large document =====
+
+Suppose one piece of the large document
+is called `ch2` and consists of the DocOnce files
+`part1.do.txt`, `part2.do.txt`, and `part3.do.txt`. Each of these parts
+contains just plain text without any `TITLE`, `AUTHOR`, or `DATE`
+lines. Those lines are used for the file that is to be compiled into
+a stand-alone document. It is then natural
+to make one DocOnce file that includes all the pieces, say `ch2.do.txt` with
+the content
+
+!bc do
+# #include "part1.do.txt"
+
+# #include "part2.do.txt"
+
+# #include "part3.do.txt"
+!ec
+
+To compile `ch2.do.txt` to a document, we normally want a title, an author,
+a date, and perhaps a bibliography if any of the included files has
+`cite` tags. To this end, we create a wrapper file, say `main_ch2.do.txt`,
+with the content
+
+!bc do
+TITLE: Some title
+AUTHOR: Author name Email:somename@someplace.net at Institute 1
+DATE: today
+
+TOC: on
+
+# #include "ch2.do.txt"
+
+======= References =======
+
+BIBFILE: ../papers.pub
+!ec
+
+===== Figures and source code =====
+
+As described in Section ref{sec:rules:dir:struct}, we recommend to put
+figures and source codes (to be included in the document) in separate
+directories. Although such directories could have natural names like
+`fig` and `src`, it will cause trouble if we do not use unique names
+for these directories, like `fig-ch2` and `src-ch2`. Otherwise, we
+would need to copy all figures in all pieces into a common `fig`
+directory for the book and all source code files into a `src`
+directory. With unique names, figures and source code files can always
+reside in their original locations, and we can easily reach them
+through links. This will be described next.
+
+===== Assembly of pieces =====
+
+All the files associated with the `ch2` document are supposed to
+reside in a directory, with the name `ch2`, for instance.
+To include the `ch2` text in a larger document, we need to include
+the `ch2.do.txt` file (without title, author, and date).
+Here is an example of a document `main_book.do.txt` that contains
+the heading of a book and where the different chapters are included:
+
+!bc do
+TITLE: This is a book
+AUTHOR: Some Author
+DATE: today
+
+TOC: on
+
+# #include "../ch2/ch2.do.txt"
+
+# Similar inclusion of other chapters
+
+======= References =======
+
+BIBFILE: ../papers.pub
+!ec
+
+When running `doconce format` on `main_book.do.txt`, the entire document
+is contained in one big file. To see exactly what has been included,
+you can examine the result of running the first preprocessor, `preprocess`,
+on `main_book.do.txt`. The result is contained in the file
+`tmp_preprocess__main_book.do.txt`. The second preprocessor, `mako`, is
+then run (if necessary). The result of that step is available in
+`tmp_mako__main_book.do.txt`. This file is thereafter translated to
+the desired output format.
+
+Say we want to produce a LaTeX document:
+
+!bc sys
+Terminal> doconce format pdflatex main_book [options]
+!ec
+If the DocOnce source contains copying of source code from files in
+`@@@CODE` constructs, it is important that `doconce` finds the files.
+For example,
+
+!bc do
+@@@CODE src-ch2/myprog.py  fromto: def test1@def test2
+!ec
+will try to open the file `src-ch2/myprog.py`. Since this file is
+actually located in `../ch2/src-ch2/myprog.py`, we need a link to
+that directory:
+
+!bc sys
+Terminal> ln -s ../ch2/src-ch2 src-ch2
+!ec
+It is recommended to make a script, say `make_links.sh` that lists
+all the necessary `ln` commands to create links to all directories
+in the different pieces for figure and source code files.
+
+After running `doconce ptex2tex main_book`, we have a document
+`main_book.tex` that can be compiled by the `pdflatex` program.
+The LaTeX code in `main_book.tex` for inclusion of a figure may
+contain
+
+!bc latexcod
+\includegraphics[width=0.9\linewith]{fig-ch2/fig1.pdf}
+!ec
+It is therefore paramount that there is a link `fig-ch2` in the
+present directory where the `pdflatex` command is run to
+the directory `../ch2/fig-ch2` where the figure file `fig1.pdf` is
+located. The script `make_links.sh` suggested above needs to set up
+all the necessary links.
+
+=== Remark about HTML ===
+
+When an HTML document is produced, there will be `<img src=fig-ch2/fig1.png>`
+type of tags, so it is very important to ensure that the published `.html`
+files have access to a subdirectory `fig-ch2`. Normally, one needs to copy
+`fig-ch2` to some directory with all the files necessary for publishing
+the entire HTML document.
