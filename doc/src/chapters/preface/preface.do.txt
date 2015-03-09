@@ -38,5 +38,5 @@ many Bash scripts.
 \vspace{1cm}
 
 \noindent
-{\it October 2014}  \hfill  {\it Hans Petter Langtangen \&\ Jose Unpingco}
+{\it March 2015}  \hfill  {\it Hans Petter Langtangen \&\ Jose Unpingco}
 # #endif
