@@ -135,8 +135,9 @@ with the content
 Recall that DocOnce relies on the Publish software for handling
 bibliographies. It is easy to import from BibTeX to Publish and
 create a database of references (`papers.pub`) to get started (but
-we recommend to continue working with
-Publish database directly and collect new items in the `papers.pub` file).
+we recommend to continue working with the
+Publish database directly and collect new items in the `papers.pub` file
+as Publish is more flexible than BibTeX).
 
 
 ===== Figures and source code =====
