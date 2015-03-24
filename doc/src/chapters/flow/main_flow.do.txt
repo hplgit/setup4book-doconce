@@ -1,7 +1,9 @@
-TITLE: Work flow
-AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication & Dept. of Publishing, Future eBook Solutions Ltd.
-AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication
+TITLE: Advanced topics
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
+
+#AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication & Dept. of Publishing, Future eBook Solutions Ltd.
+#AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication
 
 TOC: on
 
