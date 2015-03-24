@@ -1,4 +1,7 @@
-chapters="intuition"
+#!/bin/sh
+# Visit each individual chapter in the book and spellcheck it
+
+chapters="flow rules preface"
 for dir in $chapters; do
   dest=../chapters/$dir
   if [ -d $dest ]; then

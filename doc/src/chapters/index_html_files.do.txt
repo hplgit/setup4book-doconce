@@ -1,7 +1,11 @@
-## File used in make_html.sh for making HTML versions of a chapter
+## File used by make_html.sh for listing HTML versions of a chapter.
+
 ## CHAPTER is a command-line variable that must be set to the nick
 ## name of the chapter when running doconce format, e.g.,
 ## doconce format html index_html_files --html_style=bootstrap_FlatUI CHAPTER=name
+
+## As alternative to this file, one may have a single file that lists
+## all chapters in all their versions.
 
 <%
 chapters = {

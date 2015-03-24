@@ -4,7 +4,13 @@ DATE: today
 
 TOC: on
 
-# #include "../ch2/ch2.do.txt"
+========= Preface =========
+
+# #include "../chapters/preface/preface.do.txt"
+
+========= Heading of a chapter =========
+
+# #include "../chapters/ch2/ch2.do.txt"
 
 # Similar inclusion of other chapters
 

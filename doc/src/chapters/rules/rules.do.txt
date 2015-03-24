@@ -155,28 +155,33 @@ through links. This will be described next.
 
 ===== Assembly of pieces =====
 
-All the files associated with the `ch2` document are supposed to
-reside in a directory, with the name `ch2`, for instance.
-To include the `ch2` text in a larger document, we need to include
-the `ch2.do.txt` file (without title, author, and date).
-Here is an example of a document `main_book.do.txt` that contains
-the heading of a book and where the different chapters are included:
+All the files associated with the `ch2` document and chapter reside
+in the `ch2` directory. A fundamental principle of DocOnce is to
+have just one copy of the files (``Document once!'').
+To include the `ch2` text in a larger document like a book, we just
+need to include the `ch2.do.txt` file and a chapter heading.
+Here is an example of a document `book.do.txt` for a complete book:
 
 @@@CODE src-rules/book.do.txt
 
-When running `doconce format` on `main_book.do.txt`, the entire document
-is contained in one big file. To see exactly what has been included,
+When running `doconce format` on `book.do.txt`, the entire document
+is contained in *one big file* [^one-file].
+To see exactly what has been included,
 you can examine the result of running the first preprocessor, `preprocess`,
-on `main_book.do.txt`. The result is contained in the file
-`tmp_preprocess__main_book.do.txt`. The second preprocessor, `mako`, is
+on `book.do.txt`. The result is contained in the file
+`tmp_preprocess__book.do.txt`. The second preprocessor, `mako`, is
 then run (if necessary). The result of that step is available in
-`tmp_mako__main_book.do.txt`. This file is thereafter translated to
+`tmp_mako__book.do.txt`. This file is thereafter translated to
 the desired output format.
+
+[^one-file]: A single DocOnce file and consequently a single
+`.tex` file works out well on today's laptops,
+even with books having almost 1000 pages!
 
 Say we want to produce a LaTeX document:
 
 !bc sys
-Terminal> doconce format pdflatex main_book [options]
+Terminal> doconce format pdflatex book [options]
 !ec
 If the DocOnce source contains copying of source code from files in
 `@@@CODE` constructs, it is important that `doconce` finds the files.
@@ -196,9 +201,9 @@ It is recommended to make a script, say `make_links.sh` that lists
 all the necessary `ln` commands to create links to all directories
 in the different pieces for figure and source code files.
 
-After running `doconce ptex2tex main_book`, we have a document
-`main_book.tex` that can be compiled by the `pdflatex` program.
-The LaTeX code in `main_book.tex` for inclusion of a figure may
+After running `doconce ptex2tex book`, we have a document
+`book.tex` that can be compiled by the `pdflatex` program.
+The LaTeX code in `book.tex` for inclusion of a figure may
 contain
 
 !bc latexcod
