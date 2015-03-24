@@ -1,3 +1,4 @@
+#!/bin/bash
 # Pack a book project for Springer
 set -x
 

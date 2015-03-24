@@ -66,7 +66,7 @@ the file is `.p.tex`, indicating that the file has to be
 *preprocessed* by `preprocess` prior to being copied. The reason
 is that one occasionally wants the definitions of the newcommands
 to depend on the output format (standard LaTeX or MathJax).
-For example, subscripts in roman font look best with footnotesize
+For example, subscripts in `mbox` font look best with footnotesize
 font in plain LaTeX, while the larger `small` font is more appropriate
 for MathJax. We can then put the following definitions in
 `newcommands.p.tex`:
@@ -91,6 +91,7 @@ preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands.tex
 preprocess -DFORMAT=html ../newcommands.p.tex > newcommands.tex
 !ec
 
+# #ifdef EX
 !bwarning DocOnce newcommands are for mathematics only!
 Note that
 newcommands in DocOnce context are only used for mathematics,
@@ -99,6 +100,7 @@ rendered by LaTeX or MathJax. Newcommands for other LaTeX constructions
 code as these are confined
 to the LaTeX format. Use instead Mako functions.
 !ewarning
+# #endif
 
 ======= Assembling different pieces to a single document =======
 label{setup:rules:book:assembly}
@@ -165,18 +167,23 @@ Here is an example of a document `book.do.txt` for a complete book:
 @@@CODE src-rules/book.do.txt
 
 When running `doconce format` on `book.do.txt`, the entire document
-is contained in *one big file* [^one-file].
+is contained in *one* big file[^one-file] (!).
 To see exactly what has been included,
 you can examine the result of running the first preprocessor, `preprocess`,
-on `book.do.txt`. The result is contained in the file
-`tmp_preprocess__book.do.txt`. The second preprocessor, `mako`, is
-then run (if necessary). The result of that step is available in
-`tmp_mako__book.do.txt`. This file is thereafter translated to
+on `book.do.txt`. All the includes are handled by this preprocessor.
+The result is contained in the file
+`tmp_preprocess__book.do.txt`, which then contains the entire
+DocOnce source code of the book. The second preprocessor, `mako`, is thereafter
+run (if DocOnce detects that it is necessary).
+The result of that step is available in
+`tmp_mako__book.do.txt`. It is important to examine this file if there
+are problems with Mako variables or functions.
+The `tmp_mako__book.do.txt` file is thereafter translated to
 the desired output format.
 
 [^one-file]: A single DocOnce file and consequently a single
-`.tex` file works out well on today's laptops,
-even with books having almost 1000 pages!
+`.tex` file works out well on today's laptops.
+A book with 900 pages cite{Langtangen_2014} has been tested!
 
 Say we want to produce a LaTeX document:
 
@@ -191,29 +198,54 @@ For example,
 @@@CODE src-ch2/myprog.py  fromto: def test1@def test2
 !ec
 will try to open the file `src-ch2/myprog.py`. Since this file is
-actually located in `../ch2/src-ch2/myprog.py`, we need a link to
-that directory:
+actually located in `../ch2/src-ch2/myprog.py`, `pdflatex` will
+report an error message. A local link to
+that directory resolves the problem:
 
 !bc sys
-Terminal> ln -s ../ch2/src-ch2 src-ch2
+Terminal> ln -s ../chapters/ch2/src-ch2 src-ch2
 !ec
-It is recommended to make a script, say `make_links.sh` that lists
-all the necessary `ln` commands to create links to all directories
-in the different pieces for figure and source code files.
-
-After running `doconce ptex2tex book`, we have a document
-`book.tex` that can be compiled by the `pdflatex` program.
-The LaTeX code in `book.tex` for inclusion of a figure may
+Similarly,
+the LaTeX code in `book.tex` for inclusion of a figure may
 contain
 
 !bc latexcod
 \includegraphics[width=0.9\linewith]{fig-ch2/fig1.pdf}
 !ec
-It is therefore paramount that there is a link `fig-ch2` in the
-present directory where the `pdflatex` command is run to
-the directory `../ch2/fig-ch2` where the figure file `fig1.pdf` is
-located. The script `make_links.sh` suggested above needs to set up
-all the necessary links.
+For this command to work, it is paramount that there is a link `fig-ch2` in the
+present `book` directory where the `pdflatex` command is run to
+the directory `../chapters/ch2/fig-ch2` where the figure file `fig1.pdf` is
+located.
+
+It is recommended to use the function `make_links` in `scripts.py` to
+automatically set up all convenient links from the `book` directory
+to the individual chapter directories. Provided the list of chapter nicknames
+at the top of `scripts.py` is correct, you can just run
+
+!bc pyshell
+>>> import scripts
+>>> scripts.make_links()
+!ec
+to automatically
+set up all links to all `src-*`, `fig-*`, and `mov-*` directories.
+You need to rerun this `make_links` function after inclusion of a new chapter
+in the `chapters` tree.
+
+!bwarning Identify LaTeX errors in the original chapter files!
+When you run `pdflatex book` and get LaTeX errors, you need
+to see where they are in `book.tex` and use this information to
+find the appropriate DocOnce source file in some chapter.
+Usually, there are few errors at the ``book level'' if each individual
+chapter has been compiled. To this end, you can use `scripts.py` to
+automatically compile each chapter separately. The process is stopped
+as soon as a DocOnce or LaTeX error is encountered.
+
+!bc pyshell
+>>> import scripts
+>>> scripts.compile_chapters()
+!ec
+!ewarning
+
 
 === Remark about HTML ===
 

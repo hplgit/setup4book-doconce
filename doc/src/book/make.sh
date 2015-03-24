@@ -1,6 +1,10 @@
 #!/bin/bash -x
-# Note: spellcheck should be performed for the individual .do.txt
-# files in ../chapters/*
+# Compile the book to LaTeX/PDF.
+#
+# Usage: make.sh [nospell]
+#
+# With nospell, spellchecking is skipped.
+
 set -x
 
 name=book
@@ -9,6 +13,7 @@ encoding="--encoding=utf-8"
 
 CHAPTER=chapter
 BOOK=book
+APPENDIX=appendix
 
 function system {
   "$@"
@@ -28,8 +33,9 @@ else
 fi
 
 # No spellchecking of local files here since book.do.txt just includes files.
+# Spellcheck all *.do.txt files in each chapter.
 if [ "$spellcheck" != 'nospell' ]; then
-system bash -x spellcheck_individual.sh
+python -c 'import scripts; scripts.spellcheck()'
 fi
 
 preprocess -DFORMAT=pdflatex ../chapters/newcommands.p.tex > newcommands_keep.tex
@@ -52,6 +58,7 @@ system pdflatex $name
 system makeindex $name
 system pdflatex $name
 
+# Report typical problems (too long lines etc.)
 doconce latex_problems $name.log 10
 
 # Check grammar in MS Word:
