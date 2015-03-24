@@ -1,0 +1,13 @@
+TITLE: This is a book
+AUTHOR: Some Author
+DATE: today
+
+TOC: on
+
+# #include "../ch2/ch2.do.txt"
+
+# Similar inclusion of other chapters
+
+======= References =======
+
+BIBFILE: ../papers.pub

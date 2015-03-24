@@ -1,0 +1,22 @@
+## File used in make_html.sh for making HTML versions of a chapter
+## CHAPTER is a command-line variable that must be set to the nick
+## name of the chapter when running doconce format, e.g.,
+## doconce format html index_html_files --html_style=bootstrap_FlatUI CHAPTER=name
+
+<%
+chapters = {
+ 'name': 'Full title of chapter',
+}
+%>
+
+TITLE: ${chapters[str(CHAPTER)]}
+AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication & Dept. of Publishing, Future eBook Solutions Ltd.
+AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication
+DATE: today
+
+The document _${chapters[str(CHAPTER)]}_ is here available in the following
+formats:
+
+ * "HTML plain bootstrap style": "${CHAPTER}-bootstrap.html"
+ * "HTML bootswatch readable style": "${CHAPTER}-readable.html"
+ * "HTML solarized color style": "${CHAPTER}-solarized.html"

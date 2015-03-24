@@ -1,6 +1,5 @@
-TITLE: Some title
-AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institution1 & Dept. of Publishing at Institution2
-AUTHOR: Jane Doe at Dept. of Writing, Institution1
+TITLE: Rules
+AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication
 DATE: today
 
 TOC: on

@@ -18,6 +18,7 @@ args="$@"
 # for a book we want "In this book" and "in this chapter".
 CHAPTER=document
 BOOK=document
+APPENDIX=document
 
 # Function for running operating system commands. The script aborts
 # if the execution is unsuccessful. All doconce, latex, etc. commands
@@ -40,14 +41,15 @@ system doconce spellcheck -d .dict4spell.txt *.do.txt
 # Copy common newcommands
 preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands_keep.tex
 # Copy ptex2tex configuration file if not using the newer --latex_code_style=...
-cp ../.ptex2tex.cfg .
+#cp ../.ptex2tex.cfg .
 
-system doconce format pdflatex $name CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX --device=paper --latex_admon_color=1,1,1 --latex_admon=mdfbox $args --latex_list_of_exercises=toc --latex_table_format=left -DNOTOC
+opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
-system ptex2tex $name
+system doconce format pdflatex $name $opt --device=paper --latex_admon_color=1,1,1 --latex_admon=mdfbox $args --latex_list_of_exercises=toc --latex_table_format=left "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+# code style: blue boxes with plain verbatim for all code, special
+# terminal style for sys
 
-# Fixes
-doconce replace 'George E. P. Box' 'George E.~P.~Box' $name.tex
+# Auto-editing of .tex file (tailored adjustments)
 doconce replace 'linecolor=black,' 'linecolor=darkblue,' $name.tex
 doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' $name.tex
 
