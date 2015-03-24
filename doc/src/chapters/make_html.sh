@@ -52,7 +52,8 @@ system doconce format html $wrap $opt --html_style=$style --html_output=$html
 system doconce split_html $html.html --nav_button=text
 
 # Publish
-dest=/some/repo/for/publishing/html
+dest=../../pub  # local dir (gh-pages on github)
+dest=/some/repo/for/publishing/html   # external repo
 if [ ! -d $dest ]; then
 exit 0
 fi

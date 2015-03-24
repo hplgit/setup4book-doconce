@@ -3,7 +3,7 @@
 # files in ../chapters/*
 set -x
 
-name=main_book
+name=book
 #name=test
 encoding="--encoding=utf-8"
 
@@ -27,20 +27,18 @@ else
   spellcheck=spell
 fi
 
-# No spellchecking here since main_book.do.txt just includes files.
+# No spellchecking of local files here since book.do.txt just includes files.
 if [ "$spellcheck" != 'nospell' ]; then
 system bash -x spellcheck_individual.sh
 fi
 
 preprocess -DFORMAT=pdflatex ../chapters/newcommands.p.tex > newcommands_keep.tex
-cp ../chapters/.ptex2tex.cfg .
 
-system doconce format pdflatex $name CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX -DNOTOC --device=paper --latex_exercise_numbering=chapter   --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_table_format=left --latex_admon_title_no_period --latex_no_program_footnotelink #--latex_index_in_margin
+opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
-system ptex2tex $name
+system doconce format pdflatex $name $opt --device=paper --latex_exercise_numbering=chapter   --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_table_format=left --latex_admon_title_no_period --latex_no_program_footnotelink "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]" #--latex_index_in_margin
 
-# Fixes
-doconce replace 'George E. P. Box' 'George E.~P.~Box' $name.tex
+# Auto edits
 doconce replace 'linecolor=black,' 'linecolor=darkblue,' $name.tex
 doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' $name.tex
 
@@ -54,8 +52,8 @@ system pdflatex $name
 system makeindex $name
 system pdflatex $name
 
-doconce latex_problems main_book.log 10
+doconce latex_problems $name.log 10
 
 # Check grammar in MS Word:
-# doconce spellcheck tmp_mako__main_book.do.txt
-# load tmp_stripped_main_book.do.txt into Word
+# doconce spellcheck tmp_mako__book.do.txt
+# load tmp_stripped_book.do.txt into Word
