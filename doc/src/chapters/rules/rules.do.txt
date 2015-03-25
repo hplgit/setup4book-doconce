@@ -392,6 +392,7 @@ chapter file, say `part1.do.txt`.
      but slides need many more subsection headings.
    * Try to let the heading summarize explicitly a conclusion/rule from
      the slide (the slide table of contents is then a set of conclusions/rules!)
+   * Remember a `!split` right above very slide heading!
    * Compile frequently and look at the slides: they become over-full very
      quickly so there is a constant need for dividing slides into new
      ones with new headings.
