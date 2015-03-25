@@ -59,3 +59,20 @@ bibtex $name
 makeindex $name
 system pdflatex $name
 system pdflatex $name
+
+# Publish
+dest=/some/repo/some/where
+dest=../../../pub
+if [ ! -d $dest ]; then
+exit 0  # drop publishig
+fi
+dest=$dest/$name
+if [ ! -d $dest ]; then
+  mkdir $dest
+  mkdir $dest/pdf
+  mkdir $dest/html
+fi
+cp $name.pdf $dest
+
+# Could make other versions, A4, 2 pages per sheet, etc.
+

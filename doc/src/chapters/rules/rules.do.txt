@@ -111,9 +111,9 @@ The recipe for doing this appears below.
 ===== Organization of a chapter =====
 
 Suppose one chapter) of the book
-has the nickname `ch2` and consists
-of the DocOnce files `part1.do.txt`, `part2.do.txt`, and
-`part3.do.txt`. These are assembled in one chapter file, `ch.do.txt` with
+has the nickname `ch2` and may hold all text or just include
+text in other DocOnce files, e.g., `part1.do.txt`, `part2.do.txt`, and
+`part3.do.txt`. In this latter case, `ch2.do.txt` has
 the simple content
 
 @@@CODE src-rules/ch2.do.txt
@@ -124,7 +124,8 @@ the simple content
 
 Note that the `ch2.do.txt` file contains just plain text without
 any `TITLE`, `AUTHOR`, or `DATE` lines and without any
-table of contents (`TOC`). This property makes `ch2.do.txt`
+table of contents (`TOC`) and bibliography (`BIBITEM`).
+This property makes `ch2.do.txt`
 suitable for being including in other documents like a book.
 However, to compile `ch2.do.txt` to a stand-alone document,
 we normally want a title, an author,
@@ -156,7 +157,7 @@ directory. With unique names, figures and source code files can always
 reside in their original locations, and we can easily reach them
 through links. This will be described next.
 
-===== Assembly of chapters =====
+===== Assembly of chapters to a book =====
 
 All the files associated with the `ch2` document and chapter reside
 in the `ch2` directory. A fundamental principle of DocOnce is to
@@ -248,19 +249,22 @@ as soon as a DocOnce or LaTeX error is encountered.
 !ewarning
 
 
-===== About figures when publishing HTML ===
+===== About figures when publishing HTML =====
 
-When an HTML document is produced, there will be `<img
-src=fig-ch2/fig1.png>` type of tags in the HTML code, so it is very
-important to ensure that the published `.html` files have access to a
-subdirectory `fig-ch2`. Normally, one needs to copy `fig-ch2` from the
-`ch2` directory to some directory with all the files necessary for
-publishing the entire HTML document.
+There will be `<img src=fig-ch2/fig1.png>` type of tags in HTML code
+produced by DocOnce, so it is very important to ensure that the
+*published* `.html` files have access to a subdirectory
+`fig-ch2`. Normally, one needs to copy `fig-ch2` from the `ch2`
+chapter source directory to some publishing directory that stores all
+the files necessary for accessing the entire HTML document on the web.
 
 ======= Tools =======
 
 You can start a new, future, potential book project by simply copying
-the directory structure of the "`setup4book-doconce`": "https://github.com/hplgit/setup4book-doconce" repository on GitHub.
+the directory structure of the "setup4book-doconce": "https://github.com/hplgit/setup4book-doconce" repository on GitHub. Then you can follow
+the instructions below to start writing and adapting the structure to
+your project's needs.
+
 
 ===== Making a new chapter =====
 
@@ -279,6 +283,8 @@ a directory `mychap` for a new chapter with nickname `mychap`.
 
 ===== Compiling the chapter =====
 
+=== PDF ===
+
 To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
 we propose the convention to have a `make.sh` in each chapter directory.
 This `make.sh` can in most cases just call up a common `../make.sh`
@@ -292,18 +298,31 @@ or optionally with some command-line arguments,
 !bc shpro
 bash -x ../make.sh main_mychap --encoding=utf-8
 !ec
-The `doc/src/chapters/make.sh` script is quite general and can be edited
-according to your layout preferences of the LaTeX document.
+The `doc/src/chapters/make.sh` script is quite general and may be edited
+according to your layout preferences of the LaTeX documents.
+
+__Remark.__
+The suggested `make.sh` file
+applies the `--latex_code_style=` option to `doconce format`
+for specifying the typesetting of blocks of computer code in LaTeX.
+Originally, DocOnce applied the `ptex2tex` program to select such
+typesetting, but the new method is more flexible and simpler (in that
+it gives cleaner LaTeX code). (With `ptex2tex` one would need a common
+configuration file `doc/chapters/.ptex2tex.cfg` to be copied by
+`doc/chapters/make.sh` to the chapter directory prior to running
+`ptex2tex.)
+
+=== HTML ===
 
 There is also a script `doc/src/chapters/make_html.sh` for making
 HTML versions of the chapter. Just call this as
 
 !bc sys
-Terminal> bash ../make.sh main_mychap
+Terminal> bash ../make_html.sh main_mychap
 !ec
 to make HTML versions of the `mychap` chapter.
 The current version of `make_html.sh` creates three types of HTML
-layouts and an `index.html` file with a list of these three files.
+layouts and an `index.html` file with a list of links to these three files.
 
 ===== Compiling the book =====
 
@@ -325,3 +344,131 @@ Lecture Notes in Computer Science (proceedings), and Undergraduate Texts
 in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling `book.do.txt` or actually extending the DocOnce source code.
+
+======= Study guides and slides =======
+
+DocOnce has good support for creating slides from ordinary documents
+with running text. Rather than speaking about slides, we think of
+*study guides* where the material is presented in a very condensed,
+effective, summarizing form for overview, use in lectures, and
+repetition. The slide format is a good way of writing study guides,
+but by explicitly thinking of study guides the slide format can be
+made more effective for self-study when overview and repetition are
+necessary - with a particular emphasis on gaining understanding.
+
+It is, of course, a very challenging balance between enough
+information for self-study by reading slides and overwhelmingly much
+text and information in slides for oral presentations. Text must
+anyway be minimized all the way on slides, and the reader of a study
+guide is supposed to also be a reader of the underlying running text
+in the chapter.
+
+===== Slide directory =====
+
+For each DoOnce file in the chapter `ch2` it can be wise to make a
+corresponding study guide file in the subdirectory `lec-ch2`.
+For example, `part1.do.txt` has its counterpart with slides in
+`lec-ch2/part1.do.txt`. Then there is a file `lectures_ch2.do.txt`
+which assembles the parts if `lec-ch2`, typically with a content
+like
+
+@@@CODE src-rules/lec-ch2.do.txt
+
+===== Generating slides from running text =====
+
+The author has the following work flow for generating slides for a
+chapter file, say `part1.do.txt`.
+
+ o Copy `part1.do.txt` to `lec-ch2/part1.do.txt`.
+ o Make `lectures_ch2.do.txt` and include `lec-ch2/part1.do.txt`.
+ o Decide on *parts* of the slide collection. Often a part can be
+   a section in the parent `ch2.do.txt` file, but sometimes it can
+   be more natural to have larger parts than sections in the slide
+   collection.
+ o Each part in the slide file has a DocOnce section heading  with 7 `=`, while
+   each slide has a DocOnce subsection heading with 5 `=`.
+ o Edit `lec-ch2/part1.do.txt`:
+   * One can keep subsection headings from the running text for the most part,
+     but slides need many more subsection headings.
+   * Try to let the heading summarize explicitly a conclusion/rule from
+     the slide (the slide table of contents is then a set of conclusions/rules!)
+   * Compile frequently and look at the slides: they become over-full very
+     quickly so there is a constant need for dividing slides into new
+     ones with new headings.
+   * Read a paragraph, focus on its main idea and result, and see how it
+     can be condensed to one sentence or a few bullet points.
+     *Making effective slides is the art of condensing the most
+     important information in the text to a eye-catching format.*
+   * Do not remove figures without a very good reason. Figures are important!
+   * Add new images to live up the presentation. In slides you may think of
+     cartoons or entertaining images that would never be suitable
+     in a chapter/book, but they may help attract attention,
+     communicate ideas, and enhance the memory process.
+   * Condense every mathematical derivation. Make sure the goal and end
+     result is clear before diving into details.
+   * Detailed derivations are seldom of interest in a study guide or
+     oral presentation - refer to the underlying running text in the
+     chapter for the details. Focus on ideas and key mathematical steps (if they
+     are important enough).
+   * Remember that equations are sometimes excellent images for ideas!
+     Complicated equations can therefore be important slide elements
+     although the details will never be addressed.
+   * It is quite often wise to remove equation numbers in slides.
+     You can edit the LaTeX math environment manually, or use
+     `--denumber_all_equations` to do it automatically. Remember that
+     references to equations numbers must be removed from the slides too!
+   * Movies are effective in slides. It is still a hassle to get them
+     displayed correctly in PDF files, so using a test on `FORMAT` and
+     writing `MOVIE` for HTML output and just a link in PDF output
+     might be necessary. See the "manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#movies" for how to work with movies in DocOnce.
+
+The slides are to fulfill three purposes:
+
+ o reading as a study guide to get overview before reading the
+   full text of chapter,
+ o watching as slides during an oral presentation,
+ o reading as a study guide to repeat and enforce overview of the material.
+
+It is highly non-trivial to meet all these purposes: limit the
+information on the slides, make them as visual as *feasible*, make them
+self contained, and provide the *sufficient* amount of
+information. Considerable iterations are always needed. Reading the
+slides as a study guide is easy to accomplish. The slides' properties
+in live presentations can only be tested by speaking to them (making a
+rough draft of a video podcast is a very effective way of testing
+the slides' quality).
+
+===== Compiling slides =====
+
+There is a quite general script in `doc/src/chapters/make_lectures.sh` for
+compiling a slide collection defined in a file like `lectures_ch2.do.txt`.
+Just run
+
+!bc sys
+Terminal> bash ../make_lectures.sh lectures_ch2.do.txt
+!ec
+from the chapter directory. Note that the script will first spell check
+the slide files. This is done in the `lec-ch2` directory. Errors are
+reported in files located in `lec-ch2`. To update the chapter's dictionary
+for spell checking, you need to do
+
+!bc sys
+Terminal> cp lec-ch2/new_dictionary.txt~ .dict4spell
+!ec
+in the `ch2` chapter directory.
+
+Similarly, to look at misspellings,
+the file `lec-ch2/misspellings.txt~` is the relevant file.
+
+The `make_lectures.sh` script compiles a variety of slides:
+
+ * First a plain LaTeX PDF document to catch as many errors in the
+   DocOnce source as early as possible. This document can also be
+   used for compact printing of the contents of the study guide
+   (and the output looks definitely like a study guide and not slides!).
+ * HTML5 `reveal.js` slides with different colors.
+ * HTML5 `deck.js` slides. This format is usually inferior to `reveal.js`,
+   but is also very much personal taste.
+ * LaTeX Beamer slides. Edit the `theme=red_shadow` line in `make_lectures.sh`
+   to control the Beamer theme.
+ * Remark (Markdown) slides for viewing in a browser.

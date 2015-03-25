@@ -1,6 +1,6 @@
 import sys, re, os, shutil
 
-chapters = "flow rules preface".split()
+chapters = "rules preface mako".split()
 
 ignored_files = '*.o *.so *.a *.pyc *.bak *.swp *~ .*~ *.old tmp* temp* .#* \\#* *.log *.dvi *.aux *.blg *.idx *.nav *.out *.toc *.snm *.vrb *.cproject *.project .DS_Store Trash'.split()
 

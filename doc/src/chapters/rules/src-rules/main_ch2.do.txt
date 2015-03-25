@@ -1,5 +1,5 @@
 TITLE: Some title
-AUTHOR: Author name Email:somename@someplace.net at Institute One
+AUTHOR: Author Name Email:somename@someplace.net at Institute One
 DATE: today
 
 TOC: on
