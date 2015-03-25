@@ -21,13 +21,14 @@ TOC: on
 
 ========= Appendix: Use of Mako to aid book writing =========
 
-Documents that contain raw Mako code in verbatim code blocks we cannot
+__Remark.__
+Documents that contain raw Mako code in verbatim code blocks cannot
 also be processed by Mako, and this is the case with the `mako`
 chapter. Since we need Mako for processing the rest of this book
 document, we are forced to compile the `mako` chapter as a stand-alone
 document (with the `--no_mako` option) and let this appendix be just a
 link to the "this stand-alone document":
-% if FORMAT in ('latex, 'pdflatex'):
+% if FORMAT in ('latex', 'pdflatex'):
 "http://hplgit.github.io/setup4books/doconce/doc/pub/mako/pdf/main_mako.pdf".
 % else:
 "http://hplgit.github.io/setup4books/doconce/doc/pub/mako/html/index.html".

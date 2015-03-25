@@ -9,13 +9,16 @@
 
 <%
 chapters = {
- 'name': 'Full title of chapter',
+ 'rules': 'Directory and file structure',
 }
+
+import os
+def has_lectures():
+    return os.path.isdir('lec-'+ CHAPTER)
 %>
 
 TITLE: ${chapters[str(CHAPTER)]}
-AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication & Dept. of Publishing, Future eBook Solutions Ltd.
-AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 The document _${chapters[str(CHAPTER)]}_ is here available in the following
@@ -24,3 +27,14 @@ formats:
  * "HTML plain bootstrap style": "${CHAPTER}-bootstrap.html"
  * "HTML bootswatch readable style": "${CHAPTER}-readable.html"
  * "HTML solarized color style": "${CHAPTER}-solarized.html"
+
+% if has_lectures():
+Slides:
+
+ * "HTML5 reveal.js dark": "lectures_${CHAPTER}-reveal.html"
+ * "HTML5 reveal.js dark": "lectures_${CHAPTER}-reveal-beige.html"
+ * "HTML5 deck.js": "lectures_${CHAPTER}-deck.html"
+ * "HTML5 Remark (Markdown)": "lectures_${CHAPTER}-remark.html"
+ * "Plain HTML, one big file": "lectures_${CHAPTER}-1.html"
+ * "Solarized HTML, one big file": "lectures_${CHAPTER}-solarized.html"
+% endif

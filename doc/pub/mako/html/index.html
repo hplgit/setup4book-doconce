@@ -37,8 +37,13 @@ end of tocinfo -->
 <p>
 <%
 chapters = {
- 'name': 'Full title of chapter',
+ 'rules': 'Directory and file structure',
 }
+
+<p>
+import os
+def has_lectures():
+    return os.path.isdir('lec-'+ CHAPTER)
 %>
 
 <p>
@@ -47,22 +52,18 @@ chapters = {
 <center><h1>${chapters[str(CHAPTER)]}</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): Joe Doe, and Jane Doe -->
+<!-- author(s): Hans Petter Langtangen -->
 
 <center>
-<b>Joe Doe</b> [1, 2] (<tt>j.doe at cybermail.com</tt>)
-</center>
-
-<center>
-<b>Jane Doe</b> [1]
+<b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
 
 <p>
 <!-- institution(s) -->
 
-<center>[1] <b>Dept. of Writing, Institute of Communication</b></center>
-<center>[2] <b>Dept. of Publishing, Future eBook Solutions Ltd.</b></center>
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
 <center><h4>Mar 25, 2015</h4></center> <!-- date -->
 <p>
@@ -70,11 +71,24 @@ The document _${chapters[str(CHAPTER)]}_ is here available in the following
 formats:
 
 <ul>
- <li> <a href="${CHAPTER}-bootstrap.html" target="_self">HTML plain bootstrap style</a></li>
- <li> <a href="${CHAPTER}-readable.html" target="_self">HTML bootswatch readable style</a></li>
- <li> <a href="${CHAPTER}-solarized.html" target="_self">HTML solarized color style</a></li>
+ <li> <a href="${CHAPTER}-bootstrap.html" target="_blank">HTML plain bootstrap style</a></li>
+ <li> <a href="${CHAPTER}-readable.html" target="_blank">HTML bootswatch readable style</a></li>
+ <li> <a href="${CHAPTER}-solarized.html" target="_blank">HTML solarized color style</a></li>
 </ul>
 
+% if has_lectures():
+Slides:
+
+<ul>
+ <li> <a href="lectures_${CHAPTER}-reveal.html" target="_blank">HTML5 reveal.js dark</a></li>
+ <li> <a href="lectures_${CHAPTER}-reveal-beige.html" target="_blank">HTML5 reveal.js dark</a></li>
+ <li> <a href="lectures_${CHAPTER}-deck.html" target="_blank">HTML5 deck.js</a></li>
+ <li> <a href="lectures_${CHAPTER}-remark.html" target="_blank">HTML5 Remark (Markdown)</a></li>
+ <li> <a href="lectures_${CHAPTER}-1.html" target="_blank">Plain HTML, one big file</a></li>
+ <li> <a href="lectures_${CHAPTER}-solarized.html" target="_blank">Solarized HTML, one big file</a></li>
+</ul>
+
+% endif
 
 <!-- ------------------- end of main content --------------- -->
 

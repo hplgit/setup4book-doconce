@@ -1,5 +1,6 @@
 #!/bin/bash -x
 # Script for compiling a single chapter as an individual document.
+set -x
 
 # Note that latex refs to other chapters do not work if the other
 # chapters are not compiled. Therefore all chapters must first be
@@ -33,13 +34,15 @@ function system {
   fi
 }
 
+nickname=`echo $name | sed 's/main_//'`
+
 rm -fr tmp_*
 
 # Perform spell checking
 system doconce spellcheck -d .dict4spell.txt *.do.txt
 
 # Copy common newcommands
-preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands_keep.tex
+system preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands_keep.tex
 # Copy ptex2tex configuration file if not using the newer --latex_code_style=...
 #cp ../.ptex2tex.cfg .
 
@@ -66,13 +69,12 @@ dest=../../../pub
 if [ ! -d $dest ]; then
 exit 0  # drop publishig
 fi
-dest=$dest/$name
+dest=$dest/$nickname
 if [ ! -d $dest ]; then
   mkdir $dest
   mkdir $dest/pdf
   mkdir $dest/html
 fi
-cp $name.pdf $dest
+cp $name.pdf $dest/pdf
 
 # Could make other versions, A4, 2 pages per sheet, etc.
-

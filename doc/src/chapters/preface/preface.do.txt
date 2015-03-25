@@ -2,7 +2,7 @@ The purpose of this ``book'' is to demonstrate a minimalistic setup
 for making books in the DocOnce format. The setup contains several
 useful features:
 
- o Chapters can exist individually and appear in different formats
+ o Chapters can exist as stand-alone documents in different formats
    like HTML, Sphinx, and LaTeX-based PDF.
  o Chapters are flexibly assembled into a traditional LaTeX-based
    book in PDF format for a traditional publisher.
@@ -14,6 +14,8 @@ useful features:
    a specific course at a specific institution).
  o Study guides or slides can easily be developed from the running
    text and stored along with the chapters.
+ o Slides can be compiled to a variety of forms: HTML5 reveal.js, deck.js,
+   Markdown Remark, solarized HTML colors, and classic LaTeX Beamer.
 
 These features have the great advantage that a book can evolve from
 small documents, making the barrier for book writing much smaller.
@@ -38,5 +40,5 @@ many Bash scripts.
 \vspace{1cm}
 
 \noindent
-{\it March 2015}  \hfill  {\it Hans Petter Langtangen \&\ Jose Unpingco}
+{\it March 2015}  \hfill  {\it Hans Petter Langtangen}
 # #endif

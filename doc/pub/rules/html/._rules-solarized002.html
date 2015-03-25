@@ -1,0 +1,178 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Compiling the book ', 2, None, '___sec12'),
+              (' Study guides and slides ', 1, None, '___sec13'),
+              (' Slide directory ', 2, None, '___sec14'),
+              (' Generating slides from running text ', 2, None, '___sec15'),
+              (' Compiling slides ', 2, None, '___sec16'),
+              (' References ', 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0002"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._rules-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._rules-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec1">Newcommands </h1>
+
+<p>
+Files with names <code>newcommands*.tex</code> are by DocOnce treated as files
+with definition of newcommands for LaTeX mathematics.
+These files must reside in the same
+directory as the DocOnce source files. However, for a book project,
+it is common to have one newcommands file shared by all chapters.
+This file is placed
+in <code>doc/src/chapters/newcommands.p.tex</code> and copied to a specific
+chapter by the make script for that chapter. The extension of
+the file is <code>.p.tex</code>, indicating that the file has to be
+<em>preprocessed</em> by <code>preprocess</code> prior to being copied. The reason
+is that one occasionally wants the definitions of the newcommands
+to depend on the output format (standard LaTeX or MathJax).
+For example, subscripts in <code>mbox</code> font look best with footnotesize
+font in plain LaTeX, while the larger <code>small</code> font is more appropriate
+for MathJax. We can then put the following definitions in
+<code>newcommands.p.tex</code>:
+
+<p>
+<!-- begin verbatim block  latexcod-->
+<pre><code>% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)
+% Use footnotesize in subscripts
+\newcommand{\subsc}[2]{#1_{\mbox{\footnotesize #2}}}
+% #else
+% In MathJax, a different construction is used
+\newcommand{\subsc}[2]{#1_{\small\mbox{#2}}}
+% #endif
+</code></pre>
+<!-- end verbatim block -->
+The make script will then run <code>preprocess</code> on this file,
+typically
+
+<p>
+<!-- begin verbatim block  shcod-->
+<pre><code>preprocess -DFORMAT=pdflatex ../newcommands.p.tex &gt; newcommands.tex
+# or
+preprocess -DFORMAT=html ../newcommands.p.tex &gt; newcommands.tex
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>DocOnce newcommands are for mathematics only!</b>
+<p>
+Note that
+newcommands in DocOnce context are only used for mathematics,
+rendered by LaTeX or MathJax. Newcommands for other LaTeX constructions
+(such as section or boxes) should not be used in the DocOnce source
+code as these are confined
+to the LaTeX format. Use instead Mako functions.
+</div>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._rules-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._rules-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

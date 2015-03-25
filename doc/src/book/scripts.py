@@ -55,14 +55,16 @@ def compile_chapters():
 
 def make_links(chapters=chapters):
     """Make links to all src-* and fig-* dirs for all chapters."""
-    prefix = os.path.join(os.pardir, 'chapter')
+    prefix = os.path.join(os.pardir, 'chapters')
     for chapter in chapters:
         destination = os.path.join(prefix, chapter)
         subdirs = [tp + '-' + chapter for tp in 'fig', 'src', 'mov', 'exer']
         for subdir in subdirs:
             if not os.path.islink(subdir):
-                os.symlink(destination, subdir)
-                print 'created local link %s to %s' % (subdir, destination)
+                dest_subdir = os.path.join(destination, subdir)
+                if os.path.isdir(dest_subdir):
+                    os.symlink(dest_subdir, subdir)
+                    print 'created local link %s to %s' % (subdir, destination)
 
     # Sometimes manual additions are needed here, e.g.,
     #os.symlink(os.path.join(prefix, 'tech', 'fig2'), 'fig2')
@@ -101,4 +103,3 @@ def pack_src(root='src', tarfile='book-examples.tar.gz', chapters=chapters):
     os.chdir(os.pardir)
     os.system('tar czf %s %s' % (tarfile, root))
     print 'tarfile:', tarfile
-
