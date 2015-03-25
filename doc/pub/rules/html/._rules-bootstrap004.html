@@ -1,0 +1,234 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Compiling the book ', 2, None, '___sec12'),
+              (' Study guides and slides ', 1, None, '___sec13'),
+              (' Slide directory ', 2, None, '___sec14'),
+              (' Generating slides from running text ', 2, None, '___sec15'),
+              (' Compiling slides ', 2, None, '___sec16'),
+              (' References ', 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="rules-bootstrap.html">Directory and file structure</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#sec:rules:dir:struct" style="font-size: 80%;"><b>Directory structure</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#___sec1" style="font-size: 80%;"><b>Newcommands</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book:assembly" style="font-size: 80%;"><b>Assembling different pieces to a book</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organization of a chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and source code</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assembly of chapters to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;About figures when publishing HTML</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Tools</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Making a new chapter</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the chapter</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec13" style="font-size: 80%;"><b>Study guides and slides</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slide directory</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating slides from running text</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling slides</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0004"></a>
+<!-- !split -->
+
+<h1 id="___sec7">Tools </h1>
+
+<p>
+You can start a new, future, potential book project by simply copying
+the directory structure of the <a href="https://github.com/hplgit/setup4book-doconce" target="_self">setup4book-doconce</a> repository on GitHub. Then you can follow
+the instructions below to start writing and adapting the structure to
+your project's needs.
+
+<h2 id="___sec8">Making a new chapter </h2>
+
+<p>
+Under <code>doc/src/chapters</code>
+you find the chapters in this &quot;sample book&quot; as well as a script
+<code>doc/chapters/mkdir.sh</code> that creates a new directory for you with the
+typical files needed for a new chapter. You can either edit existing
+chapters, or make a brand new empty chapter by running
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; sh mkdir.sh mychap
+</pre></div>
+<p>
+This command makes
+a directory <code>mychap</code> for a new chapter with nickname <code>mychap</code>.
+(Files from the <code>template</code> directory are used to populate <code>mychap</code>.)
+
+<h2 id="___sec9">Compiling the chapter </h2>
+
+<h3 id="___sec10">PDF </h3>
+
+<p>
+To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
+we propose the convention to have a <code>make.sh</code> in each chapter directory.
+This <code>make.sh</code> can in most cases just call up a common <code>../make.sh</code>
+script,
+
+<p>
+
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">bash -x ../make.sh main_mychap
+</pre></div>
+<p>
+or optionally with some command-line arguments,
+
+<p>
+
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">bash -x ../make.sh main_mychap --encoding<span style="color: #666666">=</span>utf-8
+</pre></div>
+<p>
+The <code>doc/src/chapters/make.sh</code> script is quite general and may be edited
+according to your layout preferences of the LaTeX documents.
+
+<p>
+<b>Remark.</b>
+The suggested <code>make.sh</code> file
+applies the <code>--latex_code_style=</code> option to <code>doconce format</code>
+for specifying the typesetting of blocks of computer code in LaTeX.
+Originally, DocOnce applied the <code>ptex2tex</code> program to select such
+typesetting, but the new method is more flexible and simpler (in that
+it gives cleaner LaTeX code). (With <code>ptex2tex</code> one would need a common
+configuration file <code>doc/chapters/.ptex2tex.cfg</code> to be copied by
+<code>doc/chapters/make.sh</code> to the chapter directory prior to running
+`ptex2tex.)
+
+<h3 id="___sec11">HTML </h3>
+
+<p>
+There is also a script <code>doc/src/chapters/make_html.sh</code> for making
+HTML versions of the chapter. Just call this as
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; bash ../make_html.sh main_mychap
+</pre></div>
+<p>
+to make HTML versions of the <code>mychap</code> chapter.
+The current version of <code>make_html.sh</code> creates three types of HTML
+layouts and an <code>index.html</code> file with a list of links to these three files.
+
+<h2 id="___sec12">Compiling the book </h2>
+
+<p>
+Go to <code>doc/src/book</code> and run <code>make.sh</code> to compile the book. This requires
+that <code>book.do.txt</code> performs the right include of chapters, table of
+contents, and bibliography.
+
+<p>
+There are many other tools in <code>doc/src/book</code> too, e.g., the mentioned
+library of handy scripts in <code>scripts.py</code>, and an example on how to
+pack all files of the entire book projects for publishing with Springer
+(<code>pack_Springer.sh</code>).
+
+<p>
+The current book layout created by <code>make.sh</code> makes use of a (now outdated)
+Springer T2 style for textbooks (requires the <code>.cls</code> and <code>.sty</code> files in
+the <code>book</code> directory). Other Springer styles supported by DocOnce
+are Lecture Notes in Computational Science and Engineering (monographs
+and proceedings),
+Lecture Notes in Computer Science (proceedings), and Undergraduate Texts
+in Physics. Other book styles will require some manual work, either
+working out a LaTeX preamble for a special style and use that when
+compiling <code>book.do.txt</code> or actually extending the DocOnce source code.
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._rules-bootstrap003.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._rules-bootstrap005.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

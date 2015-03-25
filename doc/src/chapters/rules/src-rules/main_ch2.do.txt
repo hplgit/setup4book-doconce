@@ -1,0 +1,12 @@
+TITLE: Some chapter title
+AUTHOR: A. Name Email:somename@someplace.net at Institute One
+AUTHOR: A. Two at Institute One & Institute Two
+DATE: today
+
+TOC: on
+
+# #include "ch2.do.txt"
+
+======= References =======
+
+BIBFILE: ../papers.pub

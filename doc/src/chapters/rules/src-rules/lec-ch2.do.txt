@@ -1,0 +1,15 @@
+TITLE: Study Guide: Some title
+AUTHOR: Author Name Email:somename@someplace.net at Institute One
+DATE: today
+
+# #ifdef WITH_TOC
+!split
+TOC: on
+# #endif
+
+# #include "lec-ch2/part1.do.txt"
+
+# #include "lec-ch2/part2.do.txt"
+
+# #include "lec-ch2/part3.do.txt"
+

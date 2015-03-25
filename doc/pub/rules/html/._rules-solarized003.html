@@ -1,0 +1,349 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Compiling the book ', 2, None, '___sec12'),
+              (' Study guides and slides ', 1, None, '___sec13'),
+              (' Slide directory ', 2, None, '___sec14'),
+              (' Generating slides from running text ', 2, None, '___sec15'),
+              (' Compiling slides ', 2, None, '___sec16'),
+              (' References ', 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0003"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._rules-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._rules-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1 id="setup:rules:book:assembly">Assembling different pieces to a book</h1>
+
+<p>
+Many smaller writings in the DocOnce format can be assembled
+into a single, large document such as a book or thesis.
+The recipe for doing this appears below.
+
+<h2 id="___sec3">Organization of a chapter </h2>
+
+<p>
+Suppose one chapter) of the book
+has the nickname <code>ch2</code> and may hold all text or just include
+text in other DocOnce files, e.g., <code>part1.do.txt</code>, <code>part2.do.txt</code>, and
+<code>part3.do.txt</code>. In this latter case, <code>ch2.do.txt</code> has
+the simple content
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code># #include &quot;part1.do.txt&quot;
+
+# #include &quot;part2.do.txt&quot;
+
+# #include &quot;part3.do.txt&quot;
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Note that the <code>ch2.do.txt</code> file contains just plain text without
+any <code>TITLE</code>, <code>AUTHOR</code>, or <code>DATE</code> lines and without any
+table of contents (<code>TOC</code>) and bibliography (<code>BIBITEM</code>).
+This property makes <code>ch2.do.txt</code>
+suitable for being including in other documents like a book.
+However, to compile <code>ch2.do.txt</code> to a stand-alone document,
+we normally want a title, an author,
+a date, and perhaps a table of contents.
+We also want a bibliography if any of the included files has
+<code>cite</code> tags. To this end, we create a wrapper file, say <code>main_ch2.do.txt</code>,
+with the content
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>TITLE: Some chapter title
+AUTHOR: A. Name Email:somename@someplace.net at Institute One
+AUTHOR: A. Two at Institute One &amp; Institute Two
+DATE: today
+
+TOC: on
+
+# #include &quot;ch2.do.txt&quot;
+
+======= References =======
+
+BIBFILE: ../papers.pub
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Recall that DocOnce relies on the Publish software for handling
+bibliographies. It is easy to import from BibTeX to Publish and
+create a database of references (<code>papers.pub</code>) to get started (but
+we recommend to continue working with the
+Publish database directly and collect new items in the <code>papers.pub</code> file
+as Publish is more flexible than BibTeX).
+
+<h2 id="___sec4">Figures and source code </h2>
+
+<p>
+As described in the section <a href="._rules-solarized001.html#sec:rules:dir:struct">Directory structure</a>, we recommend to put
+figures and source codes (to be included in the document) in separate
+directories. Although such directories could have natural names like
+<code>fig</code> and <code>src</code>, it will cause trouble if we do not use unique names
+for these directories, like <code>fig-ch2</code> and <code>src-ch2</code>. Otherwise, we
+would need to copy all figures in all pieces into a common <code>fig</code>
+directory for the book and all source code files into a <code>src</code>
+directory. With unique names, figures and source code files can always
+reside in their original locations, and we can easily reach them
+through links. This will be described next.
+
+<h2 id="___sec5">Assembly of chapters to a book </h2>
+
+<p>
+All the files associated with the <code>ch2</code> document and chapter reside
+in the <code>ch2</code> directory. A fundamental principle of DocOnce is to
+have just one copy of the files (&quot;Document once!&quot;).
+To include the <code>ch2</code> text in a larger document like a book, we just
+need to include the <code>ch2.do.txt</code> file and a chapter heading.
+Here is an example of a document <code>book.do.txt</code> for a complete book:
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>TITLE: This is a book title
+AUTHOR: A. Name Email:somename@someplace.net at Institute One
+AUTHOR: A. Two at Institute One &amp; Institute Two
+DATE: today
+
+TOC: on
+
+========= Preface =========
+
+# #include &quot;../chapters/preface/preface.do.txt&quot;
+
+========= Heading of a chapter =========
+
+# #include &quot;../chapters/ch2/ch2.do.txt&quot;
+
+# Similar inclusion of other chapters
+
+========= Appendix: Heading of an appendix =========
+
+# #include &quot;../chapters/nickname/nickname.do.txt&quot;
+
+======= References =======
+
+BIBFILE: ../papers.pub
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+When running <code>doconce format</code> on <code>book.do.txt</code>, the entire document
+is contained in <em>one</em> big file [<a id="link_footnote_1" href="#def_footnote_1">1</a>] (!).
+To see exactly what has been included,
+you can examine the result of running the first preprocessor, <code>preprocess</code>,
+on <code>book.do.txt</code>. All the includes are handled by this preprocessor.
+The result is contained in the file
+<code>tmp_preprocess__book.do.txt</code>, which then contains the entire
+DocOnce source code of the book. The second preprocessor, <code>mako</code>, is thereafter
+run (if DocOnce detects that it is necessary).
+The result of that step is available in
+<code>tmp_mako__book.do.txt</code>. It is important to examine this file if there
+are problems with Mako variables or functions.
+The <code>tmp_mako__book.do.txt</code> file is thereafter translated to
+the desired output format.
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> A single DocOnce file and consequently a single
+<code>.tex</code> file works out well on today's laptops.
+A book with 900 pages <a href="._rules-solarized005.html#Langtangen_2014">[1]</a> has been tested!</p>
+
+<p>
+Say we want to produce a LaTeX document:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce format pdflatex book [options]
+</code></pre>
+<!-- end verbatim block -->
+If the DocOnce source contains copying of source code from files in
+<code>@@@CODE</code> constructs, it is important that <code>doconce</code> finds the files.
+For example,
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>@@@CODE src-ch2/myprog.py  fromto: def test1@def test2
+</code></pre>
+<!-- end verbatim block -->
+will try to open the file <code>src-ch2/myprog.py</code>. Since this file is
+actually located in <code>../ch2/src-ch2/myprog.py</code>, <code>pdflatex</code> will
+report an error message. A local link to
+that directory resolves the problem:
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; ln -s ../chapters/ch2/src-ch2 src-ch2
+</code></pre>
+<!-- end verbatim block -->
+Similarly,
+the LaTeX code in <code>book.tex</code> for inclusion of a figure may
+contain
+
+<p>
+<!-- begin verbatim block  latexcod-->
+<pre><code>\includegraphics[width=0.9\linewith]{fig-ch2/fig1.pdf}
+</code></pre>
+<!-- end verbatim block -->
+For this command to work, it is paramount that there is a link <code>fig-ch2</code> in the
+present <code>book</code> directory where the <code>pdflatex</code> command is run to
+the directory <code>../chapters/ch2/fig-ch2</code> where the figure file <code>fig1.pdf</code> is
+located.
+
+<p>
+It is recommended to use the function <code>make_links</code> in <code>scripts.py</code> to
+automatically set up all convenient links from the <code>book</code> directory
+to the individual chapter directories. Provided the list of chapter nicknames
+at the top of <code>scripts.py</code> is correct, you can just run
+
+<p>
+<!-- begin verbatim block  pyshell-->
+<pre><code>&gt;&gt;&gt; import scripts
+&gt;&gt;&gt; scripts.make_links()
+</code></pre>
+<!-- end verbatim block -->
+to automatically
+set up all links to all <code>src-*</code>, <code>fig-*</code>, and <code>mov-*</code> directories.
+You need to rerun this <code>make_links</code> function after inclusion of a new chapter
+in the <code>chapters</code> tree.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Identify LaTeX errors in the original chapter files!</b>
+<p>
+When you run <code>pdflatex book</code> and get LaTeX errors, you need
+to see where they are in <code>book.tex</code> and use this information to
+find the appropriate DocOnce source file in some chapter.
+Usually, there are few errors at the &quot;book level&quot; if each individual
+chapter has been compiled. To this end, you can use <code>scripts.py</code> to
+automatically compile each chapter separately. The process is stopped
+as soon as a DocOnce or LaTeX error is encountered.
+
+<p>
+<!-- begin verbatim block  pyshell-->
+<pre><code>&gt;&gt;&gt; import scripts
+&gt;&gt;&gt; scripts.compile_chapters()
+</code></pre>
+<!-- end verbatim block -->
+</div>
+
+
+<h2 id="___sec6">About figures when publishing HTML </h2>
+
+<p>
+There will be <code>&lt;img src=fig-ch2/fig1.png&gt;</code> type of tags in HTML code
+produced by DocOnce, so it is very important to ensure that the
+<em>published</em> <code>.html</code> files have access to a subdirectory
+<code>fig-ch2</code>. Normally, one needs to copy <code>fig-ch2</code> from the <code>ch2</code>
+chapter source directory to some publishing directory that stores all
+the files necessary for accessing the entire HTML document on the web.
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._rules-solarized002.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._rules-solarized004.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

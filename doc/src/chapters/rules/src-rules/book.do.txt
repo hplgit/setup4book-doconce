@@ -1,0 +1,24 @@
+TITLE: This is a book title
+AUTHOR: A. Name Email:somename@someplace.net at Institute One
+AUTHOR: A. Two at Institute One & Institute Two
+DATE: today
+
+TOC: on
+
+========= Preface =========
+
+# #include "../chapters/preface/preface.do.txt"
+
+========= Heading of a chapter =========
+
+# #include "../chapters/ch2/ch2.do.txt"
+
+# Similar inclusion of other chapters
+
+========= Appendix: Heading of an appendix =========
+
+# #include "../chapters/nickname/nickname.do.txt"
+
+======= References =======
+
+BIBFILE: ../papers.pub

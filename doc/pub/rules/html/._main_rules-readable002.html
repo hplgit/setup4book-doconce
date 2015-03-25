@@ -1,0 +1,180 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Compiling the book ', 2, None, '___sec12'),
+              (' Study guides and slides ', 1, None, '___sec13'),
+              (' Slide directory ', 2, None, '___sec14'),
+              (' Generating slides from running text ', 2, None, '___sec15'),
+              (' Compiling slides ', 2, None, '___sec16'),
+              (' References ', 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="main_rules-readable.html">Directory and file structure</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._main_rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;"><b>Directory structure</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Newcommands</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable003.html#setup:rules:book:assembly" style="font-size: 80%;"><b>Assembling different pieces to a book</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organization of a chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and source code</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable003.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assembly of chapters to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable003.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;About figures when publishing HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec7" style="font-size: 80%;"><b>Tools</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Making a new chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the book</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec13" style="font-size: 80%;"><b>Study guides and slides</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slide directory</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating slides from running text</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling slides</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0002"></a>
+<!-- !split -->
+
+<h1 id="___sec1">Newcommands </h1>
+
+<p>
+Files with names <code>newcommands*.tex</code> are by DocOnce treated as files
+with definition of newcommands for LaTeX mathematics.
+These files must reside in the same
+directory as the DocOnce source files. However, for a book project,
+it is common to have one newcommands file shared by all chapters.
+This file is placed
+in <code>doc/src/chapters/newcommands.p.tex</code> and copied to a specific
+chapter by the make script for that chapter. The extension of
+the file is <code>.p.tex</code>, indicating that the file has to be
+<em>preprocessed</em> by <code>preprocess</code> prior to being copied. The reason
+is that one occasionally wants the definitions of the newcommands
+to depend on the output format (standard LaTeX or MathJax).
+For example, subscripts in <code>mbox</code> font look best with footnotesize
+font in plain LaTeX, while the larger <code>small</code> font is more appropriate
+for MathJax. We can then put the following definitions in
+<code>newcommands.p.tex</code>:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</span>
+<span style="color: #408080; font-style: italic">% Use footnotesize in subscripts</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\subsc</span><span style="color: #008000">}</span>[2]<span style="color: #008000">{</span>#1<span style="color: #008000">_{</span><span style="color: #008000; font-weight: bold">\mbox</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\footnotesize</span> #2<span style="color: #008000">}}}</span>
+<span style="color: #408080; font-style: italic">% #else</span>
+<span style="color: #408080; font-style: italic">% In MathJax, a different construction is used</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\subsc</span><span style="color: #008000">}</span>[2]<span style="color: #008000">{</span>#1<span style="color: #008000">_{</span><span style="color: #008000; font-weight: bold">\small\mbox</span><span style="color: #008000">{</span>#2<span style="color: #008000">}}}</span>
+<span style="color: #408080; font-style: italic">% #endif</span>
+</pre></div>
+<p>
+The make script will then run <code>preprocess</code> on this file,
+typically
+
+<p>
+
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">preprocess -DFORMAT<span style="color: #666666">=</span>pdflatex ../newcommands.p.tex &gt; newcommands.tex
+<span style="color: #408080; font-style: italic"># or</span>
+preprocess -DFORMAT<span style="color: #666666">=</span>html ../newcommands.p.tex &gt; newcommands.tex
+</pre></div>
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>DocOnce newcommands are for mathematics only!</b>
+Note that
+newcommands in DocOnce context are only used for mathematics,
+rendered by LaTeX or MathJax. Newcommands for other LaTeX constructions
+(such as section or boxes) should not be used in the DocOnce source
+code as these are confined
+to the LaTeX format. Use instead Mako functions.
+</div>
+
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._main_rules-readable001.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._main_rules-readable003.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
