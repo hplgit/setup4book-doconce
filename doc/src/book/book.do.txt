@@ -19,7 +19,7 @@ TOC: on
 # #include "../chapters/rules/rules.do.txt"
 
 
-========= Appendix: Utilization of the Mako preprocessor =========
+========= Appendix: Use of Mako to aid book writing =========
 
 Documents that contain raw Mako code in verbatim code blocks we cannot
 also be processed by Mako, and this is the case with the `mako`
