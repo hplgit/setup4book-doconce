@@ -1,5 +1,6 @@
-TITLE: This is a book
-AUTHOR: Some Author
+TITLE: This is a book title
+AUTHOR: A. Name Email:somename@someplace.net at Institute One
+AUTHOR: A. Two at Institute One & Institute Two
 DATE: today
 
 TOC: on
