@@ -64,3 +64,6 @@ doconce latex_problems $name.log 10
 # Check grammar in MS Word:
 # doconce spellcheck tmp_mako__book.do.txt
 # load tmp_stripped_book.do.txt into Word
+
+# Publish
+cp book.pdf ../../pub

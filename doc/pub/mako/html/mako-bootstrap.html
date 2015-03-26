@@ -6,9 +6,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Advanced topics">
+<meta name="description" content="Use of Mako to aid book writing">
 
-<title>Advanced topics</title>
+<title>Use of Mako to aid book writing</title>
 
 <!-- Bootstrap style: bootstrap_bluegray -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -22,14 +22,19 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Use of Mako ', 1, None, '___sec0'),
-              (" How to speak about ``this chapter''? ", 2, None, '___sec1'),
-              (' How to make variants of the text ', 2, None, '___sec2'),
+ 'sections': [(' Use of variables ', 1, None, '___sec0'),
+              (" How to speak about ``this chapter'' ", 2, None, '___sec1'),
+              (' How to make several variants of the text ',
+               1,
+               None,
+               '___sec2'),
+              (' Use of Mako/Python functions ', 1, None, '___sec3'),
               (' How to treat two programming languages in the same text ',
                2,
                None,
-               '___sec3'),
-              (' References ', 1, None, '___sec4')]}
+               '___sec4'),
+              (' Cross-referencing across chapters ', 1, None, '___sec5'),
+              (' References ', 1, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -43,18 +48,20 @@ end of tocinfo -->
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="mako-bootstrap.html">Advanced topics</a>
+    <a class="navbar-brand" href="mako-bootstrap.html">Use of Mako to aid book writing</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Use of Mako</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to speak about ``this chapter''?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to make variants of the text</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat two programming languages in the same text</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap001.html#___sec0" style="font-size: 80%;"><b>Use of variables</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to speak about ``this chapter''</a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap002.html#___sec2" style="font-size: 80%;"><b>How to make several variants of the text</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap003.html#___sec3" style="font-size: 80%;"><b>Use of Mako/Python functions</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat two programming languages in the same text</a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap004.html#___sec5" style="font-size: 80%;"><b>Cross-referencing across chapters</b></a></li>
+     <!-- navigation toc: --> <li><a href="._mako-bootstrap004.html#___sec6" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -73,7 +80,7 @@ end of tocinfo -->
 
 
 <div class="jumbotron">
-<center><h1>Advanced topics</h1></center>  <!-- document title -->
+<center><h1>Use of Mako to aid book writing</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -90,18 +97,17 @@ end of tocinfo -->
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
 <center><h4>Mar 25, 2015</h4></center> <!-- date -->
-<p>
-<!-- AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication &amp; Dept. of Publishing, Future eBook Solutions Ltd. -->
-<!-- AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication -->
 
 <h2>Table of contents</h2>
 
 <p>
-<a href="#___sec0"> Use of Mako </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> How to speak about &quot;this chapter&quot;? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec2"> How to make variants of the text </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec3"> How to treat two programming languages in the same text </a><br>
-<a href="#___sec4"> References </a><br>
+<a href="._mako-bootstrap001.html#___sec0"> Use of variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-bootstrap001.html#___sec1"> How to speak about &quot;this chapter&quot; </a><br>
+<a href="._mako-bootstrap002.html#___sec2"> How to make several variants of the text </a><br>
+<a href="._mako-bootstrap003.html#___sec3"> Use of Mako/Python functions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-bootstrap003.html#___sec4"> How to treat two programming languages in the same text </a><br>
+<a href="._mako-bootstrap004.html#___sec5"> Cross-referencing across chapters </a><br>
+<a href="._mako-bootstrap004.html#___sec6"> References </a><br>
 </p>
 <p>
 <!-- Externaldocuments: ../chaptername/... -->
@@ -118,227 +124,17 @@ project.
 <p>
 
 
+<p><a href="._mako-bootstrap001.html" class="btn btn-primary btn-lg">Read &raquo;</a></p>
+
+
 </div> <!-- end jumbotron -->
-
-<h1 id="___sec0">Use of Mako </h1>
-
-<p>
-Mako is the preprocessor that is always run prior to translating DocOnce
-documents into a specific format. It means that your DocOnce source is
-actually a computer program where you can use variables and functions.
-
-<p>
-Writing chapters that can both live their individual lives and be part of
-a book faces some challenges for which we have some nice solutions
-in the coming sections.
-
-<h2 id="___sec1">How to speak about &quot;this chapter&quot;? </h2>
-
-<p>
-In a book you will often need the phrase &quot;this chapter&quot;, but his is
-inappropriate if the chapter is a stand-alone document. Then you would
-rather say &quot;this document&quot;. Similarly, &quot;this book&quot; must read
-&quot;this document&quot; in a stand-alone chapter.
-We have resolved this issue by introducing
-Mako variables <code>CHAPTER</code>, <code>BOOK</code>, and <code>APPENDIX</code> such that you
-write
-
-<p>
-
-<!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In this ${BOOK}, the convention is to use boldface for vectors.
-</pre></div>
-<p>
-For this to work, you need to define <code>CHAPTER</code>, <code>BOOK</code>, and <code>APPENDIX</code>
-as variables on the command line as part of the <code>doconce format</code> command:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex ch2 --latex_code_style=pyg \
-          CHAPTER=document BOOK=document APPENDIX=document
-</pre></div>
-<p>
-When the book is compiled, you do
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex ch2 --latex_code_style=pyg \
-          CHAPTER=chapter BOOK=chapter APPENDIX=chapter
-</pre></div>
-<p>
-The <code>make.sh</code> files for found in <code>doc/src/chapter/make.sh</code> and
-<code>doc/src/book/make.sh</code> make proper definitions of
-<code>CHAPTER</code>, <code>BOOK</code>, and <code>APPENDIX</code>.
-
-<h2 id="___sec2">How to make variants of the text </h2>
-
-<p>
-Sometimes you want to write some text slightly differently if the
-chapter is a stand-alone document compared to the case when it is
-part of a book. Mako if tests are ideal for this. Suppose you
-introduce a Mako variable <code>ALONE</code> that is true/defined if the chapter
-is a stand-alone document and false/undefined if part of a book. Then
-you can simply write
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In this
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">if</span> ALONE:
-rather small
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">else</span>:
-large
-<span style="color: #666666">%%</span> endif
-${BOOK}
-</pre></div>
-<p>
-Running <code>doconce format</code> with the option <code>-DALONE</code> will turn <code>ALONE</code> to
-true and the output is typically
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In this rather small document
-</pre></div>
-<p>
-while for a book we skip <code>-DALONE</code>, which makes <code>ALONE</code> undefined, we
-get
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">In this large book
-</pre></div>
-<p>
-Mako variables can be defined/undefined (boolean variables) or be
-standard strings:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">if</span> SOME_STRING_VARIABLE <span style="color: #AA22FF; font-weight: bold">in</span> (<span style="color: #BA2121">&#39;value1&#39;</span>, <span style="color: #BA2121">&#39;value2&#39;</span>):
-some running text
-<span style="color: #666666">%%</span> endif
-
-<span style="color: #666666">...</span>
-
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> SOME_BOOLEAN_VARIABLE:
-some other running text
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">else</span>:
-yet more different text
-<span style="color: #666666">%%</span> endif
-</pre></div>
-<p>
-With Mako variables, you can easily comment out large portions
-of text by testing on some variable you do not intend to define:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">if</span> EXTRA:
-This <span style="color: #AA22FF; font-weight: bold">is</span>
-text that
-will never
-appear <span style="color: #AA22FF; font-weight: bold">in</span> the
-output<span style="color: #666666">.</span>
-<span style="color: #666666">%%</span> endif
-</pre></div>
-<p>
-Also, it is straightforward to write more than one version of a
-chapter. For example, you may want to produce a version of a chapter
-that is tailored to a specific course, while you for general publishing
-on the Internet want a more general version, and maybe a third version
-when the chapter is included in a book for the international market.
-All this is easily done by if tests on appropriately defined Mako
-variables
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">if</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;IT1713&#39;</span>:
-<span style="color: #408080; font-style: italic"># Specific text for a course IT1713</span>
-<span style="color: #666666">...</span>
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;IT1713b&#39;</span>:
-<span style="color: #408080; font-style: italic"># Specific text for a the special IT1713b variant of the course</span>
-<span style="color: #666666">...</span>
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;general&#39;</span>:
-<span style="color: #408080; font-style: italic"># General text when the chapter is a stand-alone document</span>
-<span style="color: #666666">...</span>
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;book1&#39;</span>:
-<span style="color: #408080; font-style: italic"># Text when course is a part of a particular book</span>
-<span style="color: #666666">...</span>
-<span style="color: #666666">%%</span> <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;book2&#39;</span>:
-<span style="color: #408080; font-style: italic"># Text when course is a part of another book</span>
-<span style="color: #666666">...</span>
-<span style="color: #666666">%%</span> endif
-</pre></div>
-<p>
-Such if tests are fine to handle larger portions of text. What if you
-need to have four versions of just one word or very short text?
-A Mako function, defined as a standard Python function,
-is then more appropriate. Here is a definition:
-
-<p>
-
-<!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&lt;%</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">chversion</span>(text_IT1413, text_IT1713b, text_general,
-              text_book1, text_book2):
-    <span style="color: #008000; font-weight: bold">if</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;IT1713&#39;</span>:
-        <span style="color: #008000; font-weight: bold">return</span> text_IT1413
-    <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;IT1713b&#39;</span>:
-        text_IT1413b
-    <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;general&#39;</span>:
-        <span style="color: #008000; font-weight: bold">return</span> text_general
-    <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;book1&#39;</span>:
-        <span style="color: #008000; font-weight: bold">return</span> text_book1
-    <span style="color: #008000; font-weight: bold">elif</span> COURSE <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;book2&#39;</span>:
-        <span style="color: #008000; font-weight: bold">return</span> text_book2
-    <span style="color: #008000; font-weight: bold">else</span>:
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">&#39;XXX WRONG value of COURSE: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> COURSE
-<span style="color: #666666">%&gt;</span>
-</pre></div>
-<p>
-In the running text you can call <code>chversion</code> with five arguments,
-corresponding to the desired text in the five cases, and when <code>doconce format</code>
-is run, the value of <code>COURSE</code> determines which of the five cases that is used.
-Here is an example:
-
-<p>
-
-<!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">It is extremely important to define the term *cure* accurately.
-Here we mean ${chversion(&#39;handle&#39;, &#39;handle&#39;,
-&#39;resolve&#39;, &#39;treat&#39;, &#39;resolve&#39;)}.
-</pre></div>
-
-<h2 id="___sec3">How to treat two programming languages in the same text </h2>
-
-<p>
-With these ideas, it becomes straightforward to write a book that
-has its program examples in multiple languages. Introduce <code>CODE</code>
-as the name of the language and use if tests for larger portions
-of code and text, and a Mako function for shorter inline texts.
-Copying code from file can also be hidden in a Mako function such
-that you write <code>${copyfile('myprog')}</code> and automatically get
-it as <code>src-ch2/python/myprog.py</code> if <code>COODE</code> is <code>python</code>,
-<code>src-ch2/matlab/myprog.m</code> if <code>CODE</code> is <code>matlab</code>, and so forth.
-The author has successfully co-written such a <a href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html" target="_self">book</a>
-for mathematical programming with either Python or Matlab.
-
-<h1 id="___sec4">References </h1>
-
-<p>
-<!-- begin bibliography -->
-
-<p>
-<!-- end bibliography -->
 
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
+  <li class="next">
+    <a href="._mako-bootstrap001.html">Next &rarr;</a>
+  </li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

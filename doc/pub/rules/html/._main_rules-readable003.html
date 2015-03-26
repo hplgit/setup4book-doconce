@@ -1,0 +1,354 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Compiling the book ', 2, None, '___sec12'),
+              (' Study guides and slides ', 1, None, '___sec13'),
+              (' Slide directory ', 2, None, '___sec14'),
+              (' Generating slides from running text ', 2, None, '___sec15'),
+              (' Compiling slides ', 2, None, '___sec16'),
+              (' References ', 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="main_rules-readable.html">Directory and file structure</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._main_rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;"><b>Directory structure</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable002.html#___sec1" style="font-size: 80%;"><b>Newcommands</b></a></li>
+     <!-- navigation toc: --> <li><a href="#setup:rules:book:assembly" style="font-size: 80%;"><b>Assembling different pieces to a book</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organization of a chapter</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and source code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assembly of chapters to a book</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;About figures when publishing HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec7" style="font-size: 80%;"><b>Tools</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Making a new chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable004.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the book</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec13" style="font-size: 80%;"><b>Study guides and slides</b></a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slide directory</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating slides from running text</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling slides</a></li>
+     <!-- navigation toc: --> <li><a href="._main_rules-readable005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0003"></a>
+<!-- !split -->
+
+<h1 id="setup:rules:book:assembly">Assembling different pieces to a book</h1>
+
+<p>
+Many smaller writings in the DocOnce format can be assembled
+into a single, large document such as a book or thesis.
+The recipe for doing this appears below.
+
+<h2 id="___sec3">Organization of a chapter </h2>
+
+<p>
+Suppose one chapter) of the book
+has the nickname <code>ch2</code> and may hold all text or just include
+text in other DocOnce files, e.g., <code>part1.do.txt</code>, <code>part2.do.txt</code>, and
+<code>part3.do.txt</code>. In this latter case, <code>ch2.do.txt</code> has
+the simple content
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># #include &quot;part1.do.txt&quot;</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;part2.do.txt&quot;</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;part3.do.txt&quot;</span>
+</pre></div>
+<p>
+Note that the <code>ch2.do.txt</code> file contains just plain text without
+any <code>TITLE</code>, <code>AUTHOR</code>, or <code>DATE</code> lines and without any
+table of contents (<code>TOC</code>) and bibliography (<code>BIBITEM</code>).
+This property makes <code>ch2.do.txt</code>
+suitable for being including in other documents like a book.
+However, to compile <code>ch2.do.txt</code> to a stand-alone document,
+we normally want a title, an author,
+a date, and perhaps a table of contents.
+We also want a bibliography if any of the included files has
+<code>cite</code> tags. To this end, we create a wrapper file, say <code>main_ch2.do.txt</code>,
+with the content
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Some chapter title</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #408080; font-style: italic"># #include &quot;ch2.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= References =======</span>
+
+BIBFILE: ../papers.pub
+</pre></div>
+<p>
+Recall that DocOnce relies on the Publish software for handling
+bibliographies. It is easy to import from BibTeX to Publish and
+create a database of references (<code>papers.pub</code>) to get started (but
+we recommend to continue working with the
+Publish database directly and collect new items in the <code>papers.pub</code> file
+as Publish is more flexible than BibTeX).
+
+<h2 id="___sec4">Figures and source code </h2>
+
+<p>
+As described in the section <a href="._main_rules-readable001.html#sec:rules:dir:struct">Directory structure</a>, we recommend to put
+figures and source codes (to be included in the document) in separate
+directories. Although such directories could have natural names like
+<code>fig</code> and <code>src</code>, it will cause trouble if we do not use unique names
+for these directories, like <code>fig-ch2</code> and <code>src-ch2</code>. Otherwise, we
+would need to copy all figures in all pieces into a common <code>fig</code>
+directory for the book and all source code files into a <code>src</code>
+directory. With unique names, figures and source code files can always
+reside in their original locations, and we can easily reach them
+through links. This will be described next.
+
+<h2 id="___sec5">Assembly of chapters to a book </h2>
+
+<p>
+All the files associated with the <code>ch2</code> document and chapter reside
+in the <code>ch2</code> directory. A fundamental principle of DocOnce is to
+have just one copy of the files (&quot;Document once!&quot;).
+To include the <code>ch2</code> text in a larger document like a book, we just
+need to include the <code>ch2.do.txt</code> file and a chapter heading.
+Here is an example of a document <code>book.do.txt</code> for a complete book:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: This is a book title</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #000080; font-weight: bold">========= Preface =========</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;../chapters/preface/preface.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">========= Heading of a chapter =========</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;../chapters/ch2/ch2.do.txt&quot;</span>
+
+<span style="color: #408080; font-style: italic"># Similar inclusion of other chapters</span>
+
+<span style="color: #000080; font-weight: bold">========= Appendix: Heading of an appendix =========</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;../chapters/nickname/nickname.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= References =======</span>
+
+BIBFILE: ../papers.pub
+</pre></div>
+<p>
+When running <code>doconce format</code> on <code>book.do.txt</code>, the entire document
+is contained in <em>one</em> big file <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="A single DocOnce file and consequently a single .tex file works out well on today's laptops. A book with 900 pages <a href="._main_rules-readable005.html#Langtangen_2014">[1]</a> has been tested!"><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> (!).
+To see exactly what has been included,
+you can examine the result of running the first preprocessor, <code>preprocess</code>,
+on <code>book.do.txt</code>. All the includes are handled by this preprocessor.
+The result is contained in the file
+<code>tmp_preprocess__book.do.txt</code>, which then contains the entire
+DocOnce source code of the book. The second preprocessor, <code>mako</code>, is thereafter
+run (if DocOnce detects that it is necessary).
+The result of that step is available in
+<code>tmp_mako__book.do.txt</code>. It is important to examine this file if there
+are problems with Mako variables or functions.
+The <code>tmp_mako__book.do.txt</code> file is thereafter translated to
+the desired output format.
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> A single DocOnce file and consequently a single
+<code>.tex</code> file works out well on today's laptops.
+A book with 900 pages <a href="._main_rules-readable005.html#Langtangen_2014">[1]</a> has been tested!</p>
+
+<p>
+Say we want to produce a LaTeX document:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex book [options]
+</pre></div>
+<p>
+If the DocOnce source contains copying of source code from files in
+<code>@@@CODE</code> constructs, it is important that <code>doconce</code> finds the files.
+For example,
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #800080; font-weight: bold">@@@CODE src-ch2/myprog.py  fromto: def test1@def test2</span>
+</pre></div>
+<p>
+will try to open the file <code>src-ch2/myprog.py</code>. Since this file is
+actually located in <code>../ch2/src-ch2/myprog.py</code>, <code>pdflatex</code> will
+report an error message. A local link to
+that directory resolves the problem:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; ln -s ../chapters/ch2/src-ch2 src-ch2
+</pre></div>
+<p>
+Similarly,
+the LaTeX code in <code>book.tex</code> for inclusion of a figure may
+contain
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\includegraphics</span><span style="color: #7D9029">[width=0.9\linewith]</span><span style="color: #008000">{</span>fig-ch2/fig1.pdf<span style="color: #008000">}</span>
+</pre></div>
+<p>
+For this command to work, it is paramount that there is a link <code>fig-ch2</code> in the
+present <code>book</code> directory where the <code>pdflatex</code> command is run to
+the directory <code>../chapters/ch2/fig-ch2</code> where the figure file <code>fig1.pdf</code> is
+located.
+
+<p>
+It is recommended to use the function <code>make_links</code> in <code>scripts.py</code> to
+automatically set up all convenient links from the <code>book</code> directory
+to the individual chapter directories. Provided the <em>list of chapter nicknames</em>
+at the top of <code>scripts.py</code> <em>is correct</em>, you can just run
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scripts</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> scripts<span style="color: #666666">.</span>make_links()
+</pre></div>
+<p>
+to automatically
+set up all links to all <code>src-*</code>, <code>fig-*</code>, and <code>mov-*</code> directories.
+You need to rerun this <code>make_links</code> function after inclusion of a new chapter
+in the <code>chapters</code> tree.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Identify LaTeX errors in the original chapter files!</b>
+When you run <code>pdflatex book</code> and get LaTeX errors, you need
+to see where they are in <code>book.tex</code> and use this information to
+find the appropriate DocOnce source file in some chapter.
+Usually, there are few errors at the &quot;book level&quot; if each individual
+chapter has been compiled. To this end, you can use <code>scripts.py</code> to
+automatically compile each chapter separately. The process is stopped
+as soon as a DocOnce or LaTeX error is encountered.
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scripts</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> scripts<span style="color: #666666">.</span>compile_chapters()
+</pre></div>
+<p>
+</div>
+
+
+<h2 id="___sec6">About figures when publishing HTML </h2>
+
+<p>
+There will be <code>&lt;img src=fig-ch2/fig1.png&gt;</code> type of tags in HTML code
+produced by DocOnce, so it is very important to ensure that the
+<em>published</em> <code>.html</code> files have access to a subdirectory
+<code>fig-ch2</code>. Normally, one needs to copy <code>fig-ch2</code> from the <code>ch2</code>
+chapter source directory to some publishing directory that stores all
+the files necessary for accessing the entire HTML document on the web.
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._main_rules-readable002.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._main_rules-readable004.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

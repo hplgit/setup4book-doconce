@@ -1,0 +1,182 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Compiling the book ', 2, None, '___sec12'),
+              (' Study guides and slides ', 1, None, '___sec13'),
+              (' Slide directory ', 2, None, '___sec14'),
+              (' Generating slides from running text ', 2, None, '___sec15'),
+              (' Compiling slides ', 2, None, '___sec16'),
+              (' References ', 1, None, '___sec17')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="rules-readable.html">Directory and file structure</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#sec:rules:dir:struct" style="font-size: 80%;"><b>Directory structure</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;"><b>Newcommands</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#setup:rules:book:assembly" style="font-size: 80%;"><b>Assembling different pieces to a book</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organization of a chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and source code</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assembly of chapters to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;About figures when publishing HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec7" style="font-size: 80%;"><b>Tools</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Making a new chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the chapter</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec13" style="font-size: 80%;"><b>Study guides and slides</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slide directory</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating slides from running text</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling slides</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0001"></a>
+<!-- !split -->
+
+<h1 id="sec:rules:dir:struct">Directory structure</h1>
+
+<p>
+We shall outline a directory structure that can be effective when
+assembling different DocOnce documents into a book.  The root
+directory for all documentation is called <code>doc</code>, with two
+subdirectories: <code>src</code> for all the DocOnce source code, and <code>pub</code> for
+compiled (published) documents in various formats. A third
+subdirectory, <code>web</code>, is often present as an entry point for the web
+pages on GitHub. This directory typically contains the autogenerated
+<code>index.html</code> and additional style files on GitHub. The <code>index.html</code>
+file should have links to published documents in <code>../pub</code>.
+
+<p>
+Under <code>src</code> we may have a directory <code>chapters</code> for
+the individual chapters and a directory <code>book</code> for the assembly into
+a book. One may also think of more than one book directory if a set
+of documents (chapters) naturally leads to multiple books. All
+chapters can then be put in the <code>chapters</code> directory.
+
+<p>
+Each chapter has a short nickname, say <code>ch2</code> for simplicity
+for Chapter 2 (a more descriptive name related to the content is obviously
+much better!). Figures are placed in subdirectory <code>fig-ch2</code> and
+computer code in subdirectory <code>src-ch2</code>.
+These two latter directories may have subdirectories if desired.
+We may also include a directory <code>mov-ch2</code> for video files, <code>exer-ch2</code> for
+answers to exercises, etc.
+
+<p>
+An outline of the directory structure is listed below.
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doc
+  src
+    chapters
+      ch2
+        fig-ch2
+        src-ch2
+        mov-ch2
+        exer-ch2
+    book
+  pub
+    chapters
+    book
+</pre></div>
+<p>
+Under <code>book</code>, we typically have a document <code>book.do.txt</code> for the complete
+book. This is a file with a lot of <code># #include &quot;...do.txt&quot;</code> for
+including the files for the various chapters, see the section <a href="._rules-readable003.html#setup:rules:book:assembly">Assembling different pieces to a book</a> for details. Additional files
+in the <code>book</code> directory include make files for compiling the book,
+scripts for packing the book for publishing, perhaps an errata document, etc.
+
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._rules-readable000.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._rules-readable002.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

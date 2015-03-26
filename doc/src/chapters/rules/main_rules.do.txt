@@ -15,4 +15,3 @@ TOC: on
 ======= References =======
 
 BIBFILE: ../papers.pub
-

@@ -1,5 +1,6 @@
 This ${CHAPTER} describes the file structure of book or thesis projects.
 
+!split
 ======= Directory structure =======
 label{sec:rules:dir:struct}
 
@@ -52,6 +53,7 @@ in the `book` directory include make files for compiling the book,
 scripts for packing the book for publishing, perhaps an errata document, etc.
 
 
+!split
 ======= Newcommands =======
 
 Files with names `newcommands*.tex` are by DocOnce treated as files
@@ -100,7 +102,7 @@ code as these are confined
 to the LaTeX format. Use instead Mako functions.
 !ewarning
 
-
+!split
 ======= Assembling different pieces to a book =======
 label{setup:rules:book:assembly}
 
@@ -221,8 +223,8 @@ located.
 
 It is recommended to use the function `make_links` in `scripts.py` to
 automatically set up all convenient links from the `book` directory
-to the individual chapter directories. Provided the list of chapter nicknames
-at the top of `scripts.py` is correct, you can just run
+to the individual chapter directories. Provided the *list of chapter nicknames*
+at the top of `scripts.py` *is correct*, you can just run
 
 !bc pyshell
 >>> import scripts
@@ -248,6 +250,17 @@ as soon as a DocOnce or LaTeX error is encountered.
 !ec
 !ewarning
 
+With heavy use of Mako one can get quite strange error messages.
+Some ask you to rerun the `doconce format` command with
+`--mako_strict_undefined` to see undefined Mako variables.
+Make sure you run the `make.sh` script by `bash -x` if the script
+does not feature the `set -x` command in the top of the file
+(for displaying a command prior to running it). Copy the complete
+`doconce format` with the mouse and add the `--mako_strict_undefined`
+option.
+Other error messages point to specific lines
+that Mako struggles with. Go to the file `tmp_mako__book.do.txt`
+to investigate the line.
 
 ===== About figures when publishing HTML =====
 
@@ -258,6 +271,7 @@ produced by DocOnce, so it is very important to ensure that the
 chapter source directory to some publishing directory that stores all
 the files necessary for accessing the entire HTML document on the web.
 
+!split
 ======= Tools =======
 
 You can start a new, future, potential book project by simply copying
@@ -345,6 +359,7 @@ in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling `book.do.txt` or actually extending the DocOnce source code.
 
+!split
 ======= Study guides and slides =======
 
 DocOnce has good support for creating slides from ordinary documents

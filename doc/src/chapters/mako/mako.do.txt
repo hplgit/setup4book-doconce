@@ -2,6 +2,7 @@ This document describes the work flow and how we can utilize many
 nice DocOnce features when writing chapters for a future, potential book
 project.
 
+!split
 ======= Use of variables =======
 
 Mako is the preprocessor that is always run prior to translating DocOnce
@@ -42,6 +43,7 @@ The `make.sh` files for found in `doc/src/chapter/make.sh` and
 `doc/src/book/make.sh` make proper definitions of
 `CHAPTER`, `BOOK`, and `APPENDIX`.
 
+!split
 ======= How to make several variants of the text =======
 
 Sometimes you want to write some text slightly differently if the
@@ -133,6 +135,7 @@ variables
 %% endif
 !ec
 
+!split
 ======= Use of Mako/Python functions =======
 
 Such if tests are fine to handle larger portions of text. What if you
@@ -187,6 +190,7 @@ cite{Lange_Langtangen_2015}
 for mathematical programming with either Python or Matlab - the version
 is set when running `doconce format`.
 
+!split
 ======= Cross-referencing across chapters =======
 
 A fundamental problem when writing a book *and* stand-alone chapters

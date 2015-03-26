@@ -2,7 +2,7 @@
 ======= Directory structure for a book project =======
 label{sec:rules:dir:struct}
 
-FIGURE: [fig-rules/dirstructure, width=600 frac=08]
+FIGURE: [fig-rules/dirstructure, width=600 frac=0.8]
 
 !split
 ===== Overview of the directory structure =====
@@ -119,7 +119,7 @@ Mako functions instead - they work for all output formats.
 ======= Assembling different pieces to a book =======
 label{setup:rules:book:assembly}
 
-FIGURE: [fig-rules/assembly, width=600 frac=08]
+FIGURE: [fig-rules/assembly, width=600 frac=0.8]
 
 
 !split
@@ -163,15 +163,18 @@ Optional directories:
 !split
 ===== Assembly of chapters to a book =====
 
-!bbox
+!bnotice Recall:
 DocOnce = *Document Once, Include Anywhere*
-!ebox
+!enotice
 
  * Make `book.do.txt` for including chapters in a book
  * The entire book is in `book.tex` (!)
  * Compile individual chapters first - it is easier to track down a
    latex error in a chapter than going from `book.tex` to the relevant
    `.do.txt` file
+
+!split
+===== A `book.do.txt` file =====
 
 @@@CODE src-rules/book.do.txt
 
@@ -181,9 +184,9 @@ DocOnce = *Document Once, Include Anywhere*
  * Sometimes debugging requires you to see the effect of running
    preprocessors
  * The effect of `# #include` and `# #if` tests are seen in
-   `tmp_preprocess__book.do.txt`
+   `tmp_preprocess__book.do.txt` (input to `mako`)
  * The effect of Mako variables and functions are seen in
-   `tmp_mako__book.do.txt`
+   `tmp_mako__book.do.txt` (input to `doconce` translation)
 
 !split
 ===== The `book` directory must be coupled to source and figure directories =====
@@ -213,7 +216,7 @@ Similar problems for figures!
 Terminal> ln -s ../chapters/ch2/fig-ch2 fig-ch2
 !ec
 
-Auto-generation of all links to all `src` and `fig` directories:
+Auto-generation of all links (if `chapters=` is set correctly in `scripts.py`):
 
 !bc pyshell
 >>> import scripts
@@ -231,7 +234,7 @@ Auto-generation of all links to all `src` and `fig` directories:
 !split
 ======= Tools =======
 
-FIGURE: [fig-rules/tools, width=600 frac=08]
+FIGURE: [fig-rules/tools, width=400 frac=0.8]
 
 !split
 ===== Making a new chapter =====
@@ -243,8 +246,9 @@ FIGURE: [fig-rules/tools, width=600 frac=08]
  * Look at an existing chapter like `rules` to see syntax/details
  * Start writing in `nickname/*.do.txt` files, programs in `src-nickname`,
    place figures in `fig-nickname`
+ * Edit `make.sh` if necessary
  * Compile chapter: `bash make.sh`
- * Include `../chapters/nickname/nickname.do.txt`
+ * Include `../chapters/nickname/nickname.do.txt` with chapter heading
    in `doc/src/book/book.doc.txt`
 
 !split
@@ -291,14 +295,14 @@ About book styles and tools:
  * DocOnce supports some other styles and, in general, a user-specific
    template for the preamble
  * `scripts.py` has function `pack_src` for packing all the
-   `src-*` directories in a tarfile
+   `src-*` directories in a tarfile for book readers
  * `pack_Springer.sh` packs all needed LaTeX book files for publishing
    with Springer
 
 !split
 ======= Study guides and slides =======
 
-FIGURE: [fig-rules/students, width=600 frac=08]
+FIGURE: [fig-rules/students, width=400 frac=0.8]
 
  * Study guide: presentation of a chapter in a very condensed,
    effective, summarizing form for overview, use in lectures, and
@@ -310,8 +314,9 @@ FIGURE: [fig-rules/students, width=600 frac=08]
 
 Balance:
 
- * enough information for self-study by *reading*
- * minimized information for *viewing* and *listening* in oral presentations
+ * enough information for self-study by *reading* the study guide
+ * minimized information for *viewing* and *listening* to an oral presentations
+   of the slides
 
 Many iterations and use of slides in teaching over and over again are needed!
 
@@ -324,16 +329,24 @@ For a chapter `ch2`,
  * let slides be in `lec-ch2`
  * a chapter file `ch2/part1.do.txt` has its slide counterpart in
    `ch2/lec-ch2/part1.do.txt`
- * `ch2/lectures_ch2.do.txt` includes all relevant `lec-ch2/*` and
+ * `ch2/lectures_ch2.do.txt` includes all relevant `lec-ch2/*` files and
    is the main file for the slide collection
-
-@@@CODE src-rules/lec-ch2.do.txt
 
 Compile slides:
 
 !bc sys
 Terminal> bash ../make_lectures.sh lectures_ch2.do.txt
 !ec
+
+Note the possibility to turn the `TOC` on and off: Beamer has its own
+table of contents, while HTML5 slides may benefit from having one
+
+!split
+===== The `lectures_ch2.do.txt` file =====
+
+
+@@@CODE src-rules/lec-ch2.do.txt
+
 
 
 !split

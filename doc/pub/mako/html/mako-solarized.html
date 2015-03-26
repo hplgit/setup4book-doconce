@@ -6,9 +6,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Advanced topics">
+<meta name="description" content="Use of Mako to aid book writing">
 
-<title>Advanced topics</title>
+<title>Use of Mako to aid book writing</title>
 
 
 <link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
@@ -34,14 +34,19 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Use of Mako ', 1, None, '___sec0'),
-              (" How to speak about ``this chapter''? ", 2, None, '___sec1'),
-              (' How to make variants of the text ', 2, None, '___sec2'),
+ 'sections': [(' Use of variables ', 1, None, '___sec0'),
+              (" How to speak about ``this chapter'' ", 2, None, '___sec1'),
+              (' How to make several variants of the text ',
+               1,
+               None,
+               '___sec2'),
+              (' Use of Mako/Python functions ', 1, None, '___sec3'),
               (' How to treat two programming languages in the same text ',
                2,
                None,
-               '___sec3'),
-              (' References ', 1, None, '___sec4')]}
+               '___sec4'),
+              (' Cross-referencing across chapters ', 1, None, '___sec5'),
+              (' References ', 1, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -52,6 +57,7 @@ end of tocinfo -->
 <!-- begin top navigation -->
 <table style="width: 100%"><tr><td>
 </td><td>
+<div style="text-align: right;"><a href="._mako-solarized001.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end top navigation -->
 </p>
@@ -61,7 +67,7 @@ end of tocinfo -->
 
 
 
-<center><h1>Advanced topics</h1></center>  <!-- document title -->
+<center><h1>Use of Mako to aid book writing</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -78,18 +84,17 @@ end of tocinfo -->
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
 <center><h4>Mar 25, 2015</h4></center> <!-- date -->
-<p>
-<!-- AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication &amp; Dept. of Publishing, Future eBook Solutions Ltd. -->
-<!-- AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication -->
 
 <h2>Table of contents</h2>
 
 <p>
-<a href="#___sec0"> Use of Mako </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec1"> How to speak about &quot;this chapter&quot;? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec2"> How to make variants of the text </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec3"> How to treat two programming languages in the same text </a><br>
-<a href="#___sec4"> References </a><br>
+<a href="._mako-solarized001.html#___sec0"> Use of variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized001.html#___sec1"> How to speak about &quot;this chapter&quot; </a><br>
+<a href="._mako-solarized002.html#___sec2"> How to make several variants of the text </a><br>
+<a href="._mako-solarized003.html#___sec3"> Use of Mako/Python functions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized003.html#___sec4"> How to treat two programming languages in the same text </a><br>
+<a href="._mako-solarized004.html#___sec5"> Cross-referencing across chapters </a><br>
+<a href="._mako-solarized004.html#___sec6"> References </a><br>
 </p>
 <p>
 <!-- Externaldocuments: ../chaptername/... -->
@@ -103,226 +108,12 @@ This document describes the work flow and how we can utilize many
 nice DocOnce features when writing chapters for a future, potential book
 project.
 
-<h1 id="___sec0">Use of Mako </h1>
-
 <p>
-Mako is the preprocessor that is always run prior to translating DocOnce
-documents into a specific format. It means that your DocOnce source is
-actually a computer program where you can use variables and functions.
-
-<p>
-Writing chapters that can both live their individual lives and be part of
-a book faces some challenges for which we have some nice solutions
-in the coming sections.
-
-<h2 id="___sec1">How to speak about &quot;this chapter&quot;? </h2>
-
-<p>
-In a book you will often need the phrase &quot;this chapter&quot;, but his is
-inappropriate if the chapter is a stand-alone document. Then you would
-rather say &quot;this document&quot;. Similarly, &quot;this book&quot; must read
-&quot;this document&quot; in a stand-alone chapter.
-We have resolved this issue by introducing
-Mako variables <code>CHAPTER</code>, <code>BOOK</code>, and <code>APPENDIX</code> such that you
-write
-
-<p>
-<!-- begin verbatim block  do-->
-<pre><code>In this ${BOOK}, the convention is to use boldface for vectors.
-</code></pre>
-<!-- end verbatim block -->
-For this to work, you need to define <code>CHAPTER</code>, <code>BOOK</code>, and <code>APPENDIX</code>
-as variables on the command line as part of the <code>doconce format</code> command:
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pdflatex ch2 --latex_code_style=pyg \
-          CHAPTER=document BOOK=document APPENDIX=document
-</code></pre>
-<!-- end verbatim block -->
-When the book is compiled, you do
-
-<p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pdflatex ch2 --latex_code_style=pyg \
-          CHAPTER=chapter BOOK=chapter APPENDIX=chapter
-</code></pre>
-<!-- end verbatim block -->
-The <code>make.sh</code> files for found in <code>doc/src/chapter/make.sh</code> and
-<code>doc/src/book/make.sh</code> make proper definitions of
-<code>CHAPTER</code>, <code>BOOK</code>, and <code>APPENDIX</code>.
-
-<h2 id="___sec2">How to make variants of the text </h2>
-
-<p>
-Sometimes you want to write some text slightly differently if the
-chapter is a stand-alone document compared to the case when it is
-part of a book. Mako if tests are ideal for this. Suppose you
-introduce a Mako variable <code>ALONE</code> that is true/defined if the chapter
-is a stand-alone document and false/undefined if part of a book. Then
-you can simply write
-
-<p>
-<!-- begin verbatim block  pycod-->
-<pre><code>In this
-%% if ALONE:
-rather small
-%% else:
-large
-%% endif
-${BOOK}
-</code></pre>
-<!-- end verbatim block -->
-Running <code>doconce format</code> with the option <code>-DALONE</code> will turn <code>ALONE</code> to
-true and the output is typically
-
-<p>
-<!-- begin verbatim block -->
-<pre><code>In this rather small document
-</code></pre>
-<!-- end verbatim block -->
-while for a book we skip <code>-DALONE</code>, which makes <code>ALONE</code> undefined, we
-get
-
-<p>
-<!-- begin verbatim block -->
-<pre><code>In this large book
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-Mako variables can be defined/undefined (boolean variables) or be
-standard strings:
-
-<p>
-<!-- begin verbatim block  pycod-->
-<pre><code>%% if SOME_STRING_VARIABLE in ('value1', 'value2'):
-some running text
-%% endif
-
-...
-
-%% if not SOME_BOOLEAN_VARIABLE:
-some other running text
-%% else:
-yet more different text
-%% endif
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-With Mako variables, you can easily comment out large portions
-of text by testing on some variable you do not intend to define:
-
-<p>
-<!-- begin verbatim block  pycod-->
-<pre><code>%% if EXTRA:
-This is
-text that
-will never
-appear in the
-output.
-%% endif
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-Also, it is straightforward to write more than one version of a
-chapter. For example, you may want to produce a version of a chapter
-that is tailored to a specific course, while you for general publishing
-on the Internet want a more general version, and maybe a third version
-when the chapter is included in a book for the international market.
-All this is easily done by if tests on appropriately defined Mako
-variables
-
-<p>
-<!-- begin verbatim block  pycod-->
-<pre><code>%% if COURSE == 'IT1713':
-# Specific text for a course IT1713
-...
-%% elif COURSE == 'IT1713b':
-# Specific text for a the special IT1713b variant of the course
-...
-%% elif COURSE == 'general':
-# General text when the chapter is a stand-alone document
-...
-%% elif COURSE == 'book1':
-# Text when course is a part of a particular book
-...
-%% elif COURSE == 'book2':
-# Text when course is a part of another book
-...
-%% endif
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-Such if tests are fine to handle larger portions of text. What if you
-need to have four versions of just one word or very short text?
-A Mako function, defined as a standard Python function,
-is then more appropriate. Here is a definition:
-
-<p>
-<!-- begin verbatim block  pypro-->
-<pre><code>&lt;%
-def chversion(text_IT1413, text_IT1713b, text_general,
-              text_book1, text_book2):
-    if COURSE == 'IT1713':
-        return text_IT1413
-    elif COURSE == 'IT1713b':
-        text_IT1413b
-    elif COURSE == 'general':
-        return text_general
-    elif COURSE == 'book1':
-        return text_book1
-    elif COURSE == 'book2':
-        return text_book2
-    else:
-        return 'XXX WRONG value of COURSE: %s' % COURSE
-%&gt;
-</code></pre>
-<!-- end verbatim block -->
-
-<p>
-In the running text you can call <code>chversion</code> with five arguments,
-corresponding to the desired text in the five cases, and when <code>doconce format</code>
-is run, the value of <code>COURSE</code> determines which of the five cases that is used.
-Here is an example:
-
-<p>
-<!-- begin verbatim block  do-->
-<pre><code>It is extremely important to define the term *cure* accurately.
-Here we mean ${chversion('handle', 'handle',
-'resolve', 'treat', 'resolve')}.
-</code></pre>
-<!-- end verbatim block -->
-
-<h2 id="___sec3">How to treat two programming languages in the same text </h2>
-
-<p>
-With these ideas, it becomes straightforward to write a book that
-has its program examples in multiple languages. Introduce <code>CODE</code>
-as the name of the language and use if tests for larger portions
-of code and text, and a Mako function for shorter inline texts.
-Copying code from file can also be hidden in a Mako function such
-that you write <code>${copyfile('myprog')}</code> and automatically get
-it as <code>src-ch2/python/myprog.py</code> if <code>COODE</code> is <code>python</code>,
-<code>src-ch2/matlab/myprog.m</code> if <code>CODE</code> is <code>matlab</code>, and so forth.
-The author has successfully co-written such a <a href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html" target="_self">book</a>
-for mathematical programming with either Python or Matlab.
-
-<h1 id="___sec4">References </h1>
-
-<p>
-<!-- begin bibliography -->
-
-<p>
-<!-- end bibliography -->
-
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 </td><td>
+<div style="text-align: right;"><a href="._mako-solarized001.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

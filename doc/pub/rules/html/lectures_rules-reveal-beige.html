@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Study Guide: Directory and file structure">
+
+<title>Study Guide: Directory and file structure</title>
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1 style="text-align: center;">Study Guide: Directory and file structure</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>&nbsp;<br>
+<center><h4>Mar 25, 2015</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Table of contents</h2>
+
+<p>
+<a href="#sec:rules:dir:struct"> Directory structure for a book project </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> Overview of the directory structure </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Directory structure within a chapter </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> The total directory structure </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> The <code>book</code> directory </a><br>
+<a href="#___sec5"> Newcommands </a><br>
+<a href="#setup:rules:book:assembly"> Assembling different pieces to a book </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec7"> Organization of DocOnce chapter files </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec8"> Compiling a chapter requires a wrapper file with title, author, ... </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> Figures and source code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Assembly of chapters to a book </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec11"> A <code>book.do.txt</code> file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec12"> The book file relies much on running preprocessors </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec13"> The <code>book</code> directory must be coupled to source and figure directories </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec14"> About figures when publishing HTML </a><br>
+<a href="#___sec15"> Tools </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec16"> Making a new chapter </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec17"> Compiling a chapter </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec18"> Compiling the book </a><br>
+<a href="#___sec19"> Study guides and slides </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec20"> Why is it so challenging to convert a chapter to slides? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec21"> Slide directory </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> The <code>lectures_ch2.do.txt</code> file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec23"> The requirements to a slide collection </a><br>
+</p>
+<p>
+
+</section>
+
+
+<section>
+
+<h1 id="sec:rules:dir:struct">Directory structure for a book project</h1>
+
+<p>
+<center><p><img src="fig-rules/dirstructure.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec1">Overview of the directory structure </h2>
+
+<ul>
+ <p><li> <code>doc</code>: documentation</li>
+ <p><li> <code>doc/src</code>: (DocOnce) source for documentation</li>
+ <p><li> <code>doc/src/chapters</code>: source for individual chapters</li>
+ <p><li> <code>doc/src/book</code>: source for the book</li>
+ <p><li> <code>doc/pub</code>: published (compiled) documents in specific formats</li>
+ <p><li> <code>doc/web</code>: entry point (<code>index.html</code>) for GitHub web pages</li>
+</ul>
+<p>
+
+Can have lots of chapters and more than one <code>book</code> directory if
+multiple books are relevant
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec2">Directory structure within a chapter </h2>
+
+<p>
+Each chapter has a short nickname used in file and directory names.
+
+<ul>
+ <p><li> Sample nickname: <code>ch2</code></li>
+ <p><li> <code>ch2</code>: DocOnce source files <code>.do.txt</code></li>
+ <p><li> <code>ch2/src-ch2</code>: source files for program programs, especially
+   those to be copied into <code>.do.txt</code> files</li>
+ <p><li> <code>ch2/fig-ch2</code>: figures</li>
+ <p><li> <code>ch2/mov-ch2</code>: movies</li>
+ <p><li> <code>ch2/exer-ch2</code>: answers to exercises</li>
+</ul>
+<p>
+
+The directories <code>src-ch2</code>, <code>fig-ch2</code>, <code>mov-ch2</code>, and similar may have
+any subdirectory structure, but the names should as indicated here since
+the setup for DocOnce books has many tools relying on the naming convention.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec3">The total directory structure </h2>
+
+<p>
+Here is a big project:
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">doc
+  src
+    chapters
+      ch2
+        fig-ch2
+        src-ch2
+        mov-ch2
+        exer-ch2
+      ch3
+        fig-ch3
+        src-ch3
+        mov-ch3
+        exer-ch3
+    book1
+    book2
+  pub
+    chapters
+      ch2
+        html
+        pdf
+        ipynb
+      ch3
+        html
+        pdf
+        ipynb
+    book
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec4">The <code>book</code> directory </h2>
+
+<ul>
+ <p><li> One main file for the book: <code>book.do.txt</code></li>
+ <p><li> <code>book.do.txt</code> includes chapters from <code>../chapters/ch2/ch2.do.txt</code>, etc</li>
+ <p><li> Scripts for compiling, spell checking, ...</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h1 id="___sec5">Newcommands </h1>
+
+<ul>
+ <p><li> Files <code>newcommands*.tex</code> are by DocOnce treated as files
+   with definition of newcommands for LaTeX <em>mathematics</em></li>
+ <p><li> Must be in the directory where <code>doconce format</code> is run</li>
+ <p><li> Use a common <code>newcommands.p.tex</code> for all chapters</li>
+ <p><li> <code>.p.tex</code> indicates that it can be run by preprocess and contain
+   different newcommand definition for LaTeX and MathJax</li>
+</ul>
+<p>
+
+Example on <code>doc/chapters/newcommands.p.tex</code>:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22">%% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</span>
+<span style="color: #228B22">%% Use footnotesize in subscripts</span>
+<span style="color: #8B008B; font-weight: bold">\newcommand</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\subsc</span><span style="color: #658b00">}</span>[2]<span style="color: #658b00">{</span>#1<span style="color: #658b00">_{</span><span style="color: #8B008B; font-weight: bold">\mbox</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\footnotesize</span> #2<span style="color: #658b00">}}}</span>
+<span style="color: #228B22">%% #else</span>
+<span style="color: #228B22">%% In MathJax, a different construction is used</span>
+<span style="color: #8B008B; font-weight: bold">\newcommand</span><span style="color: #658b00">{</span><span style="color: #8B008B; font-weight: bold">\subsc</span><span style="color: #658b00">}</span>[2]<span style="color: #658b00">{</span>#1<span style="color: #658b00">_{</span><span style="color: #8B008B; font-weight: bold">\small\mbox</span><span style="color: #658b00">{</span>#2<span style="color: #658b00">}}}</span>
+<span style="color: #228B22">%% #endif</span>
+</pre></div>
+<p>
+<code>make.sh</code> runs
+typically
+
+<p>
+
+<!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">preprocess -DFORMAT=pdflatex ../newcommands.p.tex &gt; newcommands.tex
+<span style="color: #228B22"># make latex versions</span>
+
+preprocess -DFORMAT=html ../newcommands.p.tex &gt; newcommands.tex
+<span style="color: #228B22"># make html versions</span>
+</pre></div>
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>DocOnce newcommands are for mathematics only!</b>
+<p>
+Do not use newcommands for general typesetting commands, use
+Mako functions instead - they work for all output formats.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 id="setup:rules:book:assembly">Assembling different pieces to a book</h1>
+
+<p>
+<center><p><img src="fig-rules/assembly.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec7">Organization of DocOnce chapter files </h2>
+
+<ul>
+ <p><li> Chapter nickname: <code>ch2</code></li>
+ <p><li> DocOnce file: <code>ch2.do.txt</code></li>
+ <p><li> <code>ch2.do.txt</code> may contain all the text or just include several
+   files: <code>part1.do.txt</code>, <code>part2.do.txt</code>, <code>part3.do.txt</code></li>
+ <p><li> No title, author, date, table of contents, or bibliography in <code>ch2.do.txt</code> - otherwise
+   that file cannot be included in a book</li>
+</ul>
+<p>
+
+<code>ch2.do.txt</code>:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># #include &quot;part1.do.txt&quot;</span>
+
+<span style="color: #228B22"># #include &quot;part2.do.txt&quot;</span>
+
+<span style="color: #228B22"># #include &quot;part3.do.txt&quot;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec8">Compiling a chapter requires a wrapper file with title, author, ... </h2>
+
+<p>
+To compile a stand-alone document for the chapter, create
+<code>main_ch2.do.txt</code>:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Some chapter title</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #228B22"># #include &quot;ch2.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= References =======</span>
+
+BIBFILE: ../papers.pub
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec9">Figures and source code </h2>
+
+<ul>
+ <p><li> <code>fig-ch2</code>: figures</li>
+ <p><li> <code>src-ch2</code>: source code for program files</li>
+</ul>
+<p>
+
+Important that figure and source code files have chapter-unique names
+when combining all files to a book. Use <code>fig-nickname</code> and <code>src-nickname</code>.
+
+<p>
+Optional directories:
+
+<ul>
+ <p><li> <code>mov-ch2</code>: movies in various formats</li>
+ <p><li> <code>exer-ch2</code>: answers to exercises, project work, etc.</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec10">Assembly of chapters to a book </h2>
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Recall:</b>
+<p>
+DocOnce = <em>Document Once, Include Anywhere</em>
+</div>
+
+
+<ul>
+ <p><li> Make <code>book.do.txt</code> for including chapters in a book</li>
+ <p><li> The entire book is in <code>book.tex</code> (!)</li>
+ <p><li> Compile individual chapters first - it is easier to track down a
+   latex error in a chapter than going from <code>book.tex</code> to the relevant
+   <code>.do.txt</code> file</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec11">A <code>book.do.txt</code> file </h2>
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: This is a book title</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #000080; font-weight: bold">========= Preface =========</span>
+
+<span style="color: #228B22"># #include &quot;../chapters/preface/preface.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">========= Heading of a chapter =========</span>
+
+<span style="color: #228B22"># #include &quot;../chapters/ch2/ch2.do.txt&quot;</span>
+
+<span style="color: #228B22"># Similar inclusion of other chapters</span>
+
+<span style="color: #000080; font-weight: bold">========= Appendix: Heading of an appendix =========</span>
+
+<span style="color: #228B22"># #include &quot;../chapters/nickname/nickname.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= References =======</span>
+
+BIBFILE: ../papers.pub
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec12">The book file relies much on running preprocessors </h2>
+
+<ul>
+ <p><li> Sometimes debugging requires you to see the effect of running
+   preprocessors</li>
+ <p><li> The effect of <code># #include</code> and <code># #if</code> tests are seen in
+   <code>tmp_preprocess__book.do.txt</code> (input to <code>mako</code>)</li>
+ <p><li> The effect of Mako variables and functions are seen in
+   <code>tmp_mako__book.do.txt</code> (input to <code>doconce</code> translation)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec13">The <code>book</code> directory must be coupled to source and figure directories </h2>
+
+<p>
+Running
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; doconce format pdflatex book [options]
+</pre></div>
+<p>
+will most likely involve constructs like
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #800080; font-weight: bold">@@@CODE src-ch2/myprog.py  fromto: def test1@def test2</span>
+</pre></div>
+<p>
+but <code>pdflatex</code> sees no <code>book/src-ch2</code> directory! A local link
+resolves the problem:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; ln -s ../chapters/ch2/src-ch2 src-ch2
+</pre></div>
+<p>
+Similar problems for figures!
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; ln -s ../chapters/ch2/fig-ch2 fig-ch2
+</pre></div>
+<p>
+Auto-generation of all links (if <code>chapters=</code> is set correctly in <code>scripts.py</code>):
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">scripts</span>
+&gt;&gt;&gt; scripts.make_links()
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec14">About figures when publishing HTML </h2>
+
+<ul>
+ <p><li> HTML versions of chapters/book have <code>&lt;img src=fig-ch2/fig1.png&gt;</code>
+   type of tags in the HTML code</li>
+ <p><li> There must be a <code>fig-ch2</code> subdirectory</li>
+ <p><li> <em>Copy</em> <code>chapters/ch2/fig-ch2</code> to the directory where the HTML files are published</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h1 id="___sec15">Tools </h1>
+
+<p>
+<center><p><img src="fig-rules/tools.png" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec16">Making a new chapter </h2>
+
+<ul>
+ <p><li> Clone <a href="https://github.com/hplgit/setup4book-doconce" target="_self"><tt>https://github.com/hplgit/setup4book-doconce</tt></a></li>
+ <p><li> Go to <code>doc/chapters</code></li>
+ <p><li> Decide on a chapter nickname</li>
+ <p><li> Create a brand new chapter: <code>bash mkdir.sh nickname</code></li>
+ <p><li> Look at an existing chapter like <code>rules</code> to see syntax/details</li>
+ <p><li> Start writing in <code>nickname/*.do.txt</code> files, programs in <code>src-nickname</code>,
+   place figures in <code>fig-nickname</code></li>
+ <p><li> Edit <code>make.sh</code> if necessary</li>
+ <p><li> Compile chapter: <code>bash make.sh</code></li>
+ <p><li> Include <code>../chapters/nickname/nickname.do.txt</code> with chapter heading
+   in <code>doc/src/book/book.doc.txt</code></li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec17">Compiling a chapter </h2>
+
+<p>
+To LaTeX/PDF:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; bash make.sh
+</pre></div>
+<p>
+To HTML:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; bash ../make_html.sh main_nickname.do.txt
+</pre></div>
+<p>
+The <code>doc/src/chapters/make.sh</code> script is quite general and can be edited
+according to your layout preferences of the LaTeX documents.
+
+<p>
+There is also a script <code>doc/src/chapters/make_html.sh</code> for making
+HTML versions of the chapter. Just call this as
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; bash ../make_html.sh main_mychap
+</pre></div>
+<p>
+Three HTML versions with an <code>index.html</code> table of contents are generated
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec18">Compiling the book </h2>
+
+<p>
+Go to <code>book</code> directory and produce LaTeX/PDF book by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; bash make.sh
+Terminal&gt; bash make.sh nospell   # turn off spell checking
+</pre></div>
+<p>
+About book styles and tools:
+
+<ul>
+ <p><li> Current example employs the Springer T2 book layout</li>
+ <p><li> DocOnce supports some other styles and, in general, a user-specific
+   template for the preamble</li>
+ <p><li> <code>scripts.py</code> has function <code>pack_src</code> for packing all the
+   <code>src-*</code> directories in a tarfile for book readers</li>
+ <p><li> <code>pack_Springer.sh</code> packs all needed LaTeX book files for publishing
+   with Springer</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h1 id="___sec19">Study guides and slides </h1>
+
+<p>
+<center><p><img src="fig-rules/students.jpg" align="bottom" width=400></p></center>
+
+<ul>
+ <p><li> Study guide: presentation of a chapter in a very condensed,
+   effective, summarizing form for overview, use in lectures, and
+   repetition</li>
+ <p><li> Slides: a good way of writing study guides</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2 id="___sec20">Why is it so challenging to convert a chapter to slides? </h2>
+
+<p>
+Balance:
+
+<ul>
+ <p><li> enough information for self-study by <em>reading</em> the study guide</li>
+ <p><li> minimized information for <em>viewing</em> and <em>listening</em> to an oral presentations
+   of the slides</li>
+</ul>
+<p>
+
+Many iterations and use of slides in teaching over and over again are needed!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec21">Slide directory </h2>
+
+<p>
+For a chapter <code>ch2</code>,
+
+<ul>
+ <p><li> let slides be in <code>lec-ch2</code></li>
+ <p><li> a chapter file <code>ch2/part1.do.txt</code> has its slide counterpart in
+   <code>ch2/lec-ch2/part1.do.txt</code></li>
+ <p><li> <code>ch2/lectures_ch2.do.txt</code> includes all relevant <code>lec-ch2/*</code> files and
+   is the main file for the slide collection</li>
+</ul>
+<p>
+
+Compile slides:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; bash ../make_lectures.sh lectures_ch2.do.txt
+</pre></div>
+<p>
+Note the possibility to turn the <code>TOC</code> on and off: Beamer has its own
+table of contents, while HTML5 slides may benefit from having one
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec22">The <code>lectures_ch2.do.txt</code> file </h2>
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Study Guide: Some title</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Author Name Email:somename@someplace.net at Institute One
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #228B22"># #ifdef WITH_TOC</span>
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #228B22"># #include &quot;lec-ch2/part1.do.txt&quot;</span>
+
+<span style="color: #228B22"># #include &quot;lec-ch2/part2.do.txt&quot;</span>
+
+<span style="color: #228B22"># #include &quot;lec-ch2/part3.do.txt&quot;</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec23">The requirements to a slide collection </h2>
+
+<p>
+Tree purposes:
+
+<ol>
+<p><li> Read as a study guide to get overview before reading the
+   full text of chapter</li>
+<p><li> Watch as slides during an oral presentation</li>
+<p><li> Read as a study guide to repeat and enforce overview of the material</li>
+</ol>
+<p>
+
+Rules:
+
+<ul>
+ <p><li> Make slides self-contained</li>
+ <p><li> Limit the information on the slides!</li>
+ <p><li> Make slides as visual as feasible</li>
+ <p><li> Use references to the underlying chapter text for details</li>
+</ul>
+<p>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1170,  // original: 960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
