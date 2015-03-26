@@ -1,0 +1,19 @@
+TITLE: Some title
+AUTHOR: Joe Doe Email:j.doe@cybermail.com at Dept. of Writing, Institute of Communication & Dept. of Publishing, Future eBook Solutions Ltd.
+AUTHOR: Jane Doe at Dept. of Writing, Institute of Communication
+DATE: today
+
+TOC: on
+
+
+# Externaldocuments: ../chaptername/...
+
+# Common Mako variables and functions
+# #include "../mako_code.txt"
+
+# #include "NAME.do.txt"
+
+======= References =======
+
+BIBFILE: ../papers.pub
+
