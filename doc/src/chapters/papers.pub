@@ -55,3 +55,10 @@
    note:      \emph{http://hplgit.github.io/primer.html/doc/pub/looplist}
    url:       http://hplgit.github.io/primer.html/doc/pub/looplist
    entrytype: misc
+** Some document
+   key:       Langtangen_dobook_fake
+   author:    H. P. Langtangen
+   status:    published
+   note:      \emph{http://hplgit.github.io/setup4doconceprimer.html/doc/pub/looplist}
+   url:       http://hplgit.github.io/primer.html/doc/pub/looplist
+   entrytype: misc

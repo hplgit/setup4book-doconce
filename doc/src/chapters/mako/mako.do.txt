@@ -189,11 +189,3 @@ The author has successfully co-written such a "book":
 cite{Lange_Langtangen_2015}
 for mathematical programming with either Python or Matlab - the version
 is set when running `doconce format`.
-
-!split
-======= Cross-referencing across chapters =======
-
-A fundamental problem when writing a book *and* stand-alone chapters
-arises with cross-referencing. In a book file it makes sense to
-refer to an equation in any chapter, while in a stand-alone chapter
-references to other documents will not work...

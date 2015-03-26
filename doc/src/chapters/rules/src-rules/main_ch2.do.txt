@@ -5,6 +5,8 @@ DATE: today
 
 TOC: on
 
+# Externaldocuments: ../ch3/main_ch3, ../ch4/main_ch4
+
 # #include "ch2.do.txt"
 
 ======= References =======

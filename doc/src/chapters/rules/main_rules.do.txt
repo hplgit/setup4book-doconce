@@ -5,7 +5,7 @@ DATE: today
 TOC: on
 
 
-# Externaldocuments: ../chaptername/...
+# Externaldocuments: ../chapters/mako/main_mako, ../chapters/fake/main_fake
 
 # Common Mako variables and functions
 # #include "../mako_code.txt"

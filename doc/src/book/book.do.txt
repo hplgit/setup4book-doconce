@@ -9,17 +9,20 @@ DATE: today
 # #include "../chapters/mako_code.txt"
 
 ========= Preface  =========
+label{ch:preface}
 
 # #include "../chapters/preface/preface.do.txt"
 
 TOC: on
 
-========= Ideas and rules =========
+========= Directory and file structur =========
+label{ch:structure}
 
 # #include "../chapters/rules/rules.do.txt"
 
 
 ========= Appendix: Use of Mako to aid book writing =========
+label{ch:mako}
 
 __Remark.__
 Documents that contain raw Mako code in verbatim code blocks cannot

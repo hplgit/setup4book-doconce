@@ -9,9 +9,12 @@ set -x
 # refers to material in a different chapter (only necessary when
 # compiling individual chapters, the book will work with standard refs).
 
-name=$1
+mainname=$1
 shift
 args="$@"
+
+# Strip off main_ in $mainname to get the nickname
+nickname=`echo $name | sed 's/main_//'`
 
 # Individual chapter documents will have formulations like
 # "In this ${BOOK}" or "in this ${CHAPTER}" to be transformed
@@ -34,8 +37,6 @@ function system {
   fi
 }
 
-nickname=`echo $name | sed 's/main_//'`
-
 rm -fr tmp_*
 
 # Perform spell checking
@@ -48,20 +49,21 @@ system preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands_keep.tex
 
 opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
-system doconce format pdflatex $name $opt --device=paper --latex_admon_color=1,1,1 --latex_admon=mdfbox $args --latex_list_of_exercises=toc --latex_table_format=left "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+system doconce format pdflatex ${mainname} $opt --device=paper --latex_admon_color=1,1,1 --latex_admon=mdfbox $args --latex_list_of_exercises=toc --latex_table_format=left "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 # code style: blue boxes with plain verbatim for all code, special
 # terminal style for sys
 
 # Auto-editing of .tex file (tailored adjustments)
-doconce replace 'linecolor=black,' 'linecolor=darkblue,' $name.tex
-doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' $name.tex
+doconce replace 'linecolor=black,' 'linecolor=darkblue,' ${mainname}.tex
+doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' ${mainname}.tex
 
-rm -rf $name.aux $name.ind $name.idx $name.bbl $name.toc $name.loe
-system pdflatex $name
-bibtex $name
-makeindex $name
-system pdflatex $name
-system pdflatex $name
+rm -rf ${mainname}.aux ${mainname}.ind ${mainname}.idx ${mainname}.bbl ${mainname}.toc ${mainname}.loe
+system pdflatex ${mainname}
+bibtex ${mainname}
+makeindex ${mainname}
+system pdflatex ${mainname}
+system pdflatex ${mainname}
+mv -f ${mainname}.pdf ${nickname}.pdf  # drop main_ prefix in PDF
 
 # Publish
 dest=/some/repo/some/where
@@ -75,6 +77,6 @@ if [ ! -d $dest ]; then
   mkdir $dest/pdf
   mkdir $dest/html
 fi
-cp $name.pdf $dest/pdf
+cp ${nickname}.pdf $dest/pdf/
 
 # Could make other versions, A4, 2 pages per sheet, etc.

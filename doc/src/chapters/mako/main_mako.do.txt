@@ -9,7 +9,7 @@ TOC: on
 ## a latex document to other documents such that cross-referencing
 ## works across documents (via the xr package).
 
-# Externaldocuments: ../chaptername/...
+# Externaldocuments: ../chapters/rules/main_rules, ../chapters/fake/main_fake
 
 # No common Mako variables and functions here since we cannot run mako
 ### #include "../mako_code.txt"

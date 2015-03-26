@@ -1,6 +1,6 @@
-import sys, re, os, shutil
+import sys, re, os, shutil, glob
 
-chapters = "rules preface mako".split()
+chapters = "rules preface mako fake".split()
 
 ignored_files = '*.o *.so *.a *.pyc *.bak *.swp *~ .*~ *.old tmp* temp* .#* \\#* *.log *.dvi *.aux *.blg *.idx *.nav *.out *.toc *.snm *.vrb *.cproject *.project .DS_Store Trash'.split()
 
@@ -103,3 +103,30 @@ def pack_src(root='src', tarfile='book-examples.tar.gz', chapters=chapters):
     os.chdir(os.pardir)
     os.system('tar czf %s %s' % (tarfile, root))
     print 'tarfile:', tarfile
+
+def externaldocuments():
+    # Find all candidate documents in ../chapters/*
+    prefix = os.path.join(os.pardir, 'chapters')
+    #dirs = [name for name in os.listdir(prefix)
+    #        if os.path.isdir(os.path.join(prefix, name))]
+    dirs = chapters[:]
+    docs = []
+    for nickname in dirs:
+        mainfiles = glob.glob(os.path.join(prefix, nickname, 'main_*.do.txt'))
+        for mainfile in mainfiles:
+            docs.append((nickname, mainfile[:-7]))  # drop .do.txt
+    mainfiles = [mainfile for nickname, mainfile in docs]
+    # Need to visit all dirs, remove that dir from the list and subst
+    for mainfile in mainfiles:
+        other_mainfiles = mainfiles[:]  # copy
+        other_mainfiles.remove(mainfile)
+        f = open(mainfile + '.do.txt', 'r')
+        text = f.read()
+        f.close()
+        text = re.sub('^# Externaldocuments:.*', '# Externaldocuments: ' +
+                      ', '.join(other_mainfiles), text, flags=re.MULTILINE)
+        print 'subst in', mainfile
+        f = open(mainfile + '.do.txt', 'w')
+        f.write(text)
+        f.close()
+        print 'updated # Externaldocuments in', mainfile, 'with\n   ', ', '.join(other_mainfiles)

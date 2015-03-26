@@ -6,7 +6,7 @@ DATE: today
 TOC: on
 
 
-# Externaldocuments: ../chaptername/...
+# Externaldocuments: ../nickname1/main_nickname1, ../nickname2/main_nickname2
 
 # Common Mako variables and functions
 # #include "../mako_code.txt"
@@ -16,4 +16,3 @@ TOC: on
 ======= References =======
 
 BIBFILE: ../papers.pub
-

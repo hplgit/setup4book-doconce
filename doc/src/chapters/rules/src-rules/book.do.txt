@@ -6,16 +6,19 @@ DATE: today
 TOC: on
 
 ========= Preface =========
+label{ch:preface}
 
 # #include "../chapters/preface/preface.do.txt"
 
 ========= Heading of a chapter =========
+label{ch:ch2}
 
 # #include "../chapters/ch2/ch2.do.txt"
 
 # Similar inclusion of other chapters
 
 ========= Appendix: Heading of an appendix =========
+label{ch:somename}
 
 # #include "../chapters/nickname/nickname.do.txt"
 

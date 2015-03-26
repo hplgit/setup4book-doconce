@@ -133,10 +133,17 @@ However, to compile `ch2.do.txt` to a stand-alone document,
 we normally want a title, an author,
 a date, and perhaps a table of contents.
 We also want a bibliography if any of the included files has
-`cite` tags. To this end, we create a wrapper file, say `main_ch2.do.txt`,
+`cite` tags. To this end, we create a wrapper file, say
+`main_ch2.do.txt`[^name-main],
 with the content
 
 @@@CODE src-rules/main_ch2.do.txt
+
+[^name-main]: The prefix `main_` is inspired by the main program
+in computer program: those statements make a program run, like
+`main_ch2.do.txt` defines the surroundings of the ``library text''
+`ch2.do.txt`. We strip off `main_` when publishing the files in
+`doc/pub`.
 
 Recall that DocOnce relies on the Publish software for handling
 bibliographies. It is easy to import from BibTeX to Publish and
@@ -293,7 +300,14 @@ Terminal> sh mkdir.sh mychap
 !ec
 This command makes
 a directory `mychap` for a new chapter with nickname `mychap`.
-(Files from the `template` directory are used to populate `mychap`.)
+Files from the `template` directory are used to populate `mychap`. You get
+an empty `mychap.do.txt` where the text is supposed to go, or this file
+can just include a series of smaller `.do.txt` files, and you get the
+wrapper file `main_mychap.do.txt` such that you can compile this chapter
+as a stand-alone document. You also get `make.sh` which calls `../make.sh`
+with the chapter main document (`main_mychap`) as argument. Optional
+arguments for running `doconce format pdflatex` can be given to
+`../make.sh` in `make.sh` if needed (e.g., --encoding=utf8`).
 
 ===== Compiling the chapter =====
 
@@ -360,6 +374,48 @@ working out a LaTeX preamble for a special style and use that when
 compiling `book.do.txt` or actually extending the DocOnce source code.
 
 !split
+======= Cross-referencing across chapters =======
+
+A fundamental problem when writing a book *and* stand-alone chapters
+arises with cross-referencing. In a book file it makes sense to refer
+to an equation in any chapter, say (4.23), while in a stand-alone
+chapter references to equations or sections in other stand-alone
+documents will not work. That is , LaTeX has a mechanism for this, the
+`xr` package, where one can register a set of `.aux` files for other
+LaTeX documents and refer directly to these labels. It is then possible to
+write something like `see (\eqref{sec:results:u:eq}) in
+\cite{Hansen_2011b}` and get it out as ``see (2.37) in [12]''
+(provided our `.tex` file contains `\externaldocument{myother}`
+and the label `sec:results:u:eq` is defined in `myother.aux`). DocOnce
+has generalized this feature so it works for non-LaTeX formats as well.
+It is called *generalized cross-references*.
+
+===== Syntax of generalized cross-references =====
+
+Here is an example on a generalized reference to an equation in another
+${CHAPTER}:
+
+!bc do
+The world's most famous equation is ref[(ref{fake_Emc2})]
+[, see cite{Langtangen_dobook_fake}]
+[as found in the document "Some document":
+"http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"
+cite{Langtangen_dobook_fake}].
+!ec
+This sentence is rendered as follows in the present format (${FORMAT}):
+
+!bbox
+The world's most famous equation is ref[(ref{fake_Emc2})]
+[, see cite{Langtangen_dobook_fake}]
+[as found in the document "Some document":
+"http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"
+cite{Langtangen_dobook_fake}].
+!ebox
+
+More detailed information about generalized cross-references is
+found in the "DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-cross-referencing".
+
+!split
 ======= Study guides and slides =======
 
 DocOnce has good support for creating slides from ordinary documents
@@ -381,28 +437,28 @@ in the chapter.
 ===== Slide directory =====
 
 For each DoOnce file in the chapter `ch2` it can be wise to make a
-corresponding study guide file in the subdirectory `lec-ch2`.
+corresponding study guide file in the subdirectory `slides-ch2`.
 For example, `part1.do.txt` has its counterpart with slides in
-`lec-ch2/part1.do.txt`. Then there is a file `lectures_ch2.do.txt`
-which assembles the parts if `lec-ch2`, typically with a content
+`slides-ch2/part1.do.txt`. Then there is a file `slides_ch2.do.txt`
+which assembles the parts if `slides-ch2`, typically with a content
 like
 
-@@@CODE src-rules/lec-ch2.do.txt
+@@@CODE src-rules/sides_ch2.do.txt
 
 ===== Generating slides from running text =====
 
 The author has the following work flow for generating slides for a
 chapter file, say `part1.do.txt`.
 
- o Copy `part1.do.txt` to `lec-ch2/part1.do.txt`.
- o Make `lectures_ch2.do.txt` and include `lec-ch2/part1.do.txt`.
+ o Copy `part1.do.txt` to `slides-ch2/part1.do.txt`.
+ o Make `slides_ch2.do.txt` and include `slides-ch2/part1.do.txt`.
  o Decide on *parts* of the slide collection. Often a part can be
    a section in the parent `ch2.do.txt` file, but sometimes it can
    be more natural to have larger parts than sections in the slide
    collection.
  o Each part in the slide file has a DocOnce section heading  with 7 `=`, while
    each slide has a DocOnce subsection heading with 5 `=`.
- o Edit `lec-ch2/part1.do.txt`:
+ o Edit `slides-ch2/part1.do.txt`:
    * One can keep subsection headings from the running text for the most part,
      but slides need many more subsection headings.
    * Try to let the heading summarize explicitly a conclusion/rule from
@@ -456,27 +512,27 @@ the slides' quality).
 
 ===== Compiling slides =====
 
-There is a quite general script in `doc/src/chapters/make_lectures.sh` for
-compiling a slide collection defined in a file like `lectures_ch2.do.txt`.
+There is a quite general script in `doc/src/chapters/make_slides.sh` for
+compiling a slide collection defined in a file like `slides_ch2.do.txt`.
 Just run
 
 !bc sys
-Terminal> bash ../make_lectures.sh lectures_ch2.do.txt
+Terminal> bash ../make_slides.sh slides_ch2
 !ec
 from the chapter directory. Note that the script will first spell check
-the slide files. This is done in the `lec-ch2` directory. Errors are
-reported in files located in `lec-ch2`. To update the chapter's dictionary
+the slide files. This is done in the `slides-ch2` directory. Errors are
+reported in files located in `slides-ch2`. To update the chapter's dictionary
 for spell checking, you need to do
 
 !bc sys
-Terminal> cp lec-ch2/new_dictionary.txt~ .dict4spell
+Terminal> cp slides-ch2/new_dictionary.txt~ .dict4spell
 !ec
 in the `ch2` chapter directory.
 
 Similarly, to look at misspellings,
-the file `lec-ch2/misspellings.txt~` is the relevant file.
+the file `slides-ch2/misspellings.txt~` is the relevant file.
 
-The `make_lectures.sh` script compiles a variety of slides:
+The `make_slides.sh` script compiles a variety of slides:
 
  * First a plain LaTeX PDF document to catch as many errors in the
    DocOnce source as early as possible. This document can also be
@@ -485,6 +541,6 @@ The `make_lectures.sh` script compiles a variety of slides:
  * HTML5 `reveal.js` slides with different colors.
  * HTML5 `deck.js` slides. This format is usually inferior to `reveal.js`,
    but is also very much personal taste.
- * LaTeX Beamer slides. Edit the `theme=red_shadow` line in `make_lectures.sh`
+ * LaTeX Beamer slides. Edit the `theme=red_shadow` line in `make_slides.sh`
    to control the Beamer theme.
  * Remark (Markdown) slides for viewing in a browser.
