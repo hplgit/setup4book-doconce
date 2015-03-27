@@ -59,6 +59,20 @@
    key:       Langtangen_dobook_fake
    author:    H. P. Langtangen
    status:    published
-   note:      \emph{http://hplgit.github.io/setup4doconceprimer.html/doc/pub/looplist}
-   url:       http://hplgit.github.io/primer.html/doc/pub/looplist
+   note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/fake}
+   url:       http://hplgit.github.io/setup4book-doconce/doc/pub/fake
+   entrytype: misc
+** Use of Mako to aid book writing
+   key:       Langtangen_dobook_mako
+   author:    H. P. Langtangen
+   status:    published
+   note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/mako}
+   url:       http://hplgit.github.io/setup4book-doconce/doc/pub/mako
+   entrytype: misc
+** Directory and file structure
+   key:       Langtangen_dobook_rules
+   author:    H. P. Langtangen
+   status:    published
+   note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/rules}
+   url:       http://hplgit.github.io/setup4book-doconce/doc/pub/rules
    entrytype: misc
