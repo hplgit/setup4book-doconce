@@ -68,8 +68,9 @@ true and the output is typically
 !bc
 In this rather small document
 !ec
-while for a book we skip `-DALONE`, which makes `ALONE` undefined, we
-get
+while for a book we skip `-DALONE` as argument to `doconce format`,
+which makes `ALONE` undefined, and we
+get the output
 
 !bc
 In this large book
