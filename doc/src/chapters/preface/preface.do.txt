@@ -18,23 +18,25 @@ useful features:
    Markdown Remark, solarized HTML colors, and classic LaTeX Beamer.
 
 These features have the great advantage that a book can evolve from
-small documents, making the barrier for book writing much smaller.
+small documents, thereby making the barrier for book writing much smaller.
 Also, several appealing ebook formats can be produced, both for the
 book and the individual chapter documents.
 
 Implementation of point 1 and 2 is not trivial and requires some
 rules that might not feel natural at first sight in the setup.
 However, the suggested setup works for large-scale books,
-including the Springer book ``A Primer on Scientific Programming
-with Python'' cite{Langtangen_2014}. Individual chapters in various
-ebook formats can be examined cite{Langtangen_TCSE6_looplist}.
+including the 900-page Springer book ``A Primer on Scientific Programming
+with Python'' cite{Langtangen_2014}. Individual chapters of this
+book, e.g. cite{Langtangen_TCSE6_looplist}, can be examined online in
+various ebook formats.
 
 To use this setup, you should have some basic knowledge of DocOnce,
-including how to compile documents into the LaTeX format, how to use
+including how to compile documents, how to use
 newcommands in LaTeX, how to use Mako functions, and how to deal with
 a bibliography, as these features are used in the setup. Some
 familiarity with basic Bash programming is necessary since there are
-many Bash scripts.
+many Bash scripts lying around in the directory structure to ease
+the compilation of DocOnce documents.
 
 # #if FORMAT in ("latex", "pdflatex")
 \vspace{1cm}

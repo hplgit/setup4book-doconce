@@ -3,7 +3,9 @@ Bootswatch
 DoOnce
 DocOnce
 GitHub
+IPython
 Informatics
+Jupyter
 Langtangen
 Mako
 Markdown
