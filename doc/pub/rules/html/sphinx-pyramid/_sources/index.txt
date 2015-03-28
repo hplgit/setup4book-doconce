@@ -1,0 +1,26 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+Directory and file structure
+============================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 3
+
+   ._main_rules000
+   ._main_rules001
+   ._main_rules002
+   ._main_rules003
+   ._main_rules004
+   ._main_rules005
+   ._main_rules006
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

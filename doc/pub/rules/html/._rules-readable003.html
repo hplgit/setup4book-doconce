@@ -40,11 +40,16 @@ Automatically generated HTML file from DocOnce source
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
               (' Compiling the book ', 2, None, '___sec12'),
-              (' Study guides and slides ', 1, None, '___sec13'),
-              (' Slide directory ', 2, None, '___sec14'),
-              (' Generating slides from running text ', 2, None, '___sec15'),
-              (' Compiling slides ', 2, None, '___sec16'),
-              (' References ', 1, None, '___sec17')]}
+              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Syntax of generalized cross-references ',
+               2,
+               None,
+               '___sec14'),
+              (' Study guides and slides ', 1, None, '___sec15'),
+              (' Slide directory ', 2, None, '___sec16'),
+              (' Generating slides from running text ', 2, None, '___sec17'),
+              (' Compiling slides ', 2, None, '___sec18'),
+              (' References ', 1, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -65,22 +70,13 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;"><b>Directory structure</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;"><b>Newcommands</b></a></li>
-     <!-- navigation toc: --> <li><a href="#setup:rules:book:assembly" style="font-size: 80%;"><b>Assembling different pieces to a book</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organization of a chapter</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and source code</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assembly of chapters to a book</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;About figures when publishing HTML</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec7" style="font-size: 80%;"><b>Tools</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Making a new chapter</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the chapter</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the book</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec13" style="font-size: 80%;"><b>Study guides and slides</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slide directory</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating slides from running text</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling slides</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;">Newcommands</a></li>
+     <!-- navigation toc: --> <li><a href="#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec7" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec13" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec15" style="font-size: 80%;">Study guides and slides</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec19" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -131,7 +127,8 @@ However, to compile <code>ch2.do.txt</code> to a stand-alone document,
 we normally want a title, an author,
 a date, and perhaps a table of contents.
 We also want a bibliography if any of the included files has
-<code>cite</code> tags. To this end, we create a wrapper file, say <code>main_ch2.do.txt</code>,
+<code>cite</code> tags. To this end, we create a wrapper file, say
+<code>main_ch2.do.txt</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="The prefix main_ is inspired by the main program in computer program: those statements make a program run, like main_ch2.do.txt defines the surroundings of the <code>library text'' ch2.do.txt. We strip off main_ when publishing the files in doc/pub</code>."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>,
 with the content
 
 <p>
@@ -144,12 +141,20 @@ with the content
 
 <span style="color: #000080; font-weight: bold">TOC:</span> on
 
+<span style="color: #408080; font-style: italic"># Externaldocuments: ../ch3/main_ch3, ../ch4/main_ch4</span>
+
 <span style="color: #408080; font-style: italic"># #include &quot;ch2.do.txt&quot;</span>
 
 <span style="color: #000080; font-weight: bold">======= References =======</span>
 
 BIBFILE: ../papers.pub
 </pre></div>
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The prefix <code>main_</code> is inspired by the main program
+in computer program: those statements make a program run, like
+<code>main_ch2.do.txt</code> defines the surroundings of the &quot;library text&quot;
+<code>ch2.do.txt</code>. We strip off <code>main_</code> when publishing the files in
+<code>doc/pub</code>.</p>
+
 <p>
 Recall that DocOnce relies on the Publish software for handling
 bibliographies. It is easy to import from BibTeX to Publish and
@@ -193,16 +198,19 @@ Here is an example of a document <code>book.do.txt</code> for a complete book:
 <span style="color: #000080; font-weight: bold">TOC:</span> on
 
 <span style="color: #000080; font-weight: bold">========= Preface =========</span>
+<span style="color: #008000">label{ch:preface}</span>
 
 <span style="color: #408080; font-style: italic"># #include &quot;../chapters/preface/preface.do.txt&quot;</span>
 
 <span style="color: #000080; font-weight: bold">========= Heading of a chapter =========</span>
+<span style="color: #008000">label{ch:ch2}</span>
 
 <span style="color: #408080; font-style: italic"># #include &quot;../chapters/ch2/ch2.do.txt&quot;</span>
 
 <span style="color: #408080; font-style: italic"># Similar inclusion of other chapters</span>
 
 <span style="color: #000080; font-weight: bold">========= Appendix: Heading of an appendix =========</span>
+<span style="color: #008000">label{ch:somename}</span>
 
 <span style="color: #408080; font-style: italic"># #include &quot;../chapters/nickname/nickname.do.txt&quot;</span>
 
@@ -212,7 +220,7 @@ BIBFILE: ../papers.pub
 </pre></div>
 <p>
 When running <code>doconce format</code> on <code>book.do.txt</code>, the entire document
-is contained in <em>one</em> big file <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="A single DocOnce file and consequently a single .tex file works out well on today's laptops. A book with 900 pages <a href="._rules-readable005.html#Langtangen_2014">[1]</a> has been tested!"><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> (!).
+is contained in <em>one</em> big file <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="A single DocOnce file and consequently a single .tex file works out well on today's laptops. A book with 900 pages <a href="._rules-readable006.html#Langtangen_2014">[1]</a> has been tested!"><a href="#def_footnote_2" id="link_footnote_2" style="color: white">2</a></button> (!).
 To see exactly what has been included,
 you can examine the result of running the first preprocessor, <code>preprocess</code>,
 on <code>book.do.txt</code>. All the includes are handled by this preprocessor.
@@ -226,9 +234,9 @@ are problems with Mako variables or functions.
 The <code>tmp_mako__book.do.txt</code> file is thereafter translated to
 the desired output format.
 
-<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> A single DocOnce file and consequently a single
+<p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> A single DocOnce file and consequently a single
 <code>.tex</code> file works out well on today's laptops.
-A book with 900 pages <a href="._rules-readable005.html#Langtangen_2014">[1]</a> has been tested!</p>
+A book with 900 pages <a href="._rules-readable006.html#Langtangen_2014">[1]</a> has been tested!</p>
 
 <p>
 Say we want to produce a LaTeX document:
@@ -278,8 +286,8 @@ located.
 <p>
 It is recommended to use the function <code>make_links</code> in <code>scripts.py</code> to
 automatically set up all convenient links from the <code>book</code> directory
-to the individual chapter directories. Provided the list of chapter nicknames
-at the top of <code>scripts.py</code> is correct, you can just run
+to the individual chapter directories. Provided the <em>list of chapter nicknames</em>
+at the top of <code>scripts.py</code> <em>is correct</em>, you can just run
 
 <p>
 
@@ -312,6 +320,19 @@ as soon as a DocOnce or LaTeX error is encountered.
 <p>
 </div>
 
+
+<p>
+With heavy use of Mako one can get quite strange error messages.
+Some ask you to rerun the <code>doconce format</code> command with
+<code>--mako_strict_undefined</code> to see undefined Mako variables.
+Make sure you run the <code>make.sh</code> script by <code>bash -x</code> if the script
+does not feature the <code>set -x</code> command in the top of the file
+(for displaying a command prior to running it). Copy the complete
+<code>doconce format</code> with the mouse and add the <code>--mako_strict_undefined</code>
+option.
+Other error messages point to specific lines
+that Mako struggles with. Go to the file <code>tmp_mako__book.do.txt</code>
+to investigate the line.
 
 <h2 id="___sec6">About figures when publishing HTML </h2>
 

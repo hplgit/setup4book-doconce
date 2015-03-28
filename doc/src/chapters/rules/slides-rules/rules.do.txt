@@ -326,10 +326,10 @@ Many iterations and use of slides in teaching over and over again are needed!
 
 For a chapter `ch2`,
 
- * let slides be in `lec-ch2`
+ * let slides be in `slides-ch2`
  * a chapter file `ch2/part1.do.txt` has its slide counterpart in
-   `ch2/lec-ch2/part1.do.txt`
- * `ch2/lectures_ch2.do.txt` includes all relevant `lec-ch2/*` files and
+   `ch2/slides-ch2/part1.do.txt`
+ * `ch2/lectures_ch2.do.txt` includes all relevant `slides-ch2/*` files and
    is the main file for the slide collection
 
 Compile slides:
@@ -345,7 +345,7 @@ table of contents, while HTML5 slides may benefit from having one
 ===== The `lectures_ch2.do.txt` file =====
 
 
-@@@CODE src-rules/lec-ch2.do.txt
+@@@CODE src-rules/slides_ch2.do.txt
 
 
 
@@ -374,15 +374,15 @@ Rules:
 The author has the following work flow for generating slides for a
 chapter file, say `part1.do.txt`.
 
- o Copy `part1.do.txt` to `lec-ch2/part1.do.txt`.
- o Make `lectures_ch2.do.txt` and include `lec-ch2/part1.do.txt`.
+ o Copy `part1.do.txt` to `slides-ch2/part1.do.txt`.
+ o Make `lectures_ch2.do.txt` and include `slides-ch2/part1.do.txt`.
  o Decide on *parts* of the slide collection. Often a part can be
    a section in the parent `ch2.do.txt` file, but sometimes it can
    be more natural to have larger parts than sections in the slide
    collection.
  o Each part in the slide file has a DocOnce section heading  with 7 `=`, while
    each slide has a DocOnce subsection heading with 5 `=`.
- o Edit `lec-ch2/part1.do.txt`:
+ o Edit `slides-ch2/part1.do.txt`:
    * One can keep subsection headings from the running text for the most part,
      but slides need many more subsection headings.
    * Try to let the heading summarize explicitly a conclusion/rule from
@@ -430,15 +430,15 @@ Just run
 Terminal> bash ../make_lectures.sh lectures_ch2.do.txt
 !ec
 from the chapter directory. Note that the script will first spell check
-the slide files. This is done in the `lec-ch2` directory. Errors are
-reported in files located in `lec-ch2`. To update the chapter's dictionary
+the slide files. This is done in the `slides-ch2` directory. Errors are
+reported in files located in `slides-ch2`. To update the chapter's dictionary
 for spell checking, you need to do
 
 !bc sys
-Terminal> cp lec-ch2/new_dictionary.txt~ .dict4spell
+Terminal> cp slides-ch2/new_dictionary.txt~ .dict4spell
 !ec
 in the `ch2` chapter directory. Similarly, to look at misspellings,
-the file `lec-ch2/misspellings.txt~` is the relevant file.
+the file `slides-ch2/misspellings.txt~` is the relevant file.
 
 The `make_lectures.sh` script compiles a variety of slides:
 

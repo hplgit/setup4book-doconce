@@ -5,12 +5,6 @@ DATE: today
 TOC: on
 
 
-## The Externaldocuments: ... command is a comment used to link
-## a latex document to other documents such that cross-referencing
-## works across documents (via the xr package).
-
-# Externaldocuments: ../chapters/rules/main_rules, ../chapters/fake/main_fake
-
 # No common Mako variables and functions here since we cannot run mako
 ### #include "../mako_code.txt"
 

@@ -123,7 +123,7 @@ td.padding {
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Mar 25, 2015</h4></center> <!-- date -->
+<center><h4>Mar 28, 2015</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -396,6 +396,8 @@ To compile a stand-alone document for the chapter, create
 
 <span style="color: #ffffff; font-weight: bold">TOC:</span> on
 
+<span style="color: #999999; font-style: italic"># Externaldocuments: ../ch3/main_ch3, ../ch4/main_ch4</span>
+
 <span style="color: #999999; font-style: italic"># #include &quot;ch2.do.txt&quot;</span>
 
 <span style="color: #ffffff; font-weight: bold">======= References =======</span>
@@ -473,16 +475,19 @@ DocOnce = <em>Document Once, Include Anywhere</em>
 <span style="color: #ffffff; font-weight: bold">TOC:</span> on
 
 <span style="color: #ffffff; font-weight: bold">========= Preface =========</span>
+<span style="color: #24909d">label{ch:preface}</span>
 
 <span style="color: #999999; font-style: italic"># #include &quot;../chapters/preface/preface.do.txt&quot;</span>
 
 <span style="color: #ffffff; font-weight: bold">========= Heading of a chapter =========</span>
+<span style="color: #24909d">label{ch:ch2}</span>
 
 <span style="color: #999999; font-style: italic"># #include &quot;../chapters/ch2/ch2.do.txt&quot;</span>
 
 <span style="color: #999999; font-style: italic"># Similar inclusion of other chapters</span>
 
 <span style="color: #ffffff; font-weight: bold">========= Appendix: Heading of an appendix =========</span>
+<span style="color: #24909d">label{ch:somename}</span>
 
 <span style="color: #999999; font-style: italic"># #include &quot;../chapters/nickname/nickname.do.txt&quot;</span>
 
@@ -735,10 +740,10 @@ Many iterations and use of slides in teaching over and over again are needed!
 For a chapter <code>ch2</code>,
 
 <ul>
- <p><li> let slides be in <code>lec-ch2</code></li>
+ <p><li> let slides be in <code>slides-ch2</code></li>
  <p><li> a chapter file <code>ch2/part1.do.txt</code> has its slide counterpart in
-   <code>ch2/lec-ch2/part1.do.txt</code></li>
- <p><li> <code>ch2/lectures_ch2.do.txt</code> includes all relevant <code>lec-ch2/*</code> files and
+   <code>ch2/slides-ch2/part1.do.txt</code></li>
+ <p><li> <code>ch2/lectures_ch2.do.txt</code> includes all relevant <code>slides-ch2/*</code> files and
    is the main file for the slide collection</li>
 </ul>
 <p>

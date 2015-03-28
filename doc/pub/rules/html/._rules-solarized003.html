@@ -79,11 +79,16 @@ div { text-align: justify; text-justify: inter-word; }
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
               (' Compiling the book ', 2, None, '___sec12'),
-              (' Study guides and slides ', 1, None, '___sec13'),
-              (' Slide directory ', 2, None, '___sec14'),
-              (' Generating slides from running text ', 2, None, '___sec15'),
-              (' Compiling slides ', 2, None, '___sec16'),
-              (' References ', 1, None, '___sec17')]}
+              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Syntax of generalized cross-references ',
+               2,
+               None,
+               '___sec14'),
+              (' Study guides and slides ', 1, None, '___sec15'),
+              (' Slide directory ', 2, None, '___sec16'),
+              (' Generating slides from running text ', 2, None, '___sec17'),
+              (' Compiling slides ', 2, None, '___sec18'),
+              (' References ', 1, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -139,7 +144,8 @@ However, to compile <code>ch2.do.txt</code> to a stand-alone document,
 we normally want a title, an author,
 a date, and perhaps a table of contents.
 We also want a bibliography if any of the included files has
-<code>cite</code> tags. To this end, we create a wrapper file, say <code>main_ch2.do.txt</code>,
+<code>cite</code> tags. To this end, we create a wrapper file, say
+<code>main_ch2.do.txt</code> [<a id="link_footnote_1" href="#def_footnote_1">1</a>],
 with the content
 
 <p>
@@ -151,6 +157,8 @@ DATE: today
 
 TOC: on
 
+# Externaldocuments: ../ch3/main_ch3, ../ch4/main_ch4
+
 # #include &quot;ch2.do.txt&quot;
 
 ======= References =======
@@ -158,6 +166,12 @@ TOC: on
 BIBFILE: ../papers.pub
 </code></pre>
 <!-- end verbatim block -->
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The prefix <code>main_</code> is inspired by the main program
+in computer program: those statements make a program run, like
+<code>main_ch2.do.txt</code> defines the surroundings of the &quot;library text&quot;
+<code>ch2.do.txt</code>. We strip off <code>main_</code> when publishing the files in
+<code>doc/pub</code>.</p>
 
 <p>
 Recall that DocOnce relies on the Publish software for handling
@@ -201,16 +215,19 @@ DATE: today
 TOC: on
 
 ========= Preface =========
+label{ch:preface}
 
 # #include &quot;../chapters/preface/preface.do.txt&quot;
 
 ========= Heading of a chapter =========
+label{ch:ch2}
 
 # #include &quot;../chapters/ch2/ch2.do.txt&quot;
 
 # Similar inclusion of other chapters
 
 ========= Appendix: Heading of an appendix =========
+label{ch:somename}
 
 # #include &quot;../chapters/nickname/nickname.do.txt&quot;
 
@@ -222,7 +239,7 @@ BIBFILE: ../papers.pub
 
 <p>
 When running <code>doconce format</code> on <code>book.do.txt</code>, the entire document
-is contained in <em>one</em> big file [<a id="link_footnote_1" href="#def_footnote_1">1</a>] (!).
+is contained in <em>one</em> big file [<a id="link_footnote_2" href="#def_footnote_2">2</a>] (!).
 To see exactly what has been included,
 you can examine the result of running the first preprocessor, <code>preprocess</code>,
 on <code>book.do.txt</code>. All the includes are handled by this preprocessor.
@@ -236,9 +253,9 @@ are problems with Mako variables or functions.
 The <code>tmp_mako__book.do.txt</code> file is thereafter translated to
 the desired output format.
 
-<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> A single DocOnce file and consequently a single
+<p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> A single DocOnce file and consequently a single
 <code>.tex</code> file works out well on today's laptops.
-A book with 900 pages <a href="._rules-solarized005.html#Langtangen_2014">[1]</a> has been tested!</p>
+A book with 900 pages <a href="._rules-solarized006.html#Langtangen_2014">[1]</a> has been tested!</p>
 
 <p>
 Say we want to produce a LaTeX document:
@@ -284,8 +301,8 @@ located.
 <p>
 It is recommended to use the function <code>make_links</code> in <code>scripts.py</code> to
 automatically set up all convenient links from the <code>book</code> directory
-to the individual chapter directories. Provided the list of chapter nicknames
-at the top of <code>scripts.py</code> is correct, you can just run
+to the individual chapter directories. Provided the <em>list of chapter nicknames</em>
+at the top of <code>scripts.py</code> <em>is correct</em>, you can just run
 
 <p>
 <!-- begin verbatim block  pyshell-->
@@ -318,6 +335,19 @@ as soon as a DocOnce or LaTeX error is encountered.
 <!-- end verbatim block -->
 </div>
 
+
+<p>
+With heavy use of Mako one can get quite strange error messages.
+Some ask you to rerun the <code>doconce format</code> command with
+<code>--mako_strict_undefined</code> to see undefined Mako variables.
+Make sure you run the <code>make.sh</code> script by <code>bash -x</code> if the script
+does not feature the <code>set -x</code> command in the top of the file
+(for displaying a command prior to running it). Copy the complete
+<code>doconce format</code> with the mouse and add the <code>--mako_strict_undefined</code>
+option.
+Other error messages point to specific lines
+that Mako struggles with. Go to the file <code>tmp_mako__book.do.txt</code>
+to investigate the line.
 
 <h2 id="___sec6">About figures when publishing HTML </h2>
 

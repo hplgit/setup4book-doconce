@@ -19,7 +19,7 @@ def chapter_visitor(action=None, chapters=chapters):
     elif callable(action):
         action_function = action
 
-    prefix = os.path.join(os.pardir, 'chapter')
+    prefix = os.path.join(os.pardir, 'chapters')
     thisdir = os.getcwd()
     for chapter in chapters:
         destination = os.path.join(prefix, chapter)
@@ -84,7 +84,7 @@ def pack_src(root='src', tarfile='book-examples.tar.gz', chapters=chapters):
     shutil.rmtree(root)
     os.mkdir(root)
     os.chdir(root)
-    prefix = os.path.join(os.pardir, os.pardir, 'chapter')
+    prefix = os.path.join(os.pardir, os.pardir, 'chapters')
     thisdir = os.getcwd()
     for chapter in chapters:
         src = 'src-' + chapter
@@ -118,8 +118,10 @@ def externaldocuments():
     mainfiles = [mainfile for nickname, mainfile in docs]
     # Need to visit all dirs, remove that dir from the list and subst
     for mainfile in mainfiles:
-        other_mainfiles = mainfiles[:]  # copy
+        other_mainfiles = mainfiles[:] # copy
         other_mainfiles.remove(mainfile)
+        # Strip off ../chapters to ../
+        other_mainfiles = ['../' + mainfile[12:] for mainfile in mainfiles]
         f = open(mainfile + '.do.txt', 'r')
         text = f.read()
         f.close()

@@ -130,7 +130,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 25, 2015</h4></center> <!-- date -->
+<center><h4>Mar 28, 2015</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
@@ -401,12 +401,16 @@ To compile a stand-alone document for the chapter, create
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Some chapter title</span>
+12
+13
+14</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Some chapter title</span>
 <span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
 <span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
 <span style="color: #000080; font-weight: bold">DATE:</span> today
 
 <span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #228B22"># Externaldocuments: ../ch3/main_ch3, ../ch4/main_ch4</span>
 
 <span style="color: #228B22"># #include &quot;ch2.do.txt&quot;</span>
 
@@ -485,7 +489,10 @@ DocOnce = <em>Document Once, Include Anywhere</em>
 21
 22
 23
-24</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: This is a book title</span>
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: This is a book title</span>
 <span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
 <span style="color: #000080; font-weight: bold">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
 <span style="color: #000080; font-weight: bold">DATE:</span> today
@@ -493,16 +500,19 @@ DocOnce = <em>Document Once, Include Anywhere</em>
 <span style="color: #000080; font-weight: bold">TOC:</span> on
 
 <span style="color: #000080; font-weight: bold">========= Preface =========</span>
+<span style="color: #658b00">label{ch:preface}</span>
 
 <span style="color: #228B22"># #include &quot;../chapters/preface/preface.do.txt&quot;</span>
 
 <span style="color: #000080; font-weight: bold">========= Heading of a chapter =========</span>
+<span style="color: #658b00">label{ch:ch2}</span>
 
 <span style="color: #228B22"># #include &quot;../chapters/ch2/ch2.do.txt&quot;</span>
 
 <span style="color: #228B22"># Similar inclusion of other chapters</span>
 
 <span style="color: #000080; font-weight: bold">========= Appendix: Heading of an appendix =========</span>
+<span style="color: #658b00">label{ch:somename}</span>
 
 <span style="color: #228B22"># #include &quot;../chapters/nickname/nickname.do.txt&quot;</span>
 
@@ -711,10 +721,10 @@ Many iterations and use of slides in teaching over and over again are needed!
 For a chapter <code>ch2</code>,
 
 <ul>
- <p><li> let slides be in <code>lec-ch2</code></li>
+ <p><li> let slides be in <code>slides-ch2</code></li>
  <p><li> a chapter file <code>ch2/part1.do.txt</code> has its slide counterpart in
-   <code>ch2/lec-ch2/part1.do.txt</code></li>
- <p><li> <code>ch2/lectures_ch2.do.txt</code> includes all relevant <code>lec-ch2/*</code> files and
+   <code>ch2/slides-ch2/part1.do.txt</code></li>
+ <p><li> <code>ch2/lectures_ch2.do.txt</code> includes all relevant <code>slides-ch2/*</code> files and
    is the main file for the slide collection</li>
 </ul>
 

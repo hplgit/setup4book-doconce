@@ -10,11 +10,23 @@
 <%
 chapters = {
  'rules': 'Directory and file structure',
+ 'fake': 'Some document',
+ 'mako': 'Use of Mako to aid book writing',
 }
 
 import os
-def has_lectures():
-    return os.path.isdir('lec-'+ CHAPTER)
+def has_slides():
+    """Can we find slides for the given CHAPTER?"""
+    return os.path.isdir('slides-'+ CHAPTER)
+
+# Error check (if chapters above is appropriately defined)
+if CHAPTER not in chapters:
+    print """
+*** error: 'chapters' dictionary in index_html_files_do.txt does not
+    contain the key "%s". Fill in that chapter nickname and the
+    corresponding chapter title!
+""" % CHAPTER
+    import sys; sys.exit(1)
 %>
 
 TITLE: ${chapters[str(CHAPTER)]}
@@ -27,14 +39,17 @@ formats:
  * "HTML plain bootstrap style": "${CHAPTER}-bootstrap.html"
  * "HTML bootswatch readable style": "${CHAPTER}-readable.html"
  * "HTML solarized color style": "${CHAPTER}-solarized.html"
+ * "HTML Sphinx pyramid style": "sphinx-pyramid/index.html"
 
-% if has_lectures():
+% if has_slides():
 Slides:
 
- * "HTML5 reveal.js dark": "lectures_${CHAPTER}-reveal.html"
- * "HTML5 reveal.js dark": "lectures_${CHAPTER}-reveal-beige.html"
- * "HTML5 deck.js": "lectures_${CHAPTER}-deck.html"
- * "HTML5 Remark (Markdown)": "lectures_${CHAPTER}-remark.html"
- * "Plain HTML, one big file": "lectures_${CHAPTER}-1.html"
- * "Solarized HTML, one big file": "lectures_${CHAPTER}-solarized.html"
+ * "HTML5 reveal.js dark": "slides_${CHAPTER}-reveal.html"
+ * "HTML5 reveal.js beige": "slides_${CHAPTER}-reveal-beige.html"
+ * "HTML5 deck.js": "slides_${CHAPTER}-deck.html"
+ * "HTML5 Remark": "slides_${CHAPTER}-remark.html"
+ * "Plain HTML, one big file": "slides_${CHAPTER}-1.html"
+ * "Solarized HTML, one big file": "slides_${CHAPTER}-solarized.html"
+ * "LaTeX Beamer": "../pdf/slides_${CHAPTER}-beamer.pdf"
+ * "LaTeX Beamer handouts": "../pdf/slides_${CHAPTER}-beamer-handouts2x3.pdf"
 % endif

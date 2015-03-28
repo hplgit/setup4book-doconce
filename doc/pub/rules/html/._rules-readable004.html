@@ -40,11 +40,16 @@ Automatically generated HTML file from DocOnce source
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
               (' Compiling the book ', 2, None, '___sec12'),
-              (' Study guides and slides ', 1, None, '___sec13'),
-              (' Slide directory ', 2, None, '___sec14'),
-              (' Generating slides from running text ', 2, None, '___sec15'),
-              (' Compiling slides ', 2, None, '___sec16'),
-              (' References ', 1, None, '___sec17')]}
+              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Syntax of generalized cross-references ',
+               2,
+               None,
+               '___sec14'),
+              (' Study guides and slides ', 1, None, '___sec15'),
+              (' Slide directory ', 2, None, '___sec16'),
+              (' Generating slides from running text ', 2, None, '___sec17'),
+              (' Compiling slides ', 2, None, '___sec18'),
+              (' References ', 1, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -65,22 +70,13 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;"><b>Directory structure</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;"><b>Newcommands</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable003.html#setup:rules:book:assembly" style="font-size: 80%;"><b>Assembling different pieces to a book</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organization of a chapter</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and source code</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Assembly of chapters to a book</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable003.html#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;About figures when publishing HTML</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Tools</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Making a new chapter</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the chapter</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling the book</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec13" style="font-size: 80%;"><b>Study guides and slides</b></a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slide directory</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Generating slides from running text</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec16" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Compiling slides</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec17" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;">Newcommands</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec13" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec15" style="font-size: 80%;">Study guides and slides</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec19" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -121,7 +117,14 @@ chapters, or make a brand new empty chapter by running
 <p>
 This command makes
 a directory <code>mychap</code> for a new chapter with nickname <code>mychap</code>.
-(Files from the <code>template</code> directory are used to populate <code>mychap</code>.)
+Files from the <code>template</code> directory are used to populate <code>mychap</code>. You get
+an empty <code>mychap.do.txt</code> where the text is supposed to go, or this file
+can just include a series of smaller <code>.do.txt</code> files, and you get the
+wrapper file <code>main_mychap.do.txt</code> such that you can compile this chapter
+as a stand-alone document. You also get <code>make.sh</code> which calls <code>../make.sh</code>
+with the chapter main document (<code>main_mychap</code>) as argument. Optional
+arguments for running <code>doconce format pdflatex</code> can be given to
+<code>../make.sh</code> in <code>make.sh</code> if needed (e.g., --encoding=utf8`).
 
 <h2 id="___sec9">Compiling the chapter </h2>
 
@@ -151,6 +154,14 @@ The <code>doc/src/chapters/make.sh</code> script is quite general and may be edi
 according to your layout preferences of the LaTeX documents.
 
 <p>
+The present <code>make.sh</code> script creates two PDF files: one for printing and
+one for electronic viewing. The difference is that all URLs in the
+version for printing appear as footnotes (and just hyperlinks with
+a dark blue color in the electronic version). The two files are
+named <code>mychap.pdf</code> and <code>mychap-4print.pdf</code>, respectively, and
+copied to <code>doc/pub/mychap/pdf</code> for publishing.
+
+<p>
 <b>Remark.</b>
 The suggested <code>make.sh</code> file
 applies the <code>--latex_code_style=</code> option to <code>doconce format</code>
@@ -175,8 +186,56 @@ HTML versions of the chapter. Just call this as
 </pre></div>
 <p>
 to make HTML versions of the <code>mychap</code> chapter.
-The current version of <code>make_html.sh</code> creates three types of HTML
-layouts and an <code>index.html</code> file with a list of links to these three files.
+
+<p>
+The current version of <code>make_html.sh</code> creates four types of HTML
+layouts and an <code>index.html</code> file with a list of links to these three files:
+1) HTML plain Bootstrap style, 2) HTML Bootswatch readable style,
+3) plain HTML solarized color style, and 4) Sphinx pyramid style.
+(Note that the latter document is a true Sphinx document,
+made by <code>doconce format sphinx</code>, and from which one
+could make other formats too.)
+
+<p>
+It is easy to go into the <code>make_html.sh</code> script and generate other
+HTML or Sphinx styles.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>You need to edit the index file!</b>
+The <code>index.html</code> file generated by <code>make_html.sh</code> is made from the
+DocOnce source file <code>index_html_files.do.txt</code>. This is a
+file utilizing Mako programming
+(see 
+the document <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/mako" target="_self">Use of Mako to aid book writing</a>.
+There is also a similar file, <code>index_files.do.txt</code>, listing all
+the published documents in various formats associated with a complete
+book projects (to go to <code>doc/pub/index.html</code>).
+
+<p>
+In the <code>index_html_files.do.txt</code> file, we define a Mako dictionary
+<code>chapters</code> mapping nicknames to chapter titles. This dict makes it easy
+to compile <code>index_html_files.do.txt</code> with a Mako variable <code>CHAPTER</code>
+set to the chapter nickname and get a tailored <code>index.html</code> file
+for the HTML versions of that chapter. Similarly,
+<code>index_files.do.txt</code> also has a <code>chapters</code> dict and an associated
+<code>published</code> list with all the nicknames of the chapters that we want
+to list in the overview of the entire book project (all sufficiently
+finished chapters).
+
+<p>
+The <code>index_files.do.txt</code> file gives a table of contents of all documents,
+so you will normally compile this manually now and then as
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; doconce format html index_files --html_style=bootstrap \ 
+          --html_links_in_new_window --html_bootstrap_navbar=off
+</pre></div>
+<p>
+and publish it it <code>doc/pub/index.html</code>.
+</div>
+
 
 <h2 id="___sec12">Compiling the book </h2>
 

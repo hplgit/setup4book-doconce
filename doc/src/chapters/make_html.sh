@@ -7,7 +7,7 @@
 # bash -x ../make_html.sh main_chaptername --encoding=utf-8
 set -x
 
-name=$1
+mainname=$1
 shift
 args="$@"
 
@@ -15,9 +15,9 @@ CHAPTER=document
 BOOK=document
 APPENDIX=document
 
-# name: main_chaptername
+# mainname: main_chaptername
 # nickname: chaptername
-nickname=`echo $name | sed 's/main_//g'`
+nickname=`echo $mainname | sed 's/main_//g'`
 
 function system {
   "$@"
@@ -37,19 +37,31 @@ preprocess -DFORMAT=html ../newcommands.p.tex > newcommands_keep.tex
 opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
 style=solarized3
-html=${name}-solarized
-system doconce format html $name $opt --html_style=$style --html_output=$html $args
+html=${nickname}-solarized
+system doconce format html $mainname $opt --html_style=$style --html_output=$html $args
 system doconce split_html $html.html --nav_button=text
 
 style=bootstrap_bluegray
-html=${name}-bootstrap
-system doconce format html $name $opt --html_style=$style --html_output=$html $args
+html=${nickname}-bootstrap
+system doconce format html $mainname $opt --html_style=$style --html_output=$html $args
 system doconce split_html $html.html --nav_button=text
 
 style=bootswatch_readable
-html=${name}-readable
-system doconce format html $name $opt --html_style=$style --html_output=$html $args
+html=${nickname}-readable
+system doconce format html $mainname $opt --html_style=$style --html_output=$html $args
 system doconce split_html $html.html --nav_button=text
+
+# Sphinx themes
+themes="basicstrap bloodish pyramid read_the_docs scipy_lectures uio"
+themes="uio"
+themes="pyramid"
+
+for theme in $themes; do
+system doconce format sphinx ${mainname} $opt --sphinx_keep_splits $args
+system doconce split_rst ${mainname}
+system doconce sphinx_dir theme=$theme dirname=sphinx-$theme ${mainname}
+system python automake_sphinx.py
+done
 
 # Publish
 dest=/some/repo/some/where
@@ -63,18 +75,26 @@ if [ ! -d $dest ]; then
   mkdir $dest/pdf
   mkdir $dest/html
 fi
-cp -r ${name}-*.html ._${name}-*.html $dest/html
+cp -r ${nickname}-*.html ._${nickname}-*.html $dest/html
+
+for theme in $themes; do
+cp -r sphinx-$theme/_build/html $dest/html/sphinx-$theme
+done
+
 # index.html for this chapter
 cp ../index_html_files.do.txt index.do.txt
 system doconce format html index --html_style=bootstrap_FlatUI CHAPTER="${nickname}" --html_bootstrap_navbar=off --html_links_in_new_window $args
 cp index.html $dest/html/
 rm -f index.*
-if [ -d fig-$nickname ]; then
-if [ ! -d $dest/$fig-$nickname ]; then
-cp -r fig-$nickname $dest/html
-else
-cp -r fig-$nickname/* $dest/html/fig-$nickname/
-fi
-fi
+
+# We need fig, mov in html publishing dir
+rsync="rsync -rtDvz -u -e ssh -b --delete --force "
+dirs="fig-$nickname mov-$nickname"
+for dir in $dirs; do
+  if [ -d $dir ]; then
+    $rsync $dir $dest/html
+  fi
+done
+
 cd $dest
 git add html

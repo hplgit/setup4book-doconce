@@ -8,6 +8,8 @@ DATE: today
 ## Handy mako variables and functions for the preprocessing step
 # #include "../chapters/mako_code.txt"
 
+# Externaldocuments: ../chapters/fake/main_fake
+
 ========= Preface  =========
 label{ch:preface}
 
@@ -15,7 +17,7 @@ label{ch:preface}
 
 TOC: on
 
-========= Directory and file structur =========
+========= Directory and file structure =========
 label{ch:structure}
 
 # #include "../chapters/rules/rules.do.txt"

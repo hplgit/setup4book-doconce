@@ -27,7 +27,7 @@ rm -rf tmp*
 
 # Spellcheck files first (this is done in subdirectories so updated
 # dictionaries are located there!)
-dir=`/bin/ls -d lec-*`  # assume only one lec_* dir...
+dir=`/bin/ls -d slides-*`  # assume only one slides-* dir...
 cd $dir
 rm -rf tmp*
 system doconce spellcheck -d ../.dict4spell.txt *.do.txt
@@ -121,13 +121,16 @@ if [ ! -d $dest ]; then
 fi
 #cp -r ${slidesname}-*.html ._${slidesname}-*.html $dest/html
 cp -r ${slidesname}-*.html $dest/html
+cp ${slidesname}*.pdf $dest/pdf
 
-if [ -d fig-$nickname ]; then
-if [ ! -d $dest/$fig-$nickname ]; then
-cp -r fig-$nickname $dest/html
-else
-cp -r fig-$nickname/* $dest/html/fig-$nickname/
-fi
-fi
+# We need fig, mov, and slide style dirs in html publishing dir
+rsync="rsync -rtDvz -u -e ssh -b --delete --force "
+dirs="fig-$nickname mov-$nickname deck.js reveal.js"
+for dir in $dirs; do
+  if [ -d $dir ]; then
+    $rsync $dir $dest/html
+  fi
+done
+
 cd $dest
 git add html

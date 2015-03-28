@@ -58,12 +58,20 @@ system pdflatex $name
 system makeindex $name
 system pdflatex $name
 
+# Publish
+cp book.pdf ../../pub
+
+# index file for book and all chapters
+cd ../chapters
+cp index_files.do.txt index.do.txt
+system doconce format html index --html_style=bootstrap --html_links_in_new_window --html_bootstrap_navbar=off
+cp index.html ../../pub
+rm -f index.*
+cd -
+
 # Report typical problems (too long lines etc.)
 doconce latex_problems $name.log 10
 
 # Check grammar in MS Word:
 # doconce spellcheck tmp_mako__book.do.txt
 # load tmp_stripped_book.do.txt into Word
-
-# Publish
-cp book.pdf ../../pub

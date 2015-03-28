@@ -1,0 +1,359 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Assembling different pieces to a book</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Directory and file structure" href="index.html" />
+    <link rel="next" title="Tools" href="._main_rules004.html" />
+    <link rel="prev" title="Newcommands" href="._main_rules002.html" />
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  
+   <style type="text/css">
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_rules004.html" title="Tools"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._main_rules002.html" title="Newcommands"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="assembling-different-pieces-to-a-book">
+<span id="setup-rules-book-assembly"></span><h1>Assembling different pieces to a book<a class="headerlink" href="#assembling-different-pieces-to-a-book" title="Permalink to this headline">¶</a></h1>
+<p>Many smaller writings in the DocOnce format can be assembled
+into a single, large document such as a book or thesis.
+The recipe for doing this appears below.</p>
+<div class="section" id="organization-of-a-chapter">
+<h2>Organization of a chapter<a class="headerlink" href="#organization-of-a-chapter" title="Permalink to this headline">¶</a></h2>
+<p>Suppose one chapter) of the book
+has the nickname <tt class="docutils literal"><span class="pre">ch2</span></tt> and may hold all text or just include
+text in other DocOnce files, e.g., <tt class="docutils literal"><span class="pre">part1.do.txt</span></tt>, <tt class="docutils literal"><span class="pre">part2.do.txt</span></tt>, and
+<tt class="docutils literal"><span class="pre">part3.do.txt</span></tt>. In this latter case, <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt> has
+the simple content</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="c"># #include &quot;part1.do.txt&quot;</span>
+
+<span class="c"># #include &quot;part2.do.txt&quot;</span>
+
+<span class="c"># #include &quot;part3.do.txt&quot;</span>
+</pre></div>
+</div>
+<p>Note that the <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt> file contains just plain text without
+any <tt class="docutils literal"><span class="pre">TITLE</span></tt>, <tt class="docutils literal"><span class="pre">AUTHOR</span></tt>, or <tt class="docutils literal"><span class="pre">DATE</span></tt> lines and without any
+table of contents (<tt class="docutils literal"><span class="pre">TOC</span></tt>) and bibliography (<tt class="docutils literal"><span class="pre">BIBITEM</span></tt>).
+This property makes <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt>
+suitable for being including in other documents like a book.
+However, to compile <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt> to a stand-alone document,
+we normally want a title, an author,
+a date, and perhaps a table of contents.
+We also want a bibliography if any of the included files has
+<tt class="docutils literal"><span class="pre">cite</span></tt> tags. To this end, we create a wrapper file, say
+<tt class="docutils literal"><span class="pre">main_ch2.do.txt</span></tt> <a class="footnote-reference" href="#name-main" id="id1">[1]</a>,
+with the content</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">TITLE: Some chapter title</span>
+<span class="gh">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
+<span class="gh">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
+<span class="gh">DATE:</span> today
+
+<span class="gh">TOC:</span> on
+
+<span class="c"># Externaldocuments: ../ch3/main_ch3, ../ch4/main_ch4</span>
+
+<span class="c"># #include &quot;ch2.do.txt&quot;</span>
+
+<span class="gh">======= References =======</span>
+
+BIBFILE: ../papers.pub
+</pre></div>
+</div>
+<table class="docutils footnote" frame="void" id="name-main" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>The prefix <tt class="docutils literal"><span class="pre">main_</span></tt> is inspired by the main program
+in computer program: those statements make a program run, like
+<tt class="docutils literal"><span class="pre">main_ch2.do.txt</span></tt> defines the surroundings of the &#8220;library text&#8221;
+<tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt>. We strip off <tt class="docutils literal"><span class="pre">main_</span></tt> when publishing the files in
+<tt class="docutils literal"><span class="pre">doc/pub</span></tt>.</td></tr>
+</tbody>
+</table>
+<p>Recall that DocOnce relies on the Publish software for handling
+bibliographies. It is easy to import from BibTeX to Publish and
+create a database of references (<tt class="docutils literal"><span class="pre">papers.pub</span></tt>) to get started (but
+we recommend to continue working with the
+Publish database directly and collect new items in the <tt class="docutils literal"><span class="pre">papers.pub</span></tt> file
+as Publish is more flexible than BibTeX).</p>
+</div>
+<div class="section" id="figures-and-source-code">
+<h2>Figures and source code<a class="headerlink" href="#figures-and-source-code" title="Permalink to this headline">¶</a></h2>
+<p>As described in the section <a class="reference internal" href="._main_rules001.html#sec-rules-dir-struct"><em>Directory structure</em></a>, we recommend to put
+figures and source codes (to be included in the document) in separate
+directories. Although such directories could have natural names like
+<tt class="docutils literal"><span class="pre">fig</span></tt> and <tt class="docutils literal"><span class="pre">src</span></tt>, it will cause trouble if we do not use unique names
+for these directories, like <tt class="docutils literal"><span class="pre">fig-ch2</span></tt> and <tt class="docutils literal"><span class="pre">src-ch2</span></tt>. Otherwise, we
+would need to copy all figures in all pieces into a common <tt class="docutils literal"><span class="pre">fig</span></tt>
+directory for the book and all source code files into a <tt class="docutils literal"><span class="pre">src</span></tt>
+directory. With unique names, figures and source code files can always
+reside in their original locations, and we can easily reach them
+through links. This will be described next.</p>
+</div>
+<div class="section" id="assembly-of-chapters-to-a-book">
+<h2>Assembly of chapters to a book<a class="headerlink" href="#assembly-of-chapters-to-a-book" title="Permalink to this headline">¶</a></h2>
+<p>All the files associated with the <tt class="docutils literal"><span class="pre">ch2</span></tt> document and chapter reside
+in the <tt class="docutils literal"><span class="pre">ch2</span></tt> directory. A fundamental principle of DocOnce is to
+have just one copy of the files (&#8220;Document once!&#8221;).
+To include the <tt class="docutils literal"><span class="pre">ch2</span></tt> text in a larger document like a book, we just
+need to include the <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt> file and a chapter heading.
+Here is an example of a document <tt class="docutils literal"><span class="pre">book.do.txt</span></tt> for a complete book:</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">TITLE: This is a book title</span>
+<span class="gh">AUTHOR:</span> A. Name Email:somename@someplace.net at Institute One
+<span class="gh">AUTHOR:</span> A. Two at Institute One &amp; Institute Two
+<span class="gh">DATE:</span> today
+
+<span class="gh">TOC:</span> on
+
+<span class="gh">========= Preface =========</span>
+<span class="nb">label{ch:preface}</span>
+
+<span class="c"># #include &quot;../chapters/preface/preface.do.txt&quot;</span>
+
+<span class="gh">========= Heading of a chapter =========</span>
+<span class="nb">label{ch:ch2}</span>
+
+<span class="c"># #include &quot;../chapters/ch2/ch2.do.txt&quot;</span>
+
+<span class="c"># Similar inclusion of other chapters</span>
+
+<span class="gh">========= Appendix: Heading of an appendix =========</span>
+<span class="nb">label{ch:somename}</span>
+
+<span class="c"># #include &quot;../chapters/nickname/nickname.do.txt&quot;</span>
+
+<span class="gh">======= References =======</span>
+
+BIBFILE: ../papers.pub
+</pre></div>
+</div>
+<p>When running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> on <tt class="docutils literal"><span class="pre">book.do.txt</span></tt>, the entire document
+is contained in <em>one</em> big file <a class="footnote-reference" href="#one-file" id="id2">[2]</a> (!).
+To see exactly what has been included,
+you can examine the result of running the first preprocessor, <tt class="docutils literal"><span class="pre">preprocess</span></tt>,
+on <tt class="docutils literal"><span class="pre">book.do.txt</span></tt>. All the includes are handled by this preprocessor.
+The result is contained in the file
+<tt class="docutils literal"><span class="pre">tmp_preprocess__book.do.txt</span></tt>, which then contains the entire
+DocOnce source code of the book. The second preprocessor, <tt class="docutils literal"><span class="pre">mako</span></tt>, is thereafter
+run (if DocOnce detects that it is necessary).
+The result of that step is available in
+<tt class="docutils literal"><span class="pre">tmp_mako__book.do.txt</span></tt>. It is important to examine this file if there
+are problems with Mako variables or functions.
+The <tt class="docutils literal"><span class="pre">tmp_mako__book.do.txt</span></tt> file is thereafter translated to
+the desired output format.</p>
+<table class="docutils footnote" frame="void" id="one-file" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>A single DocOnce file and consequently a single
+<tt class="docutils literal"><span class="pre">.tex</span></tt> file works out well on today&#8217;s laptops.
+A book with 900 pages <a class="reference internal" href="._main_rules006.html#ref1" id="id3">[Ref1]</a> has been tested!</td></tr>
+</tbody>
+</table>
+<p>Say we want to produce a LaTeX document:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex book [options]
+</pre></div>
+</div>
+<p>If the DocOnce source contains copying of source code from files in
+<tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> constructs, it is important that <tt class="docutils literal"><span class="pre">doconce</span></tt> finds the files.
+For example,</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gu">@@@CODE src-ch2/myprog.py  fromto: def test1@def test2</span>
+</pre></div>
+</div>
+<p>will try to open the file <tt class="docutils literal"><span class="pre">src-ch2/myprog.py</span></tt>. Since this file is
+actually located in <tt class="docutils literal"><span class="pre">../ch2/src-ch2/myprog.py</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt> will
+report an error message. A local link to
+that directory resolves the problem:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ln -s ../chapters/ch2/src-ch2 src-ch2
+</pre></div>
+</div>
+<p>Similarly,
+the LaTeX code in <tt class="docutils literal"><span class="pre">book.tex</span></tt> for inclusion of a figure may
+contain</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\includegraphics</span><span class="na">[width=0.9\linewith]</span><span class="nb">{</span>fig-ch2/fig1.pdf<span class="nb">}</span>
+</pre></div>
+</div>
+<p>For this command to work, it is paramount that there is a link <tt class="docutils literal"><span class="pre">fig-ch2</span></tt> in the
+present <tt class="docutils literal"><span class="pre">book</span></tt> directory where the <tt class="docutils literal"><span class="pre">pdflatex</span></tt> command is run to
+the directory <tt class="docutils literal"><span class="pre">../chapters/ch2/fig-ch2</span></tt> where the figure file <tt class="docutils literal"><span class="pre">fig1.pdf</span></tt> is
+located.</p>
+<p>It is recommended to use the function <tt class="docutils literal"><span class="pre">make_links</span></tt> in <tt class="docutils literal"><span class="pre">scripts.py</span></tt> to
+automatically set up all convenient links from the <tt class="docutils literal"><span class="pre">book</span></tt> directory
+to the individual chapter directories. Provided the <em>list of chapter nicknames</em>
+at the top of <tt class="docutils literal"><span class="pre">scripts.py</span></tt> <em>is correct</em>, you can just run</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scripts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scripts</span><span class="o">.</span><span class="n">make_links</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to automatically
+set up all links to all <tt class="docutils literal"><span class="pre">src-*</span></tt>, <tt class="docutils literal"><span class="pre">fig-*</span></tt>, and <tt class="docutils literal"><span class="pre">mov-*</span></tt> directories.
+You need to rerun this <tt class="docutils literal"><span class="pre">make_links</span></tt> function after inclusion of a new chapter
+in the <tt class="docutils literal"><span class="pre">chapters</span></tt> tree.</p>
+<div class="admonition-identify-latex-errors-in-the-original-chapter-files admonition">
+<p class="first admonition-title">Identify LaTeX errors in the original chapter files</p>
+<p>When you run <tt class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">book</span></tt> and get LaTeX errors, you need
+to see where they are in <tt class="docutils literal"><span class="pre">book.tex</span></tt> and use this information to
+find the appropriate DocOnce source file in some chapter.
+Usually, there are few errors at the &#8220;book level&#8221; if each individual
+chapter has been compiled. To this end, you can use <tt class="docutils literal"><span class="pre">scripts.py</span></tt> to
+automatically compile each chapter separately. The process is stopped
+as soon as a DocOnce or LaTeX error is encountered.</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scripts</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scripts</span><span class="o">.</span><span class="n">compile_chapters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>With heavy use of Mako one can get quite strange error messages.
+Some ask you to rerun the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command with
+<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> to see undefined Mako variables.
+Make sure you run the <tt class="docutils literal"><span class="pre">make.sh</span></tt> script by <tt class="docutils literal"><span class="pre">bash</span> <span class="pre">-x</span></tt> if the script
+does not feature the <tt class="docutils literal"><span class="pre">set</span> <span class="pre">-x</span></tt> command in the top of the file
+(for displaying a command prior to running it). Copy the complete
+<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> with the mouse and add the <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>
+option.
+Other error messages point to specific lines
+that Mako struggles with. Go to the file <tt class="docutils literal"><span class="pre">tmp_mako__book.do.txt</span></tt>
+to investigate the line.</p>
+</div>
+<div class="section" id="about-figures-when-publishing-html">
+<h2>About figures when publishing HTML<a class="headerlink" href="#about-figures-when-publishing-html" title="Permalink to this headline">¶</a></h2>
+<p>There will be <tt class="docutils literal"><span class="pre">&lt;img</span> <span class="pre">src=fig-ch2/fig1.png&gt;</span></tt> type of tags in HTML code
+produced by DocOnce, so it is very important to ensure that the
+<em>published</em> <tt class="docutils literal"><span class="pre">.html</span></tt> files have access to a subdirectory
+<tt class="docutils literal"><span class="pre">fig-ch2</span></tt>. Normally, one needs to copy <tt class="docutils literal"><span class="pre">fig-ch2</span></tt> from the <tt class="docutils literal"><span class="pre">ch2</span></tt>
+chapter source directory to some publishing directory that stores all
+the files necessary for accessing the entire HTML document on the web.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Assembling different pieces to a book</a><ul>
+<li><a class="reference internal" href="#organization-of-a-chapter">Organization of a chapter</a></li>
+<li><a class="reference internal" href="#figures-and-source-code">Figures and source code</a></li>
+<li><a class="reference internal" href="#assembly-of-chapters-to-a-book">Assembly of chapters to a book</a></li>
+<li><a class="reference internal" href="#about-figures-when-publishing-html">About figures when publishing HTML</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_rules002.html"
+                        title="previous chapter">Newcommands</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._main_rules004.html"
+                        title="next chapter">Tools</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_rules004.html" title="Tools"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._main_rules002.html" title="Newcommands"
+             >previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Hans Petter Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
