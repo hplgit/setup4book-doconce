@@ -39,9 +39,9 @@ document, we are forced to compile the `mako` chapter as a stand-alone
 document (with the `--no_mako` option) and let this appendix be just a
 link to the "this stand-alone document":
 % if FORMAT in ('latex', 'pdflatex'):
-"http://hplgit.github.io/setup4books-doconce/doc/pub/mako/pdf/main_mako.pdf".
+"http://hplgit.github.io/setup4book-doconce/doc/pub/mako/pdf/main_mako.pdf".
 % else:
-"http://hplgit.github.io/setup4books-doconce/doc/pub/mako/html/index.html".
+"http://hplgit.github.io/setup4book-doconce/doc/pub/mako/html/index.html".
 % endif
 
 
