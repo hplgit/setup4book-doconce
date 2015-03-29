@@ -424,6 +424,21 @@ Terminal> doconce format html index_files --html_style=bootstrap \
 and publish it in `doc/pub/index.html`.
 !ewarning
 
+idx{IPython notebooks}
+idx{notebooks}
+idx{Jupyter notebooks}
+
+=== IPython notebook ===
+
+Although there is no benefit from interactive computing and visualization
+in the present document, we may produce an IPython notebook for the fun of it:
+
+!bc sys
+Terminal> doconce format ipynb main_rules \
+          CHAPTER=document BOOK=document APPENDIX=document
+!ec
+
+
 idx{`clean.sh`}
 
 === Cleaning Files ===
