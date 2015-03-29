@@ -160,9 +160,15 @@ Quiz
 
 .. index:: quiz in DocOnce
 
-`RunestoneInteractive <http://runestoneinteractive.org>`__ books has
-nice support for quizzes, but mathematics and code blocks (or other types
-of advanced formatting) are not allowed in answers and feedbacks.
+
+.. admonition:: Remark
+
+   `RunestoneInteractive <http://runestoneinteractive.org>`__ books has
+   nice support for quizzes, but mathematics and code blocks (or other types
+   of advanced formatting) are not allowed in answers and feedbacks.
+
+
+
 
 .. --- previous heading type: subsection
 
@@ -175,7 +181,7 @@ of advanced formatting) are not allowed in answers and feedbacks.
    :correct: b
    :feedback_a: This is almost true: <tt>getkahoot.com</tt> has implemented support for DocOnce-generated quizzes with math and code :-)
    :feedback_b: Here you see all capabilities demonstrated.
-   :feedback_c: Not implemented this year - just had to come up with yet another choice...
+   :feedback_c: Not implemented this year - just had to come up with yet another answer alternative...
 
    How can one typeset a multiple choice question or *quiz* in DocOnce?
    Recall that a quiz may feature mathematics like

@@ -489,8 +489,8 @@ alternative since it supports navigation, searching, and has an
 index. There is a script `doc/src/book/make_html.sh` that creates a
 Sphinx version of the book. Actually, it generates two versions
 
- * standard Sphinx "book": "http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx/index.html"
- * "RunestoneInteractive": "http://runestoneinteractive.org" Sphinx "book": "http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx-runestone/index.html"
+ * standard Sphinx "book": "http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx/index.html"
+ * "RunestoneInteractive": "http://runestoneinteractive.org" Sphinx "book": "http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx-runestone/index.html"
 
 
 !split
@@ -656,7 +656,7 @@ the slides' quality).
 
 ===== Compiling slides =====
 
-idx{`make_slides.sh}
+idx{`make_slides.sh`}
 
 There is a quite general script in `doc/src/chapters/make_slides.sh` for
 compiling a slide collection defined in a file like `slides_ch2.do.txt`.

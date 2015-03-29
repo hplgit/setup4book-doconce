@@ -85,11 +85,10 @@ into a single, large document such as a book or thesis.
 The recipe for doing this appears below.</p>
 <div class="section" id="organization-of-a-chapter">
 <h2>Organization of a chapter<a class="headerlink" href="#organization-of-a-chapter" title="Permalink to this headline">¶</a></h2>
-<p>Suppose one chapter) of the book
-has the nickname <tt class="docutils literal"><span class="pre">ch2</span></tt> and may hold all text or just include
-text in other DocOnce files, e.g., <tt class="docutils literal"><span class="pre">part1.do.txt</span></tt>, <tt class="docutils literal"><span class="pre">part2.do.txt</span></tt>, and
-<tt class="docutils literal"><span class="pre">part3.do.txt</span></tt>. In this latter case, <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt> has
-the simple content</p>
+<span class="target" id="index-0"></span><p id="index-1">Suppose one chapter) of the book has the nickname <tt class="docutils literal"><span class="pre">ch2</span></tt> and may hold
+all text or just include text in other DocOnce files, e.g.,
+<tt class="docutils literal"><span class="pre">part1.do.txt</span></tt>, <tt class="docutils literal"><span class="pre">part2.do.txt</span></tt>, and <tt class="docutils literal"><span class="pre">part3.do.txt</span></tt>. In this latter
+case, <tt class="docutils literal"><span class="pre">ch2.do.txt</span></tt> has the simple content</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="c"># #include &quot;part1.do.txt&quot;</span>
 
 <span class="c"># #include &quot;part2.do.txt&quot;</span>
@@ -144,7 +143,7 @@ as Publish is more flexible than BibTeX).</p>
 </div>
 <div class="section" id="figures-and-source-code">
 <h2>Figures and source code<a class="headerlink" href="#figures-and-source-code" title="Permalink to this headline">¶</a></h2>
-<p>As described in the section <a class="reference internal" href="._main_rules001.html#sec-rules-dir-struct"><em>Directory structure</em></a>, we recommend to put
+<span class="target" id="index-2"></span><span class="target" id="index-3"></span><span class="target" id="index-4"></span><p id="index-5">As described in the section <a class="reference internal" href="._main_rules001.html#sec-rules-dir-struct"><em>Directory structure</em></a>, we recommend to put
 figures and source codes (to be included in the document) in separate
 directories. Although such directories could have natural names like
 <tt class="docutils literal"><span class="pre">fig</span></tt> and <tt class="docutils literal"><span class="pre">src</span></tt>, it will cause trouble if we do not use unique names
@@ -157,7 +156,7 @@ through links. This will be described next.</p>
 </div>
 <div class="section" id="assembly-of-chapters-to-a-book">
 <h2>Assembly of chapters to a book<a class="headerlink" href="#assembly-of-chapters-to-a-book" title="Permalink to this headline">¶</a></h2>
-<p>All the files associated with the <tt class="docutils literal"><span class="pre">ch2</span></tt> document and chapter reside
+<p id="index-6">All the files associated with the <tt class="docutils literal"><span class="pre">ch2</span></tt> document and chapter reside
 in the <tt class="docutils literal"><span class="pre">ch2</span></tt> directory. A fundamental principle of DocOnce is to
 have just one copy of the files (&#8220;document once!&#8221;).
 To include the <tt class="docutils literal"><span class="pre">ch2</span></tt> text in a larger document like a book, we just
@@ -214,7 +213,7 @@ the desired output format.</p>
 A book with 900 pages <a class="reference internal" href="._main_rules008.html#ref1" id="id3">[Ref1]</a> has been tested!</td></tr>
 </tbody>
 </table>
-<p>Say we want to produce a LaTeX document:</p>
+<p id="index-7">Say we want to produce a LaTeX document:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex book [options]
 </pre></div>
 </div>
@@ -241,7 +240,7 @@ contain</p>
 present <tt class="docutils literal"><span class="pre">book</span></tt> directory where the <tt class="docutils literal"><span class="pre">pdflatex</span></tt> command is run to
 the directory <tt class="docutils literal"><span class="pre">../chapters/ch2/fig-ch2</span></tt> where the figure file <tt class="docutils literal"><span class="pre">fig1.pdf</span></tt> is
 located.</p>
-<p>It is recommended to use the function <tt class="docutils literal"><span class="pre">make_links</span></tt> in <tt class="docutils literal"><span class="pre">scripts.py</span></tt> to
+<p id="index-8">It is recommended to use the function <tt class="docutils literal"><span class="pre">make_links</span></tt> in <tt class="docutils literal"><span class="pre">scripts.py</span></tt> to
 automatically set up all convenient links from the <tt class="docutils literal"><span class="pre">book</span></tt> directory
 to the individual chapter directories. Provided the <em>list of chapter nicknames</em>
 at the top of <tt class="docutils literal"><span class="pre">scripts.py</span></tt> <em>is correct</em>, you can just run</p>
@@ -279,20 +278,6 @@ Other error messages point to specific lines
 that Mako struggles with. Go to the file <tt class="docutils literal"><span class="pre">tmp_mako__book.do.txt</span></tt>
 to investigate the line.</p>
 </div>
-<div class="section" id="html-sphinx-versions-of-the-book">
-<h2>HTML/Sphinx versions of the book<a class="headerlink" href="#html-sphinx-versions-of-the-book" title="Permalink to this headline">¶</a></h2>
-<p>It is easy to make a standard HTML version of the <tt class="docutils literal"><span class="pre">book.do.txt</span></tt> manuscript, but
-for large books, Sphinx is usually a better alternative since it supports
-navigation, searching, and has an index. There is a script <tt class="docutils literal"><span class="pre">make_rs.sh</span></tt>
-that creates a Sphinx version of the book. Actually, it generates two
-versions</p>
-<blockquote>
-<div><ul class="simple">
-<li>standard Sphinx book</li>
-<li><a class="reference external" href="http://runestoneinteractive.org">RunestoneInteractive</a> Sphinx book</li>
-</ul>
-</div></blockquote>
-</div>
 </div>
 
 
@@ -312,7 +297,6 @@ versions</p>
 <li><a class="reference internal" href="#organization-of-a-chapter">Organization of a chapter</a></li>
 <li><a class="reference internal" href="#figures-and-source-code">Figures and source code</a></li>
 <li><a class="reference internal" href="#assembly-of-chapters-to-a-book">Assembly of chapters to a book</a></li>
-<li><a class="reference internal" href="#html-sphinx-versions-of-the-book">HTML/Sphinx versions of the book</a></li>
 </ul>
 </li>
 </ul>

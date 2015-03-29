@@ -34,6 +34,8 @@ the section :ref:`setup:rules:book:assembly`.
 Admonitions
 -----------
 
+.. index:: admonitions
+
 
 .. admonition:: Use admonitions
 
@@ -49,8 +51,12 @@ Admonitions
 
 
 
-Put a box around something very important
------------------------------------------
+Simple box
+----------
+
+.. index:: bbox box
+
+Put a box around something important:
 
 
 .. The below box could be typeset as .. admonition: Attention
@@ -62,8 +68,15 @@ Put a box around something very important
          1 + 1 = 2
 
 
+**Note:**
+Simple boxes are not supported in format ``sphinx``.
+
 Interactive code
 ----------------
+
+.. index:: interactive code
+
+.. index:: pyoptpro interactive code
 
 You can step through this code:
 
@@ -78,6 +91,8 @@ in LaTeX one gets a link to a web page with this functionality.
 
 Exercises
 ---------
+
+.. index:: exercises in DocOnce
 
 
 .. admonition:: Exercise environments
@@ -130,6 +145,8 @@ margins).
 Quiz
 ----
 
+.. index:: quiz in DocOnce
+
 .. --- previous heading type: subsection
 
 .. begin quiz
@@ -157,13 +174,19 @@ and even nicely typeset computer code:
 
 **Choice 2:** See the DocOnce `quiz manual <http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html>`__. :abbr:`? (Right!)` :abbr:`# ( Here you see all capabilities demonstrated.)`
 
-**Choice 3:** Read the quiz and the multiple answers out loud and hope for a magic translation to code. :abbr:`? (Wrong!)` :abbr:`# ( Not implemented this year - just had to come up with yet another choice...)`
+**Choice 3:** Read the quiz and the multiple answers out loud and hope for a magic translation to code. :abbr:`? (Wrong!)` :abbr:`# ( Not implemented this year - just had to come up with yet another answer alternative...)`
 
 .. end quiz
 
 
 What about a video lecture?
 ---------------------------
+
+.. index:: video in DocOnce
+
+.. index:: embedded video in DocOnce
+
+.. index:: movie in DocOnce
 
 .. raw:: html
         

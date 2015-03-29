@@ -142,6 +142,23 @@ HTML or Sphinx styles.
 
 
 
+.. index:: IPython notebooks
+
+.. index:: notebooks
+
+.. index:: Jupyter notebooks
+
+IPython notebook
+~~~~~~~~~~~~~~~~
+
+Although there is no benefit from interactive computing and visualization
+in the present document, we may produce an IPython notebook for the fun of it:
+
+.. code-block:: text
+
+        Terminal> doconce format ipynb main_rules \ 
+                  CHAPTER=document BOOK=document APPENDIX=document
+
 .. index:: clean.sh
 
 Cleaning Files
@@ -197,7 +214,7 @@ alternative since it supports navigation, searching, and has an
 index. There is a script ``doc/src/book/make_html.sh`` that creates a
 Sphinx version of the book. Actually, it generates two versions
 
- * standard Sphinx `book <http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx/index.html>`__
+ * standard Sphinx `book <http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx/index.html>`__
 
- * `RunestoneInteractive <http://runestoneinteractive.org>`__ Sphinx `book <http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx-runestone/index.html>`__
+ * `RunestoneInteractive <http://runestoneinteractive.org>`__ Sphinx `book <http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx-runestone/index.html>`__
 

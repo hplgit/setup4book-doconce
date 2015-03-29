@@ -418,9 +418,12 @@ This is why code reuse is so hard. This is why everybody on your team has a diff
 </div>
 <div class="section" id="quiz">
 <h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
-<p id="index-5"><a class="reference external" href="http://runestoneinteractive.org">RunestoneInteractive</a> books has
+<div class="admonition-remark admonition" id="index-5">
+<p class="first admonition-title">Remark</p>
+<p class="last"><a class="reference external" href="http://runestoneinteractive.org">RunestoneInteractive</a> books has
 nice support for quizzes, but mathematics and code blocks (or other types
 of advanced formatting) are not allowed in answers and feedbacks.</p>
+</div>
 
             <div id="question_1" class="alert alert-warning">
             <p>Q-1: How can one typeset a multiple choice question or <em>quiz</em> in DocOnce?
@@ -449,7 +452,7 @@ Recall that a quiz may feature mathematics like</p>
             <script>
             $(document).ready(function(){checkRadio('question_1');});
             </script>
-            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_1','b',['This is almost true: \u003Ctt\u003Egetkahoot.com\u003C/tt\u003E has implemented support for DocOnce\u002Dgenerated quizzes with math and code :\u002D)', 'Here you see all capabilities demonstrated.', 'Not implemented this year \u002D just had to come up with yet another choice...'])">Check Me</button>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_1','b',['This is almost true: \u003Ctt\u003Egetkahoot.com\u003C/tt\u003E has implemented support for DocOnce\u002Dgenerated quizzes with math and code :\u002D)', 'Here you see all capabilities demonstrated.', 'Not implemented this year \u002D just had to come up with yet another answer alternative...'])">Check Me</button>
             <button class='btn btn-default' id="question_1_bcomp" disabled name="compare" onclick="compareAnswers('question_1');">Compare Me</button>
             </form><br />
             <div id="question_1_feedback">

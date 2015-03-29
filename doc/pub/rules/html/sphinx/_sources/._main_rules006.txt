@@ -8,6 +8,10 @@
 Study guides and slides
 =======================
 
+.. index:: slides
+
+.. index:: study guides
+
 DocOnce has good support for creating slides from ordinary documents
 with running text. Rather than speaking about slides, we think of
 *study guides* where the material is presented in a very condensed,
@@ -139,6 +143,8 @@ the slides' quality).
 Compiling slides
 ----------------
 
+.. index:: make_slides.sh
+
 There is a quite general script in ``doc/src/chapters/make_slides.sh`` for
 compiling a slide collection defined in a file like ``slides_ch2.do.txt``.
 Just run
@@ -180,6 +186,12 @@ The ``make_slides.sh`` script compiles a variety of slides:
 
 IPython/Jupyter notebooks
 -------------------------
+
+.. index:: IPython notebooks
+
+.. index:: notebooks
+
+.. index:: Jupyter notebooks
 
 Since DocOnce documents can be translated to IPython/Jupyter notebooks,
 hereafter just called notebooks, it is tempting to produce a version

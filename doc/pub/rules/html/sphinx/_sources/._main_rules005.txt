@@ -8,6 +8,10 @@
 Cross-referencing across chapters
 =================================
 
+.. index:: cross-referencing
+
+.. index:: generalized references
+
 A fundamental problem when writing a book *and* stand-alone chapters
 arises with cross-referencing. In a book file it makes sense to refer
 to an equation in any chapter, say (4.23), while in a stand-alone
@@ -36,6 +40,10 @@ produce the entire book or individual chapters.
 
 Syntax of generalized cross-references
 --------------------------------------
+
+.. index:: ref generalized reference
+
+.. index:: refch generalized reference
 
 Here is an example on a generalized reference to an equation in another
 document:

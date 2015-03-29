@@ -8,6 +8,10 @@
 Writing in private repository while publishing in public
 ========================================================
 
+.. index:: private repos
+
+.. index:: mirroring repos
+
 Sometimes you want to keep ongoing writing in a *private* repository
 and make only *selected* chapters and/or files publicly visible.
 In such cases

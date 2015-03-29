@@ -16,6 +16,8 @@ your project's needs.
 Making a new chapter
 --------------------
 
+.. index:: mkdir.sh
+
 Under ``doc/src/chapters``
 you find the chapters in this "sample book" as well as a script
 ``doc/chapters/mkdir.sh`` that creates a new directory for you with the
@@ -39,6 +41,8 @@ arguments for running ``doconce format pdflatex`` can be given to
 
 Compiling the chapter
 ---------------------
+
+.. index:: make.sh
 
 PDF
 ~~~
@@ -78,6 +82,8 @@ it gives cleaner LaTeX code). (With ``ptex2tex`` one would need a common
 configuration file ``doc/chapters/.ptex2tex.cfg`` to be copied by
 ``doc/chapters/make.sh`` to the chapter directory prior to running
 `ptex2tex.)
+
+.. index:: make_html.sh
 
 HTML
 ~~~~
@@ -137,6 +143,25 @@ HTML or Sphinx styles.
 
 
 
+.. index:: IPython notebooks
+
+.. index:: notebooks
+
+.. index:: Jupyter notebooks
+
+IPython notebook
+~~~~~~~~~~~~~~~~
+
+Although there is no benefit from interactive computing and visualization
+in the present document, we may produce an IPython notebook for the fun of it:
+
+.. code-block:: text
+
+        Terminal> doconce format ipynb main_rules \ 
+                  CHAPTER=document BOOK=document APPENDIX=document
+
+.. index:: clean.sh
+
 Cleaning Files
 ~~~~~~~~~~~~~~
 
@@ -176,4 +201,21 @@ Lecture Notes in Computer Science (proceedings), and Undergraduate Texts
 in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling ``book.do.txt`` or actually extending the DocOnce source code.
+
+HTML/Sphinx versions of the book
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: RunestoneInteractive books
+
+.. index:: sphinx
+
+It is easy to make a standard HTML version of the ``book.do.txt``
+manuscript, but for large books, Sphinx is usually a better
+alternative since it supports navigation, searching, and has an
+index. There is a script ``doc/src/book/make_html.sh`` that creates a
+Sphinx version of the book. Actually, it generates two versions
+
+ * standard Sphinx `book <http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx/index.html>`__
+
+ * `RunestoneInteractive <http://runestoneinteractive.org>`__ Sphinx `book <http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx-runestone/index.html>`__
 

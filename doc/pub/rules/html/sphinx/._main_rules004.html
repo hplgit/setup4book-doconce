@@ -86,7 +86,7 @@ the instructions below to start writing and adapting the structure to
 your project&#8217;s needs.</p>
 <div class="section" id="making-a-new-chapter">
 <h2>Making a new chapter<a class="headerlink" href="#making-a-new-chapter" title="Permalink to this headline">¶</a></h2>
-<p>Under <tt class="docutils literal"><span class="pre">doc/src/chapters</span></tt>
+<p id="index-0">Under <tt class="docutils literal"><span class="pre">doc/src/chapters</span></tt>
 you find the chapters in this &#8220;sample book&#8221; as well as a script
 <tt class="docutils literal"><span class="pre">doc/chapters/mkdir.sh</span></tt> that creates a new directory for you with the
 typical files needed for a new chapter. You can either edit existing
@@ -108,7 +108,7 @@ arguments for running <tt class="docutils literal"><span class="pre">doconce</sp
 <div class="section" id="compiling-the-chapter">
 <h2>Compiling the chapter<a class="headerlink" href="#compiling-the-chapter" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pdf">
-<h3>PDF<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
+<span id="index-1"></span><h3>PDF<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
 <p>To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
 we propose the convention to have a <tt class="docutils literal"><span class="pre">make.sh</span></tt> in each chapter directory.
 This <tt class="docutils literal"><span class="pre">make.sh</span></tt> can in most cases just call up a common <tt class="docutils literal"><span class="pre">../make.sh</span></tt>
@@ -140,7 +140,7 @@ configuration file <tt class="docutils literal"><span class="pre">doc/chapters/.
 <a href="#id1"><span class="problematic" id="id2">`</span></a>ptex2tex.)</p>
 </div>
 <div class="section" id="html">
-<h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
+<span id="index-2"></span><h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
 <p>There is also a script <tt class="docutils literal"><span class="pre">doc/src/chapters/make_html.sh</span></tt> for making
 HTML versions of the chapter. Just call this as</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; bash ../make_html.sh main_mychap
@@ -183,9 +183,18 @@ so you will normally compile this manually now and then as</p>
 </div>
 <p class="last">and publish it in <tt class="docutils literal"><span class="pre">doc/pub/index.html</span></tt>.</p>
 </div>
+<span class="target" id="index-3"></span><span class="target" id="index-4"></span></div>
+<div class="section" id="ipython-notebook">
+<span id="index-5"></span><h3>IPython notebook<a class="headerlink" href="#ipython-notebook" title="Permalink to this headline">¶</a></h3>
+<p>Although there is no benefit from interactive computing and visualization
+in the present document, we may produce an IPython notebook for the fun of it:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format ipynb main_rules \
+          CHAPTER=document BOOK=document APPENDIX=document
+</pre></div>
+</div>
 </div>
 <div class="section" id="cleaning-files">
-<h3>Cleaning Files<a class="headerlink" href="#cleaning-files" title="Permalink to this headline">¶</a></h3>
+<span id="index-6"></span><h3>Cleaning Files<a class="headerlink" href="#cleaning-files" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">make*.sh</span></tt> files generate a lot of files that can easily
 be regenerated and that are normally removed from the chapter
 directories. The script <tt class="docutils literal"><span class="pre">sh</span> <span class="pre">../clean.sh</span></tt> can be run in any
@@ -219,6 +228,20 @@ Lecture Notes in Computer Science (proceedings), and Undergraduate Texts
 in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling <tt class="docutils literal"><span class="pre">book.do.txt</span></tt> or actually extending the DocOnce source code.</p>
+<div class="section" id="html-sphinx-versions-of-the-book">
+<h3>HTML/Sphinx versions of the book<a class="headerlink" href="#html-sphinx-versions-of-the-book" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-7"></span><p id="index-8">It is easy to make a standard HTML version of the <tt class="docutils literal"><span class="pre">book.do.txt</span></tt>
+manuscript, but for large books, Sphinx is usually a better
+alternative since it supports navigation, searching, and has an
+index. There is a script <tt class="docutils literal"><span class="pre">doc/src/book/make_html.sh</span></tt> that creates a
+Sphinx version of the book. Actually, it generates two versions</p>
+<blockquote>
+<div><ul class="simple">
+<li>standard Sphinx <a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx/index.html">book</a></li>
+<li><a class="reference external" href="http://runestoneinteractive.org">RunestoneInteractive</a> Sphinx <a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/sphinx-runestone/index.html">book</a></li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 </div>
 
@@ -240,11 +263,15 @@ compiling <tt class="docutils literal"><span class="pre">book.do.txt</span></tt>
 <li><a class="reference internal" href="#compiling-the-chapter">Compiling the chapter</a><ul>
 <li><a class="reference internal" href="#pdf">PDF</a></li>
 <li><a class="reference internal" href="#html">HTML</a></li>
+<li><a class="reference internal" href="#ipython-notebook">IPython notebook</a></li>
 <li><a class="reference internal" href="#cleaning-files">Cleaning Files</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#about-figures-when-publishing-html">About figures when publishing HTML</a></li>
-<li><a class="reference internal" href="#compiling-the-book">Compiling the book</a></li>
+<li><a class="reference internal" href="#compiling-the-book">Compiling the book</a><ul>
+<li><a class="reference internal" href="#html-sphinx-versions-of-the-book">HTML/Sphinx versions of the book</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
