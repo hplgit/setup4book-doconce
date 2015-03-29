@@ -72,43 +72,44 @@ div { text-align: justify; text-justify: inter-word; }
               (' Organization of a chapter ', 2, None, '___sec3'),
               (' Figures and source code ', 2, None, '___sec4'),
               (' Assembly of chapters to a book ', 2, None, '___sec5'),
-              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' HTML/Sphinx versions of the book ', 2, None, '___sec6'),
               (' Tools ', 1, None, '___sec7'),
               (' Making a new chapter ', 2, None, '___sec8'),
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
               (' Cleaning Files ', 3, None, '___sec12'),
-              (' Compiling the book ', 2, None, '___sec13'),
-              (' Cross-referencing across chapters ', 1, None, '___sec14'),
+              (' About figures when publishing HTML ', 2, None, '___sec13'),
+              (' Compiling the book ', 2, None, '___sec14'),
+              (' Cross-referencing across chapters ', 1, None, '___sec15'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec15'),
-              (' Study guides and slides ', 1, None, '___sec16'),
-              (' Slide directory ', 2, None, '___sec17'),
-              (' Generating slides from running text ', 2, None, '___sec18'),
-              (' Compiling slides ', 2, None, '___sec19'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+               '___sec16'),
+              (' Study guides and slides ', 1, None, '___sec17'),
+              (' Slide directory ', 2, None, '___sec18'),
+              (' Generating slides from running text ', 2, None, '___sec19'),
+              (' Compiling slides ', 2, None, '___sec20'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec21'),
               (' Writing in private repository while publishing in public ',
                1,
                None,
-               '___sec21'),
+               '___sec22'),
               (' Special features for teaching material ',
                1,
                None,
-               '___sec22'),
-              (' Admonitions ', 2, None, '___sec23'),
+               '___sec23'),
+              (' Admonitions ', 2, None, '___sec24'),
               (' Put a box around something very important ',
                2,
                None,
-               '___sec24'),
-              (' Interactive code ', 2, None, '___sec25'),
-              (' Exercises ', 2, None, '___sec26'),
-              (' Quote ', 2, None, '___sec27'),
-              (' Quiz ', 2, None, '___sec28'),
-              (' What about a video lecture? ', 2, None, '___sec29'),
-              (' References ', 1, None, '___sec30')]}
+               '___sec25'),
+              (' Interactive code ', 2, None, '___sec26'),
+              (' Exercises ', 2, None, '___sec27'),
+              (' Quote ', 2, None, '___sec28'),
+              (' Quiz ', 2, None, '___sec29'),
+              (' What about a video lecture? ', 2, None, '___sec30'),
+              (' References ', 1, None, '___sec31')]}
 end of tocinfo -->
 
 <body>
@@ -370,17 +371,20 @@ Other error messages point to specific lines
 that Mako struggles with. Go to the file <code>tmp_mako__book.do.txt</code>
 to investigate the line.
 
-<h2 id="___sec6">About figures when publishing HTML </h2>
+<h2 id="___sec6">HTML/Sphinx versions of the book </h2>
 
 <p>
-There will be <code>&lt;img src=fig-ch2/fig1.png&gt;</code> type of tags in HTML code
-produced by DocOnce, so it is very important to ensure that the
-<em>published</em> <code>.html</code> files have access to a subdirectory
-<code>fig-ch2</code>. Normally, one needs to copy <code>fig-ch2</code> from the <code>ch2</code>
-chapter source directory to some publishing directory that stores all
-the files necessary for accessing the entire HTML document on the web.
+It is easy to make a standard HTML version of the <code>book.do.txt</code> manuscript, but
+for large books, Sphinx is usually a better alternative since it supports
+navigation, searching, and has an index. There is a script <code>make_rs.sh</code>
+that creates a Sphinx version of the book. Actually, it generates two
+versions
 
-<p>
+<ul>
+ <li> standard Sphinx book</li>
+ <li> <a href="http://runestoneinteractive.org" target="_self">RunestoneInteractive</a> Sphinx book</li>
+</ul>
+
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>

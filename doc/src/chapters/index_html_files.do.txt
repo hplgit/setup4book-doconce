@@ -39,7 +39,7 @@ formats:
  * "HTML plain bootstrap style": "${CHAPTER}-bootstrap.html"
  * "HTML bootswatch readable style": "${CHAPTER}-readable.html"
  * "HTML solarized color style": "${CHAPTER}-solarized.html"
- * "HTML Sphinx pyramid style": "sphinx-pyramid/index.html"
+ * "HTML Sphinx style": "sphinx/index.html"
 
 % if has_slides():
 Slides:

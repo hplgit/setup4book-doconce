@@ -1,0 +1,23 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+Use of Mako to aid book writing
+===============================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 3
+
+   ._main_mako000
+   ._main_mako001
+   ._main_mako002
+   ._main_mako003
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

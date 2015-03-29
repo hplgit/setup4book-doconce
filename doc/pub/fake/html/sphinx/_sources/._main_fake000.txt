@@ -1,0 +1,43 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+Some document
+%%%%%%%%%%%%%
+
+:Authors: Hans Petter Langtangen
+:Date: Mar 29, 2015
+
+.. Common Mako variables and functions
+
+This is just a fake chapter used to exemplify cross referencing
+across chapters.
+
+.. _sec:eqs:
+
+Equations
+=========
+
+Here is the world's most famous equation:
+
+.. _Eq:fake:Emc2:
+
+.. math::
+   :label: fake:Emc2
+        
+        E = mc^2
+        
+        
+
+It is mentioned here so that we can refer to it from another document,
+typically 
+the document `Directory and file structure <http://hplgit.gthub.io/setup4book-doconce/doc/pub/rules>`__
+[Ref1]_.
+
+References
+==========
+
+.. [Ref1]
+   **H. P. Langtangen**. Directory and file structure,
+   `http://hplgit.github.io/setup4book-doconce/doc/pub/rules <http://hplgit.github.io/setup4book-doconce/doc/pub/rules>`_.
+
+

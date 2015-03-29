@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cross-referencing across chapters</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Directory and file structure" href="index.html" />
+    <link rel="next" title="Study guides and slides" href="._main_rules006.html" />
+    <link rel="prev" title="Tools" href="._main_rules004.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_rules006.html" title="Study guides and slides"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._main_rules004.html" title="Tools"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cross-referencing-across-chapters">
+<h1>Cross-referencing across chapters<a class="headerlink" href="#cross-referencing-across-chapters" title="Permalink to this headline">¶</a></h1>
+<p>A fundamental problem when writing a book <em>and</em> stand-alone chapters
+arises with cross-referencing. In a book file it makes sense to refer
+to an equation in any chapter, say (4.23), while in a stand-alone
+chapter references to equations or sections in other stand-alone
+documents will not work. That is, LaTeX has a native mechanism for
+this, the <tt class="docutils literal"><span class="pre">xr</span></tt> package, where one can register a set of <tt class="docutils literal"><span class="pre">.aux</span></tt> files
+for other LaTeX documents and refer directly to these labels and get
+them right. It is then possible to write something like</p>
+<div class="highlight-latex"><div class="highlight"><pre>see (<span class="k">\eqref</span><span class="nb">{</span>sec:results:u:eq<span class="nb">}</span>) in <span class="k">\cite</span><span class="nb">{</span>Hansen<span class="nb">_</span>2011b<span class="nb">}</span>
+</pre></div>
+</div>
+<p>and get it out as</p>
+<div class="highlight-text"><div class="highlight"><pre>see (2.37) in [12]
+</pre></div>
+</div>
+<p>provided our <tt class="docutils literal"><span class="pre">.tex</span></tt> file contains <tt class="docutils literal"><span class="pre">\externaldocument{myother}</span></tt>
+and the label <tt class="docutils literal"><span class="pre">sec:results:u:eq</span></tt> is defined in <tt class="docutils literal"><span class="pre">myother.aux</span></tt>. DocOnce
+has generalized this feature so it works for non-LaTeX formats as well.
+It is called <em>generalized cross-references</em>. You can then write
+such references across chapters and get all labels right whether you
+produce the entire book or individual chapters.</p>
+<div class="section" id="syntax-of-generalized-cross-references">
+<h2>Syntax of generalized cross-references<a class="headerlink" href="#syntax-of-generalized-cross-references" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example on a generalized reference to an equation in another
+document:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>The world&#39;s most famous equation is ref[(ref{fake:Emc2})][in
+cite{Langtangen_dobook_fake}][
+as found in the document &quot;Some document&quot;:
+<span class="s">&quot;http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake&quot;</span>
+cite{Langtangen_dobook_fake}].
+</pre></div>
+</div>
+<p>This sentence is rendered as follows in the present format (<tt class="docutils literal"><span class="pre">sphinx</span></tt>):</p>
+<p>The world&#8217;s most famous equation is
+as found in the document <a class="reference external" href="http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake">Some document</a>
+<a class="reference internal" href="._main_rules008.html#ref2" id="id1">[Ref2]</a>.</p>
+<p>More detailed information about generalized cross-references is
+found in the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-cross-referencing">DocOnce manual</a>.
+In particular, one has to insert <tt class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></tt> commands in
+all <tt class="docutils literal"><span class="pre">main_*.do.txt</span></tt> files that includes files with generalized
+references.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
+              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cross-referencing across chapters</a><ul>
+<li><a class="reference internal" href="#syntax-of-generalized-cross-references">Syntax of generalized cross-references</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_rules004.html"
+                        title="previous chapter">Tools</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._main_rules006.html"
+                        title="next chapter">Study guides and slides</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_rules005.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_rules006.html" title="Study guides and slides"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._main_rules004.html" title="Tools"
+             >previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
+  </div>
+</div>
+
+  </body>
+</html>

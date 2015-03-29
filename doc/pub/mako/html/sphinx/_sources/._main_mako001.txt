@@ -1,0 +1,47 @@
+.. !split
+
+Use of variables
+================
+
+Mako is the preprocessor that is always run prior to translating DocOnce
+documents into a specific format. It means that your DocOnce source is
+actually a computer program where you can use variables and functions.
+
+Writing chapters that can both live their individual lives and be part of
+a book faces some challenges for which we have some nice solutions
+in the coming sections.
+
+How to speak about "this chapter"
+---------------------------------
+
+In a book you will often need the phrase "this chapter", but his is
+inappropriate if the chapter is a stand-alone document. Then you would
+rather say "this document". Similarly, "this book" must read
+"this document" in a stand-alone chapter.
+We have resolved this issue by introducing
+Mako variables ``CHAPTER``, ``BOOK``, and ``APPENDIX`` such that you
+write
+
+.. code-block:: doconce
+
+        In this ${BOOK}, the convention is to use boldface for vectors.
+
+For this to work, you need to define ``CHAPTER``, ``BOOK``, and ``APPENDIX``
+as variables on the command line as part of the ``doconce format`` command:
+
+.. code-block:: text
+
+        Terminal> doconce format pdflatex ch2 --latex_code_style=pyg \
+                  CHAPTER=document BOOK=document APPENDIX=document
+
+When the book is compiled, you do
+
+.. code-block:: text
+
+        Terminal> doconce format pdflatex ch2 --latex_code_style=pyg \
+                  CHAPTER=chapter BOOK=chapter APPENDIX=chapter
+
+The ``make.sh`` files for found in ``doc/src/chapter/make.sh`` and
+``doc/src/book/make.sh`` make proper definitions of
+``CHAPTER``, ``BOOK``, and ``APPENDIX``.
+

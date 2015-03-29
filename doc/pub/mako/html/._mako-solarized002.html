@@ -1,0 +1,190 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Use of Mako to aid book writing">
+
+<title>Use of Mako to aid book writing</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Use of variables ', 1, None, '___sec0'),
+              (" How to speak about ``this chapter'' ", 2, None, '___sec1'),
+              (' How to make several variants of the text ',
+               1,
+               None,
+               '___sec2'),
+              (' Use of Mako/Python functions ', 1, None, '___sec3'),
+              (' How to treat two programming languages in the same text ',
+               2,
+               None,
+               '___sec4'),
+              (' References ', 1, None, '___sec5')]}
+end of tocinfo -->
+
+<body>
+
+    
+<a name="part0002"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._mako-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._mako-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec2">How to make several variants of the text </h1>
+
+<p>
+Sometimes you want to write some text slightly differently if the
+chapter is a stand-alone document compared to the case when it is
+part of a book. Mako if tests are ideal for this. Suppose you
+introduce a Mako variable <code>ALONE</code> that is true/defined if the chapter
+is a stand-alone document and false/undefined if part of a book. Then
+you can simply write
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>In this
+%% if ALONE:
+rather small
+%% else:
+large
+%% endif
+${BOOK}
+</code></pre>
+<!-- end verbatim block -->
+Running <code>doconce format</code> with the option <code>-DALONE</code> will turn <code>ALONE</code> to
+true and the output is typically
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>In this rather small document
+</code></pre>
+<!-- end verbatim block -->
+while for a book we skip <code>-DALONE</code> as argument to <code>doconce format</code>,
+which makes <code>ALONE</code> undefined, and we
+get the output
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>In this large book
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Mako variables can be defined/undefined (boolean variables) or be
+standard strings:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>%% if SOME_STRING_VARIABLE in ('value1', 'value2'):
+some running text
+%% endif
+
+...
+
+%% if not SOME_BOOLEAN_VARIABLE:
+some other running text
+%% else:
+yet more different text
+%% endif
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+With Mako variables, you can easily comment out large portions
+of text by testing on some variable you do not intend to define:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>%% if EXTRA:
+This is
+text that
+will never
+appear in the
+output.
+%% endif
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Also, it is straightforward to write more than one version of a
+chapter. For example, you may want to produce a version of a chapter
+that is tailored to a specific course, while you for general publishing
+on the Internet want a more general version, and maybe a third version
+when the chapter is included in a book for the international market.
+All this is easily done by if tests on appropriately defined Mako
+variables
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>%% if COURSE == 'IT1713':
+# Specific text for a course IT1713
+...
+%% elif COURSE == 'IT1713b':
+# Specific text for a the special IT1713b variant of the course
+...
+%% elif COURSE == 'general':
+# General text when the chapter is a stand-alone document
+...
+%% elif COURSE == 'book1':
+# Text when course is a part of a particular book
+...
+%% elif COURSE == 'book2':
+# Text when course is a part of another book
+...
+%% endif
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._mako-solarized001.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._mako-solarized003.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

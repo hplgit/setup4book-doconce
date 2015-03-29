@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Writing in private repository while publishing in public</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Directory and file structure" href="index.html" />
+    <link rel="next" title="Special features for teaching material" href="._main_rules008.html" />
+    <link rel="prev" title="Study guides and slides" href="._main_rules006.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_rules008.html" title="Special features for teaching material"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._main_rules006.html" title="Study guides and slides"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="writing-in-private-repository-while-publishing-in-public">
+<h1>Writing in private repository while publishing in public<a class="headerlink" href="#writing-in-private-repository-while-publishing-in-public" title="Permalink to this headline">¶</a></h1>
+<p>Sometimes you want to keep ongoing writing in a <em>private</em> repository
+and make only <em>selected</em> chapters and/or files publicly visible.
+In such cases
+one can set up the book project structure in a private repository, but
+use a public repository instead of the <tt class="docutils literal"><span class="pre">doc/pub</span></tt> directory for publishing
+selected compiled documents. This is easy: just change the <tt class="docutils literal"><span class="pre">dest=</span></tt>
+line, where the publishing directory is defined, in all <tt class="docutils literal"><span class="pre">make*.sh</span></tt>
+scripts in <tt class="docutils literal"><span class="pre">doc/src/chapters</span></tt>. The files will then be copied to
+this alternative destination.</p>
+<p>Often, you want to publish the software associated with the book
+project, stored in <tt class="docutils literal"><span class="pre">doc/src/chapter/nickname/src-nickname</span></tt>, as a part
+of the public repository. Such files can also easily be copied, say to
+<tt class="docutils literal"><span class="pre">src/nickname</span></tt> in the public repository. However, software files often
+change names and locations in subdirectories, and then you need to be
+very careful with updating the Git commands in the public repository
+every time you do <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt> or <tt class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span></tt> locally in the private
+repository.  This problem occurs with text files too, but maybe less
+often, so the recipe given below applies to all kind of files you want
+to mirror from a private to a public repository.</p>
+<p>We have made a script <a class="reference external" href="https://github.com/hplgit/setup4book-doconce/tree/master/doc/src/chapters/rules/src-rules/rsync_git.py">rsync_git.py</a>
+that can copy files from one repository to another and log files that
+are removed or deleted and then take the appropriate Git actions.
+Running</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+</pre></div>
+</div>
+<p>will copy all files from <tt class="docutils literal"><span class="pre">src-mychap</span></tt> to <tt class="docutils literal"><span class="pre">$HOME/repos/pub/mybook/src/mychap</span></tt>,
+find which files that are new in <tt class="docutils literal"><span class="pre">src-mychap</span></tt> and
+must be added to the destination directory, and which files
+that are removed in <tt class="docutils literal"><span class="pre">src-mychap</span></tt> and should be removed in the destination
+directory as well.
+An <tt class="docutils literal"><span class="pre">rsync</span></tt> command is run to the physical copy and removal of
+files, followed by <tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">rm</span></tt>
+commands. In this way, you can automatically keep the public repository
+as a mirror <em>of parts</em> of your private repository! <a class="footnote-reference" href="#rsync-git" id="id1">[1]</a></p>
+<table class="docutils footnote" frame="void" id="rsync-git" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This functionality should be a part of Git, but no Git expert I have talked to has ever seen use for merging a flexibly defined subset of a repository with another repository. (The current functionality of Git is not capable of working with, e.g., branches that merge with only parts of another branch.)</td></tr>
+</tbody>
+</table>
+<p>The <tt class="docutils literal"><span class="pre">rsync_git.py</span></tt> script is listed below for reference. Note that
+a file <tt class="docutils literal"><span class="pre">$HOME/.rsyncexclude</span></tt> can be made to filter out certain files
+that you never want to copy (this is always a good idea!).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Sync two directory trees with rsync and perform corresponding</span>
+<span class="sd">git operations (add or rm).</span>
+<span class="sd">Skip files listed in $HOME/.rsyncexclude.</span>
+
+<span class="sd">Usage:   rsync_git.py from-dir to-dir</span>
+<span class="sd">Example: rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap</span>
+
+<span class="sd">The from-dir is the source and the to-dir is the destination</span>
+<span class="sd">(e.g. a public directory where resources are exposed).</span>
+<span class="sd">The script must be run from a dir within the repo of to-dir.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># Typical rsync output:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">sending incremental file list</span>
+<span class="sd">deleting decay7.py</span>
+<span class="sd">decay_TULL.py</span>
+
+<span class="sd">sent 675 bytes  received 34 bytes  1418.00 bytes/sec</span>
+<span class="sd">total size is 94788  speedup is 133.69</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># Example on $HOME/.rsyncexclude file</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.#*</span>
+<span class="sd">#*</span>
+<span class="sd">*.rsync~</span>
+<span class="sd">*.a</span>
+<span class="sd">*.o</span>
+<span class="sd">*.so</span>
+<span class="sd">*~</span>
+<span class="sd">.*~</span>
+<span class="sd">*.log</span>
+<span class="sd">*.dvi</span>
+<span class="sd">*.aux</span>
+<span class="sd">*.old</span>
+<span class="sd">tmp_*</span>
+<span class="sd">.tmp*</span>
+<span class="sd">*.tar</span>
+<span class="sd">*.tar.gz</span>
+<span class="sd">*.tgz</span>
+<span class="sd">*.pyc</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">commands</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="n">from_</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">to_</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="s">&#39;rsync -rtDvz -u -e ssh -b &#39;</span> <span class="o">+</span> \
+      <span class="s">&#39;--exclude-from=$HOME/.rsyncexclude &#39;</span> <span class="o">+</span> \
+      <span class="s">&#39;--suffix=.rsync~ --delete --force </span><span class="si">%s</span><span class="s">/ </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_</span><span class="p">,</span> <span class="n">to_</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">cmd</span>
+<span class="n">failure</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">getstatusoutput</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">output</span>
+
+<span class="n">delete</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">add</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+    <span class="n">relevant_line</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="s">&#39;sending incremental file list&#39;</span><span class="p">,</span> \
+        <span class="s">&#39;sent &#39;</span><span class="p">,</span> <span class="s">&#39;total size is&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+            <span class="n">relevant_line</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="n">relevant_line</span> <span class="ow">and</span> <span class="n">line</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;deleting&#39;</span><span class="p">):</span>
+            <span class="n">delete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">add</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="k">print</span> <span class="n">delete</span>
+<span class="k">print</span> <span class="n">add</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">delete</span><span class="p">:</span>
+    <span class="n">option</span> <span class="o">=</span> <span class="s">&#39;-rf&#39;</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">to_</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span> <span class="k">else</span> <span class="s">&#39;-f&#39;</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s">&#39;git rm </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="n">to_</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">cmd</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">add</span><span class="p">:</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="s">&#39;git add </span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">to_</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">cmd</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
+              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_rules006.html"
+                        title="previous chapter">Study guides and slides</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._main_rules008.html"
+                        title="next chapter">Special features for teaching material</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_rules007.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_rules008.html" title="Special features for teaching material"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._main_rules006.html" title="Study guides and slides"
+             >previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
+  </div>
+</div>
+
+  </body>
+</html>

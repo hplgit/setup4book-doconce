@@ -44,7 +44,7 @@ TOC: off
    "plain bootstrap style": "${pub_url}/${name}/html/${name}-bootstrap.html",
    "bootswatch readable style": "${pub_url}/${name}/html/${name}-readable.html",
    "solarized color style": "${pub_url}/${name}/html/${name}-solarized.html",
-   "Sphinx pyramid style": "${pub_url}/${name}/html/sphinx-pyramid/index.html"
+   "Sphinx style": "${pub_url}/${name}/html/sphinx/index.html"
 </%def>
 
 ## Mako function: list various formats for a chapter's slides

@@ -1,0 +1,84 @@
+.. !split
+
+Use of Mako/Python functions
+============================
+
+Such if tests are fine to handle larger portions of text. What if you
+need to have four versions of just one word or very short text?
+A Mako function, defined as a standard Python function,
+is then more appropriate.
+
+Here is a definition of a suitable Mako function, defined inside
+``<%`` and ``%>`` tags:
+
+.. code-block:: python
+
+        <%
+        def chversion(text_IT1413, text_IT1713b, text_general,
+                      text_book1, text_book2):
+            if COURSE == 'IT1713':
+                return text_IT1413
+            elif COURSE == 'IT1713b':
+                text_IT1413b
+            elif COURSE == 'general':
+                return text_general
+            elif COURSE == 'book1':
+                return text_book1
+            elif COURSE == 'book2':
+                return text_book2
+            else:
+                return 'XXX WRONG value of COURSE: %s' % COURSE
+        %>
+
+In the running text you can call ``chversion`` with five arguments,
+corresponding to the desired text in the five cases, and when ``doconce format``
+is run, the value of ``COURSE`` determines which of the five cases that is used.
+Here is an example on DocOnce text with a function call to ``chversion``:
+
+.. code-block:: doconce
+
+        It is extremely important to define the term *cure* accurately.
+        Here we mean ${chversion('handle', 'handle',
+        'resolve', 'treat', 'resolve')}.
+
+You can easily use long multi-line strings as arguments, e.g.,
+
+.. code-block:: doconce
+
+        ... ${chversion("""
+        Here comes
+        a multi-line
+        string""",
+        'short string',
+        'another short string',
+        """4th
+        multi-line
+        string""",
+        '5th string')}
+        ...
+
+How to treat two programming languages in the same text
+-------------------------------------------------------
+
+With these ideas, it becomes straightforward to write a book that
+has its program examples in multiple languages. Introduce ``CODE``
+as the name of the language and use if tests for larger portions
+of code and text, and a Mako function for shorter inline texts.
+Copying code from file can also be hidden in a Mako function such
+that you write ``${copyfile('myprog')}`` and automatically get
+it as ``src-ch2/python/myprog.py`` if ``COODE`` is ``python``,
+``src-ch2/matlab/myprog.m`` if ``CODE`` is ``matlab``, and so forth.
+The author has successfully co-written such a `book <http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html>`__
+[Ref1]_
+for mathematical programming with either Python or Matlab - the version
+is set when running ``doconce format``.
+
+References
+==========
+
+.. [Ref1]
+   **S. Linge and H. P. Langtangen**. *Programming for Computations*,
+   2015,
+   `http://hplgit.github.io/Programming-for-Computations/pub/p4c/ <http://hplgit.github.io/Programming-for-Computations/pub/p4c/>`_.
+
+

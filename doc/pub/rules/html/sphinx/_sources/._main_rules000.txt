@@ -1,0 +1,19 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
+Directory and file structure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: Hans Petter Langtangen
+:Date: Mar 29, 2015
+
+.. Externaldocuments: ../fake/main_fake
+
+.. Common Mako variables and functions
+
+This document describes the file structure of book projects.
+The setup can of course be used for proceedings and theses as well.
+

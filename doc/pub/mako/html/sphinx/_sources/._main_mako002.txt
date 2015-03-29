@@ -1,0 +1,94 @@
+.. !split
+
+How to make several variants of the text
+========================================
+
+Sometimes you want to write some text slightly differently if the
+chapter is a stand-alone document compared to the case when it is
+part of a book. Mako if tests are ideal for this. Suppose you
+introduce a Mako variable ``ALONE`` that is true/defined if the chapter
+is a stand-alone document and false/undefined if part of a book. Then
+you can simply write
+
+.. code-block:: python
+
+        In this
+        %% if ALONE:
+        rather small
+        %% else:
+        large
+        %% endif
+        ${BOOK}
+
+Running ``doconce format`` with the option ``-DALONE`` will turn ``ALONE`` to
+true and the output is typically
+
+.. code-block:: text
+
+        In this rather small document
+
+while for a book we skip ``-DALONE`` as argument to ``doconce format``,
+which makes ``ALONE`` undefined, and we
+get the output
+
+.. code-block:: text
+
+        In this large book
+
+Mako variables can be defined/undefined (boolean variables) or be
+standard strings:
+
+.. code-block:: python
+
+        %% if SOME_STRING_VARIABLE in ('value1', 'value2'):
+        some running text
+        %% endif
+        
+        ...
+        
+        %% if not SOME_BOOLEAN_VARIABLE:
+        some other running text
+        %% else:
+        yet more different text
+        %% endif
+
+With Mako variables, you can easily comment out large portions
+of text by testing on some variable you do not intend to define:
+
+.. code-block:: python
+
+        %% if EXTRA:
+        This is
+        text that
+        will never
+        appear in the
+        output.
+        %% endif
+
+Also, it is straightforward to write more than one version of a
+chapter. For example, you may want to produce a version of a chapter
+that is tailored to a specific course, while you for general publishing
+on the Internet want a more general version, and maybe a third version
+when the chapter is included in a book for the international market.
+All this is easily done by if tests on appropriately defined Mako
+variables
+
+.. code-block:: python
+
+        %% if COURSE == 'IT1713':
+        # Specific text for a course IT1713
+        ...
+        %% elif COURSE == 'IT1713b':
+        # Specific text for a the special IT1713b variant of the course
+        ...
+        %% elif COURSE == 'general':
+        # General text when the chapter is a stand-alone document
+        ...
+        %% elif COURSE == 'book1':
+        # Text when course is a part of a particular book
+        ...
+        %% elif COURSE == 'book2':
+        # Text when course is a part of another book
+        ...
+        %% endif
+

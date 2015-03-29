@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Use of Mako/Python functions</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Use of Mako to aid book writing" href="index.html" />
+    <link rel="prev" title="How to make several variants of the text" href="._main_mako002.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_mako002.html" title="How to make several variants of the text"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="use-of-mako-python-functions">
+<h1>Use of Mako/Python functions<a class="headerlink" href="#use-of-mako-python-functions" title="Permalink to this headline">¶</a></h1>
+<p>Such if tests are fine to handle larger portions of text. What if you
+need to have four versions of just one word or very short text?
+A Mako function, defined as a standard Python function,
+is then more appropriate.</p>
+<p>Here is a definition of a suitable Mako function, defined inside
+<tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt> tags:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;%</span>
+<span class="k">def</span> <span class="nf">chversion</span><span class="p">(</span><span class="n">text_IT1413</span><span class="p">,</span> <span class="n">text_IT1713b</span><span class="p">,</span> <span class="n">text_general</span><span class="p">,</span>
+              <span class="n">text_book1</span><span class="p">,</span> <span class="n">text_book2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">COURSE</span> <span class="o">==</span> <span class="s">&#39;IT1713&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text_IT1413</span>
+    <span class="k">elif</span> <span class="n">COURSE</span> <span class="o">==</span> <span class="s">&#39;IT1713b&#39;</span><span class="p">:</span>
+        <span class="n">text_IT1413b</span>
+    <span class="k">elif</span> <span class="n">COURSE</span> <span class="o">==</span> <span class="s">&#39;general&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text_general</span>
+    <span class="k">elif</span> <span class="n">COURSE</span> <span class="o">==</span> <span class="s">&#39;book1&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text_book1</span>
+    <span class="k">elif</span> <span class="n">COURSE</span> <span class="o">==</span> <span class="s">&#39;book2&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">text_book2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;XXX WRONG value of COURSE: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">COURSE</span>
+<span class="o">%&gt;</span>
+</pre></div>
+</div>
+<p>In the running text you can call <tt class="docutils literal"><span class="pre">chversion</span></tt> with five arguments,
+corresponding to the desired text in the five cases, and when <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
+is run, the value of <tt class="docutils literal"><span class="pre">COURSE</span></tt> determines which of the five cases that is used.
+Here is an example on DocOnce text with a function call to <tt class="docutils literal"><span class="pre">chversion</span></tt>:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>It is extremely important to define the term *cure* accurately.
+Here we mean ${chversion(&#39;handle&#39;, &#39;handle&#39;,
+&#39;resolve&#39;, &#39;treat&#39;, &#39;resolve&#39;)}.
+</pre></div>
+</div>
+<p>You can easily use long multi-line strings as arguments, e.g.,</p>
+<div class="highlight-doconce"><div class="highlight"><pre>... ${chversion(&quot;&quot;&quot;
+Here comes
+a multi-line
+string&quot;&quot;&quot;,
+&#39;short string&#39;,
+&#39;another short string&#39;,
+<span class="s">&quot;&quot;&quot;</span>4th
+multi-line
+string&quot;&quot;&quot;,
+&#39;5th string&#39;)}
+...
+</pre></div>
+</div>
+<div class="section" id="how-to-treat-two-programming-languages-in-the-same-text">
+<h2>How to treat two programming languages in the same text<a class="headerlink" href="#how-to-treat-two-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
+<p>With these ideas, it becomes straightforward to write a book that
+has its program examples in multiple languages. Introduce <tt class="docutils literal"><span class="pre">CODE</span></tt>
+as the name of the language and use if tests for larger portions
+of code and text, and a Mako function for shorter inline texts.
+Copying code from file can also be hidden in a Mako function such
+that you write <tt class="docutils literal"><span class="pre">${copyfile('myprog')}</span></tt> and automatically get
+it as <tt class="docutils literal"><span class="pre">src-ch2/python/myprog.py</span></tt> if <tt class="docutils literal"><span class="pre">COODE</span></tt> is <tt class="docutils literal"><span class="pre">python</span></tt>,
+<tt class="docutils literal"><span class="pre">src-ch2/matlab/myprog.m</span></tt> if <tt class="docutils literal"><span class="pre">CODE</span></tt> is <tt class="docutils literal"><span class="pre">matlab</span></tt>, and so forth.
+The author has successfully co-written such a <a class="reference external" href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html">book</a>
+<a class="reference internal" href="#ref1" id="id1">[Ref1]</a>
+for mathematical programming with either Python or Matlab - the version
+is set when running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<table class="docutils citation" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Ref1]</a></td><td><strong>S. Linge and H. P. Langtangen</strong>. <em>Programming for Computations</em>,
+2015,
+<a class="reference external" href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/">http://hplgit.github.io/Programming-for-Computations/pub/p4c/</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
+              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Use of Mako/Python functions</a><ul>
+<li><a class="reference internal" href="#how-to-treat-two-programming-languages-in-the-same-text">How to treat two programming languages in the same text</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_mako002.html"
+                        title="previous chapter">How to make several variants of the text</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_mako003.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_mako002.html" title="How to make several variants of the text"
+             >previous</a> |</li>
+        <li><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
+  </div>
+</div>
+
+  </body>
+</html>
