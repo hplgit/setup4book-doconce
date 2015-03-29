@@ -78,20 +78,56 @@ div { text-align: justify; text-justify: inter-word; }
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
-              (' Compiling the book ', 2, None, '___sec12'),
-              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec14'),
-              (' Study guides and slides ', 1, None, '___sec15'),
-              (' Slide directory ', 2, None, '___sec16'),
-              (' Generating slides from running text ', 2, None, '___sec17'),
-              (' Compiling slides ', 2, None, '___sec18'),
-              (' References ', 1, None, '___sec19')]}
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <a name="part0006"></a>
@@ -100,6 +136,7 @@ end of tocinfo -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._rules-solarized005.html">&laquo; Previous</a></div>
 </td><td>
+<div style="text-align: right;"><a href="._rules-solarized007.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end top navigation -->
 </p>
@@ -107,7 +144,7 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h1 id="___sec15">Study guides and slides </h1>
+<h1 id="___sec16">Study guides and slides </h1>
 
 <p>
 DocOnce has good support for creating slides from ordinary documents
@@ -127,7 +164,7 @@ anyway be minimized all the way on slides, and the reader of a study
 guide is supposed to also be a reader of the underlying running text
 in the chapter.
 
-<h2 id="___sec16">Slide directory </h2>
+<h2 id="___sec17">Slide directory </h2>
 
 <p>
 For each DoOnce file in the chapter <code>ch2</code> it can be wise to make a
@@ -138,8 +175,8 @@ which assembles the parts if <code>slides-ch2</code>, typically with a content
 like
 
 <p>
-<!-- begin verbatim block  do-->
-<pre><code>TITLE: Study Guide: Some title
+
+TITLE: Study Guide: Some title
 AUTHOR: Author Name Email:somename@someplace.net at Institute One
 DATE: today
 
@@ -153,10 +190,8 @@ TOC: on
 # #include &quot;lec-ch2/part2.do.txt&quot;
 
 # #include &quot;lec-ch2/part3.do.txt&quot;
-</code></pre>
-<!-- end verbatim block -->
 
-<h2 id="___sec17">Generating slides from running text </h2>
+<h2 id="___sec18">Generating slides from running text </h2>
 
 <p>
 The author has the following work flow for generating slides for a
@@ -201,8 +236,9 @@ chapter file, say <code>part1.do.txt</code>.
      Complicated equations can therefore be important slide elements
      although the details will never be addressed.</li>
    <li> It is quite often wise to remove equation numbers in slides.
-     You can edit the LaTeX math environment manually, or use
-     <code>--denumber_all_equations</code> to do it automatically. Remember that
+     You can automatically remove them by <code>--denumber_all_equations</code>, or
+     you can edit the LaTeX math environment manually.
+     Remember that
      references to equations numbers must be removed from the slides too!</li>
    <li> Movies are effective in slides. It is still a hassle to get them
      displayed correctly in PDF files, so using a test on <code>FORMAT</code> and
@@ -230,7 +266,7 @@ in live presentations can only be tested by speaking to them (making a
 rough draft of a video podcast is a very effective way of testing
 the slides' quality).
 
-<h2 id="___sec18">Compiling slides </h2>
+<h2 id="___sec19">Compiling slides </h2>
 
 <p>
 There is a quite general script in <code>doc/src/chapters/make_slides.sh</code> for
@@ -238,20 +274,18 @@ compiling a slide collection defined in a file like <code>slides_ch2.do.txt</cod
 Just run
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; bash ../make_slides.sh slides_ch2
-</code></pre>
-<!-- end verbatim block -->
+
+Terminal&gt; bash ../make_slides.sh slides_ch2
+<p>
 from the chapter directory. Note that the script will first spell check
 the slide files. This is done in the <code>slides-ch2</code> directory. Errors are
 reported in files located in <code>slides-ch2</code>. To update the chapter's dictionary
 for spell checking, you need to do
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; cp slides-ch2/new_dictionary.txt~ .dict4spell
-</code></pre>
-<!-- end verbatim block -->
+
+Terminal&gt; cp slides-ch2/new_dictionary.txt~ .dict4spell
+<p>
 in the <code>ch2</code> chapter directory.
 
 <p>
@@ -274,30 +308,69 @@ The <code>make_slides.sh</code> script compiles a variety of slides:
  <li> Remark (Markdown) slides for viewing in a browser.</li>
 </ul>
 
-<h1 id="___sec19">References </h1>
+<h2 id="___sec20">IPython/Jupyter notebooks </h2>
 
 <p>
-<!-- begin bibliography -->
+Since DocOnce documents can be translated to IPython/Jupyter notebooks,
+hereafter just called notebooks, it is tempting to produce a version
+of the teaching material also in notebook form. This author's experience
+is that a more traditional book format with running text is not so
+ideal for a notebook:
 
-<ol>
- <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
-    <em>A Primer on Scientific Programming With Python</em>,
-    fourth edition,
-    <em>Texts in Computational Science and Engineering</em>,
-    Springer,
-    2014.</li>
- <li> <div id="Langtangen_dobook_fake"></div> <b>H. P. Langtangen</b>. 
-    Some document,
-    <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake" target="_self"><tt>http://hplgit.github.io/setup4book-doconce/doc/pub/fake</tt></a>.</li>
-</ol>
+<ul>
+ <li> you simply get too much text in a too long notebook,</li>
+ <li> the notebook needs more code snippets than what you want to show in
+   a book (or you just want to show fragments while the notebook requires
+   complete code),</li>
+ <li> there are many cross-references between equations, sections, figures,
+   and running text that the notebook does not support well.</li>
+</ul>
 
-<!-- end bibliography -->
+Instead, making slides from the chapter's text and translating slides
+to the notebook format is a splendid idea. This requires some tuning,
+as you want slight differences between classic slides and a notebook.
+For example, a code snippet that results with a plot should contain
+the plot in classic slides, while the notebook will automatically
+produce it when run. This is easily fixed by an if test in Mako,
+typically <code>% if FORMAT != 'ipynb':</code> followed by a <code>FIGURE:</code> line
+that includes the resulting figure for all formats except the notebook.
 
+<p>
+Also be aware of the DocOnce <em>hidden</em> code environment that can
+be used to declare code blocks that appear in notebooks (because they
+are needed) but not in other formats: <code>!bc pyhid</code> gives a Python
+hidden snippet.
+
+<p>
+Using notebooks as a starting point for a traditional textbook might be
+a good idea, but will enforce a non-conventional style in the textbook.
+For example, notebooks should be quite small, leading to similarly
+small modules in the book. Notebooks use cross-referencing to little
+extent, and this will be reflected in the textbook too. Notebooks also
+need more code to run, so one has to accept more code in the textbook.
+However, there is still a problem for the notebook with defining items
+for an index, fancy admonitions, and other elements that one would
+desire in a textbook. More experience is needed to make best practices.
+Since notebooks can be compiled Markdown, and DocOnce can read
+basic Markdown input, it is possible to go from the notebook format
+to DocOnce, but this is not tested.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Remark.</b>
+<p>
+More best practices from turning teaching material in
+books into notebooks are supposed to be collected here in the future.
+</div>
+
+
+<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._rules-solarized005.html">&laquo; Previous</a></div>
 </td><td>
+<div style="text-align: right;"><a href="._rules-solarized007.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>
@@ -308,4 +381,3 @@ The <code>make_slides.sh</code> script compiles a variety of slides:
 </body>
 </html>
     
-

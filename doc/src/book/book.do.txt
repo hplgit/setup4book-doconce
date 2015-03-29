@@ -10,6 +10,7 @@ DATE: today
 
 # Externaldocuments: ../chapters/fake/main_fake
 
+!split
 ========= Preface  =========
 label{ch:preface}
 
@@ -17,12 +18,16 @@ label{ch:preface}
 
 TOC: on
 
+!split
 ========= Directory and file structure =========
 label{ch:structure}
 
 # #include "../chapters/rules/rules.do.txt"
 
+# #include "../chapters/rules/features.do.txt"
 
+
+!split
 ========= Appendix: Use of Mako to aid book writing =========
 label{ch:mako}
 
@@ -40,6 +45,7 @@ link to the "this stand-alone document":
 % endif
 
 
+!split
 ======= References =======
 
 BIBFILE: ../chapters/papers.pub

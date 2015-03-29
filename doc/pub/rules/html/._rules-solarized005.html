@@ -78,20 +78,56 @@ div { text-align: justify; text-justify: inter-word; }
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
-              (' Compiling the book ', 2, None, '___sec12'),
-              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec14'),
-              (' Study guides and slides ', 1, None, '___sec15'),
-              (' Slide directory ', 2, None, '___sec16'),
-              (' Generating slides from running text ', 2, None, '___sec17'),
-              (' Compiling slides ', 2, None, '___sec18'),
-              (' References ', 1, None, '___sec19')]}
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <a name="part0005"></a>
@@ -108,7 +144,7 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h1 id="___sec13">Cross-referencing across chapters </h1>
+<h1 id="___sec14">Cross-referencing across chapters </h1>
 
 <p>
 A fundamental problem when writing a book <em>and</em> stand-alone chapters
@@ -121,17 +157,15 @@ for other LaTeX documents and refer directly to these labels and get
 them right. It is then possible to write something like
 
 <p>
-<!-- begin verbatim block  latex-->
-<pre><code>see (\eqref{sec:results:u:eq}) in \cite{Hansen_2011b}
-</code></pre>
-<!-- end verbatim block -->
+
+see (\eqref{sec:results:u:eq}) in \cite{Hansen_2011b}
+<p>
 and get it out as
 
 <p>
-<!-- begin verbatim block -->
-<pre><code>see (2.37) in [12]
-</code></pre>
-<!-- end verbatim block -->
+
+see (2.37) in [12]
+<p>
 provided our <code>.tex</code> file contains <code>\externaldocument{myother}</code>
 and the label <code>sec:results:u:eq</code> is defined in <code>myother.aux</code>. DocOnce
 has generalized this feature so it works for non-LaTeX formats as well.
@@ -139,21 +173,20 @@ It is called <em>generalized cross-references</em>. You can then write
 such references across chapters and get all labels right whether you
 produce the entire book or individual chapters.
 
-<h2 id="___sec14">Syntax of generalized cross-references </h2>
+<h2 id="___sec15">Syntax of generalized cross-references </h2>
 
 <p>
 Here is an example on a generalized reference to an equation in another
 document:
 
 <p>
-<!-- begin verbatim block  do-->
-<pre><code>The world's most famous equation is ref[\eqref{fake_Emc2}][,
-see cite{Langtangen_dobook_fake}][
+
+The world's most famous equation is ref[\eqref{fake:Emc2}][in
+cite{Langtangen_dobook_fake}][
 as found in the document &quot;Some document&quot;:
 &quot;http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake&quot;
 cite{Langtangen_dobook_fake}].
-</code></pre>
-<!-- end verbatim block -->
+<p>
 This sentence is rendered as follows in the present format (<code>html</code>):
 
 <p>
@@ -162,7 +195,7 @@ This sentence is rendered as follows in the present format (<code>html</code>):
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 The world's most famous equation is 
 as found in the document <a href="http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake" target="_self">Some document</a>
-<a href="._rules-solarized006.html#Langtangen_dobook_fake">[2]</a>.
+<a href="._rules-solarized008.html#Langtangen_dobook_fake">[2]</a>.
 </div>
 <!-- end box -->
 
@@ -170,6 +203,9 @@ as found in the document <a href="http://hplgit.gthub.io/setup4book-doconce/doc/
 <p>
 More detailed information about generalized cross-references is
 found in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-cross-referencing" target="_self">DocOnce manual</a>.
+In particular, one has to insert <code># Externaldocuments:</code> commands in
+all <code>main_*.do.txt</code> files that includes files with generalized
+references.
 
 <p>
 <p>
@@ -188,4 +224,3 @@ found in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual
 </body>
 </html>
     
-

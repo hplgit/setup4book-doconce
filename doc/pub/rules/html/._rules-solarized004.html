@@ -78,20 +78,56 @@ div { text-align: justify; text-justify: inter-word; }
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
-              (' Compiling the book ', 2, None, '___sec12'),
-              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec14'),
-              (' Study guides and slides ', 1, None, '___sec15'),
-              (' Slide directory ', 2, None, '___sec16'),
-              (' Generating slides from running text ', 2, None, '___sec17'),
-              (' Compiling slides ', 2, None, '___sec18'),
-              (' References ', 1, None, '___sec19')]}
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <a name="part0004"></a>
@@ -126,10 +162,9 @@ typical files needed for a new chapter. You can either edit existing
 chapters, or make a brand new empty chapter by running
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; sh mkdir.sh mychap
-</code></pre>
-<!-- end verbatim block -->
+
+Terminal&gt; sh mkdir.sh mychap
+<p>
 This command makes
 a directory <code>mychap</code> for a new chapter with nickname <code>mychap</code>.
 Files from the <code>template</code> directory are used to populate <code>mychap</code>. You get
@@ -152,17 +187,15 @@ This <code>make.sh</code> can in most cases just call up a common <code>../make.
 script,
 
 <p>
-<!-- begin verbatim block  shpro-->
-<pre><code>bash -x ../make.sh main_mychap
-</code></pre>
-<!-- end verbatim block -->
+
+bash -x ../make.sh main_mychap
+<p>
 or optionally with some command-line arguments,
 
 <p>
-<!-- begin verbatim block  shpro-->
-<pre><code>bash -x ../make.sh main_mychap --encoding=utf-8
-</code></pre>
-<!-- end verbatim block -->
+
+bash -x ../make.sh main_mychap --encoding=utf-8
+<p>
 The <code>doc/src/chapters/make.sh</code> script is quite general and may be edited
 according to your layout preferences of the LaTeX documents.
 
@@ -193,10 +226,9 @@ There is also a script <code>doc/src/chapters/make_html.sh</code> for making
 HTML versions of the chapter. Just call this as
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; bash ../make_html.sh main_mychap
-</code></pre>
-<!-- end verbatim block -->
+
+Terminal&gt; bash ../make_html.sh main_mychap
+<p>
 to make HTML versions of the <code>mychap</code> chapter.
 
 <p>
@@ -241,16 +273,23 @@ The <code>index_files.do.txt</code> file gives a table of contents of all docume
 so you will normally compile this manually now and then as
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format html index_files --html_style=bootstrap \ 
+
+Terminal&gt; doconce format html index_files --html_style=bootstrap \ 
           --html_links_in_new_window --html_bootstrap_navbar=off
-</code></pre>
-<!-- end verbatim block -->
-and publish it it <code>doc/pub/index.html</code>.
+<p>
+and publish it in <code>doc/pub/index.html</code>.
 </div>
 
 
-<h2 id="___sec12">Compiling the book </h2>
+<h3 id="___sec12">Cleaning Files </h3>
+
+<p>
+The <code>make*.sh</code> files generate a lot of files that can easily
+be regenerated and that are normally removed from the chapter
+directories. The script <code>sh ../clean.sh</code> can be run in any
+chapter directory to clean up redundant files.
+
+<h2 id="___sec13">Compiling the book </h2>
 
 <p>
 Go to <code>doc/src/book</code> and run <code>make.sh</code> to compile the book. This requires
@@ -291,4 +330,3 @@ compiling <code>book.do.txt</code> or actually extending the DocOnce source code
 </body>
 </html>
     
-

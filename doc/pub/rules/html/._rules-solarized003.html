@@ -78,20 +78,56 @@ div { text-align: justify; text-justify: inter-word; }
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
-              (' Compiling the book ', 2, None, '___sec12'),
-              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec14'),
-              (' Study guides and slides ', 1, None, '___sec15'),
-              (' Slide directory ', 2, None, '___sec16'),
-              (' Generating slides from running text ', 2, None, '___sec17'),
-              (' Compiling slides ', 2, None, '___sec18'),
-              (' References ', 1, None, '___sec19')]}
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <a name="part0003"></a>
@@ -125,15 +161,12 @@ text in other DocOnce files, e.g., <code>part1.do.txt</code>, <code>part2.do.txt
 the simple content
 
 <p>
-<!-- begin verbatim block  do-->
-<pre><code># #include &quot;part1.do.txt&quot;
+
+# #include &quot;part1.do.txt&quot;
 
 # #include &quot;part2.do.txt&quot;
 
 # #include &quot;part3.do.txt&quot;
-</code></pre>
-<!-- end verbatim block -->
-
 <p>
 Note that the <code>ch2.do.txt</code> file contains just plain text without
 any <code>TITLE</code>, <code>AUTHOR</code>, or <code>DATE</code> lines and without any
@@ -149,8 +182,8 @@ We also want a bibliography if any of the included files has
 with the content
 
 <p>
-<!-- begin verbatim block  do-->
-<pre><code>TITLE: Some chapter title
+
+TITLE: Some chapter title
 AUTHOR: A. Name Email:somename@someplace.net at Institute One
 AUTHOR: A. Two at Institute One &amp; Institute Two
 DATE: today
@@ -164,9 +197,6 @@ TOC: on
 ======= References =======
 
 BIBFILE: ../papers.pub
-</code></pre>
-<!-- end verbatim block -->
-
 <p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The prefix <code>main_</code> is inspired by the main program
 in computer program: those statements make a program run, like
 <code>main_ch2.do.txt</code> defines the surroundings of the &quot;library text&quot;
@@ -200,14 +230,14 @@ through links. This will be described next.
 <p>
 All the files associated with the <code>ch2</code> document and chapter reside
 in the <code>ch2</code> directory. A fundamental principle of DocOnce is to
-have just one copy of the files (&quot;Document once!&quot;).
+have just one copy of the files (&quot;document once!&quot;).
 To include the <code>ch2</code> text in a larger document like a book, we just
 need to include the <code>ch2.do.txt</code> file and a chapter heading.
 Here is an example of a document <code>book.do.txt</code> for a complete book:
 
 <p>
-<!-- begin verbatim block  do-->
-<pre><code>TITLE: This is a book title
+
+TITLE: This is a book title
 AUTHOR: A. Name Email:somename@someplace.net at Institute One
 AUTHOR: A. Two at Institute One &amp; Institute Two
 DATE: today
@@ -234,9 +264,6 @@ label{ch:somename}
 ======= References =======
 
 BIBFILE: ../papers.pub
-</code></pre>
-<!-- end verbatim block -->
-
 <p>
 When running <code>doconce format</code> on <code>book.do.txt</code>, the entire document
 is contained in <em>one</em> big file [<a id="link_footnote_2" href="#def_footnote_2">2</a>] (!).
@@ -255,44 +282,40 @@ the desired output format.
 
 <p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> A single DocOnce file and consequently a single
 <code>.tex</code> file works out well on today's laptops.
-A book with 900 pages <a href="._rules-solarized006.html#Langtangen_2014">[1]</a> has been tested!</p>
+A book with 900 pages <a href="._rules-solarized008.html#Langtangen_2014">[1]</a> has been tested!</p>
 
 <p>
 Say we want to produce a LaTeX document:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; doconce format pdflatex book [options]
-</code></pre>
-<!-- end verbatim block -->
+
+Terminal&gt; doconce format pdflatex book [options]
+<p>
 If the DocOnce source contains copying of source code from files in
 <code>@@@CODE</code> constructs, it is important that <code>doconce</code> finds the files.
 For example,
 
 <p>
-<!-- begin verbatim block  do-->
-<pre><code>@@@CODE src-ch2/myprog.py  fromto: def test1@def test2
-</code></pre>
-<!-- end verbatim block -->
+
+@@@CODE src-ch2/myprog.py  fromto: def test1@def test2
+<p>
 will try to open the file <code>src-ch2/myprog.py</code>. Since this file is
 actually located in <code>../ch2/src-ch2/myprog.py</code>, <code>pdflatex</code> will
 report an error message. A local link to
 that directory resolves the problem:
 
 <p>
-<!-- begin verbatim block  sys-->
-<pre><code>Terminal&gt; ln -s ../chapters/ch2/src-ch2 src-ch2
-</code></pre>
-<!-- end verbatim block -->
+
+Terminal&gt; ln -s ../chapters/ch2/src-ch2 src-ch2
+<p>
 Similarly,
 the LaTeX code in <code>book.tex</code> for inclusion of a figure may
 contain
 
 <p>
-<!-- begin verbatim block  latexcod-->
-<pre><code>\includegraphics[width=0.9\linewith]{fig-ch2/fig1.pdf}
-</code></pre>
-<!-- end verbatim block -->
+
+\includegraphics[width=0.9\linewith]{fig-ch2/fig1.pdf}
+<p>
 For this command to work, it is paramount that there is a link <code>fig-ch2</code> in the
 present <code>book</code> directory where the <code>pdflatex</code> command is run to
 the directory <code>../chapters/ch2/fig-ch2</code> where the figure file <code>fig1.pdf</code> is
@@ -305,11 +328,10 @@ to the individual chapter directories. Provided the <em>list of chapter nickname
 at the top of <code>scripts.py</code> <em>is correct</em>, you can just run
 
 <p>
-<!-- begin verbatim block  pyshell-->
-<pre><code>&gt;&gt;&gt; import scripts
+
+&gt;&gt;&gt; import scripts
 &gt;&gt;&gt; scripts.make_links()
-</code></pre>
-<!-- end verbatim block -->
+<p>
 to automatically
 set up all links to all <code>src-*</code>, <code>fig-*</code>, and <code>mov-*</code> directories.
 You need to rerun this <code>make_links</code> function after inclusion of a new chapter
@@ -328,11 +350,10 @@ automatically compile each chapter separately. The process is stopped
 as soon as a DocOnce or LaTeX error is encountered.
 
 <p>
-<!-- begin verbatim block  pyshell-->
-<pre><code>&gt;&gt;&gt; import scripts
+
+&gt;&gt;&gt; import scripts
 &gt;&gt;&gt; scripts.compile_chapters()
-</code></pre>
-<!-- end verbatim block -->
+
 </div>
 
 
@@ -376,4 +397,3 @@ the files necessary for accessing the entire HTML document on the web.
 </body>
 </html>
     
-

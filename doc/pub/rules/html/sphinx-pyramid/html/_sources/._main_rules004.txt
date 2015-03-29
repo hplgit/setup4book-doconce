@@ -132,10 +132,18 @@ HTML or Sphinx styles.
            Terminal> doconce format html index_files --html_style=bootstrap \ 
                      --html_links_in_new_window --html_bootstrap_navbar=off
    
-   and publish it it ``doc/pub/index.html``.
+   and publish it in ``doc/pub/index.html``.
 
 
 
+
+Cleaning Files
+~~~~~~~~~~~~~~
+
+The ``make*.sh`` files generate a lot of files that can easily
+be regenerated and that are normally removed from the chapter
+directories. The script ``sh ../clean.sh`` can be run in any
+chapter directory to clean up redundant files.
 
 Compiling the book
 ------------------

@@ -10,9 +10,10 @@ Directory and file structure
 :Authors: Hans Petter Langtangen
 :Date: Mar 28, 2015
 
-.. Externaldocuments: ../chapters/mako/main_mako, ../chapters/fake/main_fake
+.. Externaldocuments: ../fake/main_fake
 
 .. Common Mako variables and functions
 
-This document describes the file structure of book or thesis projects.
+This document describes the file structure of book projects.
+The setup can of course be used for proceedings and theses as well.
 

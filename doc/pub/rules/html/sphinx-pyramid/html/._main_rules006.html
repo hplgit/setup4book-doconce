@@ -43,6 +43,7 @@
 
     
     <link rel="top" title="Directory and file structure" href="index.html" />
+    <link rel="next" title="Writing in private repository while publishing in public" href="._main_rules007.html" />
     <link rel="prev" title="Cross-referencing across chapters" href="._main_rules005.html" />
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -68,6 +69,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_rules007.html" title="Writing in private repository while publishing in public"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="._main_rules005.html" title="Cross-referencing across chapters"
              accesskey="P">previous</a> |</li>
@@ -162,8 +166,9 @@ are important enough).</li>
 Complicated equations can therefore be important slide elements
 although the details will never be addressed.</li>
 <li>It is quite often wise to remove equation numbers in slides.
-You can edit the LaTeX math environment manually, or use
-<tt class="docutils literal"><span class="pre">--denumber_all_equations</span></tt> to do it automatically. Remember that
+You can automatically remove them by <tt class="docutils literal"><span class="pre">--denumber_all_equations</span></tt>, or
+you can edit the LaTeX math environment manually.
+Remember that
 references to equations numbers must be removed from the slides too!</li>
 <li>Movies are effective in slides. It is still a hassle to get them
 displayed correctly in PDF files, so using a test on <tt class="docutils literal"><span class="pre">FORMAT</span></tt> and
@@ -222,26 +227,53 @@ to control the Beamer theme.</li>
 </ul>
 </div></blockquote>
 </div>
+<div class="section" id="ipython-jupyter-notebooks">
+<h2>IPython/Jupyter notebooks<a class="headerlink" href="#ipython-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Since DocOnce documents can be translated to IPython/Jupyter notebooks,
+hereafter just called notebooks, it is tempting to produce a version
+of the teaching material also in notebook form. This author&#8217;s experience
+is that a more traditional book format with running text is not so
+ideal for a notebook:</p>
+<blockquote>
+<div><ul class="simple">
+<li>you simply get too much text in a too long notebook,</li>
+<li>the notebook needs more code snippets than what you want to show in
+a book (or you just want to show fragments while the notebook requires
+complete code),</li>
+<li>there are many cross-references between equations, sections, figures,
+and running text that the notebook does not support well.</li>
+</ul>
+</div></blockquote>
+<p>Instead, making slides from the chapter&#8217;s text and translating slides
+to the notebook format is a splendid idea. This requires some tuning,
+as you want slight differences between classic slides and a notebook.
+For example, a code snippet that results with a plot should contain
+the plot in classic slides, while the notebook will automatically
+produce it when run. This is easily fixed by an if test in Mako,
+typically <tt class="docutils literal"><span class="pre">%</span> <span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">!=</span> <span class="pre">'ipynb':</span></tt> followed by a <tt class="docutils literal"><span class="pre">FIGURE:</span></tt> line
+that includes the resulting figure for all formats except the notebook.</p>
+<p>Also be aware of the DocOnce <em>hidden</em> code environment that can
+be used to declare code blocks that appear in notebooks (because they
+are needed) but not in other formats: <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">pyhid</span></tt> gives a Python
+hidden snippet.</p>
+<p>Using notebooks as a starting point for a traditional textbook might be
+a good idea, but will enforce a non-conventional style in the textbook.
+For example, notebooks should be quite small, leading to similarly
+small modules in the book. Notebooks use cross-referencing to little
+extent, and this will be reflected in the textbook too. Notebooks also
+need more code to run, so one has to accept more code in the textbook.
+However, there is still a problem for the notebook with defining items
+for an index, fancy admonitions, and other elements that one would
+desire in a textbook. More experience is needed to make best practices.
+Since notebooks can be compiled Markdown, and DocOnce can read
+basic Markdown input, it is possible to go from the notebook format
+to DocOnce, but this is not tested.</p>
+<div class="admonition-remark admonition">
+<p class="first admonition-title">Remark</p>
+<p class="last">More best practices from turning teaching material in
+books into notebooks are supposed to be collected here in the future.</p>
 </div>
-<div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<table class="docutils citation" frame="void" id="ref1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Ref1]</td><td><strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>,
-fourth edition,
-<em>Texts in Computational Science and Engineering</em>,
-Springer,
-2014.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="ref2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Ref2]</td><td><strong>H. P. Langtangen</strong>. Some document,
-<a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake">http://hplgit.github.io/setup4book-doconce/doc/pub/fake</a>.</td></tr>
-</tbody>
-</table>
+</div>
 </div>
 
 
@@ -256,14 +288,17 @@ Springer,
 <li><a class="reference internal" href="#slide-directory">Slide directory</a></li>
 <li><a class="reference internal" href="#generating-slides-from-running-text">Generating slides from running text</a></li>
 <li><a class="reference internal" href="#compiling-slides">Compiling slides</a></li>
+<li><a class="reference internal" href="#ipython-jupyter-notebooks">IPython/Jupyter notebooks</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#references">References</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="._main_rules005.html"
                         title="previous chapter">Cross-referencing across chapters</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._main_rules007.html"
+                        title="next chapter">Writing in private repository while publishing in public</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -287,6 +322,9 @@ Springer,
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="._main_rules007.html" title="Writing in private repository while publishing in public"
+             >next</a> |</li>
         <li class="right" >
           <a href="._main_rules005.html" title="Cross-referencing across chapters"
              >previous</a> |</li>

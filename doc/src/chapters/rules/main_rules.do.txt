@@ -16,6 +16,8 @@ TOC: on
 
 # #include "rules.do.txt"
 
+# #include "features.do.txt"
+
 ======= References =======
 
 BIBFILE: ../papers.pub

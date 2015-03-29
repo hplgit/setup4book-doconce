@@ -1,0 +1,300 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
+              (' Syntax of generalized cross-references ',
+               2,
+               None,
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0007"></a>
+<p>
+<!-- begin top navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._rules-solarized006.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._rules-solarized008.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec21">Writing in private repository while publishing in public </h1>
+
+<p>
+Sometimes you want to keep ongoing writing in a <em>private</em> repository
+and make only <em>selected</em> chapters and/or files publicly visible.
+In such cases
+one can set up the book project structure in a private repository, but
+use a public repository instead of the <code>doc/pub</code> directory for publishing
+selected compiled documents. This is easy: just change the <code>dest=</code>
+line, where the publishing directory is defined, in all <code>make*.sh</code>
+scripts in <code>doc/src/chapters</code>. The files will then be copied to
+this alternative destination.
+
+<p>
+Often, you want to publish the software associated with the book
+project, stored in <code>doc/src/chapter/nickname/src-nickname</code>, as a part
+of the public repository. Such files can also easily be copied, say to
+<code>src/nickname</code> in the public repository. However, software files often
+change names and locations in subdirectories, and then you need to be
+very careful with updating the Git commands in the public repository
+every time you do <code>git add</code> or <code>git rm</code> locally in the private
+repository.  This problem occurs with text files too, but maybe less
+often, so the recipe given below applies to all kind of files you want
+to mirror from a private to a public repository.
+
+<p>
+We have made a script <a href="https://github.com/hplgit/setup4book-doconce/tree/master/doc/src/chapters/rules/src-rules/rsync_git.py" target="_self"><tt>rsync_git.py</tt></a>
+that can copy files from one repository to another and log files that
+are removed or deleted and then take the appropriate Git actions.
+Running
+
+<p>
+
+Terminal&gt; rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+<p>
+will copy all files from <code>src-mychap</code> to <code>$HOME/repos/pub/mybook/src/mychap</code>,
+find which files that are new in <code>src-mychap</code> and
+must be added to the destination directory, and which files
+that are removed in <code>src-mychap</code> and should be removed in the destination
+directory as well.
+An <code>rsync</code> command is run to the physical copy and removal of
+files, followed by <code>git add</code> and <code>git rm</code>
+commands. In this way, you can automatically keep the public repository
+as a mirror <em>of parts</em> of your private repository! [<a id="link_footnote_3" href="#def_footnote_3">3</a>]
+
+<p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> This functionality should be a part of Git, but no Git expert I have talked to has ever seen use for merging a flexibly defined subset of a repository with another repository. (The current functionality of Git is not capable of working with, e.g., branches that merge with only parts of another branch.)</p>
+
+<p>
+The <code>rsync_git.py</code> script is listed below for reference. Note that
+a file <code>$HOME/.rsyncexclude</code> can be made to filter out certain files
+that you never want to copy (this is always a good idea!).
+
+<p>
+
+#!/usr/bin/env python
+&quot;&quot;&quot;
+Sync two directory trees with rsync and perform corresponding
+git operations (add or rm).
+Skip files listed in $HOME/.rsyncexclude.
+
+Usage:   rsync_git.py from-dir to-dir
+Example: rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+
+The from-dir is the source and the to-dir is the destination
+(e.g. a public directory where resources are exposed).
+The script must be run from a dir within the repo of to-dir.
+&quot;&quot;&quot;
+
+# Typical rsync output:
+&quot;&quot;&quot;
+sending incremental file list
+deleting decay7.py
+decay_TULL.py
+
+sent 675 bytes  received 34 bytes  1418.00 bytes/sec
+total size is 94788  speedup is 133.69
+&quot;&quot;&quot;
+
+# Example on $HOME/.rsyncexclude file
+&quot;&quot;&quot;
+.#*
+#*
+*.rsync~
+*.a
+*.o
+*.so
+*~
+.*~
+*.log
+*.dvi
+*.aux
+*.old
+tmp_*
+.tmp*
+*.tar
+*.tar.gz
+*.tgz
+*.pyc
+&quot;&quot;&quot;
+
+import commands, os, sys
+
+from_ = sys.argv[1]
+to_ = sys.argv[2]
+cmd = 'rsync -rtDvz -u -e ssh -b ' + \
+      '--exclude-from=$HOME/.rsyncexclude ' + \
+      '--suffix=.rsync~ --delete --force %s/ %s' % (from_, to_)
+print cmd
+failure, output = commands.getstatusoutput(cmd)
+print output
+
+delete = []
+add = []
+for line in output.splitlines():
+    relevant_line = True
+    for text in 'sending incremental file list', \
+        'sent ', 'total size is':
+        if line.startswith(text):
+            relevant_line = False
+    if relevant_line and line != '':
+        if line.startswith('deleting'):
+            delete.append(line.split()[1])
+        else:
+            add.append(line.strip())
+
+print delete
+print add
+
+for filename in delete:
+    option = '-rf' if os.path.isdir('%s/%s' % (to_, filename)) else '-f'
+    cmd = 'git rm %s %s/%s' % (option, to_, filename)
+    print cmd
+    os.system(cmd)
+for filename in add:
+    cmd = 'git add %s/%s' % (to_, filename)
+    print cmd
+    os.system(cmd)
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._rules-solarized006.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._rules-solarized008.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    

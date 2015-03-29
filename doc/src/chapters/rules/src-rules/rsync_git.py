@@ -48,7 +48,9 @@ import commands, os, sys
 
 from_ = sys.argv[1]
 to_ = sys.argv[2]
-cmd = 'rsync -rtDvz -u -e ssh -b --exclude-from=$HOME/.rsyncexclude --suffix=.rsync~ --delete --force %s/ %s' % (from_, to_)
+cmd = 'rsync -rtDvz -u -e ssh -b ' + \
+      '--exclude-from=$HOME/.rsyncexclude ' + \
+      '--suffix=.rsync~ --delete --force %s/ %s' % (from_, to_)
 print cmd
 failure, output = commands.getstatusoutput(cmd)
 print output

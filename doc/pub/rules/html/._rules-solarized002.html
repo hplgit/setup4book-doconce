@@ -78,20 +78,56 @@ div { text-align: justify; text-justify: inter-word; }
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
-              (' Compiling the book ', 2, None, '___sec12'),
-              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec14'),
-              (' Study guides and slides ', 1, None, '___sec15'),
-              (' Slide directory ', 2, None, '___sec16'),
-              (' Generating slides from running text ', 2, None, '___sec17'),
-              (' Compiling slides ', 2, None, '___sec18'),
-              (' References ', 1, None, '___sec19')]}
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <a name="part0002"></a>
@@ -129,27 +165,23 @@ for MathJax. We can then put the following definitions in
 <code>newcommands.p.tex</code>:
 
 <p>
-<!-- begin verbatim block  latexcod-->
-<pre><code>% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)
+
+% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)
 % Use footnotesize in subscripts
 \newcommand{\subsc}[2]{#1_{\mbox{\footnotesize #2}}}
 % #else
 % In MathJax, a different construction is used
 \newcommand{\subsc}[2]{#1_{\small\mbox{#2}}}
 % #endif
-</code></pre>
-<!-- end verbatim block -->
+<p>
 The make script will then run <code>preprocess</code> on this file,
 typically
 
 <p>
-<!-- begin verbatim block  shcod-->
-<pre><code>preprocess -DFORMAT=pdflatex ../newcommands.p.tex &gt; newcommands.tex
+
+preprocess -DFORMAT=pdflatex ../newcommands.p.tex &gt; newcommands.tex
 # or
 preprocess -DFORMAT=html ../newcommands.p.tex &gt; newcommands.tex
-</code></pre>
-<!-- end verbatim block -->
-
 <p>
 <div class="alert alert-block alert-warning alert-text-normal">
 <b>DocOnce newcommands are for mathematics only!</b>
@@ -180,4 +212,3 @@ to the LaTeX format. Use instead Mako functions.
 </body>
 </html>
     
-

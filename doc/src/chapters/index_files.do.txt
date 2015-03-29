@@ -65,7 +65,9 @@ TOC: off
 
 ======= Preliminary notes for a future textbook =======
 
-"Book in PDF format": "book.pdf"
+ * "Traditional LaTeX Book": "book.pdf"
+ * "Sphinx ebook": "sphinx-cbc/index.html"
+ * "RunestoneInteractive ebook": "sphinx-runestone/index.html"
 
 % for ch in published:
 ===== ${chapters[ch]} =====

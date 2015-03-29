@@ -42,8 +42,8 @@ document:
 
 .. code-block:: doconce
 
-        The world's most famous equation is ref[(ref{fake_Emc2})][,
-        see cite{Langtangen_dobook_fake}][
+        The world's most famous equation is ref[(ref{fake:Emc2})][in
+        cite{Langtangen_dobook_fake}][
         as found in the document "Some document":
         "http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"
         cite{Langtangen_dobook_fake}].
@@ -61,4 +61,7 @@ as found in the document `Some document <http://hplgit.gthub.io/setup4book-docon
 
 More detailed information about generalized cross-references is
 found in the `DocOnce manual <http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-cross-referencing>`__.
+In particular, one has to insert ``# Externaldocuments:`` commands in
+all ``main_*.do.txt`` files that includes files with generalized
+references.
 

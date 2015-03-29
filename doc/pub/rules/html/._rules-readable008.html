@@ -1,0 +1,366 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
+              (' Syntax of generalized cross-references ',
+               2,
+               None,
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="rules-readable.html">Directory and file structure</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._rules-readable001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;">Newcommands</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec7" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable005.html#___sec14" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec16" style="font-size: 80%;">Study guides and slides</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable007.html#___sec21" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">Special features for teaching material</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">References</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0008"></a>
+<!-- !split -->
+
+<h1 id="___sec22">Special features for teaching material </h1>
+
+<p>
+DocOnce offers some special features that can greatly aid development
+of effective teaching material:
+
+<ul>
+ <li> fancy admonitions</li>
+ <li> simple boxes</li>
+ <li> interactive code blocks</li>
+ <li> hidden code blocks</li>
+ <li> exercises</li>
+ <li> multiple-choice questions or quizzes</li>
+ <li> movies</li>
+ <li> quotes</li>
+</ul>
+
+These are briefly exemplified below. If you are mainly interested in how
+to structure DocOnce-based books, you can safely jump to
+the section <a href="._rules-readable003.html#setup:rules:book:assembly">Assembling different pieces to a book</a>.
+
+<h2 id="___sec23">Admonitions </h2>
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Use admonitions!</b>
+Need to notify, warn, summarize, ask a question, give a tip,
+dive into less important details, or really emphasize a result?
+DocOnce features special
+<em>notice</em>, <em>warning</em>, <em>summary</em>,
+and <em>question</em> boxes for  called admonitions. These can be typeset in a
+variety of versions, depending on the output format
+(check out <code>doconce format --help</code> and the many options with <code>admon</code>
+in the name).
+</div>
+
+
+<h2 id="___sec24">Put a box around something very important </h2>
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+$$ 1 + 1 = 2 $$
+</div>
+<!-- end box -->
+
+
+<h2 id="___sec25">Interactive code </h2>
+
+<p>
+You can step through this code:
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+In HTML and Sphinx format this code can be stepped through, while
+in LaTeX one gets a link to a web page with this functionality.
+
+<h2 id="___sec26">Exercises </h2>
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Exercise environments.</b>
+DocOnce supports <em>exercise subsections</em>, which are subsections with some
+extra tagging for exercises. Important features are:
+
+<ul>
+ <li> exercises can be divided into subexercises</li>
+ <li> one may specify filename(s) for delivering the answer to an exercise</li>
+ <li> one may specify filename(s) for the solution of an exercise</li>
+ <li> one may specify a remark (fun facts, comments)</li>
+ <li> one or more hints can be given to an exercise or subexercise
+   (can be hidden in certain output formats)</li>
+ <li> any exercise or subexercise can have a solution field</li>
+ <li> any exercise or subexercise can have an answer field (very condensed solution)</li>
+ <li> solutions and answers can be removed from the document at compile time</li>
+ <li> exercises can have one of four titles: Exercise, Project, Problem, or
+   Example</li>
+</ul>
+</div>
+
+
+<h2 id="___sec27">Quote </h2>
+
+<p>
+There is also a <em>quote</em> environment (invisible box with larger
+margins).
+
+<p>
+<blockquote>
+    We're programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We're not excited by incremental renovation: tinkering, improving, planting flower beds.
+    
+    <p>
+    There's a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:
+    <b>It's harder to read code than to write it.</b>
+    This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it's easier and more fun than figuring out how the old function works.
+    
+    <p>
+    <a href="http://www.joelonsoftware.com/articles/fog0000000069.html" target="_self">Joel Spolsky</a>, 2000
+</blockquote>
+
+
+<h2 id="___sec28">Quiz </h2>
+
+<p>
+<!-- --- previous heading type: subsection -->
+<!-- begin quiz -->
+<hr>
+<p>
+<b>Question:</b> How can one typeset a multiple choice question or <em>quiz</em> in DocOnce?
+Recall that a quiz may feature mathematics like
+
+$$ F = ma $$
+
+and even nicely typeset computer code:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newtons2nd</span>(m, a):
+    F <span style="color: #666666">=</span> m<span style="color: #666666">*</span>a
+    <span style="color: #008000; font-weight: bold">return</span> F
+
+<span style="color: #008000; font-weight: bold">print</span> Newtons2nd(<span style="color: #666666">1.1</span>, <span style="color: #666666">2.0</span>)
+</pre></div>
+<p></p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_1" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 1:</b>
+Cannot be typeset because online quiz tools ignore math and code typesetting.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_1">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+This is almost true: <code>getkahoot.com</code> has implemented support for DocOnce-generated quizzes with math and code :-)
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_2" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 2:</b>
+See the DocOnce <a href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html" target="_self">quiz manual</a>.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_2">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+Here you see all capabilities demonstrated.
+</div></p>
+</div>
+</p>
+
+<p>
+<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
+ data-target="#quiz_id_1_3" style="font-size: 80%;"></a>
+&nbsp;<b>Choice 3:</b>
+Read the quiz and the multiple answers out loud and hope for a magic translation to code.
+<div class="collapse-group">
+<p><div class="collapse" id="quiz_id_1_3">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+Not implemented this year - just had to come up with yet another choice...
+</div></p>
+</div>
+</p>
+<!-- end quiz -->
+
+
+<h2 id="___sec29">What about a video lecture? </h2>
+
+<p>
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+
+<p>
+<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
+Can you think of applications of the above mentioned features?
+</div>
+
+
+<h1 id="___sec30">References </h1>
+
+<p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
+    <em>A Primer on Scientific Programming With Python</em>,
+    fourth edition,
+    <em>Texts in Computational Science and Engineering</em>,
+    Springer,
+    2014.</li>
+ <li> <div id="Langtangen_dobook_fake"></div> <b>H. P. Langtangen</b>. 
+    Some document,
+    <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake" target="_self"><tt>http://hplgit.github.io/setup4book-doconce/doc/pub/fake</tt></a>.</li>
+</ol>
+
+<!-- end bibliography -->
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._rules-readable007.html">&larr; Prev</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    

@@ -1,0 +1,269 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Special features for teaching material</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Directory and file structure" href="index.html" />
+    <link rel="prev" title="Writing in private repository while publishing in public" href="._main_rules007.html" />
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  
+   <style type="text/css">
+     div.admonition {
+       background-color: whiteSmoke;
+       border: 1px solid #bababa;
+     }
+   </style>
+  </head>
+
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_rules007.html" title="Writing in private repository while publishing in public"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="special-features-for-teaching-material">
+<h1>Special features for teaching material<a class="headerlink" href="#special-features-for-teaching-material" title="Permalink to this headline">¶</a></h1>
+<p>DocOnce offers some special features that can greatly aid development
+of effective teaching material:</p>
+<blockquote>
+<div><ul class="simple">
+<li>fancy admonitions</li>
+<li>simple boxes</li>
+<li>interactive code blocks</li>
+<li>hidden code blocks</li>
+<li>exercises</li>
+<li>multiple-choice questions or quizzes</li>
+<li>movies</li>
+<li>quotes</li>
+</ul>
+</div></blockquote>
+<p>These are briefly exemplified below. If you are mainly interested in how
+to structure DocOnce-based books, you can safely jump to
+the section <a class="reference internal" href="._main_rules003.html#setup-rules-book-assembly"><em>Assembling different pieces to a book</em></a>.</p>
+<div class="section" id="admonitions">
+<h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-use-admonitions admonition">
+<p class="first admonition-title">Use admonitions</p>
+<p class="last">Need to notify, warn, summarize, ask a question, give a tip,
+dive into less important details, or really emphasize a result?
+DocOnce features special
+<em>notice</em>, <em>warning</em>, <em>summary</em>,
+and <em>question</em> boxes for  called admonitions. These can be typeset in a
+variety of versions, depending on the output format
+(check out <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> and the many options with <tt class="docutils literal"><span class="pre">admon</span></tt>
+in the name).</p>
+</div>
+</div>
+<div class="section" id="put-a-box-around-something-very-important">
+<h2>Put a box around something very important<a class="headerlink" href="#put-a-box-around-something-very-important" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[1 + 1 = 2\]</div>
+</div>
+<div class="section" id="interactive-code">
+<h2>Interactive code<a class="headerlink" href="#interactive-code" title="Permalink to this headline">¶</a></h2>
+<p>You can step through this code:</p>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
+</iframe><p>In HTML and Sphinx format this code can be stepped through, while
+in LaTeX one gets a link to a web page with this functionality.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-exercise-environments admonition">
+<p class="first admonition-title">Exercise environments</p>
+<p>DocOnce supports <em>exercise subsections</em>, which are subsections with some
+extra tagging for exercises. Important features are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>exercises can be divided into subexercises</li>
+<li>one may specify filename(s) for delivering the answer to an exercise</li>
+<li>one may specify filename(s) for the solution of an exercise</li>
+<li>one may specify a remark (fun facts, comments)</li>
+<li>one or more hints can be given to an exercise or subexercise
+(can be hidden in certain output formats)</li>
+<li>any exercise or subexercise can have a solution field</li>
+<li>any exercise or subexercise can have an answer field (very condensed solution)</li>
+<li>solutions and answers can be removed from the document at compile time</li>
+<li>exercises can have one of four titles: Exercise, Project, Problem, or
+Example</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="quote">
+<h2>Quote<a class="headerlink" href="#quote" title="Permalink to this headline">¶</a></h2>
+<p>There is also a <em>quote</em> environment (invisible box with larger
+margins).</p>
+<blockquote>
+<div><p>We&#8217;re programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We&#8217;re not excited by incremental renovation: tinkering, improving, planting flower beds.</p>
+<p>There&#8217;s a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:
+<strong>It&#8217;s harder to read code than to write it.</strong>
+This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it&#8217;s easier and more fun than figuring out how the old function works.</p>
+<p><a class="reference external" href="http://www.joelonsoftware.com/articles/fog0000000069.html">Joel Spolsky</a>, 2000</p>
+</div></blockquote>
+</div>
+<div class="section" id="quiz">
+<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
+<p><strong>Question:</strong> How can one typeset a multiple choice question or <em>quiz</em> in DocOnce?
+Recall that a quiz may feature mathematics like</p>
+<div class="math">
+\[F = ma\]</div>
+<p>and even nicely typeset computer code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Newtons2nd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">a</span>
+    <span class="k">return</span> <span class="n">F</span>
+
+<span class="k">print</span> <span class="n">Newtons2nd</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Choice 1:</strong> Cannot be typeset because online quiz tools ignore math and code typesetting. <abbr title="Wrong!">?</abbr></p>
+<p><strong>Choice 2:</strong> See the DocOnce <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html">quiz manual</a>. <abbr title="Right!">?</abbr> <abbr title=" Here you see all capabilities demonstrated.">#</abbr></p>
+<p><strong>Choice 3:</strong> Read the quiz and the multiple answers out loud and hope for a magic translation to code. <abbr title="Wrong!">?</abbr> <abbr title=" Not implemented this year - just had to come up with yet another choice...">#</abbr></p>
+</div>
+<div class="section" id="what-about-a-video-lecture">
+<h2>What about a video lecture?<a class="headerlink" href="#what-about-a-video-lecture" title="Permalink to this headline">¶</a></h2>
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe><div class="admonition-question admonition">
+<p class="first admonition-title">Question</p>
+<p class="last">Can you think of applications of the above mentioned features?</p>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<table class="docutils citation" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref1]</td><td><strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>,
+fourth edition,
+<em>Texts in Computational Science and Engineering</em>,
+Springer,
+2014.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="ref2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref2]</td><td><strong>H. P. Langtangen</strong>. Some document,
+<a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake">http://hplgit.github.io/setup4book-doconce/doc/pub/fake</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Special features for teaching material</a><ul>
+<li><a class="reference internal" href="#admonitions">Admonitions</a></li>
+<li><a class="reference internal" href="#put-a-box-around-something-very-important">Put a box around something very important</a></li>
+<li><a class="reference internal" href="#interactive-code">Interactive code</a></li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#quote">Quote</a></li>
+<li><a class="reference internal" href="#quiz">Quiz</a></li>
+<li><a class="reference internal" href="#what-about-a-video-lecture">What about a video lecture?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_rules007.html"
+                        title="previous chapter">Writing in private repository while publishing in public</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_rules007.html" title="Writing in private repository while publishing in public"
+             >previous</a> |</li>
+        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Hans Petter Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

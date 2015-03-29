@@ -16,6 +16,14 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+</style>
+
 
 </head>
 
@@ -39,20 +47,56 @@ Automatically generated HTML file from DocOnce source
               (' Compiling the chapter ', 2, None, '___sec9'),
               (' PDF ', 3, None, '___sec10'),
               (' HTML ', 3, None, '___sec11'),
-              (' Compiling the book ', 2, None, '___sec12'),
-              (' Cross-referencing across chapters ', 1, None, '___sec13'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec14'),
-              (' Study guides and slides ', 1, None, '___sec15'),
-              (' Slide directory ', 2, None, '___sec16'),
-              (' Generating slides from running text ', 2, None, '___sec17'),
-              (' Compiling slides ', 2, None, '___sec18'),
-              (' References ', 1, None, '___sec19')]}
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <!-- Bootstrap navigation bar -->
@@ -74,9 +118,11 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="._rules-readable002.html#___sec1" style="font-size: 80%;">Newcommands</a></li>
      <!-- navigation toc: --> <li><a href="._rules-readable003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
      <!-- navigation toc: --> <li><a href="._rules-readable004.html#___sec7" style="font-size: 80%;">Tools</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">Cross-referencing across chapters</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec15" style="font-size: 80%;">Study guides and slides</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec19" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable006.html#___sec16" style="font-size: 80%;">Study guides and slides</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable007.html#___sec21" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable008.html#___sec22" style="font-size: 80%;">Special features for teaching material</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-readable008.html#___sec30" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -92,7 +138,7 @@ end of tocinfo -->
 <a name="part0005"></a>
 <!-- !split -->
 
-<h1 id="___sec13">Cross-referencing across chapters </h1>
+<h1 id="___sec14">Cross-referencing across chapters </h1>
 
 <p>
 A fundamental problem when writing a book <em>and</em> stand-alone chapters
@@ -125,7 +171,7 @@ It is called <em>generalized cross-references</em>. You can then write
 such references across chapters and get all labels right whether you
 produce the entire book or individual chapters.
 
-<h2 id="___sec14">Syntax of generalized cross-references </h2>
+<h2 id="___sec15">Syntax of generalized cross-references </h2>
 
 <p>
 Here is an example on a generalized reference to an equation in another
@@ -134,8 +180,8 @@ document:
 <p>
 
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">The world&#39;s most famous equation is ref[\eqref{fake_Emc2}][,
-see cite{Langtangen_dobook_fake}][
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">The world&#39;s most famous equation is ref[\eqref{fake:Emc2}][in
+cite{Langtangen_dobook_fake}][
 as found in the document &quot;Some document&quot;:
 <span style="color: #BA2121">&quot;http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake&quot;</span>
 cite{Langtangen_dobook_fake}].
@@ -149,7 +195,7 @@ This sentence is rendered as follows in the present format (<code>html</code>):
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 The world's most famous equation is 
 as found in the document <a href="http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake" target="_self">Some document</a>
-<a href="._rules-readable006.html#Langtangen_dobook_fake">[2]</a>.
+<a href="._rules-readable008.html#Langtangen_dobook_fake">[2]</a>.
 </div>
 <!-- end box -->
 
@@ -157,6 +203,9 @@ as found in the document <a href="http://hplgit.gthub.io/setup4book-doconce/doc/
 <p>
 More detailed information about generalized cross-references is
 found in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-cross-referencing" target="_self">DocOnce manual</a>.
+In particular, one has to insert <code># Externaldocuments:</code> commands in
+all <code>main_*.do.txt</code> files that includes files with generalized
+references.
 
 <p>
 <p>
@@ -186,4 +235,3 @@ found in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual
 </body>
 </html>
     
-

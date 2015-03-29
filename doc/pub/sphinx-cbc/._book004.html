@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Newcommands</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="How to Use DocOnce to Write Books" href="index.html" />
+    <link rel="next" title="Assembling different pieces to a book" href="._book005.html" />
+    <link rel="prev" title="Directory structure" href="._book003.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._book005.html" title="Assembling different pieces to a book"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="._book003.html" title="Directory structure"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="newcommands">
+<h1>Newcommands<a class="headerlink" href="#newcommands" title="Permalink to this headline">¶</a></h1>
+<p>Files with names <tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt> are by DocOnce treated as files
+with definition of newcommands for LaTeX mathematics.
+These files must reside in the same
+directory as the DocOnce source files. However, for a book project,
+it is common to have one newcommands file shared by all chapters.
+This file is placed
+in <tt class="docutils literal"><span class="pre">doc/src/chapters/newcommands.p.tex</span></tt> and copied to a specific
+chapter by the make script for that chapter. The extension of
+the file is <tt class="docutils literal"><span class="pre">.p.tex</span></tt>, indicating that the file has to be
+<em>preprocessed</em> by <tt class="docutils literal"><span class="pre">preprocess</span></tt> prior to being copied. The reason
+is that one occasionally wants the definitions of the newcommands
+to depend on the output format (standard LaTeX or MathJax).
+For example, subscripts in <tt class="docutils literal"><span class="pre">mbox</span></tt> font look best with footnotesize
+font in plain LaTeX, while the larger <tt class="docutils literal"><span class="pre">small</span></tt> font is more appropriate
+for MathJax. We can then put the following definitions in
+<tt class="docutils literal"><span class="pre">newcommands.p.tex</span></tt>:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="c">% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</span>
+<span class="c">% Use footnotesize in subscripts</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\subsc</span><span class="nb">}</span>[2]<span class="nb">{</span>#1<span class="nb">_{</span><span class="k">\mbox</span><span class="nb">{</span><span class="k">\footnotesize</span> #2<span class="nb">}}}</span>
+<span class="c">% #else</span>
+<span class="c">% In MathJax, a different construction is used</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\subsc</span><span class="nb">}</span>[2]<span class="nb">{</span>#1<span class="nb">_{</span><span class="k">\small\mbox</span><span class="nb">{</span>#2<span class="nb">}}}</span>
+<span class="c">% #endif</span>
+</pre></div>
+</div>
+<p>The make script will then run <tt class="docutils literal"><span class="pre">preprocess</span></tt> on this file,
+typically</p>
+<div class="highlight-bash"><div class="highlight"><pre>preprocess -DFORMAT<span class="o">=</span>pdflatex ../newcommands.p.tex &gt; newcommands.tex
+<span class="c"># or</span>
+preprocess -DFORMAT<span class="o">=</span>html ../newcommands.p.tex &gt; newcommands.tex
+</pre></div>
+</div>
+<div class="admonition-doconce-newcommands-are-for-mathematics-only admonition">
+<p class="first admonition-title">DocOnce newcommands are for mathematics only</p>
+<p class="last">Note that
+newcommands in DocOnce context are only used for mathematics,
+rendered by LaTeX or MathJax. Newcommands for other LaTeX constructions
+(such as section or boxes) should not be used in the DocOnce source
+code as these are confined
+to the LaTeX format. Use instead Mako functions.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._book003.html"
+                        title="previous chapter">Directory structure</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="._book005.html"
+                        title="next chapter">Assembling different pieces to a book</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._book004.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._book005.html" title="Assembling different pieces to a book"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._book003.html" title="Directory structure"
+             >previous</a> |</li>
+        <li><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+  </div>
+</div>
+
+  </body>
+</html>

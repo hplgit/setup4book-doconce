@@ -1,0 +1,310 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Directory and file structure">
+
+<title>Directory and file structure</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/*
+in.collapse+a.btn.showdetails:before { content:'Hide details'; }
+.collapse+a.btn.showdetails:before { content:'Show details'; }
+*/
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Directory structure ',
+               1,
+               'sec:rules:dir:struct',
+               'sec:rules:dir:struct'),
+              (' Newcommands ', 1, None, '___sec1'),
+              (' Assembling different pieces to a book ',
+               1,
+               'setup:rules:book:assembly',
+               'setup:rules:book:assembly'),
+              (' Organization of a chapter ', 2, None, '___sec3'),
+              (' Figures and source code ', 2, None, '___sec4'),
+              (' Assembly of chapters to a book ', 2, None, '___sec5'),
+              (' About figures when publishing HTML ', 2, None, '___sec6'),
+              (' Tools ', 1, None, '___sec7'),
+              (' Making a new chapter ', 2, None, '___sec8'),
+              (' Compiling the chapter ', 2, None, '___sec9'),
+              (' PDF ', 3, None, '___sec10'),
+              (' HTML ', 3, None, '___sec11'),
+              (' Cleaning Files ', 3, None, '___sec12'),
+              (' Compiling the book ', 2, None, '___sec13'),
+              (' Cross-referencing across chapters ', 1, None, '___sec14'),
+              (' Syntax of generalized cross-references ',
+               2,
+               None,
+               '___sec15'),
+              (' Study guides and slides ', 1, None, '___sec16'),
+              (' Slide directory ', 2, None, '___sec17'),
+              (' Generating slides from running text ', 2, None, '___sec18'),
+              (' Compiling slides ', 2, None, '___sec19'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec20'),
+              (' Writing in private repository while publishing in public ',
+               1,
+               None,
+               '___sec21'),
+              (' Special features for teaching material ',
+               1,
+               None,
+               '___sec22'),
+              (' Admonitions ', 2, None, '___sec23'),
+              (' Put a box around something very important ',
+               2,
+               None,
+               '___sec24'),
+              (' Interactive code ', 2, None, '___sec25'),
+              (' Exercises ', 2, None, '___sec26'),
+              (' Quote ', 2, None, '___sec27'),
+              (' Quiz ', 2, None, '___sec28'),
+              (' What about a video lecture? ', 2, None, '___sec29'),
+              (' References ', 1, None, '___sec30')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="rules-bootstrap.html">Directory and file structure</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#___sec1" style="font-size: 80%;">Newcommands</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap004.html#___sec7" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec14" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap006.html#___sec16" style="font-size: 80%;">Study guides and slides</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec22" style="font-size: 80%;">Special features for teaching material</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec30" style="font-size: 80%;">References</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0007"></a>
+<!-- !split -->
+
+<h1 id="___sec21">Writing in private repository while publishing in public </h1>
+
+<p>
+Sometimes you want to keep ongoing writing in a <em>private</em> repository
+and make only <em>selected</em> chapters and/or files publicly visible.
+In such cases
+one can set up the book project structure in a private repository, but
+use a public repository instead of the <code>doc/pub</code> directory for publishing
+selected compiled documents. This is easy: just change the <code>dest=</code>
+line, where the publishing directory is defined, in all <code>make*.sh</code>
+scripts in <code>doc/src/chapters</code>. The files will then be copied to
+this alternative destination.
+
+<p>
+Often, you want to publish the software associated with the book
+project, stored in <code>doc/src/chapter/nickname/src-nickname</code>, as a part
+of the public repository. Such files can also easily be copied, say to
+<code>src/nickname</code> in the public repository. However, software files often
+change names and locations in subdirectories, and then you need to be
+very careful with updating the Git commands in the public repository
+every time you do <code>git add</code> or <code>git rm</code> locally in the private
+repository.  This problem occurs with text files too, but maybe less
+often, so the recipe given below applies to all kind of files you want
+to mirror from a private to a public repository.
+
+<p>
+We have made a script <a href="https://github.com/hplgit/setup4book-doconce/tree/master/doc/src/chapters/rules/src-rules/rsync_git.py" target="_self"><tt>rsync_git.py</tt></a>
+that can copy files from one repository to another and log files that
+are removed or deleted and then take the appropriate Git actions.
+Running
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+</pre></div>
+<p>
+will copy all files from <code>src-mychap</code> to <code>$HOME/repos/pub/mybook/src/mychap</code>,
+find which files that are new in <code>src-mychap</code> and
+must be added to the destination directory, and which files
+that are removed in <code>src-mychap</code> and should be removed in the destination
+directory as well.
+An <code>rsync</code> command is run to the physical copy and removal of
+files, followed by <code>git add</code> and <code>git rm</code>
+commands. In this way, you can automatically keep the public repository
+as a mirror <em>of parts</em> of your private repository! <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="This functionality should be a part of Git, but no Git expert I have talked to has ever seen use for merging a flexibly defined subset of a repository with another repository. (The current functionality of Git is not capable of working with, e.g., branches that merge with only parts of another branch.)"><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>
+
+<p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> This functionality should be a part of Git, but no Git expert I have talked to has ever seen use for merging a flexibly defined subset of a repository with another repository. (The current functionality of Git is not capable of working with, e.g., branches that merge with only parts of another branch.)</p>
+
+<p>
+The <code>rsync_git.py</code> script is listed below for reference. Note that
+a file <code>$HOME/.rsyncexclude</code> can be made to filter out certain files
+that you never want to copy (this is always a good idea!).
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/usr/bin/env python</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">Sync two directory trees with rsync and perform corresponding</span>
+<span style="color: #BA2121; font-style: italic">git operations (add or rm).</span>
+<span style="color: #BA2121; font-style: italic">Skip files listed in $HOME/.rsyncexclude.</span>
+
+<span style="color: #BA2121; font-style: italic">Usage:   rsync_git.py from-dir to-dir</span>
+<span style="color: #BA2121; font-style: italic">Example: rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap</span>
+
+<span style="color: #BA2121; font-style: italic">The from-dir is the source and the to-dir is the destination</span>
+<span style="color: #BA2121; font-style: italic">(e.g. a public directory where resources are exposed).</span>
+<span style="color: #BA2121; font-style: italic">The script must be run from a dir within the repo of to-dir.</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+
+<span style="color: #408080; font-style: italic"># Typical rsync output:</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">sending incremental file list</span>
+<span style="color: #BA2121; font-style: italic">deleting decay7.py</span>
+<span style="color: #BA2121; font-style: italic">decay_TULL.py</span>
+
+<span style="color: #BA2121; font-style: italic">sent 675 bytes  received 34 bytes  1418.00 bytes/sec</span>
+<span style="color: #BA2121; font-style: italic">total size is 94788  speedup is 133.69</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+
+<span style="color: #408080; font-style: italic"># Example on $HOME/.rsyncexclude file</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">.#*</span>
+<span style="color: #BA2121; font-style: italic">#*</span>
+<span style="color: #BA2121; font-style: italic">*.rsync~</span>
+<span style="color: #BA2121; font-style: italic">*.a</span>
+<span style="color: #BA2121; font-style: italic">*.o</span>
+<span style="color: #BA2121; font-style: italic">*.so</span>
+<span style="color: #BA2121; font-style: italic">*~</span>
+<span style="color: #BA2121; font-style: italic">.*~</span>
+<span style="color: #BA2121; font-style: italic">*.log</span>
+<span style="color: #BA2121; font-style: italic">*.dvi</span>
+<span style="color: #BA2121; font-style: italic">*.aux</span>
+<span style="color: #BA2121; font-style: italic">*.old</span>
+<span style="color: #BA2121; font-style: italic">tmp_*</span>
+<span style="color: #BA2121; font-style: italic">.tmp*</span>
+<span style="color: #BA2121; font-style: italic">*.tar</span>
+<span style="color: #BA2121; font-style: italic">*.tar.gz</span>
+<span style="color: #BA2121; font-style: italic">*.tgz</span>
+<span style="color: #BA2121; font-style: italic">*.pyc</span>
+<span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">commands</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">os</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+
+from_ <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
+to_ <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">2</span>]
+cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;rsync -rtDvz -u -e ssh -b &#39;</span> <span style="color: #666666">+</span> \
+      <span style="color: #BA2121">&#39;--exclude-from=$HOME/.rsyncexclude &#39;</span> <span style="color: #666666">+</span> \
+      <span style="color: #BA2121">&#39;--suffix=.rsync~ --delete --force </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">/ </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (from_, to_)
+<span style="color: #008000; font-weight: bold">print</span> cmd
+failure, output <span style="color: #666666">=</span> commands<span style="color: #666666">.</span>getstatusoutput(cmd)
+<span style="color: #008000; font-weight: bold">print</span> output
+
+delete <span style="color: #666666">=</span> []
+add <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> output<span style="color: #666666">.</span>splitlines():
+    relevant_line <span style="color: #666666">=</span> <span style="color: #008000">True</span>
+    <span style="color: #008000; font-weight: bold">for</span> text <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #BA2121">&#39;sending incremental file list&#39;</span>, \
+        <span style="color: #BA2121">&#39;sent &#39;</span>, <span style="color: #BA2121">&#39;total size is&#39;</span>:
+        <span style="color: #008000; font-weight: bold">if</span> line<span style="color: #666666">.</span>startswith(text):
+            relevant_line <span style="color: #666666">=</span> <span style="color: #008000">False</span>
+    <span style="color: #008000; font-weight: bold">if</span> relevant_line <span style="color: #AA22FF; font-weight: bold">and</span> line <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;&#39;</span>:
+        <span style="color: #008000; font-weight: bold">if</span> line<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;deleting&#39;</span>):
+            delete<span style="color: #666666">.</span>append(line<span style="color: #666666">.</span>split()[<span style="color: #666666">1</span>])
+        <span style="color: #008000; font-weight: bold">else</span>:
+            add<span style="color: #666666">.</span>append(line<span style="color: #666666">.</span>strip())
+
+<span style="color: #008000; font-weight: bold">print</span> delete
+<span style="color: #008000; font-weight: bold">print</span> add
+
+<span style="color: #008000; font-weight: bold">for</span> filename <span style="color: #AA22FF; font-weight: bold">in</span> delete:
+    option <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;-rf&#39;</span> <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(<span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (to_, filename)) <span style="color: #008000; font-weight: bold">else</span> <span style="color: #BA2121">&#39;-f&#39;</span>
+    cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;git rm </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (option, to_, filename)
+    <span style="color: #008000; font-weight: bold">print</span> cmd
+    os<span style="color: #666666">.</span>system(cmd)
+<span style="color: #008000; font-weight: bold">for</span> filename <span style="color: #AA22FF; font-weight: bold">in</span> add:
+    cmd <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;git add </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (to_, filename)
+    <span style="color: #008000; font-weight: bold">print</span> cmd
+    os<span style="color: #666666">.</span>system(cmd)
+</pre></div>
+<p>
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pager">
+  <li class="previous">
+    <a href="._rules-bootstrap006.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._rules-bootstrap008.html">Next &rarr;</a>
+  </li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    

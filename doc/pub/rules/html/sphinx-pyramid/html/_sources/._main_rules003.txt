@@ -93,7 +93,7 @@ Assembly of chapters to a book
 
 All the files associated with the ``ch2`` document and chapter reside
 in the ``ch2`` directory. A fundamental principle of DocOnce is to
-have just one copy of the files ("Document once!").
+have just one copy of the files ("document once!").
 To include the ``ch2`` text in a larger document like a book, we just
 need to include the ``ch2.do.txt`` file and a chapter heading.
 Here is an example of a document ``book.do.txt`` for a complete book:
