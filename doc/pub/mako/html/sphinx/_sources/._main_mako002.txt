@@ -3,6 +3,16 @@
 How to make several variants of the text
 ========================================
 
+.. index:: if tests in mako
+
+.. index:: boolean in mako
+
+.. index::
+   single: mako; if tests
+
+.. index::
+   single: mako; boolean
+
 Sometimes you want to write some text slightly differently if the
 chapter is a stand-alone document compared to the case when it is
 part of a book. Mako if tests are ideal for this. Suppose you

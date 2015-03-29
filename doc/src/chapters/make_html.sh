@@ -83,7 +83,7 @@ cp -r sphinx-${theme}/_build/html $dest/html/sphinx
 
 # index.html for this chapter
 cp ../index_html_files.do.txt index.do.txt
-system doconce format html index --html_style=bootstrap_FlatUI CHAPTER="${nickname}" --html_bootstrap_navbar=off --html_links_in_new_window $args
+system doconce format html index --html_style=bootstrap_FlatUI CHAPTER="${nickname}" --html_bootstrap_navbar=off --html_links_in_new_window
 cp index.html $dest/html/
 rm -f index.*
 

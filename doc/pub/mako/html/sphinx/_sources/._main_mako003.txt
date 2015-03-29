@@ -3,6 +3,11 @@
 Use of Mako/Python functions
 ============================
 
+.. index:: functions in mako
+
+.. index::
+   single: mako; functions
+
 Such if tests are fine to handle larger portions of text. What if you
 need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,

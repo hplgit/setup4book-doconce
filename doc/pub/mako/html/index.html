@@ -6,9 +6,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="${chapters[str(CHAPTER)]}">
+<meta name="description" content="Use of Mako to aid book writing">
 
-<title>${chapters[str(CHAPTER)]}</title>
+<title>Use of Mako to aid book writing</title>
 
 <!-- Bootstrap style: bootstrap_FlatUI -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -35,34 +35,9 @@ end of tocinfo -->
 
 
 <p>
-<%
-chapters = {
- 'rules': 'Directory and file structure',
- 'fake': 'Some document',
- 'mako': 'Use of Mako to aid book writing',
-}
-
-<p>
-import os
-def has_slides():
-    """Can we find slides for the given CHAPTER?"""
-    return os.path.isdir('slides-'+ CHAPTER)
-
-<p>
-<!-- Error check (if chapters above is appropriately defined) -->
-if CHAPTER not in chapters:
-    print """
-<em>*</em> error: 'chapters' dictionary in index_html_files_do.txt does not
-    contain the key "%s". Fill in that chapter nickname and the
-    corresponding chapter title!
-""" % CHAPTER
-    import sys; sys.exit(1)
-%>
-
-<p>
 
 
-<center><h1>${chapters[str(CHAPTER)]}</h1></center>  <!-- document title -->
+<center><h1>Use of Mako to aid book writing</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -80,31 +55,16 @@ if CHAPTER not in chapters:
 <p>
 <center><h4>Mar 29, 2015</h4></center> <!-- date -->
 <p>
-The document _${chapters[str(CHAPTER)]}_ is here available in the following
+The document <b>Use of Mako to aid book writing</b> is here available in the following
 formats:
 
 <ul>
- <li> <a href="${CHAPTER}-bootstrap.html" target="_blank">HTML plain bootstrap style</a></li>
- <li> <a href="${CHAPTER}-readable.html" target="_blank">HTML bootswatch readable style</a></li>
- <li> <a href="${CHAPTER}-solarized.html" target="_blank">HTML solarized color style</a></li>
+ <li> <a href="mako-bootstrap.html" target="_blank">HTML plain bootstrap style</a></li>
+ <li> <a href="mako-readable.html" target="_blank">HTML bootswatch readable style</a></li>
+ <li> <a href="mako-solarized.html" target="_blank">HTML solarized color style</a></li>
  <li> <a href="sphinx/index.html" target="_blank">HTML Sphinx style</a></li>
 </ul>
 
-% if has_slides():
-Slides:
-
-<ul>
- <li> <a href="slides_${CHAPTER}-reveal.html" target="_blank">HTML5 reveal.js dark</a></li>
- <li> <a href="slides_${CHAPTER}-reveal-beige.html" target="_blank">HTML5 reveal.js beige</a></li>
- <li> <a href="slides_${CHAPTER}-deck.html" target="_blank">HTML5 deck.js</a></li>
- <li> <a href="slides_${CHAPTER}-remark.html" target="_blank">HTML5 Remark</a></li>
- <li> <a href="slides_${CHAPTER}-1.html" target="_blank">Plain HTML, one big file</a></li>
- <li> <a href="slides_${CHAPTER}-solarized.html" target="_blank">Solarized HTML, one big file</a></li>
- <li> <a href="../pdf/slides_${CHAPTER}-beamer.pdf" target="_blank">LaTeX Beamer</a></li>
- <li> <a href="../pdf/slides_${CHAPTER}-beamer-handouts2x3.pdf" target="_blank">LaTeX Beamer handouts</a></li>
-</ul>
-
-% endif
 
 <!-- ------------------- end of main content --------------- -->
 

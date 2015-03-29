@@ -3,6 +3,11 @@
 Use of variables
 ================
 
+.. index:: variables in mako
+
+.. index::
+   single: mako; variables
+
 Mako is the preprocessor that is always run prior to translating DocOnce
 documents into a specific format. It means that your DocOnce source is
 actually a computer program where you can use variables and functions.
@@ -13,6 +18,12 @@ in the coming sections.
 
 How to speak about "this chapter"
 ---------------------------------
+
+.. index:: CHAPTER
+
+.. index:: BOOK
+
+.. index:: APPENDIX
 
 In a book you will often need the phrase "this chapter", but his is
 inappropriate if the chapter is a stand-alone document. Then you would
