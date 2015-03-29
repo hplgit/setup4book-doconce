@@ -29,7 +29,7 @@ doconce replace _static/uio_logo.png https://raw.githubusercontent.com/CINPLA/lo
 system python automake_sphinx.py
 
 # Generate and compile RunestoneInteractive
-system doconce format sphinx $name --runestone $opt --sphinx_keep_splits
+system doconce format sphinx $name --runestone $opt --sphinx_keep_splits -DRUNESTONE
 system doconce split_rst $name
 system doconce sphinx_dir theme=cbc dirname=runestone $name
 system python automake_sphinx.py --runestone

@@ -184,3 +184,20 @@ in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling ``book.do.txt`` or actually extending the DocOnce source code.
 
+HTML/Sphinx versions of the book
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index:: RunestoneInteractive books
+
+.. index:: sphinx
+
+It is easy to make a standard HTML version of the ``book.do.txt``
+manuscript, but for large books, Sphinx is usually a better
+alternative since it supports navigation, searching, and has an
+index. There is a script ``doc/src/book/make_html.sh`` that creates a
+Sphinx version of the book. Actually, it generates two versions
+
+ * standard Sphinx `book <http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx/index.html>`__
+
+ * `RunestoneInteractive <http://runestoneinteractive.org>`__ Sphinx `book <http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx-runestone/index.html>`__
+

@@ -251,7 +251,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#about-figures-when-publishing-html">About figures when publishing HTML</a></li>
-<li><a class="reference internal" href="#compiling-the-book">Compiling the book</a></li>
+<li><a class="reference internal" href="#compiling-the-book">Compiling the book</a><ul>
+<li><a class="reference internal" href="#html-sphinx-versions-of-the-book">HTML/Sphinx versions of the book</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -436,6 +439,20 @@ Lecture Notes in Computer Science (proceedings), and Undergraduate Texts
 in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling <tt class="docutils literal"><span class="pre">book.do.txt</span></tt> or actually extending the DocOnce source code.</p>
+<div class="section" id="html-sphinx-versions-of-the-book">
+<h3>HTML/Sphinx versions of the book<a class="headerlink" href="#html-sphinx-versions-of-the-book" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-4"></span><p id="index-5">It is easy to make a standard HTML version of the <tt class="docutils literal"><span class="pre">book.do.txt</span></tt>
+manuscript, but for large books, Sphinx is usually a better
+alternative since it supports navigation, searching, and has an
+index. There is a script <tt class="docutils literal"><span class="pre">doc/src/book/make_html.sh</span></tt> that creates a
+Sphinx version of the book. Actually, it generates two versions</p>
+<blockquote>
+<div><ul class="simple">
+<li>standard Sphinx <a class="reference external" href="http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx/index.html">book</a></li>
+<li><a class="reference external" href="http://runestoneinteractive.org">RunestoneInteractive</a> Sphinx <a class="reference external" href="http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx-runestone/index.html">book</a></li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 </div>
 

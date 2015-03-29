@@ -295,20 +295,6 @@ Other error messages point to specific lines
 that Mako struggles with. Go to the file `tmp_mako__book.do.txt`
 to investigate the line.
 
-===== HTML/Sphinx versions of the book =====
-
-idx{RunestoneInteractive books}
-idx{sphinx}
-
-It is easy to make a standard HTML version of the `book.do.txt` manuscript, but
-for large books, Sphinx is usually a better alternative since it supports
-navigation, searching, and has an index. There is a script `make_rs.sh`
-that creates a Sphinx version of the book. Actually, it generates two
-versions
-
- * standard Sphinx book
- * "RunestoneInteractive": "http://runestoneinteractive.org" Sphinx book
-
 
 !split
 ======= Tools =======
@@ -476,6 +462,21 @@ Lecture Notes in Computer Science (proceedings), and Undergraduate Texts
 in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling `book.do.txt` or actually extending the DocOnce source code.
+
+=== HTML/Sphinx versions of the book ===
+
+idx{RunestoneInteractive books}
+idx{sphinx}
+
+It is easy to make a standard HTML version of the `book.do.txt`
+manuscript, but for large books, Sphinx is usually a better
+alternative since it supports navigation, searching, and has an
+index. There is a script `doc/src/book/make_html.sh` that creates a
+Sphinx version of the book. Actually, it generates two versions
+
+ * standard Sphinx "book": "http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx/index.html"
+ * "RunestoneInteractive": "http://runestoneinteractive.org" Sphinx "book": "http://hplgit.github.uio/setup4book-doconce/doc/pub/sphinx-runestone/index.html"
+
 
 !split
 ======= Cross-referencing across chapters =======

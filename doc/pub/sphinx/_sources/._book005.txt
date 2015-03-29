@@ -248,20 +248,3 @@ Other error messages point to specific lines
 that Mako struggles with. Go to the file ``tmp_mako__book.do.txt``
 to investigate the line.
 
-HTML/Sphinx versions of the book
---------------------------------
-
-.. index:: RunestoneInteractive books
-
-.. index:: sphinx
-
-It is easy to make a standard HTML version of the ``book.do.txt`` manuscript, but
-for large books, Sphinx is usually a better alternative since it supports
-navigation, searching, and has an index. There is a script ``make_rs.sh``
-that creates a Sphinx version of the book. Actually, it generates two
-versions
-
- * standard Sphinx book
-
- * `RunestoneInteractive <http://runestoneinteractive.org>`__ Sphinx book
-
