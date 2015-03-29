@@ -58,10 +58,10 @@ theme="uio"
 
 system doconce format sphinx ${mainname} $opt --sphinx_keep_splits $args
 system doconce split_rst ${mainname}
-system doconce sphinx_dir theme=$theme dirname=sphinx ${mainname}
+system doconce sphinx_dir theme=$theme dirname=sphinx-${theme} ${mainname}
 # Change logo?
-doconce replace _static/uio_logo.png https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png sphinx/_themes/uio/layout.html
-#doconce replace _static/uio_logo.png https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_logo_transparent.png sphinx/_themes/uio/layout.html
+doconce replace _static/uio_logo.png https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png sphinx-${theme}/_themes/uio/layout.html
+#doconce replace _static/uio_logo.png https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_logo_transparent.png sphinx-${theme}/_themes/uio/layout.html
 system python automake_sphinx.py
 
 # Publish
@@ -79,7 +79,7 @@ fi
 cp -r ${nickname}-*.html ._${nickname}-*.html $dest/html
 
 rm -rf $dest/html/sphinx
-cp -r sphinx/_build/html $dest/html/sphinx
+cp -r sphinx-${theme}/_build/html $dest/html/sphinx
 
 # index.html for this chapter
 cp ../index_html_files.do.txt index.do.txt
