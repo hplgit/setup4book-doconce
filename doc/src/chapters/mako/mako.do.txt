@@ -5,6 +5,9 @@ project.
 !split
 ======= Use of variables =======
 
+idx{variables in mako}
+idx{mako!variables}
+
 Mako is the preprocessor that is always run prior to translating DocOnce
 documents into a specific format. It means that your DocOnce source is
 actually a computer program where you can use variables and functions.
@@ -14,6 +17,10 @@ a book faces some challenges for which we have some nice solutions
 in the coming sections.
 
 ===== How to speak about ``this chapter'' =====
+
+idx{`CHAPTER`}
+idx{`BOOK`}
+idx{`APPENDIX`}
 
 In a book you will often need the phrase ``this chapter'', but his is
 inappropriate if the chapter is a stand-alone document. Then you would
@@ -45,6 +52,11 @@ The `make.sh` files for found in `doc/src/chapter/make.sh` and
 
 !split
 ======= How to make several variants of the text =======
+
+idx{if tests in mako}
+idx{boolean in mako}
+idx{mako!if tests}
+idx{mako!boolean}
 
 Sometimes you want to write some text slightly differently if the
 chapter is a stand-alone document compared to the case when it is
@@ -138,6 +150,9 @@ variables
 
 !split
 ======= Use of Mako/Python functions =======
+
+idx{functions in mako}
+idx{mako!functions}
 
 Such if tests are fine to handle larger portions of text. What if you
 need to have four versions of just one word or very short text?

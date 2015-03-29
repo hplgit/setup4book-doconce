@@ -5,6 +5,12 @@ The setup can of course be used for proceedings and theses as well.
 ======= Directory structure =======
 label{sec:rules:dir:struct}
 
+idx{figure directory}
+idx{movie directory}
+idx{video directory}
+idx{source code directory}
+idx{`pub` directory}
+
 We shall outline a directory structure that can be effective when
 assembling different DocOnce documents into a book:
 
@@ -38,6 +44,8 @@ a book. One may also think of more than one book directory if a set
 of documents (chapters) naturally leads to multiple books. All
 chapters can then be put in the `chapters` directory.
 
+idx{nickname}
+
 Each chapter has a short *nickname*, say `ch2` for simplicity
 for Chapter 2 (a more descriptive name related to the content is obviously
 much better!). Figures are placed in subdirectory `fig-ch2` and
@@ -57,6 +65,8 @@ scripts for packing the book for publishing, perhaps an errata document, etc.
 
 !split
 ======= Newcommands =======
+
+idx{newcommands}
 
 Files with names `newcommands*.tex` are by DocOnce treated as files
 with definition of newcommands for LaTeX mathematics.
@@ -115,11 +125,13 @@ The recipe for doing this appears below.
 
 ===== Organization of a chapter =====
 
-Suppose one chapter) of the book
-has the nickname `ch2` and may hold all text or just include
-text in other DocOnce files, e.g., `part1.do.txt`, `part2.do.txt`, and
-`part3.do.txt`. In this latter case, `ch2.do.txt` has
-the simple content
+idx{chapter!organization}
+idx{chapter!files}
+
+Suppose one chapter) of the book has the nickname `ch2` and may hold
+all text or just include text in other DocOnce files, e.g.,
+`part1.do.txt`, `part2.do.txt`, and `part3.do.txt`. In this latter
+case, `ch2.do.txt` has the simple content
 
 @@@CODE src-rules/ch2.do.txt
 
@@ -158,6 +170,11 @@ as Publish is more flexible than BibTeX).
 
 ===== Figures and source code =====
 
+idx{figure directory}
+idx{movie directory}
+idx{video directory}
+idx{source code directory}
+
 As described in Section ref{sec:rules:dir:struct}, we recommend to put
 figures and source codes (to be included in the document) in separate
 directories. Although such directories could have natural names like
@@ -170,6 +187,8 @@ reside in their original locations, and we can easily reach them
 through links. This will be described next.
 
 ===== Assembly of chapters to a book =====
+
+idx{assembly (chapters to book)}
 
 All the files associated with the `ch2` document and chapter reside
 in the `ch2` directory. A fundamental principle of DocOnce is to
@@ -198,6 +217,8 @@ the desired output format.
 [^one-file]: A single DocOnce file and consequently a single
 `.tex` file works out well on today's laptops.
 A book with 900 pages cite{Langtangen_2014} has been tested!
+
+idx{links to fig/src directories}
 
 Say we want to produce a LaTeX document:
 
@@ -230,6 +251,8 @@ For this command to work, it is paramount that there is a link `fig-ch2` in the
 present `book` directory where the `pdflatex` command is run to
 the directory `../chapters/ch2/fig-ch2` where the figure file `fig1.pdf` is
 located.
+
+idx{`scripts` module}
 
 It is recommended to use the function `make_links` in `scripts.py` to
 automatically set up all convenient links from the `book` directory
@@ -274,6 +297,9 @@ to investigate the line.
 
 ===== HTML/Sphinx versions of the book =====
 
+idx{RunestoneInteractive books}
+idx{sphinx}
+
 It is easy to make a standard HTML version of the `book.do.txt` manuscript, but
 for large books, Sphinx is usually a better alternative since it supports
 navigation, searching, and has an index. There is a script `make_rs.sh`
@@ -294,6 +320,8 @@ your project's needs.
 
 
 ===== Making a new chapter =====
+
+idx{`mkdir.sh`}
 
 Under `doc/src/chapters`
 you find the chapters in this ``sample book'' as well as a script
@@ -316,6 +344,8 @@ arguments for running `doconce format pdflatex` can be given to
 `../make.sh` in `make.sh` if needed (e.g., --encoding=utf8`).
 
 ===== Compiling the chapter =====
+
+idx{`make.sh`}
 
 === PDF ===
 
@@ -353,6 +383,8 @@ it gives cleaner LaTeX code). (With `ptex2tex` one would need a common
 configuration file `doc/chapters/.ptex2tex.cfg` to be copied by
 `doc/chapters/make.sh` to the chapter directory prior to running
 `ptex2tex.)
+
+idx{`make_html.sh`}
 
 === HTML ===
 
@@ -406,6 +438,8 @@ Terminal> doconce format html index_files --html_style=bootstrap \
 and publish it in `doc/pub/index.html`.
 !ewarning
 
+idx{`clean.sh`}
+
 === Cleaning Files ===
 
 The `make*.sh` files generate a lot of files that can easily
@@ -446,6 +480,9 @@ compiling `book.do.txt` or actually extending the DocOnce source code.
 !split
 ======= Cross-referencing across chapters =======
 
+idx{cross-referencing}
+idx{generalized references}
+
 A fundamental problem when writing a book *and* stand-alone chapters
 arises with cross-referencing. In a book file it makes sense to refer
 to an equation in any chapter, say (4.23), while in a stand-alone
@@ -472,6 +509,9 @@ produce the entire book or individual chapters.
 
 
 ===== Syntax of generalized cross-references =====
+
+idx{`ref` generalized reference}
+idx{`refch` generalized reference}
 
 Here is an example on a generalized reference to an equation in another
 ${CHAPTER}:
@@ -501,6 +541,9 @@ references.
 
 !split
 ======= Study guides and slides =======
+
+idx{slides}
+idx{study guides}
 
 DocOnce has good support for creating slides from ordinary documents
 with running text. Rather than speaking about slides, we think of
@@ -597,6 +640,8 @@ the slides' quality).
 
 ===== Compiling slides =====
 
+idx{`make_slides.sh}
+
 There is a quite general script in `doc/src/chapters/make_slides.sh` for
 compiling a slide collection defined in a file like `slides_ch2.do.txt`.
 Just run
@@ -631,6 +676,10 @@ The `make_slides.sh` script compiles a variety of slides:
  * Remark (Markdown) slides for viewing in a browser.
 
 ===== IPython/Jupyter notebooks =====
+
+idx{IPython notebooks}
+idx{notebooks}
+idx{Jupyter notebooks}
 
 Since DocOnce documents can be translated to IPython/Jupyter notebooks,
 hereafter just called notebooks, it is tempting to produce a version
@@ -680,6 +729,9 @@ books into notebooks are supposed to be collected here in the future.
 
 !split
 ======= Writing in private repository while publishing in public =======
+
+idx{private repos}
+idx{mirroring repos}
 
 Sometimes you want to keep ongoing writing in a *private* repository
 and make only *selected* chapters and/or files publicly visible.

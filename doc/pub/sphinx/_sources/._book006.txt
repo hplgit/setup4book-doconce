@@ -16,6 +16,8 @@ your project's needs.
 Making a new chapter
 --------------------
 
+.. index:: mkdir.sh
+
 Under ``doc/src/chapters``
 you find the chapters in this "sample book" as well as a script
 ``doc/chapters/mkdir.sh`` that creates a new directory for you with the
@@ -39,6 +41,8 @@ arguments for running ``doconce format pdflatex`` can be given to
 
 Compiling the chapter
 ---------------------
+
+.. index:: make.sh
 
 PDF
 ~~~
@@ -78,6 +82,8 @@ it gives cleaner LaTeX code). (With ``ptex2tex`` one would need a common
 configuration file ``doc/chapters/.ptex2tex.cfg`` to be copied by
 ``doc/chapters/make.sh`` to the chapter directory prior to running
 `ptex2tex.)
+
+.. index:: make_html.sh
 
 HTML
 ~~~~
@@ -135,6 +141,8 @@ HTML or Sphinx styles.
 
 
 
+
+.. index:: clean.sh
 
 Cleaning Files
 ~~~~~~~~~~~~~~

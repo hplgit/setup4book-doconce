@@ -10,6 +10,16 @@
 Directory structure
 ===================
 
+.. index:: figure directory
+
+.. index:: movie directory
+
+.. index:: video directory
+
+.. index:: source code directory
+
+.. index:: pub directory
+
 We shall outline a directory structure that can be effective when
 assembling different DocOnce documents into a book:
 
@@ -42,6 +52,8 @@ the individual chapters and a directory ``book`` for the assembly into
 a book. One may also think of more than one book directory if a set
 of documents (chapters) naturally leads to multiple books. All
 chapters can then be put in the ``chapters`` directory.
+
+.. index:: nickname
 
 Each chapter has a short *nickname*, say ``ch2`` for simplicity
 for Chapter 2 (a more descriptive name related to the content is obviously

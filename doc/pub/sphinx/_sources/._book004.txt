@@ -8,6 +8,8 @@
 Newcommands
 ===========
 
+.. index:: newcommands
+
 Files with names ``newcommands*.tex`` are by DocOnce treated as files
 with definition of newcommands for LaTeX mathematics.
 These files must reside in the same
