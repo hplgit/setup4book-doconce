@@ -1,11 +1,13 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. Document title:
+
 Some document
 %%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 29, 2015
+:Date: Mar 31, 2015
 
 .. Common Mako variables and functions
 
@@ -38,6 +40,6 @@ References
 
 .. [Ref1]
    **H. P. Langtangen**. Directory and file structure,
-   `http://hplgit.github.io/setup4book-doconce/doc/pub/rules <http://hplgit.github.io/setup4book-doconce/doc/pub/rules>`_.
+   `http://hplgit.github.io/setup4book-doconce/doc/pub/rules/html <http://hplgit.github.io/setup4book-doconce/doc/pub/rules/html>`_.
 
 

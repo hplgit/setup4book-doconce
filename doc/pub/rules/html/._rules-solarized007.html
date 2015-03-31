@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz in DocOnce,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -57,6 +57,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -103,12 +118,14 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec24'),
               (' Admonitions ', 2, None, '___sec25'),
               (' Simple box ', 2, None, '___sec26'),
-              (' Interactive code ', 2, None, '___sec27'),
-              (' Exercises ', 2, None, '___sec28'),
-              (' Quote ', 2, None, '___sec29'),
-              (' Quiz ', 2, None, '___sec30'),
-              (' What about a video lecture? ', 2, None, '___sec31'),
-              (' References ', 1, None, '___sec32')]}
+              (' Embedded interactive code ', 2, None, '___sec27'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
+              (' The `pyscpro` code environment ', 3, None, '___sec29'),
+              (' Exercises ', 2, None, '___sec30'),
+              (' Quote ', 2, None, '___sec31'),
+              (' Quiz ', 2, None, '___sec32'),
+              (' What about a video lecture? ', 2, None, '___sec33'),
+              (' References ', 1, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -177,7 +194,9 @@ Running
 
 <p>
 
-Terminal&gt; rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+</pre></div>
 <p>
 will copy all files from <code>src-mychap</code> to <code>$HOME/repos/pub/mybook/src/mychap</code>,
 find which files that are new in <code>src-mychap</code> and
@@ -198,89 +217,91 @@ that you never want to copy (this is always a good idea!).
 
 <p>
 
-#!/usr/bin/env python
-&quot;&quot;&quot;
-Sync two directory trees with rsync and perform corresponding
-git operations (add or rm).
-Skip files listed in $HOME/.rsyncexclude.
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">#!/usr/bin/env python</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">Sync two directory trees with rsync and perform corresponding</span>
+<span style="color: #CD5555">git operations (add or rm).</span>
+<span style="color: #CD5555">Skip files listed in $HOME/.rsyncexclude.</span>
 
-Usage:   rsync_git.py from-dir to-dir
-Example: rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap
+<span style="color: #CD5555">Usage:   rsync_git.py from-dir to-dir</span>
+<span style="color: #CD5555">Example: rsync_git.py src-mychap $HOME/repos/pub/mybook/src/mychap</span>
 
-The from-dir is the source and the to-dir is the destination
-(e.g. a public directory where resources are exposed).
-The script must be run from a dir within the repo of to-dir.
-&quot;&quot;&quot;
+<span style="color: #CD5555">The from-dir is the source and the to-dir is the destination</span>
+<span style="color: #CD5555">(e.g. a public directory where resources are exposed).</span>
+<span style="color: #CD5555">The script must be run from a dir within the repo of to-dir.</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
 
-# Typical rsync output:
-&quot;&quot;&quot;
-sending incremental file list
-deleting decay7.py
-decay_TULL.py
+<span style="color: #228B22"># Typical rsync output:</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">sending incremental file list</span>
+<span style="color: #CD5555">deleting decay7.py</span>
+<span style="color: #CD5555">decay_TULL.py</span>
 
-sent 675 bytes  received 34 bytes  1418.00 bytes/sec
-total size is 94788  speedup is 133.69
-&quot;&quot;&quot;
+<span style="color: #CD5555">sent 675 bytes  received 34 bytes  1418.00 bytes/sec</span>
+<span style="color: #CD5555">total size is 94788  speedup is 133.69</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
 
-# Example on $HOME/.rsyncexclude file
-&quot;&quot;&quot;
-.#*
-#*
-*.rsync~
-*.a
-*.o
-*.so
-*~
-.*~
-*.log
-*.dvi
-*.aux
-*.old
-tmp_*
-.tmp*
-*.tar
-*.tar.gz
-*.tgz
-*.pyc
-&quot;&quot;&quot;
+<span style="color: #228B22"># Example on $HOME/.rsyncexclude file</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">.#*</span>
+<span style="color: #CD5555">#*</span>
+<span style="color: #CD5555">*.rsync~</span>
+<span style="color: #CD5555">*.a</span>
+<span style="color: #CD5555">*.o</span>
+<span style="color: #CD5555">*.so</span>
+<span style="color: #CD5555">*~</span>
+<span style="color: #CD5555">.*~</span>
+<span style="color: #CD5555">*.log</span>
+<span style="color: #CD5555">*.dvi</span>
+<span style="color: #CD5555">*.aux</span>
+<span style="color: #CD5555">*.old</span>
+<span style="color: #CD5555">tmp_*</span>
+<span style="color: #CD5555">.tmp*</span>
+<span style="color: #CD5555">*.tar</span>
+<span style="color: #CD5555">*.tar.gz</span>
+<span style="color: #CD5555">*.tgz</span>
+<span style="color: #CD5555">*.pyc</span>
+<span style="color: #CD5555">&quot;&quot;&quot;</span>
 
-import commands, os, sys
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">commands</span>, <span style="color: #008b45; text-decoration: underline">os</span>, <span style="color: #008b45; text-decoration: underline">sys</span>
 
-from_ = sys.argv[1]
-to_ = sys.argv[2]
-cmd = 'rsync -rtDvz -u -e ssh -b ' + \
-      '--exclude-from=$HOME/.rsyncexclude ' + \
-      '--suffix=.rsync~ --delete --force %s/ %s' % (from_, to_)
-print cmd
+from_ = sys.argv[<span style="color: #B452CD">1</span>]
+to_ = sys.argv[<span style="color: #B452CD">2</span>]
+cmd = <span style="color: #CD5555">&#39;rsync -rtDvz -u -e ssh -b &#39;</span> + \
+      <span style="color: #CD5555">&#39;--exclude-from=$HOME/.rsyncexclude &#39;</span> + \
+      <span style="color: #CD5555">&#39;--suffix=.rsync~ --delete --force %s/ %s&#39;</span> % (from_, to_)
+<span style="color: #8B008B; font-weight: bold">print</span> cmd
 failure, output = commands.getstatusoutput(cmd)
-print output
+<span style="color: #8B008B; font-weight: bold">print</span> output
 
 delete = []
 add = []
-for line in output.splitlines():
-    relevant_line = True
-    for text in 'sending incremental file list', \
-        'sent ', 'total size is':
-        if line.startswith(text):
-            relevant_line = False
-    if relevant_line and line != '':
-        if line.startswith('deleting'):
-            delete.append(line.split()[1])
-        else:
+<span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> output.splitlines():
+    relevant_line = <span style="color: #658b00">True</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> text <span style="color: #8B008B">in</span> <span style="color: #CD5555">&#39;sending incremental file list&#39;</span>, \
+        <span style="color: #CD5555">&#39;sent &#39;</span>, <span style="color: #CD5555">&#39;total size is&#39;</span>:
+        <span style="color: #8B008B; font-weight: bold">if</span> line.startswith(text):
+            relevant_line = <span style="color: #658b00">False</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> relevant_line <span style="color: #8B008B">and</span> line != <span style="color: #CD5555">&#39;&#39;</span>:
+        <span style="color: #8B008B; font-weight: bold">if</span> line.startswith(<span style="color: #CD5555">&#39;deleting&#39;</span>):
+            delete.append(line.split()[<span style="color: #B452CD">1</span>])
+        <span style="color: #8B008B; font-weight: bold">else</span>:
             add.append(line.strip())
 
-print delete
-print add
+<span style="color: #8B008B; font-weight: bold">print</span> delete
+<span style="color: #8B008B; font-weight: bold">print</span> add
 
-for filename in delete:
-    option = '-rf' if os.path.isdir('%s/%s' % (to_, filename)) else '-f'
-    cmd = 'git rm %s %s/%s' % (option, to_, filename)
-    print cmd
+<span style="color: #8B008B; font-weight: bold">for</span> filename <span style="color: #8B008B">in</span> delete:
+    option = <span style="color: #CD5555">&#39;-rf&#39;</span> <span style="color: #8B008B; font-weight: bold">if</span> os.path.isdir(<span style="color: #CD5555">&#39;%s/%s&#39;</span> % (to_, filename)) <span style="color: #8B008B; font-weight: bold">else</span> <span style="color: #CD5555">&#39;-f&#39;</span>
+    cmd = <span style="color: #CD5555">&#39;git rm %s %s/%s&#39;</span> % (option, to_, filename)
+    <span style="color: #8B008B; font-weight: bold">print</span> cmd
     os.system(cmd)
-for filename in add:
-    cmd = 'git add %s/%s' % (to_, filename)
-    print cmd
+<span style="color: #8B008B; font-weight: bold">for</span> filename <span style="color: #8B008B">in</span> add:
+    cmd = <span style="color: #CD5555">&#39;git add %s/%s&#39;</span> % (to_, filename)
+    <span style="color: #8B008B; font-weight: bold">print</span> cmd
     os.system(cmd)
+</pre></div>
 <p>
 <p>
 <!-- begin bottom navigation -->

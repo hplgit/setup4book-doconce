@@ -80,8 +80,9 @@
 need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,
 is then more appropriate.</p>
-<p>Here is a definition of a suitable Mako function, defined inside
-<tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt> tags:</p>
+<p>Here is a definition of a suitable Mako function, which must be
+defined inside
+<tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt> tags, using standard Python code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;%</span>
 <span class="k">def</span> <span class="nf">chversion</span><span class="p">(</span><span class="n">text_IT1413</span><span class="p">,</span> <span class="n">text_IT1713b</span><span class="p">,</span> <span class="n">text_general</span><span class="p">,</span>
               <span class="n">text_book1</span><span class="p">,</span> <span class="n">text_book2</span><span class="p">):</span>

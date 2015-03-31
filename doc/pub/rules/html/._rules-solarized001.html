@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz in DocOnce,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -57,6 +57,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -103,12 +118,14 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec24'),
               (' Admonitions ', 2, None, '___sec25'),
               (' Simple box ', 2, None, '___sec26'),
-              (' Interactive code ', 2, None, '___sec27'),
-              (' Exercises ', 2, None, '___sec28'),
-              (' Quote ', 2, None, '___sec29'),
-              (' Quiz ', 2, None, '___sec30'),
-              (' What about a video lecture? ', 2, None, '___sec31'),
-              (' References ', 1, None, '___sec32')]}
+              (' Embedded interactive code ', 2, None, '___sec27'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
+              (' The `pyscpro` code environment ', 3, None, '___sec29'),
+              (' Exercises ', 2, None, '___sec30'),
+              (' Quote ', 2, None, '___sec31'),
+              (' Quiz ', 2, None, '___sec32'),
+              (' What about a video lecture? ', 2, None, '___sec33'),
+              (' References ', 1, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -152,7 +169,8 @@ assembling different DocOnce documents into a book:
 
 <p>
 
-doc
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">doc
   src
     chapters
       ch2
@@ -165,6 +183,7 @@ doc
     chapters
     book
   web
+</pre></div>
 <p>
 The root directory for all documentation is called <code>doc</code>, with two
 subdirectories: <code>src</code> for all the DocOnce source code, and <code>pub</code> for

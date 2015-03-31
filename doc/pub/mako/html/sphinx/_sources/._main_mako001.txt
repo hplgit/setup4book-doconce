@@ -50,7 +50,7 @@ When the book is compiled, you do
 .. code-block:: text
 
         Terminal> doconce format pdflatex ch2 --latex_code_style=pyg \
-                  CHAPTER=chapter BOOK=chapter APPENDIX=chapter
+                  CHAPTER=chapter BOOK=chapter APPENDIX=appendix
 
 The ``make.sh`` files for found in ``doc/src/chapter/make.sh`` and
 ``doc/src/book/make.sh`` make proper definitions of

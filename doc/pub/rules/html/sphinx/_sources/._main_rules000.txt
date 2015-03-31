@@ -4,11 +4,13 @@
 .. |nbsp| unicode:: 0xA0
    :trim:
 
+.. Document title:
+
 Directory and file structure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 29, 2015
+:Date: Mar 31, 2015
 
 .. Externaldocuments: ../fake/main_fake
 

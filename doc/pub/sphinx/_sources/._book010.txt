@@ -71,14 +71,19 @@ Put a box around something important:
 **Note:**
 Simple boxes are not supported in format ``sphinx``.
 
-Interactive code
-----------------
+Embedded interactive code
+-------------------------
 
 .. index:: interactive code
 
 .. index:: pyoptpro interactive code
 
-You can step through this code:
+The ``pyoptpro`` code environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To illustrate program flow, you can step through code
+(as in a debugger, just more illustrative) using the
+``pyoptpro`` code environment. Here is an example:
 
 .. raw:: html
 
@@ -86,8 +91,38 @@ You can step through this code:
                 src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
         </iframe>
 
-In HTML and Sphinx format this code can be stepped through, while
+In HTML and Sphinx format this code can be stepped through in
+the browser, while
 in LaTeX one gets a link to a web page with this functionality.
+
+The ``pyscpro`` code environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The `SageMathCell <https://sagecell.sagemath.org/>`__ server
+enables live Python code in web documents. Using the
+``pyscpro`` code environment, Python code can be embedded
+in a Sage Cell for interactive computing:
+
+.. sagecellserver::
+
+        import random
+        a = random.randint(1, 7)
+        print a
+
+We can even plot:
+
+.. sagecellserver::
+
+        from numpy import *
+        from matplotlib.pyplot import *
+        
+        x = linspace(-2*pi, 2*pi, 801)
+        y = exp(-0.1*x**2)*sin(4*x)
+        plot(x, y)
+        show()
+
+HTML and Sphinx output has such interactive Sage Cells, while
+other output formats can just show the code.
 
 Exercises
 ---------
@@ -145,39 +180,99 @@ margins).
 Quiz
 ----
 
-.. index:: quiz in DocOnce
+.. index:: quiz
+
+.. index:: multiple-choice questions
 
 .. --- previous heading type: subsection
+
+
 
 .. begin quiz
 
 
 
-**Question:** How can one typeset a multiple choice question or *quiz* in DocOnce?
-Recall that a quiz may feature mathematics like
-
-.. math::
-         F = ma 
-
-and even nicely typeset computer code:
-
-.. code-block:: python
-
-        def Newtons2nd(m, a):
-            F = m*a
-            return F
-        
-        print Newtons2nd(1.1, 2.0)
+**Question:** Does DocOnce feature multiple-choice questions or quizzes?
 
 
-**Choice 1:** Cannot be typeset because online quiz tools ignore math and code typesetting. :abbr:`? (Wrong!)`
+**Choice 1:** Yes. :abbr:`? (Right!)` :abbr:`# (See the quiz manual (<http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).)`
 
-**Choice 2:** See the DocOnce `quiz manual <http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html>`__. :abbr:`? (Right!)` :abbr:`# ( Here you see all capabilities demonstrated.)`
-
-**Choice 3:** Read the quiz and the multiple answers out loud and hope for a magic translation to code. :abbr:`? (Wrong!)` :abbr:`# ( Not implemented this year - just had to come up with yet another answer alternative...)`
+**Choice 2:** No. :abbr:`? (Wrong!)`
 
 .. end quiz
 
+
+
+Quite often we need mathematics and computer code in questions and
+answers.
+
+
+
+.. begin quiz
+
+
+
+**Question:** Compute the integral
+
+.. math::
+         \int_0^{2\pi} e^{-x}\sin^2 x\,dx 
+
+and report the formula in verbatim LaTeX code,
+
+.. code-block:: latex
+
+        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx = ... \]
+
+
+**Choice 1:** There is no closed-form formula for this integral. :abbr:`? (Wrong!)` :abbr:`# (Maybe you fiddled around with pen and paper the wrong way... Try sympy!)`
+
+**Choice 2:** .. code-block:: python
+
+        >>> from sympy import *
+        >>> x = symbols('x')
+        >>> F = integrate(exp(-x)*sin(x)**2, (x, 0, 2*pi))
+        >>> F
+        -2*exp(-2*pi)/5 + 2/5
+        >>> latex(F)
+        '- \\frac{2}{5 e^{2 \\pi}} + \\frac{2}{5}'
+
+so the answer is
+
+.. code-block:: latex
+
+        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
+        - \frac{2}{5 e^{2 \pi}} + \frac{2}{5} \] :abbr:`? (Right!)`
+
+**Choice 3:** .. code-block:: latex
+
+        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
+        - \frac{3}{4 e^{2 \pi}} + \frac{3}{4} \] :abbr:`? (Wrong!)` :abbr:`# (Something went wrong here with the fractions...)`
+
+**Choice 4:** .. code-block:: latex
+
+        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
+        - {2\over5}{5 exp^{2 pi}} + \frac{2}{5} \] :abbr:`? (Wrong!)` :abbr:`# (Well, the math is correct, but the LaTeX code lacks two backslashes, and \over is old-fashioned, use \frac{}{} in 2015.)`
+
+.. end quiz
+
+
+
+The typesetting of a quiz depends on the output format.
+One can in plain HTML
+and Sphinx formats
+hover over the choice and get a pop-up tooltip with the
+right answer and an explanation (if defined).
+The explanation can only show plain text, so it is empty if it
+contains math or code blocks, or figures.
+With HTML Bootstrap styles one can click on a symbol to open up
+the answer and the explanation.
+RunestoneInteractive books (Sphinx) offers a
+button for the same purpose, but the explanation can only be
+plain text so any math or code block makes the explanation empty.
+LaTeX output can feature the choices only (no answer, no explanation:
+``--without_solutions --without_answers``), the short answer only
+(``--without_solutions``) or both the answer and all explanations
+(the case in this demo).
 
 What about a video lecture?
 ---------------------------

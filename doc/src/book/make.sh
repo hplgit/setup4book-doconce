@@ -69,7 +69,9 @@ cp index.html ../../pub
 rm -f index.*
 cd -
 
-# Report typical problems (too long lines etc.)
+# Report typical problems with the book (too long lines,
+# undefined labels, etc.). Here we report lines that are more than 10pt
+# too long.
 doconce latex_problems $name.log 10
 
 # Check grammar in MS Word:

@@ -2,13 +2,15 @@
 ## (this file is included in, e.g., flow/main_flow.do.txt).
 
 <%
-# Note that goo.gl URLs cannot have slashes and continuation,
+# Note that goo.gl and bitly URLs cannot have slashes and continuation,
 # therefore we use tinyurl.
 
 src_path = 'https://github.com/hplgit/setup4book-doconce/tree/master/doc/src/chapters'
 src_path = 'http://tinyurl.com/kukz8pt'
-doc_path = 'http://hplgit.github.io/scipro-primer/doc/'
-#doc_path = 'http://tinyurl.com/k3sdbuv'
-#doc_notes = doc_path + '/pub'
+
+doc_path = 'http://hplgit.github.io/setup4book-doconce/doc/pub'
+doc_path = 'http://tinyurl.com/oul3xhn'
+
+#doc_index = doc_path + '/index.html'
 
 %>

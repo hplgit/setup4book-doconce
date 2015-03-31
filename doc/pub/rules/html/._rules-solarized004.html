@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz in DocOnce,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -57,6 +57,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -103,12 +118,14 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec24'),
               (' Admonitions ', 2, None, '___sec25'),
               (' Simple box ', 2, None, '___sec26'),
-              (' Interactive code ', 2, None, '___sec27'),
-              (' Exercises ', 2, None, '___sec28'),
-              (' Quote ', 2, None, '___sec29'),
-              (' Quiz ', 2, None, '___sec30'),
-              (' What about a video lecture? ', 2, None, '___sec31'),
-              (' References ', 1, None, '___sec32')]}
+              (' Embedded interactive code ', 2, None, '___sec27'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
+              (' The `pyscpro` code environment ', 3, None, '___sec29'),
+              (' Exercises ', 2, None, '___sec30'),
+              (' Quote ', 2, None, '___sec31'),
+              (' Quiz ', 2, None, '___sec32'),
+              (' What about a video lecture? ', 2, None, '___sec33'),
+              (' References ', 1, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -163,7 +180,9 @@ chapters, or make a brand new empty chapter by running
 
 <p>
 
-Terminal&gt; sh mkdir.sh mychap
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; sh mkdir.sh mychap
+</pre></div>
 <p>
 This command makes
 a directory <code>mychap</code> for a new chapter with nickname <code>mychap</code>.
@@ -188,13 +207,17 @@ script,
 
 <p>
 
-bash -x ../make.sh main_mychap
+<!-- code=bash (!bc shpro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">bash -x ../make.sh main_mychap
+</pre></div>
 <p>
 or optionally with some command-line arguments,
 
 <p>
 
-bash -x ../make.sh main_mychap --encoding=utf-8
+<!-- code=bash (!bc shpro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">bash -x ../make.sh main_mychap --encoding=utf-8
+</pre></div>
 <p>
 The <code>doc/src/chapters/make.sh</code> script is quite general and may be edited
 according to your layout preferences of the LaTeX documents.
@@ -208,7 +231,32 @@ named <code>mychap.pdf</code> and <code>mychap-4print.pdf</code>, respectively, 
 copied to <code>doc/pub/mychap/pdf</code> for publishing.
 
 <p>
-<b>Remark.</b>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Tip: use tinyurl.com for shortening long URLs.</b>
+<p>
+When compiling a document to LaTeX for <em>printing on paper</em> (<code>--device=paper</code>),
+URLs in hyperlinks will appear as footnotes. Very long URLs may then exceed
+the line width, or worse, extend beyond the physical paper size.
+Replace such long URLs with short forms using <a href="http://tinyurl.com/" target="_self">tinyurl.com</a>.
+I recommend tinyurl.com rather than competitors like goo.gl and bit.ly
+because
+if you have some URL <code>http://tinyurl.com/oul3xhn</code> you can easily
+add more to the path, e.g., <code>http://tinyurl.com/oul3xhn/index.html</code>,
+and this new URL works (goo.gl and bit.ly do not allow such extensions).
+
+<p>
+In particular, you can define the tinyurl.com URL as a Mako variable
+(see <code>doc/mako_code.txt</code> for example) and use it as a quick and logical
+name in the text for the URL and extend its path as appropriate. For example,
+I always have a Mako variable for the URL of the repo directory for
+the software associated with a chapter and can then easily add
+<code>/myprog.py</code> to the variable to create a link to the file at GitHub.
+Readers can then just click to read or download the file.
+</div>
+
+
+<p>
+<b>Remark about LaTeX typesetting of computer code.</b>
 The suggested <code>make.sh</code> file
 applies the <code>--latex_code_style=</code> option to <code>doconce format</code>
 for specifying the typesetting of blocks of computer code in LaTeX.
@@ -227,7 +275,9 @@ HTML versions of the chapter. Just call this as
 
 <p>
 
-Terminal&gt; bash ../make_html.sh main_mychap
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; bash ../make_html.sh main_mychap
+</pre></div>
 <p>
 to make HTML versions of the <code>mychap</code> chapter.
 
@@ -274,8 +324,10 @@ so you will normally compile this manually now and then as
 
 <p>
 
-Terminal&gt; doconce format html index_files --html_style=bootstrap \ 
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">Terminal&gt; doconce format html index_files --html_style=bootstrap \ 
           --html_links_in_new_window --html_bootstrap_navbar=off
+</pre></div>
 <p>
 and publish it in <code>doc/pub/index.html</code>.
 </div>
@@ -289,8 +341,10 @@ in the present document, we may produce an IPython notebook for the fun of it:
 
 <p>
 
-Terminal&gt; doconce format ipynb main_rules \ 
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; doconce format ipynb main_rules \ 
           CHAPTER=document BOOK=document APPENDIX=document
+</pre></div>
 
 <h3 id="___sec12">Cleaning Files </h3>
 

@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz in DocOnce,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -26,6 +26,21 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 */
 </style>
 
+
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
 
 </head>
 
@@ -73,12 +88,14 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                '___sec24'),
               (' Admonitions ', 2, None, '___sec25'),
               (' Simple box ', 2, None, '___sec26'),
-              (' Interactive code ', 2, None, '___sec27'),
-              (' Exercises ', 2, None, '___sec28'),
-              (' Quote ', 2, None, '___sec29'),
-              (' Quiz ', 2, None, '___sec30'),
-              (' What about a video lecture? ', 2, None, '___sec31'),
-              (' References ', 1, None, '___sec32')]}
+              (' Embedded interactive code ', 2, None, '___sec27'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
+              (' The `pyscpro` code environment ', 3, None, '___sec29'),
+              (' Exercises ', 2, None, '___sec30'),
+              (' Quote ', 2, None, '___sec31'),
+              (' Quiz ', 2, None, '___sec32'),
+              (' What about a video lecture? ', 2, None, '___sec33'),
+              (' References ', 1, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -123,7 +140,7 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._rules-bootstrap006.html#___sec18" style="font-size: 80%;">Study guides and slides</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap007.html#___sec23" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec24" style="font-size: 80%;">Special features for teaching material</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec32" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec34" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -158,7 +175,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 29, 2015</h4></center> <!-- date -->
+<center><h4>Mar 31, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -185,12 +202,12 @@ MathJax.Hub.Config({
 <a href="._rules-bootstrap008.html#___sec24"> Special features for teaching material </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec25"> Admonitions </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec26"> Simple box </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec27"> Interactive code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec28"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec29"> Quote </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec30"> Quiz </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec31"> What about a video lecture? </a><br>
-<a href="._rules-bootstrap008.html#___sec32"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec27"> Embedded interactive code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec30"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec31"> Quote </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec32"> Quiz </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-bootstrap008.html#___sec33"> What about a video lecture? </a><br>
+<a href="._rules-bootstrap008.html#___sec34"> References </a><br>
 </p>
 <p>
 <!-- Externaldocuments: ../fake/main_fake -->

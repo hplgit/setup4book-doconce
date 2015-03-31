@@ -13,8 +13,9 @@ need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,
 is then more appropriate.
 
-Here is a definition of a suitable Mako function, defined inside
-``<%`` and ``%>`` tags:
+Here is a definition of a suitable Mako function, which must be
+defined inside
+``<%`` and ``%>`` tags, using standard Python code:
 
 .. code-block:: python
 

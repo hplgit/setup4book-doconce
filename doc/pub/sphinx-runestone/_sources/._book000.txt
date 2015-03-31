@@ -8,11 +8,13 @@
 
 .. introduced in t2do.sty and svmonodo.sty (both are bundled with DocOnce).
 
+.. Document title:
+
 How to Use DocOnce to Write Books
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 29, 2015
+:Date: Mar 31, 2015
 
 .. Externaldocuments: ../chapters/fake/main_fake
 

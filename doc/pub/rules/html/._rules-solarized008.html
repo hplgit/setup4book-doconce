@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz in DocOnce,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -57,6 +57,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -103,12 +118,14 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec24'),
               (' Admonitions ', 2, None, '___sec25'),
               (' Simple box ', 2, None, '___sec26'),
-              (' Interactive code ', 2, None, '___sec27'),
-              (' Exercises ', 2, None, '___sec28'),
-              (' Quote ', 2, None, '___sec29'),
-              (' Quiz ', 2, None, '___sec30'),
-              (' What about a video lecture? ', 2, None, '___sec31'),
-              (' References ', 1, None, '___sec32')]}
+              (' Embedded interactive code ', 2, None, '___sec27'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
+              (' The `pyscpro` code environment ', 3, None, '___sec29'),
+              (' Exercises ', 2, None, '___sec30'),
+              (' Quote ', 2, None, '___sec31'),
+              (' Quiz ', 2, None, '___sec32'),
+              (' What about a video lecture? ', 2, None, '___sec33'),
+              (' References ', 1, None, '___sec34')]}
 end of tocinfo -->
 
 <body>
@@ -195,10 +212,14 @@ $$ 1 + 1 = 2 $$
 <!-- end box -->
 
 
-<h2 id="___sec27">Interactive code </h2>
+<h2 id="___sec27">Embedded interactive code </h2>
+
+<h3 id="___sec28">The <code>pyoptpro</code> code environment </h3>
 
 <p>
-You can step through this code:
+To illustrate program flow, you can step through code
+(as in a debugger, just more illustrative) using the
+<code>pyoptpro</code> code environment. Here is an example:
 
 <p>
 
@@ -206,10 +227,48 @@ You can step through this code:
         src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
-In HTML and Sphinx format this code can be stepped through, while
+In HTML and Sphinx format this code can be stepped through in
+the browser, while
 in LaTeX one gets a link to a web page with this functionality.
 
-<h2 id="___sec28">Exercises </h2>
+<h3 id="___sec29">The <code>pyscpro</code> code environment </h3>
+
+<p>
+The <a href="https://sagecell.sagemath.org/" target="_self">SageMathCell</a> server
+enables live Python code in web documents. Using the
+<code>pyscpro</code> code environment, Python code can be embedded
+in a Sage Cell for interactive computing:
+
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+import random
+a = random.randint(1, 7)
+print a
+
+</script></div>
+<p>
+We can even plot:
+
+<p>
+
+
+<div class="compute"><script type="text/x-sage">
+from numpy import *
+from matplotlib.pyplot import *
+
+x = linspace(-2*pi, 2*pi, 801)
+y = exp(-0.1*x**2)*sin(4*x)
+plot(x, y)
+show()
+
+</script></div>
+<p>
+HTML and Sphinx output has such interactive Sage Cells, while
+other output formats can just show the code.
+
+<h2 id="___sec30">Exercises </h2>
 
 <p>
 <div class="alert alert-block alert-summary alert-text-normal">
@@ -234,7 +293,7 @@ extra tagging for exercises. Important features are:
 </div>
 
 
-<h2 id="___sec29">Quote </h2>
+<h2 id="___sec31">Quote </h2>
 
 <p>
 There is also a <em>quote</em> environment (invisible box with larger
@@ -254,45 +313,117 @@ margins).
 </blockquote>
 
 
-<h2 id="___sec30">Quiz </h2>
+<h2 id="___sec32">Quiz </h2>
 
 <p>
 <!-- --- previous heading type: subsection -->
 <!-- begin quiz -->
 <hr>
 <p>
-<b>Question:</b> How can one typeset a multiple choice question or <em>quiz</em> in DocOnce?
-Recall that a quiz may feature mathematics like
+<b>Question:</b> Does DocOnce feature multiple-choice questions or quizzes?</p>
 
-$$ F = ma $$
-
-and even nicely typeset computer code:
-
-<p>
-
-def Newtons2nd(m, a):
-    F = m*a
-    return F
-
-print Newtons2nd(1.1, 2.0)
-<p></p>
-
-<p><div title="Wrong!"><b>Choice 1:</b>
-Cannot be typeset because online quiz tools ignore math and code typesetting.
+<p><div title="Right! See the quiz manual (http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html" target="_self)."><b>Choice 1:</b>
+Yes.
 </div></p>
 
-<p><div title="Right! Here you see all capabilities demonstrated."><b>Choice 2:</b>
-See the DocOnce <a href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html" target="_self">quiz manual</a>.
-</div></p>
-
-<p><div title="Wrong! Not implemented this year - just had to come up with yet another answer alternative..."><b>Choice 3:</b>
-Read the quiz and the multiple answers out loud and hope for a magic translation to code.
+<p><div title="Wrong! "><b>Choice 2:</b>
+No.
 </div></p>
 <hr>
 <!-- end quiz -->
 
 
-<h2 id="___sec31">What about a video lecture? </h2>
+<p>
+Quite often we need mathematics and computer code in questions and
+answers.
+
+<p>
+<!-- begin quiz -->
+<hr>
+<p>
+<b>Question:</b> Compute the integral
+
+$$ \int_0^{2\pi} e^{-x}\sin^2 x\,dx $$
+
+and report the formula in verbatim LaTeX code,
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #CD5555">\[</span><span style="color: #658b00"> </span><span style="color: #00688B">\int</span><span style="color: #658b00">_</span><span style="color: #B452CD">0</span><span style="color: #658b00">^{</span><span style="color: #B452CD">2</span><span style="color: #00688B">\pi</span><span style="color: #658b00">} e^{</span>-<span style="color: #658b00">x}</span><span style="color: #00688B">\sin</span><span style="color: #658b00">^</span><span style="color: #B452CD">2</span><span style="color: #658b00"> x</span><span style="color: #00688B">\,</span><span style="color: #658b00">dx </span>=<span style="color: #658b00"> ... </span><span style="color: #CD5555">\]</span>
+</pre></div>
+<p></p>
+
+<p><div title="Wrong! Maybe you fiddled around with pen and paper the wrong way... Try  sympy !"><b>Choice 1:</b>
+There is no closed-form formula for this integral.
+</div></p>
+
+<p><div title="Right! "><b>Choice 2:</b>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+&gt;&gt;&gt; x = symbols(<span style="color: #CD5555">&#39;x&#39;</span>)
+&gt;&gt;&gt; F = integrate(exp(-x)*sin(x)**<span style="color: #B452CD">2</span>, (x, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>*pi))
+&gt;&gt;&gt; F
+-<span style="color: #B452CD">2</span>*exp(-<span style="color: #B452CD">2</span>*pi)/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">2</span>/<span style="color: #B452CD">5</span>
+&gt;&gt;&gt; latex(F)
+<span style="color: #CD5555">&#39;- \\frac{2}{5 e^{2 \\pi}} + \\frac{2}{5}&#39;</span>
+</pre></div>
+<p>
+so the answer is
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #CD5555">\[</span><span style="color: #658b00"> </span><span style="color: #00688B">\int</span><span style="color: #658b00">_</span><span style="color: #B452CD">0</span><span style="color: #658b00">^{</span><span style="color: #B452CD">2</span><span style="color: #00688B">\pi</span><span style="color: #658b00">} e^{</span>-<span style="color: #658b00">x}</span><span style="color: #00688B">\sin</span><span style="color: #658b00">^</span><span style="color: #B452CD">2</span><span style="color: #658b00"> x</span><span style="color: #00688B">\,</span><span style="color: #658b00">dx </span>=<span style="color: #658b00"></span>
+-<span style="color: #658b00"> </span><span style="color: #00688B">\frac</span><span style="color: #658b00">{</span><span style="color: #B452CD">2</span><span style="color: #658b00">}{</span><span style="color: #B452CD">5</span><span style="color: #658b00"> e^{</span><span style="color: #B452CD">2</span><span style="color: #658b00"> </span><span style="color: #00688B">\pi</span><span style="color: #658b00">}} </span>+<span style="color: #658b00"> </span><span style="color: #00688B">\frac</span><span style="color: #658b00">{</span><span style="color: #B452CD">2</span><span style="color: #658b00">}{</span><span style="color: #B452CD">5</span><span style="color: #658b00">} </span><span style="color: #CD5555">\]</span>
+</pre></div>
+<p>
+</div></p>
+
+<p><div title="Wrong! Something went wrong here with the fractions..."><b>Choice 3:</b>
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #CD5555">\[</span><span style="color: #658b00"> </span><span style="color: #00688B">\int</span><span style="color: #658b00">_</span><span style="color: #B452CD">0</span><span style="color: #658b00">^{</span><span style="color: #B452CD">2</span><span style="color: #00688B">\pi</span><span style="color: #658b00">} e^{</span>-<span style="color: #658b00">x}</span><span style="color: #00688B">\sin</span><span style="color: #658b00">^</span><span style="color: #B452CD">2</span><span style="color: #658b00"> x</span><span style="color: #00688B">\,</span><span style="color: #658b00">dx </span>=<span style="color: #658b00"></span>
+-<span style="color: #658b00"> </span><span style="color: #00688B">\frac</span><span style="color: #658b00">{</span><span style="color: #B452CD">3</span><span style="color: #658b00">}{</span><span style="color: #B452CD">4</span><span style="color: #658b00"> e^{</span><span style="color: #B452CD">2</span><span style="color: #658b00"> </span><span style="color: #00688B">\pi</span><span style="color: #658b00">}} </span>+<span style="color: #658b00"> </span><span style="color: #00688B">\frac</span><span style="color: #658b00">{</span><span style="color: #B452CD">3</span><span style="color: #658b00">}{</span><span style="color: #B452CD">4</span><span style="color: #658b00">} </span><span style="color: #CD5555">\]</span>
+</pre></div>
+<p>
+</div></p>
+
+<p><div title="Wrong! Well, the math is correct, but the LaTeX code lacks two backslashes, and  \over  is old-fashioned, use  \frac{}{}  in 2015."><b>Choice 4:</b>
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #CD5555">\[</span><span style="color: #658b00"> </span><span style="color: #00688B">\int</span><span style="color: #658b00">_</span><span style="color: #B452CD">0</span><span style="color: #658b00">^{</span><span style="color: #B452CD">2</span><span style="color: #00688B">\pi</span><span style="color: #658b00">} e^{</span>-<span style="color: #658b00">x}</span><span style="color: #00688B">\sin</span><span style="color: #658b00">^</span><span style="color: #B452CD">2</span><span style="color: #658b00"> x</span><span style="color: #00688B">\,</span><span style="color: #658b00">dx </span>=<span style="color: #658b00"></span>
+-<span style="color: #658b00"> {</span><span style="color: #B452CD">2</span><span style="color: #00688B">\over</span><span style="color: #B452CD">5</span><span style="color: #658b00">}{</span><span style="color: #B452CD">5</span><span style="color: #658b00"> exp^{</span><span style="color: #B452CD">2</span><span style="color: #658b00"> pi}} </span>+<span style="color: #658b00"> </span><span style="color: #00688B">\frac</span><span style="color: #658b00">{</span><span style="color: #B452CD">2</span><span style="color: #658b00">}{</span><span style="color: #B452CD">5</span><span style="color: #658b00">} </span><span style="color: #CD5555">\]</span>
+</pre></div>
+<p>
+</div></p>
+<hr>
+<!-- end quiz -->
+
+
+<p>
+The typesetting of a quiz depends on the output format.
+One can in plain HTML
+and Sphinx formats
+hover over the choice and get a pop-up tooltip with the
+right answer and an explanation (if defined).
+The explanation can only show plain text, so it is empty if it
+contains math or code blocks, or figures.
+With HTML Bootstrap styles one can click on a symbol to open up
+the answer and the explanation.
+RunestoneInteractive books (Sphinx) offers a
+button for the same purpose, but the explanation can only be
+plain text so any math or code block makes the explanation empty.
+LaTeX output can feature the choices only (no answer, no explanation:
+<code>--without_solutions --without_answers</code>), the short answer only
+(<code>--without_solutions</code>) or both the answer and all explanations
+(the case in this demo).
+
+<h2 id="___sec33">What about a video lecture? </h2>
 
 <p>
 
@@ -307,7 +438,7 @@ Can you think of applications of the above mentioned features?
 </div>
 
 
-<h1 id="___sec32">References </h1>
+<h1 id="___sec34">References </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -321,7 +452,7 @@ Can you think of applications of the above mentioned features?
     2014.</li>
  <li> <div id="Langtangen_dobook_fake"></div> <b>H. P. Langtangen</b>. 
     Some document,
-    <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake" target="_self"><tt>http://hplgit.github.io/setup4book-doconce/doc/pub/fake</tt></a>.</li>
+    <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html" target="_self"><tt>http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html</tt></a>.</li>
 </ol>
 
 <!-- end bibliography -->

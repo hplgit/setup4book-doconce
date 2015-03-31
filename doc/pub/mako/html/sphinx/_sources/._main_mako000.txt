@@ -1,11 +1,13 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. Document title:
+
 Use of Mako to aid book writing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 29, 2015
+:Date: Mar 31, 2015
 
 .. No common Mako variables and functions here since we cannot run mako
 

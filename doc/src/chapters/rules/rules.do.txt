@@ -359,7 +359,27 @@ named `mychap.pdf` and `mychap-4print.pdf`, respectively, and
 copied to `doc/pub/mychap/pdf` for publishing.
 
 
-__Remark.__
+!bnotice Tip: use tinyurl.com for shortening long URLs
+When compiling a document to LaTeX for *printing on paper* (`--device=paper`),
+URLs in hyperlinks will appear as footnotes. Very long URLs may then exceed
+the line width, or worse, extend beyond the physical paper size.
+Replace such long URLs with short forms using "tinyurl.com": "http://tinyurl.com/".
+I recommend tinyurl.com rather than competitors like goo.gl and bit.ly
+because
+if you have some URL `http://tinyurl.com/oul3xhn` you can easily
+add more to the path, e.g., `http://tinyurl.com/oul3xhn/index.html`,
+and this new URL works (goo.gl and bit.ly do not allow such extensions).
+
+In particular, you can define the tinyurl.com URL as a Mako variable
+(see `doc/mako_code.txt` for example) and use it as a quick and logical
+name in the text for the URL and extend its path as appropriate. For example,
+I always have a Mako variable for the URL of the repo directory for
+the software associated with a chapter and can then easily add
+`/myprog.py` to the variable to create a link to the file at GitHub.
+Readers can then just click to read or download the file.
+!enotice
+
+__Remark about LaTeX typesetting of computer code.__
 The suggested `make.sh` file
 applies the `--latex_code_style=` option to `doconce format`
 for specifying the typesetting of blocks of computer code in LaTeX.

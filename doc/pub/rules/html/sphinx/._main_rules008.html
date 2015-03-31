@@ -115,13 +115,37 @@ in the name).</p>
 <p><strong>Note:</strong>
 Simple boxes are not supported in format <tt class="docutils literal"><span class="pre">sphinx</span></tt>.</p>
 </div>
-<div class="section" id="interactive-code">
-<h2>Interactive code<a class="headerlink" href="#interactive-code" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-2"></span><p id="index-3">You can step through this code:</p>
+<div class="section" id="embedded-interactive-code">
+<h2>Embedded interactive code<a class="headerlink" href="#embedded-interactive-code" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-2"></span><div class="section" id="the-pyoptpro-code-environment">
+<span id="index-3"></span><h3>The <tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment<a class="headerlink" href="#the-pyoptpro-code-environment" title="Permalink to this headline">¶</a></h3>
+<p>To illustrate program flow, you can step through code
+(as in a debugger, just more illustrative) using the
+<tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment. Here is an example:</p>
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
-</iframe><p>In HTML and Sphinx format this code can be stepped through, while
+</iframe><p>In HTML and Sphinx format this code can be stepped through in
+the browser, while
 in LaTeX one gets a link to a web page with this functionality.</p>
+</div>
+<div class="section" id="the-pyscpro-code-environment">
+<h3>The <tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment<a class="headerlink" href="#the-pyscpro-code-environment" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://sagecell.sagemath.org/">SageMathCell</a> server
+enables live Python code in web documents. Using the
+<tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment, Python code can be embedded
+in a Sage Cell for interactive computing:</p>
+<div class='sage'><script type='text/x-sage'>import random
+a = random.randint(1, 7)
+print a</script></div><p>We can even plot:</p>
+<div class='sage'><script type='text/x-sage'>from numpy import *
+from matplotlib.pyplot import *
+
+x = linspace(-2*pi, 2*pi, 801)
+y = exp(-0.1*x**2)*sin(4*x)
+plot(x, y)
+show()</script></div><p>HTML and Sphinx output has such interactive Sage Cells, while
+other output formats can just show the code.</p>
+</div>
 </div>
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
@@ -160,25 +184,62 @@ This is why code reuse is so hard. This is why everybody on your team has a diff
 </div>
 <div class="section" id="quiz">
 <h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-5"></span><p><strong>Question:</strong> How can one typeset a multiple choice question or <em>quiz</em> in DocOnce?
-Recall that a quiz may feature mathematics like</p>
+<span class="target" id="index-5"></span><span class="target" id="index-6"></span><p><strong>Question:</strong> Does DocOnce feature multiple-choice questions or quizzes?</p>
+<p><strong>Choice 1:</strong> Yes. <abbr title="Right!">?</abbr> <abbr title="See the quiz manual (&lt;http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).">#</abbr></p>
+<p><strong>Choice 2:</strong> No. <abbr title="Wrong!">?</abbr></p>
+<p>Quite often we need mathematics and computer code in questions and
+answers.</p>
+<p><strong>Question:</strong> Compute the integral</p>
 <div class="math">
-\[F = ma\]</div>
-<p>and even nicely typeset computer code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Newtons2nd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
-    <span class="n">F</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">a</span>
-    <span class="k">return</span> <span class="n">F</span>
-
-<span class="k">print</span> <span class="n">Newtons2nd</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+\[\int_0^{2\pi} e^{-x}\sin^2 x\,dx\]</div>
+<p>and report the formula in verbatim LaTeX code,</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"> ... </span><span class="s">\]</span>
 </pre></div>
 </div>
-<p><strong>Choice 1:</strong> Cannot be typeset because online quiz tools ignore math and code typesetting. <abbr title="Wrong!">?</abbr></p>
-<p><strong>Choice 2:</strong> See the DocOnce <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html">quiz manual</a>. <abbr title="Right!">?</abbr> <abbr title=" Here you see all capabilities demonstrated.">#</abbr></p>
-<p><strong>Choice 3:</strong> Read the quiz and the multiple answers out loud and hope for a magic translation to code. <abbr title="Wrong!">?</abbr> <abbr title=" Not implemented this year - just had to come up with yet another answer alternative...">#</abbr></p>
+<p><strong>Choice 1:</strong> There is no closed-form formula for this integral. <abbr title="Wrong!">?</abbr> <abbr title="Maybe you fiddled around with pen and paper the wrong way... Try sympy!">#</abbr></p>
+<p><strong>Choice 2:</strong> .. code-block:: python</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>
+<span class="go">-2*exp(-2*pi)/5 + 2/5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+<span class="go">&#39;- \\frac{2}{5 e^{2 \\pi}} + \\frac{2}{5}&#39;</span>
+</pre></div>
+</div>
+<p>so the answer is</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"></span>
+<span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb"> e^{</span><span class="m">2</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb">}} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb">} </span><span class="s">\]</span> :abbr:`? (Right!)`
+</pre></div>
+</div>
+<p><strong>Choice 3:</strong> .. code-block:: latex</p>
+<blockquote>
+<div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
+- frac{3}{4 e^{2 pi}} + frac{3}{4} ] <abbr title="Wrong!">?</abbr> <abbr title="Something went wrong here with the fractions...">#</abbr></div></blockquote>
+<p><strong>Choice 4:</strong> .. code-block:: latex</p>
+<blockquote>
+<div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
+- {2over5}{5 exp^{2 pi}} + frac{2}{5} ] <abbr title="Wrong!">?</abbr> <abbr title="Well, the math is correct, but the LaTeX code lacks two backslashes, and over is old-fashioned, use frac{}{} in 2015.">#</abbr></div></blockquote>
+<p>The typesetting of a quiz depends on the output format.
+One can in plain HTML
+and Sphinx formats
+hover over the choice and get a pop-up tooltip with the
+right answer and an explanation (if defined).
+The explanation can only show plain text, so it is empty if it
+contains math or code blocks, or figures.
+With HTML Bootstrap styles one can click on a symbol to open up
+the answer and the explanation.
+RunestoneInteractive books (Sphinx) offers a
+button for the same purpose, but the explanation can only be
+plain text so any math or code block makes the explanation empty.
+LaTeX output can feature the choices only (no answer, no explanation:
+<tt class="docutils literal"><span class="pre">--without_solutions</span> <span class="pre">--without_answers</span></tt>), the short answer only
+(<tt class="docutils literal"><span class="pre">--without_solutions</span></tt>) or both the answer and all explanations
+(the case in this demo).</p>
 </div>
 <div class="section" id="what-about-a-video-lecture">
 <h2>What about a video lecture?<a class="headerlink" href="#what-about-a-video-lecture" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-6"></span><span class="target" id="index-7"></span><iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe><div class="admonition-question admonition">
+<span class="target" id="index-7"></span><span class="target" id="index-8"></span><iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe><div class="admonition-question admonition">
 <p class="first admonition-title">Question</p>
 <p class="last">Can you think of applications of the above mentioned features?</p>
 </div>
@@ -200,7 +261,7 @@ Springer,
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Ref2]</td><td><strong>H. P. Langtangen</strong>. Some document,
-<a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake">http://hplgit.github.io/setup4book-doconce/doc/pub/fake</a>.</td></tr>
+<a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html">http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html</a>.</td></tr>
 </tbody>
 </table>
 </div>
@@ -221,7 +282,11 @@ Springer,
 <li><a class="reference internal" href="#">Special features for teaching material</a><ul>
 <li><a class="reference internal" href="#admonitions">Admonitions</a></li>
 <li><a class="reference internal" href="#simple-box">Simple box</a></li>
-<li><a class="reference internal" href="#interactive-code">Interactive code</a></li>
+<li><a class="reference internal" href="#embedded-interactive-code">Embedded interactive code</a><ul>
+<li><a class="reference internal" href="#the-pyoptpro-code-environment">The <tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment</a></li>
+<li><a class="reference internal" href="#the-pyscpro-code-environment">The <tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#exercises">Exercises</a></li>
 <li><a class="reference internal" href="#quote">Quote</a></li>
 <li><a class="reference internal" href="#quiz">Quiz</a></li>
