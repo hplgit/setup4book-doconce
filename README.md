@@ -27,3 +27,7 @@ with a book project at once! The source files for this book
 (especially in `doc/src/chapters/rules`) constitute nice
 demonstrations for learning about basic and advanced DocOnce writing
 techniques.
+
+### Documentation
+
+Go to this repo's [web page](http://hplgit.github.com/setup4book-doconce/doc/web/index.html).
