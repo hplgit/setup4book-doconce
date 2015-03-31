@@ -33,14 +33,19 @@ as attractive, screen-fit Bootstrap pages on the smart phone than if you
 just offer the classic LaTeX PDF which actually requires a big screen or a
 printer.
 
-Implementation of point 1 and 2 is not trivial and requires some
-rules that might not feel natural at first sight in the setup.
-The suggested setup reflects my iterated *best practices* from writing a
-couple of thousand pages with DocOnce. In particular, the setup has
-been successfully used for the large-scale 900-page Springer book ``A Primer on Scientific Programming
-with Python'' cite{Langtangen_2014} (individual chapters of this
-book, e.g. cite{Langtangen_TCSE6_looplist}, can be examined online in
-various ebook formats) as well as for "books in the works":
+Implementation of point 1 and 2 is not trivial and requires some rules
+that might not feel natural at first sight in the setup.  Writing a
+book soon becomes a technically and mentally complex task, just like
+developing a software system. For the latter people have invented a
+lot of sophisticated technologies and best practices to deal with the
+complexity. The present setup for books is a similar collection of my
+own technologies and best practices, developed from writing
+thousands of pages. In particular, the setup has been successfully
+used for the large-scale 900-page Springer book ``A Primer on
+Scientific Programming with Python'' cite{Langtangen_2014} (individual
+chapters of this book, e.g. cite{Langtangen_TCSE6_looplist}, can be
+examined online in various ebook formats) as well as for "books in the
+works":
 "http://hplgit.github.io/num-methods-for-PDEs/doc/pub/index.html".
 
 To use this setup, just clone the "repository":
