@@ -9,26 +9,15 @@ The idea is to *document once* and have your writings in one and only
 one type of source files and then automatically transform the information
 to a variety of formats.
 
-Also for those with very specific plans of writing a book in DocOnce following
+Also for those with very specific plans of writing a book in DocOnce, following
 the structure and rules in this repo can be a good idea since it gives
-great flexibility in geting parts of the book out to potential audiences
-during the writing process. One may, for example, produce a chapter in
-a LaTeX/PDF PDF format that is particularly reader friendly on a smart
-phone (`--latex_papersize=a6` in DocOnce jarogon).
+extra flexibility at no cost. For example, it becomes very easy to
+produce versions of the book or its chapters that are attractive
+for reading on a smart phone.
 
-The files in this repo constitute an example on how to organize a book
-in DocOnce, so simply copying the repo itself and editing the
-content is an efficient way to get started with a new, potentially
-large writing project.
-The suggested setup makes it also easy and natural
-to generate slides from running text. The slides are often good
-starting points for IPython notebooks (can be automatically generated).
-
-The repo features a directory structure that can be copied as a skeleton
-for a new future book project. The chapters document the ideas and
-the suggested workflow.
-
-> NOTE: This repo is in a *very* preliminary state!
-
-
-
+To use this setup, just clone the repository and you have the
+directory structure, the scripts, and example files to get started
+with a book project at once! The source files for this book
+(especially in `doc/src/chapters/rules`) constitute nice
+demonstrations for learning about basic and advanced DocOnce writing
+techniques.
