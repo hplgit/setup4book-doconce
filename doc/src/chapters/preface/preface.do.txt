@@ -44,8 +44,8 @@ thousands of pages. In particular, the setup has been successfully
 used for the large-scale 900-page Springer book ``A Primer on
 Scientific Programming with Python'' cite{Langtangen_2014} (individual
 chapters of this book, e.g. cite{Langtangen_TCSE6_looplist}, can be
-examined online in various ebook formats) as well as for "books in the
-works":
+examined online in various ebook formats) as well as for
+"books in the works":
 "http://hplgit.github.io/num-methods-for-PDEs/doc/pub/index.html".
 
 To use this setup, just clone the "repository":
