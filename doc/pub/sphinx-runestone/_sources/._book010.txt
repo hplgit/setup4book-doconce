@@ -113,8 +113,9 @@ The ``pyscpro`` code environment
 
 The `SageMathCell <https://sagecell.sagemath.org/>`__ server
 enables live Python code in web documents. Using the
-``pyscpro`` code environment, Python code can be embedded
-in a Sage Cell for interactive computing:
+``pyscpro`` code environment, Python code can be embedded in a
+live code cell
+Sage Cell
 
 .. activecode:: activecode_1
    :language: python
@@ -125,7 +126,7 @@ in a Sage Cell for interactive computing:
 
 We can even plot:
 
-.. activecode:: activecode_1
+.. activecode:: activecode_2
    :language: python
 
         from numpy import *
@@ -136,8 +137,9 @@ We can even plot:
         plot(x, y)
         show()
 
-HTML and Sphinx output has such interactive Sage Cells, while
-other output formats can just show the code.
+RunestoneInteractive books have such interactive cells, but
+they do not seem to work well (?) yet,
+while other output formats can just show the code.
 
 Exercises
 ---------

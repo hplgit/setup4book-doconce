@@ -394,8 +394,9 @@ in LaTeX one gets a link to a web page with this functionality.</p>
 <h3>The <tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment<a class="headerlink" href="#the-pyscpro-code-environment" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://sagecell.sagemath.org/">SageMathCell</a> server
 enables live Python code in web documents. Using the
-<tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment, Python code can be embedded
-in a Sage Cell for interactive computing:</p>
+<tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment, Python code can be embedded in a
+live code cell
+Sage Cell</p>
 
 <div id="activecode_1" lang="python" >
 
@@ -440,11 +441,11 @@ if ('block' == 'none') {
 
 <p>We can even plot:</p>
 
-<div id="activecode_1" lang="python" >
+<div id="activecode_2" lang="python" >
 
 <br/>
-<div id="activecode_1_code_div" style="display: block">
-<textarea cols="50" rows="12" id="activecode_1_code" class="active_code", prefixcode="undefined" lang="python">
+<div id="activecode_2_code_div" style="display: block">
+<textarea cols="50" rows="12" id="activecode_2_code" class="active_code", prefixcode="undefined" lang="python">
      from numpy import *
      from matplotlib.pyplot import *
 
@@ -454,39 +455,40 @@ if ('block' == 'none') {
      show()
 </textarea>
 </div>
-<p class="ac_caption"><span class="ac_caption_text"> (activecode_1)</span> </p>
+<p class="ac_caption"><span class="ac_caption_text"> (activecode_2)</span> </p>
 
-<button class='btn btn-success' id="activecode_1_runb" onclick="runit('activecode_1',this, undefined);">Run</button>
+<button class='btn btn-success' id="activecode_2_runb" onclick="runit('activecode_2',this, undefined);">Run</button>
 
 <div id="cont"></div>
 
-<button class="ac_opt btn btn-default" style="display: inline-block" id="activecode_1_saveb" onclick="saveEditor('activecode_1');">Save</button>
-<button class="ac_opt btn btn-default" style="display: inline-block" id="activecode_1_loadb" onclick="requestCode('activecode_1');">Load</button>
+<button class="ac_opt btn btn-default" style="display: inline-block" id="activecode_2_saveb" onclick="saveEditor('activecode_2');">Save</button>
+<button class="ac_opt btn btn-default" style="display: inline-block" id="activecode_2_loadb" onclick="requestCode('activecode_2');">Load</button>
 
 <script>
 if ('block' == 'none') {
     // a hack to preserve the inline-block display style. Toggle() will use display: block
     // (instead of inline-block) if the previous display style was 'none'
-    $('#activecode_1_saveb').toggle();
-    $('#activecode_1_loadb').toggle();
+    $('#activecode_2_saveb').toggle();
+    $('#activecode_2_loadb').toggle();
 }
 </script>
 
 
 <div style="text-align: center">
-<canvas id="activecode_1_canvas" class="ac-canvas" height="400" width="400" style="border-style: solid; display: none; text-align: center"></canvas>
+<canvas id="activecode_2_canvas" class="ac-canvas" height="400" width="400" style="border-style: solid; display: none; text-align: center"></canvas>
 </div>
-<pre id="activecode_1_suffix" style="display:none">
+<pre id="activecode_2_suffix" style="display:none">
 </pre>
-<pre id="activecode_1_pre" class="active_out">
+<pre id="activecode_2_pre" class="active_out">
 
 </pre>
 
 
 </div>
 
-<p>HTML and Sphinx output has such interactive Sage Cells, while
-other output formats can just show the code.</p>
+<p>RunestoneInteractive books have such interactive cells, but
+they do not seem to work well (?) yet,
+while other output formats can just show the code.</p>
 </div>
 </div>
 <div class="section" id="exercises">

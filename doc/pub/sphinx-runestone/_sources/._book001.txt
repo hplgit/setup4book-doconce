@@ -66,8 +66,8 @@ thousands of pages. In particular, the setup has been successfully
 used for the large-scale 900-page Springer book "A Primer on
 Scientific Programming with Python" [Ref1]_ (individual
 chapters of this book, e.g. [Ref2]_, can be
-examined online in various ebook formats) as well as for `books in the
-works <http://hplgit.github.io/num-methods-for-PDEs/doc/pub/index.html>`__.
+examined online in various ebook formats) as well as for
+`books in the works <http://hplgit.github.io/num-methods-for-PDEs/doc/pub/index.html>`__.
 
 To use this setup, just clone the `repository <https://github.com/hplgit/setup4book-doconce>`__ and you have the
 directory structure, the scripts, and example files to get started with

@@ -14,7 +14,7 @@ How to Use DocOnce to Write Books
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 31, 2015
+:Date: Apr 2, 2015
 
 .. Externaldocuments: ../chapters/fake/main_fake
 
