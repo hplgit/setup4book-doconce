@@ -442,6 +442,10 @@ Terminal> doconce format html index_files --html_style=bootstrap \
           --html_links_in_new_window --html_bootstrap_navbar=off
 !ec
 and publish it in `doc/pub/index.html`.
+
+The `index_files.do.txt` file is an interesting example on how to utilize
+Mako to generate a potentially quite comprehensive web page where there
+is lots of repetition that can be performed in (Mako) functions.
 !ewarning
 
 idx{IPython notebooks}

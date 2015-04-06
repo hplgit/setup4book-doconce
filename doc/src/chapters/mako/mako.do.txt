@@ -191,6 +191,12 @@ string""",
 ...
 !ec
 
+!bnotice There are two types of Mako functions
+One type resembles Python functions, as demonstrated above. The other
+type employs a slightly different syntax and is exemplified in the file
+"`doc/src/chapters/index_files.do.txt`": "http://tinyurl.com/kukz8pt/index_files-do.txt". We refer to the "Mako syntax documentation": "http://docs.makotemplates.org/en/latest/syntax.html" for more information.
+!enotice
+
 ===== How to treat two programming languages in the same text =====
 
 With these ideas, it becomes straightforward to write a book that
