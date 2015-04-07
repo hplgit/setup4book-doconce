@@ -1,0 +1,15 @@
+TITLE: Some document
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+TOC: on
+
+
+# Common Mako variables and functions
+# #include "../mako_code.txt"
+
+# #include "fake.do.txt"
+
+======= References =======
+
+BIBFILE: ../papers.pub

@@ -1,0 +1,20 @@
+This is just a fake chapter used to exemplify cross referencing
+across chapters.
+
+======= Equations =======
+label{sec:eqs}
+
+Here is the world's most famous equation:
+
+!bt
+\begin{equation}
+E = mc^2
+label{fake:Emc2}
+\end{equation}
+!et
+It is mentioned here so that we can refer to it from another ${CHAPTER},
+typically refch[Chapter ref{ch:structure}][
+cite{Langtangen_dobook_rules}][
+the document "Directory and file structure":
+"http://hplgit.gthub.io/setup4book-doconce/doc/pub/rules"
+cite{Langtangen_dobook_rules}].
