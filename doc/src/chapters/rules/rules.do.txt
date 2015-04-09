@@ -364,16 +364,16 @@ When compiling a document to LaTeX for *printing on paper* (`--device=paper`),
 URLs in hyperlinks will appear as footnotes. Very long URLs may then exceed
 the line width, or worse, extend beyond the physical paper size.
 Replace such long URLs with short forms using "tinyurl.com": "http://tinyurl.com/".
-I recommend tinyurl.com rather than competitors like goo.gl and bit.ly
+I recommend tinyurl.com rather than competitors like `goo.gl` and `bit.ly`
 because
 if you have some URL `http://tinyurl.com/oul3xhn` you can easily
 add more to the path, e.g., `http://tinyurl.com/oul3xhn/index.html`,
-and this new URL works (goo.gl and bit.ly do not allow such extensions).
+and this new URL works (`goo.gl` and `bit.ly` do not allow such extensions).
 
 In particular, you can define the tinyurl.com URL as a Mako variable
 (see `doc/mako_code.txt` for example) and use it as a quick and logical
 name in the text for the URL and extend its path as appropriate. For example,
-I always have a Mako variable for the URL of the repo directory for
+I always have a Mako variable for the URL of the repository directory for
 the software associated with a chapter and can then easily add
 `/myprog.py` to the variable to create a link to the file at GitHub.
 Readers can then just click to read or download the file.
@@ -419,20 +419,32 @@ DocOnce source file `index_html_files.do.txt`. This is a
 file utilizing Mako programming
 (see refch[${APPENDIX} ref{ch:mako}][cite{Langtangen_dobook_mako}][
 the document "Use of Mako to aid book writing":
-"http://hplgit.github.io/setup4book-doconce/doc/pub/mako"].
+"http://hplgit.github.io/setup4book-doconce/doc/pub/mako"]).
 There is also a similar file, `index_files.do.txt`, listing all
 the published documents in various formats associated with a complete
 book projects (to go to `doc/pub/index.html`).
 
-In the `index_html_files.do.txt` file, we define a Mako dictionary
-`chapters` mapping nicknames to chapter titles. This dict makes it easy
-to compile `index_html_files.do.txt` with a Mako variable `CHAPTER`
-set to the chapter nickname and get a tailored `index.html` file
-for the HTML versions of that chapter. Similarly,
-`index_files.do.txt` also has a `chapters` dict and an associated
-`published` list with all the nicknames of the chapters that we want
-to list in the overview of the entire book project (all sufficiently
-finished chapters).
+The `index_html_files.do.txt` and `index_files.do.txt` files rely much
+on a Mako dictionary `chapters`, defined in `mako_code.txt`. This
+dictionary maps nicknames to chapter titles. We can then specify a
+nickname and easily get the corresponding full chapter title. For
+example, in `index_files.do.txt` we defined a Mako list `published`
+holding the nicknames of the chapters we want to publish. With a Mako
+for loop we can then run through these selected chapters and generate
+the corresponding DocOnce lists with all the formats that is offered
+for a chapter and its associated slides. This is a nice example on
+how a potentially quite large DocOnce document with much repetitive
+constructions can be written with very compact code.
+
+One can imagine that for a large books under constant development with
+different states of different chapters, this setup makes it easy to
+take chapters in and out of the book. In addition, with Mako variables
+in the chapters one can easily defined different state of maturity of
+the text. With minor Mako programming in `index_files.do.txt` and
+extension of the `make*.sh` files, authors can generate the various
+states of the book, e.g., a quality controlled version approved for
+students and a complete ``work-in-progress'' version for authors only
+with all available text and lots of DocOnce square-bracket comments.
 
 The `index_files.do.txt` file gives a table of contents of all documents,
 so you will normally compile this manually now and then as
@@ -442,10 +454,6 @@ Terminal> doconce format html index_files --html_style=bootstrap \
           --html_links_in_new_window --html_bootstrap_navbar=off
 !ec
 and publish it in `doc/pub/index.html`.
-
-The `index_files.do.txt` file is an interesting example on how to utilize
-Mako to generate a potentially quite comprehensive web page where there
-is lots of repetition that can be performed in (Mako) functions.
 !ewarning
 
 idx{IPython notebooks}

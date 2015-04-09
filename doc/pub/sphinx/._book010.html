@@ -189,8 +189,8 @@ This is why code reuse is so hard. This is why everybody on your team has a diff
 <div class="section" id="quiz">
 <h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-5"></span><span class="target" id="index-6"></span><p><strong>Question:</strong> Does DocOnce feature multiple-choice questions or quizzes?</p>
-<p><strong>Choice 1:</strong> Yes. <abbr title="Right!">?</abbr> <abbr title="See the quiz manual (&lt;http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).">#</abbr></p>
-<p><strong>Choice 2:</strong> No. <abbr title="Wrong!">?</abbr></p>
+<p><strong>Choice A:</strong> Yes. <abbr title="Right!">?</abbr> <abbr title="See the quiz manual (&lt;http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).">#</abbr></p>
+<p><strong>Choice B:</strong> No. <abbr title="Wrong!">?</abbr></p>
 <p>Quite often we need mathematics and computer code in questions and
 answers.</p>
 <p><strong>Question:</strong> Compute the integral</p>
@@ -200,8 +200,8 @@ answers.</p>
 <div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"> ... </span><span class="s">\]</span>
 </pre></div>
 </div>
-<p><strong>Choice 1:</strong> There is no closed-form formula for this integral. <abbr title="Wrong!">?</abbr> <abbr title="Maybe you fiddled around with pen and paper the wrong way... Try sympy!">#</abbr></p>
-<p><strong>Choice 2:</strong> .. code-block:: python</p>
+<p><strong>Choice A:</strong> There is no closed-form formula for this integral. <abbr title="Wrong!">?</abbr> <abbr title="Maybe you fiddled around with pen and paper the wrong way... Try sympy!">#</abbr></p>
+<p><strong>Choice B:</strong> .. code-block:: python</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span>
@@ -216,11 +216,11 @@ answers.</p>
 <span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb"> e^{</span><span class="m">2</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb">}} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb">} </span><span class="s">\]</span> :abbr:`? (Right!)`
 </pre></div>
 </div>
-<p><strong>Choice 3:</strong> .. code-block:: latex</p>
+<p><strong>Choice C:</strong> .. code-block:: latex</p>
 <blockquote>
 <div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
 - frac{3}{4 e^{2 pi}} + frac{3}{4} ] <abbr title="Wrong!">?</abbr> <abbr title="Something went wrong here with the fractions...">#</abbr></div></blockquote>
-<p><strong>Choice 4:</strong> .. code-block:: latex</p>
+<p><strong>Choice D:</strong> .. code-block:: latex</p>
 <blockquote>
 <div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
 - {2over5}{5 exp^{2 pi}} + frac{2}{5} ] <abbr title="Wrong!">?</abbr> <abbr title="Well, the math is correct, but the LaTeX code lacks two backslashes, and over is old-fashioned, use frac{}{} in 2015.">#</abbr></div></blockquote>

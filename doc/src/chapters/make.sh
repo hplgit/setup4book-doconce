@@ -50,9 +50,12 @@ system preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands_keep.tex
 opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
 # Paper version (--device=paper)
-system doconce format pdflatex ${mainname} $opt --device=paper --latex_admon_color=1,1,1 --latex_admon=mdfbox $args --latex_list_of_exercises=toc --latex_table_format=left "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
-# code style: blue boxes with plain verbatim for all code, special
-# terminal style for sys
+system doconce format pdflatex ${mainname} $opt --device=paper --latex_admon_color=1,1,1 --latex_admon=mdfbox $args --latex_list_of_exercises=toc --latex_table_format=left "--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+# code style: blue boxes, darker-color frame for complete boxs, and terminal
+# style for sys
+# alternative code style: blue boxes with plain verbatim for all code, special
+# terminal style for sys (gives larger colored framed than the lst-style above)
+#"--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 
 # Auto-editing of .tex file (tailored adjustments)
 doconce replace 'linecolor=black,' 'linecolor=darkblue,' ${mainname}.tex

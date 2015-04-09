@@ -7,13 +7,9 @@
 ## As alternative to this file, one may have a single file that lists
 ## all chapters in all their versions.
 
-<%
-chapters = {
- 'rules': 'Directory and file structure',
- 'fake': 'Some document',
- 'mako': 'Use of Mako to aid book writing',
-}
+# #include "../mako_code.txt"
 
+<%
 import os
 def has_slides():
     """Can we find slides for the given CHAPTER?"""

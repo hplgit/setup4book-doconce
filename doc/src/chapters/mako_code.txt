@@ -13,4 +13,11 @@ doc_path = 'http://tinyurl.com/oul3xhn'
 
 #doc_index = doc_path + '/index.html'
 
+# All chapters: nickname -> title dict
+chapters = {
+ 'rules': 'Directory and file structure',
+ 'fake': 'Some document',
+ 'mako': 'Use of Mako to aid book writing',
+}
+
 %>

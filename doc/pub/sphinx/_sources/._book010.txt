@@ -195,9 +195,9 @@ Quiz
 **Question:** Does DocOnce feature multiple-choice questions or quizzes?
 
 
-**Choice 1:** Yes. :abbr:`? (Right!)` :abbr:`# (See the quiz manual (<http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).)`
+**Choice A:** Yes. :abbr:`? (Right!)` :abbr:`# (See the quiz manual (<http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).)`
 
-**Choice 2:** No. :abbr:`? (Wrong!)`
+**Choice B:** No. :abbr:`? (Wrong!)`
 
 .. end quiz
 
@@ -224,9 +224,9 @@ and report the formula in verbatim LaTeX code,
         \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx = ... \]
 
 
-**Choice 1:** There is no closed-form formula for this integral. :abbr:`? (Wrong!)` :abbr:`# (Maybe you fiddled around with pen and paper the wrong way... Try sympy!)`
+**Choice A:** There is no closed-form formula for this integral. :abbr:`? (Wrong!)` :abbr:`# (Maybe you fiddled around with pen and paper the wrong way... Try sympy!)`
 
-**Choice 2:** .. code-block:: python
+**Choice B:** .. code-block:: python
 
         >>> from sympy import *
         >>> x = symbols('x')
@@ -243,12 +243,12 @@ so the answer is
         \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
         - \frac{2}{5 e^{2 \pi}} + \frac{2}{5} \] :abbr:`? (Right!)`
 
-**Choice 3:** .. code-block:: latex
+**Choice C:** .. code-block:: latex
 
         \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
         - \frac{3}{4 e^{2 \pi}} + \frac{3}{4} \] :abbr:`? (Wrong!)` :abbr:`# (Something went wrong here with the fractions...)`
 
-**Choice 4:** .. code-block:: latex
+**Choice D:** .. code-block:: latex
 
         \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
         - {2\over5}{5 exp^{2 pi}} + \frac{2}{5} \] :abbr:`? (Wrong!)` :abbr:`# (Well, the math is correct, but the LaTeX code lacks two backslashes, and \over is old-fashioned, use \frac{}{} in 2015.)`

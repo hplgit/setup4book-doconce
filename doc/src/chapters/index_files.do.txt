@@ -1,14 +1,9 @@
 ## File used to create a complete index.html table of contents
 ## for all versions of all chapters for a book project
 
-<%
-# All chapters: nickname -> title
-chapters = {
- 'rules': 'Directory and file structure',
- 'fake': 'Some document',
- 'mako': 'Use of Mako to aid book writing',
-}
+# #include "mako_code.txt"
 
+<%
 # List the chapters that are ready for publishing
 published = ['rules', 'fake', 'mako']
 
