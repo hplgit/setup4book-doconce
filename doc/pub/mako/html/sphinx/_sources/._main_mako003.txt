@@ -79,18 +79,16 @@ How to treat multiple programming languages in the same text
 With these ideas, it becomes straightforward to write a book that
 has its program examples in multiple languages. Introduce ``CODE``
 as the name of the language and use if tests for larger portions
-of code and text, and a Mako function for shorter inline texts.
-Copying code from file can also be hidden in a Mako function such
-that you write ``${copyfile('myprog')}`` and automatically get
-it as ``src-ch2/python/myprog.py`` if ``COODE`` is ``python``,
-``src-ch2/matlab/myprog.m`` if ``CODE`` is ``matlab``, and so forth.
+of code and text, and Mako functions for shorter inline texts,
+to handle text that depends on the value of ``CODE``.
 The author has successfully co-written such a `book <http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html>`__
 [Ref1]_
 for mathematical programming with either Python or Matlab - the version
 is set when running ``doconce format``.
 
-Here is an example of text from that book (the Mako functions used appear
-at the end):
+Here is an example of text, in the style of the mention book,
+where there are small differences
+depending on the programming language:
 
 .. code-block:: doconce
 

@@ -158,19 +158,17 @@ type employs a slightly different syntax and is exemplified in the file
 With these ideas, it becomes straightforward to write a book that
 has its program examples in multiple languages. Introduce <code>CODE</code>
 as the name of the language and use if tests for larger portions
-of code and text, and a Mako function for shorter inline texts.
-Copying code from file can also be hidden in a Mako function such
-that you write <code>${copyfile('myprog')}</code> and automatically get
-it as <code>src-ch2/python/myprog.py</code> if <code>COODE</code> is <code>python</code>,
-<code>src-ch2/matlab/myprog.m</code> if <code>CODE</code> is <code>matlab</code>, and so forth.
+of code and text, and Mako functions for shorter inline texts,
+to handle text that depends on the value of <code>CODE</code>.
 The author has successfully co-written such a <a href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html" target="_self">book</a>
 <a href="#Lange_Langtangen_2015">[1]</a>
 for mathematical programming with either Python or Matlab - the version
 is set when running <code>doconce format</code>.
 
 <p>
-Here is an example of text from that book (the Mako functions used appear
-at the end):
+Here is an example of text, in the style of the mention book,
+where there are small differences
+depending on the programming language:
 
 <p>
 
