@@ -26,6 +26,32 @@ pre {
   border: 0pt solid #93a1a1;
   box-shadow: none;
 }
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -42,7 +68,7 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec2'),
               (' Use of Mako/Python functions ', 1, None, '___sec3'),
-              (' How to treat two programming languages in the same text ',
+              (' How to treat multiple programming languages in the same text ',
                2,
                None,
                '___sec4'),
@@ -130,7 +156,17 @@ string&quot;&quot;&quot;,
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec4">How to treat two programming languages in the same text </h2>
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>There are two types of Mako functions.</b>
+<p>
+One type resembles Python functions, as demonstrated above. The other
+type employs a slightly different syntax and is exemplified in the file
+<a href="http://tinyurl.com/kukz8pt/index_files-do.txt" target="_self"><tt>doc/src/chapters/index_files.do.txt</tt></a>. We refer to the <a href="http://docs.makotemplates.org/en/latest/syntax.html" target="_self">Mako syntax documentation</a> for more information.
+</div>
+
+
+<h2 id="___sec4">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -145,6 +181,166 @@ The author has successfully co-written such a <a href="http://hplgit.github.io/P
 <a href="#Lange_Langtangen_2015">[1]</a>
 for mathematical programming with either Python or Matlab - the version
 is set when running <code>doconce format</code>.
+
+<p>
+Here is an example of text from that book (the Mako functions used appear
+at the end):
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>The following ${CODE} function `sampler` does the job
+(see the file &quot;${src('sampler')}&quot;:
+&quot;https://github.com/myuser/myproject/src/${src('sampler')}&quot;):
+
+${copyfile('sampler')}
+
+Note that in ${CODE}, arrays start at index ${text2('0', '1')}
+such and that array slices like ${verb2('vec[2:8]', 'vec(2:7)')}
+go from the first index (here `2`) up to
+${text2('*but not including* the upper limit (here `8`)',
+'(including) the upper limit (here `7`)'}.
+% if CODE == 'Python':
+Also note that the file `sampler.py` is a module, meaning
+that we can call all the file's functions from other programs,
+including `sampler_vec`.
+% elif CODE == 'Matlab':
+Also note that only the `sampler` function can be called
+from other Matlab programs. If we want the alternative
+implementation in function `sampler_vec` to be reused
+by other programs, this function has to reside in a file
+`sampler_vec.py`.
+% endif
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Here we have made use of a few Mako functions to easily
+choose between a Python or Matlab relevant text:
+
+<ul>
+ <li> <code>src</code> for picking a filename with the right extension (<code>.py</code> or <code>.m</code>)</li>
+ <li> <code>copyfile</code> for constructing the right <code>@@@CODE</code> line for a Python or
+   Matlab source code file</li>
+ <li> <code>text2</code> for picking the first (Python) or second (Matlab) argument</li>
+ <li> <code>verb2</code> for picking the first (Python) or second (Matlab) argument typeset in
+   inline verbatim font</li>
+</ul>
+
+The exact Mako code appears below.
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>&lt;%
+def src(filestem, url=None, verb=True):
+    &quot;&quot;&quot;Return filstem plus .m or .py.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        filename = filestem + '.py'
+    else:
+        filename = filestem + '.m'
+    if verb:
+        filename = '`%s`' % filename
+    if url is not None:
+        # Make link to the file at github
+        pass
+    return filename
+
+def copyfile(filestem, from_=None, to_=None):
+    &quot;&quot;&quot;Return @@@CODE line for copying a Python/Matlab file.&quot;&quot;&quot;
+    r = &quot;@@@CODE &quot;
+    if CODE == &quot;Python&quot;:
+        r += &quot;py-src/&quot; + filestem + '.py'
+    else:
+        r += &quot;m-src/&quot; + filestem + '.m'
+    if from_ is not None:
+        r += ' fromto: ' + from_ + '@'
+    if to_ is not None:
+        r += to_
+    return r
+
+def verb2(py_expr, m_expr):
+    &quot;&quot;&quot;Return py_expr or m_expr in verbatim depending on CODE.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        expr = py_expr
+    else:
+        expr = m_expr
+    expr = '`%s`' % expr
+    return expr
+
+def text2(py_expr, m_expr):
+    &quot;&quot;&quot;Return py_expr or m_expr depending on CODE.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        expr = py_expr
+    else:
+        expr = m_expr
+    return expr
+
+%&gt;
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Compiling the document with
+
+<p>
+<!-- begin verbatim block  sys-->
+<pre><code>Terminal&gt; doconce format plain mydoc CODE=Python \
+          --latex_code_style=pyg
+</code></pre>
+<!-- end verbatim block -->
+results in the output
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>The following Python function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.py`}}{
+\nolinkurl{sampler.py}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+&quot;&quot;&quot;Sampler module.&quot;&quot;&quot;
+
+def sampler(...):
+    ...
+\end{minted}
+
+Note that in Python, arrays start at index 0
+such and that array slices like \Verb!vec[2:8]!
+go from the first index (here \Verb!2!) up to
+\emph{but not including} the upper limit (here \Verb!8!).
+Also note that the file \Verb!sampler.py! is a module, meaning
+that we can call all the file's functions from other programs,
+including \Verb!sampler_vec!.
+</code></pre>
+<!-- end verbatim block -->
+Switching to <code>CODE=Matlab</code> gives
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>The following Matlab function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.m`}}{
+\nolinkurl{sampler.m}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{matlab}
+% Sampler code
+
+function samples = sampler(...):
+    ...
+\end{minted}
+
+Note that in Matlab, arrays start at index 1
+such and that array slices like \Verb!vec(2:7)!
+go from the first index (here \Verb!2!) up to
+(including) the upper limit (here \Verb!7!.
+Also note that only the \Verb!sampler! function can be called
+from other Matlab programs. If we want the alternative
+implementation in function \Verb!sampler_vec! to be reused
+by other programs, this function has to reside in a file
+\Verb!sampler_vec.py!.
+</code></pre>
+<!-- end verbatim block -->
 
 <h1 id="___sec5">References </h1>
 

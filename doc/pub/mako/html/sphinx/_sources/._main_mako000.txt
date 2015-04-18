@@ -7,7 +7,7 @@ Use of Mako to aid book writing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 31, 2015
+:Date: Apr 17, 2015
 
 .. No common Mako variables and functions here since we cannot run mako
 

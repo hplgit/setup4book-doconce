@@ -197,7 +197,7 @@ type employs a slightly different syntax and is exemplified in the file
 "`doc/src/chapters/index_files.do.txt`": "http://tinyurl.com/kukz8pt/index_files-do.txt". We refer to the "Mako syntax documentation": "http://docs.makotemplates.org/en/latest/syntax.html" for more information.
 !enotice
 
-===== How to treat two programming languages in the same text =====
+===== How to treat multiple programming languages in the same text =====
 
 With these ideas, it becomes straightforward to write a book that
 has its program examples in multiple languages. Introduce `CODE`
@@ -212,3 +212,148 @@ The author has successfully co-written such a "book":
 cite{Lange_Langtangen_2015}
 for mathematical programming with either Python or Matlab - the version
 is set when running `doconce format`.
+
+Here is an example of text from that book (the Mako functions used appear
+at the end):
+
+!bc do
+The following ${CODE} function `sampler` does the job
+(see the file "${src('sampler')}":
+"https://github.com/myuser/myproject/src/${src('sampler')}"):
+
+${copyfile('sampler')}
+
+Note that in ${CODE}, arrays start at index ${text2('0', '1')}
+such and that array slices like ${verb2('vec[2:8]', 'vec(2:7)')}
+go from the first index (here `2`) up to
+${text2('*but not including* the upper limit (here `8`)',
+'(including) the upper limit (here `7`)'}.
+% if CODE == 'Python':
+Also note that the file `sampler.py` is a module, meaning
+that we can call all the file's functions from other programs,
+including `sampler_vec`.
+% elif CODE == 'Matlab':
+Also note that only the `sampler` function can be called
+from other Matlab programs. If we want the alternative
+implementation in function `sampler_vec` to be reused
+by other programs, this function has to reside in a file
+`sampler_vec.py`.
+% endif
+!ec
+
+Here we have made use of a few Mako functions to easily
+choose between a Python or Matlab relevant text:
+
+ * `src` for picking a filename with the right extension (`.py` or `.m`)
+ * `copyfile` for constructing the right `@@@CODE` line for a Python or
+   Matlab source code file
+ * `text2` for picking the first (Python) or second (Matlab) argument
+ * `verb2` for picking the first (Python) or second (Matlab) argument typeset in
+   inline verbatim font
+
+The exact Mako code appears below.
+
+!bc do
+<%
+def src(filestem, url=None, verb=True):
+    """Return filstem plus .m or .py."""
+    if CODE == "Python":
+        filename = filestem + '.py'
+    else:
+        filename = filestem + '.m'
+    if verb:
+        filename = '`%s`' % filename
+    if url is not None:
+        # Make link to the file at github
+        pass
+    return filename
+
+def copyfile(filestem, from_=None, to_=None):
+    """Return @@@CODE line for copying a Python/Matlab file."""
+    r = "@@@CODE "
+    if CODE == "Python":
+        r += "py-src/" + filestem + '.py'
+    else:
+        r += "m-src/" + filestem + '.m'
+    if from_ is not None:
+        r += ' fromto: ' + from_ + '@'
+    if to_ is not None:
+        r += to_
+    return r
+
+def verb2(py_expr, m_expr):
+    """Return py_expr or m_expr in verbatim depending on CODE."""
+    if CODE == "Python":
+        expr = py_expr
+    else:
+        expr = m_expr
+    expr = '`%s`' % expr
+    return expr
+
+def text2(py_expr, m_expr):
+    """Return py_expr or m_expr depending on CODE."""
+    if CODE == "Python":
+        expr = py_expr
+    else:
+        expr = m_expr
+    return expr
+
+%>
+!ec
+
+Compiling the document with
+
+!bc sys
+Terminal> doconce format plain mydoc CODE=Python \
+          --latex_code_style=pyg
+!ec
+results in the output
+
+!bc
+The following Python function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.py`}}{
+\nolinkurl{sampler.py}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+"""Sampler module."""
+
+def sampler(...):
+    ...
+\end{minted}
+
+Note that in Python, arrays start at index 0
+such and that array slices like \Verb!vec[2:8]!
+go from the first index (here \Verb!2!) up to
+\emph{but not including} the upper limit (here \Verb!8!).
+Also note that the file \Verb!sampler.py! is a module, meaning
+that we can call all the file's functions from other programs,
+including \Verb!sampler_vec!.
+!ec
+Switching to `CODE=Matlab` gives
+
+!bc
+The following Matlab function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.m`}}{
+\nolinkurl{sampler.m}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{matlab}
+% Sampler code
+
+function samples = sampler(...):
+    ...
+\end{minted}
+
+Note that in Matlab, arrays start at index 1
+such and that array slices like \Verb!vec(2:7)!
+go from the first index (here \Verb!2!) up to
+(including) the upper limit (here \Verb!7!.
+Also note that only the \Verb!sampler! function can be called
+from other Matlab programs. If we want the alternative
+implementation in function \Verb!sampler_vec! to be reused
+by other programs, this function has to reside in a file
+\Verb!sampler_vec.py!.
+!ec

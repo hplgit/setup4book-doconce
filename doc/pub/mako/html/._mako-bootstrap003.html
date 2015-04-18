@@ -30,7 +30,7 @@ Automatically generated HTML file from DocOnce source
                None,
                '___sec2'),
               (' Use of Mako/Python functions ', 1, None, '___sec3'),
-              (' How to treat two programming languages in the same text ',
+              (' How to treat multiple programming languages in the same text ',
                2,
                None,
                '___sec4'),
@@ -59,7 +59,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="._mako-bootstrap001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to speak about ``this chapter''</a></li>
      <!-- navigation toc: --> <li><a href="._mako-bootstrap002.html#___sec2" style="font-size: 80%;"><b>How to make several variants of the text</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Use of Mako/Python functions</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat two programming languages in the same text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat multiple programming languages in the same text</a></li>
      <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
@@ -140,8 +140,15 @@ string&quot;&quot;&quot;,
 &#39;5th string&#39;)}
 ...
 </pre></div>
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>There are two types of Mako functions.</b>
+One type resembles Python functions, as demonstrated above. The other
+type employs a slightly different syntax and is exemplified in the file
+<a href="http://tinyurl.com/kukz8pt/index_files-do.txt" target="_self"><tt>doc/src/chapters/index_files.do.txt</tt></a>. We refer to the <a href="http://docs.makotemplates.org/en/latest/syntax.html" target="_self">Mako syntax documentation</a> for more information.
+</div>
 
-<h2 id="___sec4">How to treat two programming languages in the same text </h2>
+
+<h2 id="___sec4">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -156,6 +163,166 @@ The author has successfully co-written such a <a href="http://hplgit.github.io/P
 <a href="#Lange_Langtangen_2015">[1]</a>
 for mathematical programming with either Python or Matlab - the version
 is set when running <code>doconce format</code>.
+
+<p>
+Here is an example of text from that book (the Mako functions used appear
+at the end):
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">The following ${CODE} function `sampler` does the job
+(see the file &quot;${src(&#39;sampler&#39;)}&quot;:
+<span style="color: #BA2121">&quot;https://github.com/myuser/myproject/src/${src(&#39;sampler&#39;)}&quot;</span>):
+
+${copyfile(&#39;sampler&#39;)}
+
+Note that in ${CODE}, arrays start at index ${text2(&#39;0&#39;, &#39;1&#39;)}
+such and that array slices like ${verb2(&#39;vec[2:8]&#39;, &#39;vec(2:7)&#39;)}
+go from the first index (here `2`) up to
+${text2(&#39;*but not including* the upper limit (here `8`)&#39;,
+&#39;(including) the upper limit (here `7`)&#39;}.
+% if CODE == &#39;Python&#39;:
+Also note that the file `sampler.py` is a module, meaning
+that we can call all the file&#39;s functions from other programs,
+including `sampler_vec`.
+% elif CODE == &#39;Matlab&#39;:
+Also note that only the `sampler` function can be called
+from other Matlab programs. If we want the alternative
+implementation in function `sampler_vec` to be reused
+by other programs, this function has to reside in a file
+<span style="color: #BA2121">`sampler_vec.py`</span>.
+% endif
+</pre></div>
+<p>
+Here we have made use of a few Mako functions to easily
+choose between a Python or Matlab relevant text:
+
+<ul>
+ <li> <code>src</code> for picking a filename with the right extension (<code>.py</code> or <code>.m</code>)</li>
+ <li> <code>copyfile</code> for constructing the right <code>@@@CODE</code> line for a Python or
+   Matlab source code file</li>
+ <li> <code>text2</code> for picking the first (Python) or second (Matlab) argument</li>
+ <li> <code>verb2</code> for picking the first (Python) or second (Matlab) argument typeset in
+   inline verbatim font</li>
+</ul>
+
+The exact Mako code appears below.
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;%
+def src(filestem, url=None, verb=True):
+    &quot;&quot;&quot;Return filstem plus .m or .py.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        filename = filestem + &#39;.py&#39;
+    else:
+        filename = filestem + &#39;.m&#39;
+    if verb:
+        filename = &#39;`%s`&#39; % filename
+    if url is not None:
+        # Make link to the file at github
+        pass
+    return filename
+
+def copyfile(filestem, from_=None, to_=None):
+    &quot;&quot;&quot;Return @@@CODE line for copying a Python/Matlab file.&quot;&quot;&quot;
+    r = &quot;@@@CODE &quot;
+    if CODE == &quot;Python&quot;:
+        r += &quot;py-src/&quot; + filestem + &#39;.py&#39;
+    else:
+        r += &quot;m-src/&quot; + filestem + &#39;.m&#39;
+    if from_ is not None:
+        r += &#39; fromto: &#39; + from_ + &#39;@&#39;
+    if to_ is not None:
+        r += to_
+    return r
+
+def verb2(py_expr, m_expr):
+    &quot;&quot;&quot;Return py_expr or m_expr in verbatim depending on CODE.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        expr = py_expr
+    else:
+        expr = m_expr
+    expr = &#39;`%s`&#39; % expr
+    return expr
+
+def text2(py_expr, m_expr):
+    &quot;&quot;&quot;Return py_expr or m_expr depending on CODE.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        expr = py_expr
+    else:
+        expr = m_expr
+    return expr
+
+%&gt;
+</pre></div>
+<p>
+Compiling the document with
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format plain mydoc CODE=Python \
+          --latex_code_style=pyg
+</pre></div>
+<p>
+results in the output
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">The following Python function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.py`}}{
+\nolinkurl{sampler.py}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+&quot;&quot;&quot;Sampler module.&quot;&quot;&quot;
+
+def sampler(...):
+    ...
+\end{minted}
+
+Note that in Python, arrays start at index 0
+such and that array slices like \Verb!vec[2:8]!
+go from the first index (here \Verb!2!) up to
+\emph{but not including} the upper limit (here \Verb!8!).
+Also note that the file \Verb!sampler.py! is a module, meaning
+that we can call all the file&#39;s functions from other programs,
+including \Verb!sampler_vec!.
+</pre></div>
+<p>
+Switching to <code>CODE=Matlab</code> gives
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">The following Matlab function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.m`}}{
+\nolinkurl{sampler.m}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{matlab}
+% Sampler code
+
+function samples = sampler(...):
+    ...
+\end{minted}
+
+Note that in Matlab, arrays start at index 1
+such and that array slices like \Verb!vec(2:7)!
+go from the first index (here \Verb!2!) up to
+(including) the upper limit (here \Verb!7!.
+Also note that only the \Verb!sampler! function can be called
+from other Matlab programs. If we want the alternative
+implementation in function \Verb!sampler_vec! to be reused
+by other programs, this function has to reside in a file
+\Verb!sampler_vec.py!.
+</pre></div>
 
 <h1 id="___sec5">References </h1>
 

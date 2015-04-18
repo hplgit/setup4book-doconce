@@ -124,8 +124,14 @@ string&quot;&quot;&quot;,
 ...
 </pre></div>
 </div>
-<div class="section" id="how-to-treat-two-programming-languages-in-the-same-text">
-<h2>How to treat two programming languages in the same text<a class="headerlink" href="#how-to-treat-two-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-there-are-two-types-of-mako-functions admonition">
+<p class="first admonition-title">There are two types of Mako functions</p>
+<p class="last">One type resembles Python functions, as demonstrated above. The other
+type employs a slightly different syntax and is exemplified in the file
+<a class="reference external" href="http://tinyurl.com/kukz8pt/index_files-do.txt">doc/src/chapters/index_files.do.txt</a>. We refer to the <a class="reference external" href="http://docs.makotemplates.org/en/latest/syntax.html">Mako syntax documentation</a> for more information.</p>
+</div>
+<div class="section" id="how-to-treat-multiple-programming-languages-in-the-same-text">
+<h2>How to treat multiple programming languages in the same text<a class="headerlink" href="#how-to-treat-multiple-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
 <p>With these ideas, it becomes straightforward to write a book that
 has its program examples in multiple languages. Introduce <tt class="docutils literal"><span class="pre">CODE</span></tt>
 as the name of the language and use if tests for larger portions
@@ -138,6 +144,145 @@ The author has successfully co-written such a <a class="reference external" href
 <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>
 for mathematical programming with either Python or Matlab - the version
 is set when running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>.</p>
+<p>Here is an example of text from that book (the Mako functions used appear
+at the end):</p>
+<div class="highlight-doconce"><div class="highlight"><pre>The following ${CODE} function `sampler` does the job
+(see the file &quot;${src(&#39;sampler&#39;)}&quot;:
+<span class="s">&quot;https://github.com/myuser/myproject/src/${src(&#39;sampler&#39;)}&quot;</span>):
+
+${copyfile(&#39;sampler&#39;)}
+
+Note that in ${CODE}, arrays start at index ${text2(&#39;0&#39;, &#39;1&#39;)}
+such and that array slices like ${verb2(&#39;vec[2:8]&#39;, &#39;vec(2:7)&#39;)}
+go from the first index (here `2`) up to
+${text2(&#39;*but not including* the upper limit (here `8`)&#39;,
+&#39;(including) the upper limit (here `7`)&#39;}.
+% if CODE == &#39;Python&#39;:
+Also note that the file `sampler.py` is a module, meaning
+that we can call all the file&#39;s functions from other programs,
+including `sampler_vec`.
+% elif CODE == &#39;Matlab&#39;:
+Also note that only the `sampler` function can be called
+from other Matlab programs. If we want the alternative
+implementation in function `sampler_vec` to be reused
+by other programs, this function has to reside in a file
+<span class="sb">`sampler_vec.py`</span>.
+% endif
+</pre></div>
+</div>
+<p>Here we have made use of a few Mako functions to easily
+choose between a Python or Matlab relevant text:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">src</span></tt> for picking a filename with the right extension (<tt class="docutils literal"><span class="pre">.py</span></tt> or <tt class="docutils literal"><span class="pre">.m</span></tt>)</li>
+<li><tt class="docutils literal"><span class="pre">copyfile</span></tt> for constructing the right <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> line for a Python or
+Matlab source code file</li>
+<li><tt class="docutils literal"><span class="pre">text2</span></tt> for picking the first (Python) or second (Matlab) argument</li>
+<li><tt class="docutils literal"><span class="pre">verb2</span></tt> for picking the first (Python) or second (Matlab) argument typeset in
+inline verbatim font</li>
+</ul>
+</div></blockquote>
+<p>The exact Mako code appears below.</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;%
+def src(filestem, url=None, verb=True):
+    &quot;&quot;&quot;Return filstem plus .m or .py.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        filename = filestem + &#39;.py&#39;
+    else:
+        filename = filestem + &#39;.m&#39;
+    if verb:
+        filename = &#39;`%s`&#39; % filename
+    if url is not None:
+        # Make link to the file at github
+        pass
+    return filename
+
+def copyfile(filestem, from_=None, to_=None):
+    &quot;&quot;&quot;Return @@@CODE line for copying a Python/Matlab file.&quot;&quot;&quot;
+    r = &quot;@@@CODE &quot;
+    if CODE == &quot;Python&quot;:
+        r += &quot;py-src/&quot; + filestem + &#39;.py&#39;
+    else:
+        r += &quot;m-src/&quot; + filestem + &#39;.m&#39;
+    if from_ is not None:
+        r += &#39; fromto: &#39; + from_ + &#39;@&#39;
+    if to_ is not None:
+        r += to_
+    return r
+
+def verb2(py_expr, m_expr):
+    &quot;&quot;&quot;Return py_expr or m_expr in verbatim depending on CODE.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        expr = py_expr
+    else:
+        expr = m_expr
+    expr = &#39;`%s`&#39; % expr
+    return expr
+
+def text2(py_expr, m_expr):
+    &quot;&quot;&quot;Return py_expr or m_expr depending on CODE.&quot;&quot;&quot;
+    if CODE == &quot;Python&quot;:
+        expr = py_expr
+    else:
+        expr = m_expr
+    return expr
+
+%&gt;
+</pre></div>
+</div>
+<p>Compiling the document with</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format plain mydoc CODE=Python \
+          --latex_code_style=pyg
+</pre></div>
+</div>
+<p>results in the output</p>
+<div class="highlight-text"><div class="highlight"><pre>The following Python function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.py`}}{
+\nolinkurl{sampler.py}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+&quot;&quot;&quot;Sampler module.&quot;&quot;&quot;
+
+def sampler(...):
+    ...
+\end{minted}
+
+Note that in Python, arrays start at index 0
+such and that array slices like \Verb!vec[2:8]!
+go from the first index (here \Verb!2!) up to
+\emph{but not including} the upper limit (here \Verb!8!).
+Also note that the file \Verb!sampler.py! is a module, meaning
+that we can call all the file&#39;s functions from other programs,
+including \Verb!sampler_vec!.
+</pre></div>
+</div>
+<p>Switching to <tt class="docutils literal"><span class="pre">CODE=Matlab</span></tt> gives</p>
+<div class="highlight-text"><div class="highlight"><pre>The following Matlab function \Verb!sampler! does the job
+(see the file
+\href{{https://github.com/myuser/myproject/src/`sampler.m`}}{
+\nolinkurl{sampler.m}}):
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,
+baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{matlab}
+% Sampler code
+
+function samples = sampler(...):
+    ...
+\end{minted}
+
+Note that in Matlab, arrays start at index 1
+such and that array slices like \Verb!vec(2:7)!
+go from the first index (here \Verb!2!) up to
+(including) the upper limit (here \Verb!7!.
+Also note that only the \Verb!sampler! function can be called
+from other Matlab programs. If we want the alternative
+implementation in function \Verb!sampler_vec! to be reused
+by other programs, this function has to reside in a file
+\Verb!sampler_vec.py!.
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="references">
@@ -166,7 +311,7 @@ is set when running <tt class="docutils literal"><span class="pre">doconce</span
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Use of Mako/Python functions</a><ul>
-<li><a class="reference internal" href="#how-to-treat-two-programming-languages-in-the-same-text">How to treat two programming languages in the same text</a></li>
+<li><a class="reference internal" href="#how-to-treat-multiple-programming-languages-in-the-same-text">How to treat multiple programming languages in the same text</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#references">References</a></li>

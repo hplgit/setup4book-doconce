@@ -26,6 +26,32 @@ pre {
   border: 0pt solid #93a1a1;
   box-shadow: none;
 }
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -42,7 +68,7 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec2'),
               (' Use of Mako/Python functions ', 1, None, '___sec3'),
-              (' How to treat two programming languages in the same text ',
+              (' How to treat multiple programming languages in the same text ',
                2,
                None,
                '___sec4'),
@@ -76,14 +102,13 @@ end of tocinfo -->
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 31, 2015</h4></center> <!-- date -->
+<center><h4>Apr 17, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -92,7 +117,7 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="._mako-solarized001.html#___sec1"> How to speak about &quot;this chapter&quot; </a><br>
 <a href="._mako-solarized002.html#___sec2"> How to make several variants of the text </a><br>
 <a href="._mako-solarized003.html#___sec3"> Use of Mako/Python functions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._mako-solarized003.html#___sec4"> How to treat two programming languages in the same text </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized003.html#___sec4"> How to treat multiple programming languages in the same text </a><br>
 <a href="._mako-solarized003.html#___sec5"> References </a><br>
 </p>
 <p>
