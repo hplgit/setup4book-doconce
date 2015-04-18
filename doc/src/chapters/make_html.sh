@@ -48,7 +48,7 @@ system doconce split_html $html.html --nav_button=text
 
 style=bootswatch_readable
 html=${nickname}-readable
-system doconce format html $mainname $opt --html_style=$style --html_output=$html $args
+system doconce format html $mainname $opt --html_style=$style --html_output=$html --html_code_style=inherit $args
 system doconce split_html $html.html --nav_button=text
 
 # Sphinx themes

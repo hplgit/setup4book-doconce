@@ -100,8 +100,8 @@ at the end):
         
         ${copyfile('sampler')}
         
-        Note that in ${CODE}, arrays start at index ${text2('0', '1')}
-        such and that array slices like ${verb2('vec[2:8]', 'vec(2:7)')}
+        Note that in ${CODE}, arrays start at index ${text2('0', '1')}.
+        Array slices like ${verb2('vec[2:8]', 'vec(2:7)')}
         go from the first index (here `2`) up to
         ${text2('*but not including* the upper limit (here `8`)',
         '(including) the upper limit (here `7`)'}.
@@ -204,8 +204,8 @@ results in the output
             ...
         \end{minted}
         
-        Note that in Python, arrays start at index 0
-        such and that array slices like \Verb!vec[2:8]!
+        Note that in Python, arrays start at index 0.
+        Array slices like \Verb!vec[2:8]!
         go from the first index (here \Verb!2!) up to
         \emph{but not including} the upper limit (here \Verb!8!).
         Also note that the file \Verb!sampler.py! is a module, meaning
@@ -229,8 +229,8 @@ Switching to ``CODE=Matlab`` gives
             ...
         \end{minted}
         
-        Note that in Matlab, arrays start at index 1
-        such and that array slices like \Verb!vec(2:7)!
+        Note that in Matlab, arrays start at index 1.
+        Array slices like \Verb!vec(2:7)!
         go from the first index (here \Verb!2!) up to
         (including) the upper limit (here \Verb!7!.
         Also note that only the \Verb!sampler! function can be called
