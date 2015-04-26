@@ -162,6 +162,51 @@ code as these are confined
 to the LaTeX format. Use instead Mako functions.
 !ewarning
 
+Here is an example on some
+useful constructs in a `newcommands.p.tex` file:
+
+!bc latexcod
+\newcommand{\halfi}{{1/2}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\tp}{\thinspace .}  % right space after equations
+
+%% Operators
+\newcommand{\Ddt}[1]{\frac{D #1}{dt}}
+\newcommand{\E}[1]{\hbox{E}\lbrack #1 \rbrack}
+\newcommand{\Var}[1]{\hbox{Var}\lbrack #1 \rbrack}
+\newcommand{\Std}[1]{\hbox{Std}\lbrack #1 \rbrack}
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+
+%% Boldface vectors/tensors
+\newcommand{\x}{\bm{x}}
+\newcommand{\X}{\bm{X}}
+\renewcommand{\u}{\bm{u}}
+\renewcommand{\v}{\bm{v}}
+\newcommand{\w}{\bm{w}}
+\newcommand{\V}{\bm{V}}
+\newcommand{\e}{\bm{e}}
+\newcommand{\f}{\bm{f}}
+\newcommand{\F}{\bm{F}}
+\newcommand{\stress}{\bm{\sigma}}
+\newcommand{\strain}{\bm{\varepsilon}}
+\newcommand{\stressc}{{\sigma}}
+\newcommand{\strainc}{{\varepsilon}}
+\newcommand{\normalvec}{\bm{n}}
+
+%% Unit vectors
+\newcommand{\ii}{\bm{i}}
+\newcommand{\jj}{\bm{j}}
+\newcommand{\kk}{\bm{k}}
+\newcommand{\ir}{\bm{i}_r}
+\newcommand{\ith}{\bm{i}_{\theta}}
+\newcommand{\iz}{\bm{i}_z}
+
+%% Number sets
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Integerp}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+!ec
+
 ===== Programming style =====
 
 It is fundamental for a book project to stick to one well-defined
@@ -190,6 +235,40 @@ the problem it is going to solve in mathematics first. Reuse terms
 and notation in the program, and try to make the key statements in the code
 as close as possible to the mathematical formulation.
 !enotice
+
+Typesetting of computer code in DocOnce makes use of the `!bc` construction
+and a named environment, e.g., `pycod` for a Python snippet and `pypro`
+for a complete Python program. Users are often confused if a set of
+statements in a text can be executed as they stand or not. That is why
+we have introduced the `cod` and `pro` environments: `cod` is for just some
+code, while `pro` is for a complete program that will run. You may
+choose the typesetting to be different for the `cod` and `pro` environments.
+
+When preparing text for IPython/Jupyter notebooks, a code snippet cannot
+run unless previous snippets contain the necessary code. Sometimes this
+forces you to include more code than would be natural in a book.
+There is a third type of environment, `hid`, that can be used to
+insert code segments that are to be hidden in text, but present in
+notebooks to enable execution of future snippets. For example,
+
+!bc do
+# Need to import to run next snippet
+|bc pyhid
+from numpy import *
+from matplotlib.pyplot import *
+|ec
+
+We can now generate coordinates by
+
+|bc pycod
+x = linspace(0, 1, 101)
+y = sin(x)
+plot(x, y)
+|ec
+!ec
+The import statements will only be visible in the notebook output and not
+in any other format.
+
 
 ===== Degree of modularization =====
 

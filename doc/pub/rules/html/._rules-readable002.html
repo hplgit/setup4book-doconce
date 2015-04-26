@@ -127,6 +127,12 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+<!-- newcommands_keep.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+$$
+
+
 
 
     
@@ -279,6 +285,54 @@ to the LaTeX format. Use instead Mako functions.
 </div>
 
 
+<p>
+Here is an example on some
+useful constructs in a <code>newcommands.p.tex</code> file:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\halfi</span><span style="color: #008000">}{{</span>1/2<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\half</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>1<span style="color: #008000">}{</span>2<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\tp</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\thinspace</span> .<span style="color: #008000">}</span>  <span style="color: #408080; font-style: italic">% right space after equations</span>
+
+<span style="color: #408080; font-style: italic">% Operators</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Ddt</span><span style="color: #008000">}</span>[1]<span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>D #1<span style="color: #008000">}{</span>dt<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\E</span><span style="color: #008000">}</span>[1]<span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\hbox</span><span style="color: #008000">{</span>E<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\lbrack</span> #1 <span style="color: #008000; font-weight: bold">\rbrack</span><span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Var</span><span style="color: #008000">}</span>[1]<span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\hbox</span><span style="color: #008000">{</span>Var<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\lbrack</span> #1 <span style="color: #008000; font-weight: bold">\rbrack</span><span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Std</span><span style="color: #008000">}</span>[1]<span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\hbox</span><span style="color: #008000">{</span>Std<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\lbrack</span> #1 <span style="color: #008000; font-weight: bold">\rbrack</span><span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Oof</span><span style="color: #008000">}</span>[1]<span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\mathcal</span><span style="color: #008000">{</span>O<span style="color: #008000">}</span>(#1)<span style="color: #008000">}</span>
+
+<span style="color: #408080; font-style: italic">% Boldface vectors/tensors</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\x</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>x<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\X</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>X<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\renewcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\u</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>u<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\renewcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\v</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>v<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\w</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>w<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\V</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>V<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\e</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>e<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\f</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>f<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\F</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>F<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\stress</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\sigma</span><span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\strain</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\varepsilon</span><span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\stressc</span><span style="color: #008000">}{{</span><span style="color: #008000; font-weight: bold">\sigma</span><span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\strainc</span><span style="color: #008000">}{{</span><span style="color: #008000; font-weight: bold">\varepsilon</span><span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\normalvec</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>n<span style="color: #008000">}}</span>
+
+<span style="color: #408080; font-style: italic">% Unit vectors</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\ii</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>i<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\jj</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>j<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\kk</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>k<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\ir</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>i<span style="color: #008000">}_</span>r<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\ith</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>i<span style="color: #008000">}_{</span><span style="color: #008000; font-weight: bold">\theta</span><span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\iz</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\boldsymbol</span><span style="color: #008000">{</span>i<span style="color: #008000">}_</span>z<span style="color: #008000">}</span>
+
+<span style="color: #408080; font-style: italic">% Number sets</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Real</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\mathbb</span><span style="color: #008000">{</span>R<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Integerp</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\mathbb</span><span style="color: #008000">{</span>N<span style="color: #008000">}}</span>
+<span style="color: #008000; font-weight: bold">\newcommand</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\Integer</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\mathbb</span><span style="color: #008000">{</span>Z<span style="color: #008000">}}</span>
+</pre></div>
+
 <h2 id="___sec3">Programming style </h2>
 
 <p>
@@ -311,6 +365,44 @@ and notation in the program, and try to make the key statements in the code
 as close as possible to the mathematical formulation.
 </div>
 
+
+<p>
+Typesetting of computer code in DocOnce makes use of the <code>!bc</code> construction
+and a named environment, e.g., <code>pycod</code> for a Python snippet and <code>pypro</code>
+for a complete Python program. Users are often confused if a set of
+statements in a text can be executed as they stand or not. That is why
+we have introduced the <code>cod</code> and <code>pro</code> environments: <code>cod</code> is for just some
+code, while <code>pro</code> is for a complete program that will run. You may
+choose the typesetting to be different for the <code>cod</code> and <code>pro</code> environments.
+
+<p>
+When preparing text for IPython/Jupyter notebooks, a code snippet cannot
+run unless previous snippets contain the necessary code. Sometimes this
+forces you to include more code than would be natural in a book.
+There is a third type of environment, <code>hid</code>, that can be used to
+insert code segments that are to be hidden in text, but present in
+notebooks to enable execution of future snippets. For example,
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Need to import to run next snippet</span>
+!bc pyhid
+from numpy import *
+from matplotlib.pyplot import *
+!ec
+
+We can now generate coordinates by
+
+!bc pycod
+x = linspace(0, 1, 101)
+y = sin(x)
+plot(x, y)
+!ec
+</pre></div>
+<p>
+The import statements will only be visible in the notebook output and not
+in any other format.
 
 <h2 id="___sec4">Degree of modularization </h2>
 

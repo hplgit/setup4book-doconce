@@ -166,6 +166,49 @@ rendered by LaTeX or MathJax. Newcommands for other LaTeX constructions
 code as these are confined
 to the LaTeX format. Use instead Mako functions.</p>
 </div>
+<p>Here is an example on some
+useful constructs in a <tt class="docutils literal"><span class="pre">newcommands.p.tex</span></tt> file:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\halfi</span><span class="nb">}{{</span>1/2<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\half</span><span class="nb">}{</span><span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tp</span><span class="nb">}{</span><span class="k">\thinspace</span> .<span class="nb">}</span>  <span class="c">% right space after equations</span>
+
+<span class="c">% Operators</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Ddt</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>D #1<span class="nb">}{</span>dt<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\E</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\hbox</span><span class="nb">{</span>E<span class="nb">}</span><span class="k">\lbrack</span> #1 <span class="k">\rbrack</span><span class="nb">}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Var</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\hbox</span><span class="nb">{</span>Var<span class="nb">}</span><span class="k">\lbrack</span> #1 <span class="k">\rbrack</span><span class="nb">}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Std</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\hbox</span><span class="nb">{</span>Std<span class="nb">}</span><span class="k">\lbrack</span> #1 <span class="k">\rbrack</span><span class="nb">}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Oof</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\mathcal</span><span class="nb">{</span>O<span class="nb">}</span>(#1)<span class="nb">}</span>
+
+<span class="c">% Boldface vectors/tensors</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\x</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>x<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\X</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>X<span class="nb">}}</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\u</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>u<span class="nb">}}</span>
+<span class="k">\renewcommand</span><span class="nb">{</span><span class="k">\v</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>v<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\w</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>w<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\V</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>V<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\e</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>e<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\f</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>f<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\F</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>F<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\stress</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span><span class="k">\sigma</span><span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\strain</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span><span class="k">\varepsilon</span><span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\stressc</span><span class="nb">}{{</span><span class="k">\sigma</span><span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\strainc</span><span class="nb">}{{</span><span class="k">\varepsilon</span><span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\normalvec</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>n<span class="nb">}}</span>
+
+<span class="c">% Unit vectors</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\ii</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>i<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\jj</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>j<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\kk</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>k<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\ir</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>i<span class="nb">}_</span>r<span class="nb">}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\ith</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>i<span class="nb">}_{</span><span class="k">\theta</span><span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\iz</span><span class="nb">}{</span><span class="k">\boldsymbol</span><span class="nb">{</span>i<span class="nb">}_</span>z<span class="nb">}</span>
+
+<span class="c">% Number sets</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Real</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>R<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Integerp</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>N<span class="nb">}}</span>
+<span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Integer</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>Z<span class="nb">}}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="programming-style">
 <h2>Programming style<a class="headerlink" href="#programming-style" title="Permalink to this headline">¶</a></h2>
@@ -194,6 +237,36 @@ the problem it is going to solve in mathematics first. Reuse terms
 and notation in the program, and try to make the key statements in the code
 as close as possible to the mathematical formulation.</p>
 </div>
+<p>Typesetting of computer code in DocOnce makes use of the <tt class="docutils literal"><span class="pre">!bc</span></tt> construction
+and a named environment, e.g., <tt class="docutils literal"><span class="pre">pycod</span></tt> for a Python snippet and <tt class="docutils literal"><span class="pre">pypro</span></tt>
+for a complete Python program. Users are often confused if a set of
+statements in a text can be executed as they stand or not. That is why
+we have introduced the <tt class="docutils literal"><span class="pre">cod</span></tt> and <tt class="docutils literal"><span class="pre">pro</span></tt> environments: <tt class="docutils literal"><span class="pre">cod</span></tt> is for just some
+code, while <tt class="docutils literal"><span class="pre">pro</span></tt> is for a complete program that will run. You may
+choose the typesetting to be different for the <tt class="docutils literal"><span class="pre">cod</span></tt> and <tt class="docutils literal"><span class="pre">pro</span></tt> environments.</p>
+<p>When preparing text for IPython/Jupyter notebooks, a code snippet cannot
+run unless previous snippets contain the necessary code. Sometimes this
+forces you to include more code than would be natural in a book.
+There is a third type of environment, <tt class="docutils literal"><span class="pre">hid</span></tt>, that can be used to
+insert code segments that are to be hidden in text, but present in
+notebooks to enable execution of future snippets. For example,</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="c"># Need to import to run next snippet</span>
+<span class="k">!bc</span> pyhid
+from numpy import *
+from matplotlib.pyplot import *
+<span class="k">!ec</span>
+
+We can now generate coordinates by
+
+<span class="k">!bc</span> pycod
+x = linspace(0, 1, 101)
+y = sin(x)
+plot(x, y)
+<span class="k">!ec</span>
+</pre></div>
+</div>
+<p>The import statements will only be visible in the notebook output and not
+in any other format.</p>
 </div>
 <div class="section" id="degree-of-modularization">
 <h2>Degree of modularization<a class="headerlink" href="#degree-of-modularization" title="Permalink to this headline">¶</a></h2>
