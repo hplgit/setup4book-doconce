@@ -46,8 +46,8 @@ When the book is compiled, you do
 Terminal> doconce format pdflatex ch2 --latex_code_style=pyg \
           CHAPTER=chapter BOOK=chapter APPENDIX=appendix
 !ec
-The `make.sh` files for found in `doc/src/chapter/make.sh` and
-`doc/src/book/make.sh` make proper definitions of
+The `make*.sh` files found in `doc/src/chapter/` and
+`doc/src/book` make proper definitions of
 `CHAPTER`, `BOOK`, and `APPENDIX`.
 
 !split

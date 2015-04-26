@@ -65,7 +65,7 @@ This sentence is rendered as follows in the present format (``sphinx``):
 
 The world's most famous equation is 
 as found in the document `Some document <http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake>`__
-[Ref3]_.
+[Ref4]_.
 
 
 More detailed information about generalized cross-references is

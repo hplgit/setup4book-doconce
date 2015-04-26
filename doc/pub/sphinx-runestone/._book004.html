@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Newcommands &mdash; How to Use DocOnce to Write Books</title>
+    <title>Principles and conventions &mdash; How to Use DocOnce to Write Books</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -242,7 +242,14 @@
           <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"><ul>
-<li><a class="reference internal" href="#">Newcommands</a></li>
+<li><a class="reference internal" href="#">Principles and conventions</a><ul>
+<li><a class="reference internal" href="#mathematical-notation-and-newcommands">Mathematical notation and newcommands</a></li>
+<li><a class="reference internal" href="#programming-style">Programming style</a></li>
+<li><a class="reference internal" href="#degree-of-modularization">Degree of modularization</a></li>
+<li><a class="reference internal" href="#student-guide-slides-style">Student guide (slides) style</a></li>
+<li><a class="reference internal" href="#style-in-exercises-problems-and-projects">Style in exercises, problems, and projects</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -285,24 +292,69 @@
 
 <div class="container">
   
-  <div class="section" id="newcommands">
-<h1>Newcommands<a class="headerlink" href="#newcommands" title="Permalink to this headline">¶</a></h1>
-<p id="index-0">Files with names <tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt> are by DocOnce treated as files
-with definition of newcommands for LaTeX mathematics.
-These files must reside in the same
-directory as the DocOnce source files. However, for a book project,
-it is common to have one newcommands file shared by all chapters.
-This file is placed
-in <tt class="docutils literal"><span class="pre">doc/src/chapters/newcommands.p.tex</span></tt> and copied to a specific
-chapter by the make script for that chapter. The extension of
-the file is <tt class="docutils literal"><span class="pre">.p.tex</span></tt>, indicating that the file has to be
-<em>preprocessed</em> by <tt class="docutils literal"><span class="pre">preprocess</span></tt> prior to being copied. The reason
-is that one occasionally wants the definitions of the newcommands
-to depend on the output format (standard LaTeX or MathJax).
-For example, subscripts in <tt class="docutils literal"><span class="pre">mbox</span></tt> font look best with footnotesize
-font in plain LaTeX, while the larger <tt class="docutils literal"><span class="pre">small</span></tt> font is more appropriate
-for MathJax. We can then put the following definitions in
-<tt class="docutils literal"><span class="pre">newcommands.p.tex</span></tt>:</p>
+  <div class="section" id="principles-and-conventions">
+<h1>Principles and conventions<a class="headerlink" href="#principles-and-conventions" title="Permalink to this headline">¶</a></h1>
+<p>When starting a bigger project like one or more book projects, alone or
+with others, it is wise to sit down and agree upon some basic principles
+and conventions. This note is about a technical infrastructure for writing
+books as an assembly of chapter components, but much more infrastructure
+is needed to achieve an efficient work flow in the project. One simply
+needs rules to make the work flow and end product coherent. This means one
+must agree upon</p>
+<blockquote>
+<div><ul class="simple">
+<li>mathematical notation</li>
+<li>programming style</li>
+<li>degree of modularization</li>
+<li>writing style</li>
+<li>student guide (slides) style</li>
+<li>style in exercises, problems, and projects</li>
+</ul>
+</div></blockquote>
+<p>The suggestions here have grown out of the author&#8217;s own experience with
+writing books and must be taken as just one possible example on how to
+deal with the bullet list above.</p>
+<div class="admonition-observation-latex-based-writing-styles-are-very-private admonition">
+<p class="first admonition-title">Observation: LaTeX-based writing styles are very private</p>
+<p>Most authors develop very private ways of using LaTeX in their projects.
+They often have a vast amount of newcommands and a collection of special
+LaTeX packages they rely upon. The result is that it might be quite a
+challenge to combine two LaTeX-based writing projects, because of all
+the special commands floating around.</p>
+<p>With DocOnce and other quite simple markup languages, there are not so
+many ways to do it and the source code becomes much simpler and easier
+to integrate across projects and authors.</p>
+<p class="last"><strong>Note.</strong>
+DocOnce applies <em>a lot</em> of fancy LaTeX packages and HTML CSS styles,
+but the associated LaTeX/HTML code is automatically generated and
+steered via command-line options such that the complexity of
+fancy admonitions or syntax highlighting is not visible in the
+document the authors are writing on.</p>
+</div>
+<div class="section" id="mathematical-notation-and-newcommands">
+<h2>Mathematical notation and newcommands<a class="headerlink" href="#mathematical-notation-and-newcommands" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-use-a-common-mathematical-notation admonition" id="index-0">
+<p class="first admonition-title">Use a common mathematical notation</p>
+<p class="last">I strongly recommend to spend considerable time on constructing a
+set of newcommands in LaTeX that defines a <em>common</em> mathematical
+notation for the project (and future projects). Think about
+newcommands for vectors (arrows or boldface), matrices (uppercase
+slanted or bold?, tensors, gradient, divergence, curl, etc.</p>
+</div>
+<p>Files with names <tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt> are by DocOnce treated as files
+with definition of newcommands for LaTeX mathematics.  These files
+must reside in the same directory as the DocOnce source
+files. However, for a book project, I recommend to have a single
+newcommands file shared by all chapters.  This file is placed in
+<tt class="docutils literal"><span class="pre">doc/src/chapters/newcommands.p.tex</span></tt> and copied to a specific chapter
+by the make script for that chapter. The extension of the file is
+<tt class="docutils literal"><span class="pre">.p.tex</span></tt>, indicating that the file has to be <em>preprocessed</em> by
+<tt class="docutils literal"><span class="pre">preprocess</span></tt> prior to being copied. The reason is that one
+occasionally wants the definitions of the newcommands to depend on the
+output format: standard LaTeX or MathJax.  For example, subscripts in
+<tt class="docutils literal"><span class="pre">mbox</span></tt> font look best with footnotesize font in plain LaTeX, while the
+larger <tt class="docutils literal"><span class="pre">small</span></tt> font is more appropriate for MathJax. We can then put
+the following definitions in <tt class="docutils literal"><span class="pre">newcommands.p.tex</span></tt>:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span class="c">% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</span>
 <span class="c">% Use footnotesize in subscripts</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\subsc</span><span class="nb">}</span>[2]<span class="nb">{</span>#1<span class="nb">_{</span><span class="k">\mbox</span><span class="nb">{</span><span class="k">\footnotesize</span> #2<span class="nb">}}}</span>
@@ -327,6 +379,132 @@ rendered by LaTeX or MathJax. Newcommands for other LaTeX constructions
 (such as section or boxes) should not be used in the DocOnce source
 code as these are confined
 to the LaTeX format. Use instead Mako functions.</p>
+</div>
+</div>
+<div class="section" id="programming-style">
+<h2>Programming style<a class="headerlink" href="#programming-style" title="Permalink to this headline">¶</a></h2>
+<p>It is fundamental for a book project to stick to one well-defined
+programming style. I recommend to adopt the most widely accepted
+style and adapt that to the project.
+For example, in the world of Python programming, there is a style,
+referred to as <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.
+Personally, I am not fond of all the rules in this style, and
+I intentionally break some of them, especially rules that forces
+unnecessary vertical space in a book (although vertical space in
+electronic books is for free, there is a strong tradition of
+minimizing the vertical length of programs in books).
+Fortunately, for Python there is are nice tools for checking that
+a code follows the PEP8 rules, e.g.,
+<a class="reference external" href="https://flake8.readthedocs.org/en/2.0/">Flake8</a> (see
+<a class="reference internal" href="._book012.html#ref3" id="id1">[Ref3]</a> for an intro).</p>
+<p>For any programming language it is key to agree on how to use
+white space in indentation, style of loops, identifier
+names (<tt class="docutils literal"><span class="pre">my_funtcion</span></tt> vs <tt class="docutils literal"><span class="pre">myFunction</span></tt> vs <tt class="docutils literal"><span class="pre">MyFunction</span></tt>), white space
+in function argument lists, etc.</p>
+<div class="admonition-tip-make-a-1-1-mapping-between-mathematics-and-code admonition">
+<p class="first admonition-title">Tip: make a 1-1 mapping between mathematics and code</p>
+<p class="last">Computer code is very much easier to understand if you have defined
+the problem it is going to solve in mathematics first. Reuse terms
+and notation in the program, and try to make the key statements in the code
+as close as possible to the mathematical formulation.</p>
+</div>
+</div>
+<div class="section" id="degree-of-modularization">
+<h2>Degree of modularization<a class="headerlink" href="#degree-of-modularization" title="Permalink to this headline">¶</a></h2>
+<p>My recommendation is to divide the project into as small modules as possible
+and to make this modules as independent as possible. This is a very difficult
+optimization problem. There is some kind of gravity force towards
+big chapters and lots of cross-references internally and to other chapters.
+For book composition and even more for course composition, smaller modules
+give much higher degree of flexibility.</p>
+<p>To make modules independent, the degree of cross-referencing between
+modules must be modest, which forces a need to repeat material.
+Repetition breaks a strong tradition in book writing. However,
+moving away from strictly linear chapter-by-chapter book to a more
+flexible set of modules connected in a graph, will induce repetition.
+Readers also appreciate repetition, perhaps slightly differently phrased
+with purpose, rather than being served with lots of references to
+equations and codes in other chapters.</p>
+<div class="admonition-tip-define-input-output-of-modules admonition">
+<p class="first admonition-title">Tip: Define input-output of modules</p>
+<p class="last">Ideally, modules should start with a well-defined list of required
+background knowledge and a set of learning outcomes.
+This information makes it easier to place the module in the
+knowledge landscape.</p>
+</div>
+<p>Books with widely different writing styles among authors tend to be
+confusing for readers. If the styles differ much, and it is difficult
+to converge to a more coherent style, listing the authors together
+with the chapter title is an idea to point explicitly out that
+a different team is behind the present chapter.</p>
+</div>
+<div class="section" id="student-guide-slides-style">
+<h2>Student guide (slides) style<a class="headerlink" href="#student-guide-slides-style" title="Permalink to this headline">¶</a></h2>
+<p>This note suggests to develop a book together with a <em>study guide</em>, i.e.,
+a summarizing version of the material. An effective format of a study
+guide is a set of slides, ideally a set that can be used both for
+teaching and for self-study. The section <a class="reference internal" href="._book008.html#setup-rules-slides"><em>Study guides and slides</em></a> explains
+some infrastructure for producing DocOnce slides.</p>
+<p>Some prefer to develop slides for a study guide first and then use this
+as a skeleton for writing the running text of a chapter. Others prefer
+to produce the slides from the running text.</p>
+<p>The style of slides is even more important than the style of running text.
+Slides for reading are not so sensitive to the style, but if the slides
+are also intended to be used in teaching, the style becomes key.
+Some comments on style are provided in box in the introduction to
+the section <a class="reference internal" href="._book008.html#setup-rules-slides"><em>Study guides and slides</em></a>. Rather than having boring headings a la
+<em>Assumptions</em>, followed by a bullet list of assumptions,
+I recommend to summarize the most important information in a 1-2 line
+heading, e.g., <em>We assume a homogeneous material and no external forcing</em>.
+The headings will then form a collection of the most important
+information from each slide and be a very effective table of contents of
+the material. The most important thing, though, is that different authors
+stick to the same slide style.</p>
+</div>
+<div class="section" id="style-in-exercises-problems-and-projects">
+<h2>Style in exercises, problems, and projects<a class="headerlink" href="#style-in-exercises-problems-and-projects" title="Permalink to this headline">¶</a></h2>
+<p>A central part of the writing style in a book is the division of
+material between running text and exercises. DocOnce features three
+types of exercises which can be effectively used in this context:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Exercise: smaller exercises tightly coupled to the text</li>
+<li>Problem: smaller exercise that live its own life (without
+references to the text)</li>
+<li>Project: large problem</li>
+</ul>
+</div></blockquote>
+<p>Exercises are then used to repeat and train the material in the book.
+Problems are used to explore new problem settings, while projects
+are collections of closely related problems.
+(The term &#8220;exercise&#8221; means in DocOnce context either an exercise in
+the restricted sense or a common term for what we call
+exercise, problem, and project above.)</p>
+<p>The DocOnce exercise format has several useful features:</p>
+<blockquote>
+<div><ul class="simple">
+<li>hints</li>
+<li>multiple-choice questions (quiz)</li>
+<li>remarks</li>
+<li>short answers</li>
+<li>(longer) complete solutions</li>
+</ul>
+</div></blockquote>
+<p>Many students struggle with identifying the
+problem setting (question) when too much information is comes at once.
+Hints can be effectively used to separate the question from additional
+information that is just supposed to help the reader. Remarks fulfill a similar
+purpose and can separate fun facts or information that puts the problem
+into a wider perspective. Short answers and full solutions can be
+taken out of the document at compile time. (HTML Bootstrap styles
+can fold/unfold hints and solutions/answers.)</p>
+<p>Multiple-choice questions are typeset with the
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html">quiz environment</a>
+in DocOnce. All quizzes can be extracted and uploaded as online
+<a class="reference external" href="https://getkahoot.com">Kahoot games</a> where students can participate
+via their smart phones.</p>
+<p>It is possible to extract all exercises in a DocOnce document as a
+separate document.</p>
 </div>
 </div>
 

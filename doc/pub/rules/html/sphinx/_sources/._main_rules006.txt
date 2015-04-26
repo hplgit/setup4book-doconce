@@ -5,6 +5,8 @@
 
 .. !split
 
+.. _setup:rules:slides:
+
 Study guides and slides
 =======================
 
@@ -12,8 +14,12 @@ Study guides and slides
 
 .. index:: study guides
 
-DocOnce has good support for creating slides from ordinary documents
-with running text. Rather than speaking about slides, we think of
+DocOnce has good support for creating slides. Especially if you
+have ordinary DocOnce documents
+with running text, it is an efficient process to strip down this
+text to a slide format.
+
+Rather than speaking about slides, we think of
 *study guides* where the material is presented in a very condensed,
 effective, summarizing form for overview, use in lectures, and
 repetition. The slide format is a good way of writing study guides,
@@ -21,12 +27,29 @@ but by explicitly thinking of study guides the slide format can be
 made more effective for self-study when overview and repetition are
 necessary - with a particular emphasis on gaining understanding.
 
-It is, of course, a very challenging balance between enough
-information for self-study by reading slides and overwhelmingly much
-text and information in slides for oral presentations. Text must
-anyway be minimized all the way on slides, and the reader of a study
-guide is supposed to also be a reader of the underlying running text
-in the chapter.
+
+.. admonition:: Slides can easily be too crowded or too empty
+
+   It is a very challenging balance between enough
+   information for self-study by reading slides and the modest amount
+   of information you want in slides for oral presentations.
+   For a talk, you will (very) have little text on slides and rely
+   on figures. This is not so effective in a teaching and study guide
+   setting. Some text is indeed necessary, but it has to be minimized.
+   Michael Alley's `evidence-assertion <http://writing.engr.psu.edu/slides.html>`__
+   slide design is effective: summarize the slide's key point in a heading over
+   1-2 lines, use figures/equations/code effectively, and work on minimizing
+   text.
+   
+   .. With an ultimate construction of headings, the table of contents of
+   
+   .. slides will list all the key points of the material.
+   
+   Make it an assumption that the reader of a study guide is also
+   a reader of the underlying running text in the chapter.
+
+
+
 
 Slide directory
 ---------------
@@ -139,6 +162,38 @@ slides as a study guide is easy to accomplish. The slides' properties
 in live presentations can only be tested by speaking to them (making a
 rough draft of a video podcast is a very effective way of testing
 the slides' quality).
+
+Slides as IPython/Jupyter notebooks
+-----------------------------------
+
+I would add a fourth requirement to the list in the previous
+section: a study guide should also be available
+as an IPython/Jupyter notebook for experimentation, extension, and
+personal notes. This is technically
+straightforward by just generating a notebook from the slide source,
+but a notebook puts some constraints
+on code snippets and figure such that it is meaningful to execute
+all the code. Moreover, many figures are inlined and appear as a result
+executing code in a notebook. While other formats will show a code
+snippet and then the corresponding figure, the notebook can leave
+the figure out and let it appear as the code cell is executed.
+Technically in DocOnce, this is solved by putting a ``FIGURE`` construction
+inside an ``# #if FORMAT`` test (or ``% if FORMAT`` if Mako branches are
+preferred). If `FORMAT != 'ipynb``, you have a ``FIGURE`` line, otherwise
+the preceding code cell is supposed to generate the figure.
+
+
+.. admonition:: Notebook from a chapter or from slides
+
+   The book's running text can also be converted to a notebook. However,
+   the notebook then consists of very much text and often a lot of
+   cross-referencing because this is the typically writing style of a book
+   chapter. This style is not so effective for a notebook. Stripped text
+   with focus on formulas, code, and figures is more ideal for a notebook
+   and this is the style of a study guide realized by slides.
+
+
+
 
 Compiling slides
 ----------------

@@ -160,7 +160,7 @@ the desired output format.
 
 .. [#one-file] A single DocOnce file and consequently a single
    ``.tex`` file works out well on today's laptops.
-   A book with 900 pages [Ref1]_ has been tested!
+   A book with 900 pages [Ref2]_ has been tested!
 
 .. index:: links to fig/src directories
 

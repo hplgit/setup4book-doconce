@@ -80,52 +80,64 @@ $(function () {
                1,
                'sec:rules:dir:struct',
                'sec:rules:dir:struct'),
-              (' Newcommands ', 1, None, '___sec1'),
+              (' Principles and conventions ', 1, None, '___sec1'),
+              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
+              (' Programming style ', 2, None, '___sec3'),
+              (' Degree of modularization ', 2, None, '___sec4'),
+              (' Student guide (slides) style ', 2, None, '___sec5'),
+              (' Style in exercises, problems, and projects ',
+               2,
+               None,
+               '___sec6'),
               (' Assembling different pieces to a book ',
                1,
                'setup:rules:book:assembly',
                'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec3'),
-              (' Figures and source code ', 2, None, '___sec4'),
-              (' Assembly of chapters to a book ', 2, None, '___sec5'),
-              (' Tools ', 1, None, '___sec6'),
-              (' Making a new chapter ', 2, None, '___sec7'),
-              (' Compiling the chapter ', 2, None, '___sec8'),
-              (' PDF ', 3, None, '___sec9'),
-              (' HTML ', 3, None, '___sec10'),
-              (' IPython notebook ', 3, None, '___sec11'),
-              (' Cleaning Files ', 3, None, '___sec12'),
-              (' About figures when publishing HTML ', 2, None, '___sec13'),
-              (' Compiling the book ', 2, None, '___sec14'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec15'),
-              (' Cross-referencing across chapters ', 1, None, '___sec16'),
+              (' Organization of a chapter ', 2, None, '___sec8'),
+              (' Figures and source code ', 2, None, '___sec9'),
+              (' Assembly of chapters to a book ', 2, None, '___sec10'),
+              (' Tools ', 1, None, '___sec11'),
+              (' Making a new chapter ', 2, None, '___sec12'),
+              (' Compiling the chapter ', 2, None, '___sec13'),
+              (' PDF ', 3, None, '___sec14'),
+              (' HTML ', 3, None, '___sec15'),
+              (' IPython notebook ', 3, None, '___sec16'),
+              (' Cleaning Files ', 3, None, '___sec17'),
+              (' About figures when publishing HTML ', 2, None, '___sec18'),
+              (' Compiling the book ', 2, None, '___sec19'),
+              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
+              (' Cross-referencing across chapters ', 1, None, '___sec21'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec17'),
-              (' Study guides and slides ', 1, None, '___sec18'),
-              (' Slide directory ', 2, None, '___sec19'),
-              (' Generating slides from running text ', 2, None, '___sec20'),
-              (' Compiling slides ', 2, None, '___sec21'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec22'),
+               '___sec22'),
+              (' Study guides and slides ',
+               1,
+               'setup:rules:slides',
+               'setup:rules:slides'),
+              (' Slide directory ', 2, None, '___sec24'),
+              (' Generating slides from running text ', 2, None, '___sec25'),
+              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
+              (' Compiling slides ', 2, None, '___sec27'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
               (' Writing in private repository while publishing in public ',
                1,
                None,
-               '___sec23'),
+               '___sec29'),
               (' Special features for teaching material ',
                1,
                None,
-               '___sec24'),
-              (' Admonitions ', 2, None, '___sec25'),
-              (' Simple box ', 2, None, '___sec26'),
-              (' Embedded interactive code ', 2, None, '___sec27'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
-              (' The `pyscpro` code environment ', 3, None, '___sec29'),
-              (' Exercises ', 2, None, '___sec30'),
-              (' Quote ', 2, None, '___sec31'),
-              (' Quiz ', 2, None, '___sec32'),
-              (' What about a video lecture? ', 2, None, '___sec33'),
-              (' References ', 1, None, '___sec34')]}
+               '___sec30'),
+              (' Admonitions ', 2, None, '___sec31'),
+              (' Simple box ', 2, None, '___sec32'),
+              (' Embedded interactive code ', 2, None, '___sec33'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
+              (' The `pyscpro` code environment ', 3, None, '___sec35'),
+              (' Exercises ', 2, None, '___sec36'),
+              (' Quote ', 2, None, '___sec37'),
+              (' Quiz ', 2, None, '___sec38'),
+              (' What about a video lecture? ', 2, None, '___sec39'),
+              (' References ', 1, None, '___sec40')]}
 end of tocinfo -->
 
 <body>
@@ -161,11 +173,16 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1 id="___sec18">Study guides and slides </h1>
+<h1 id="setup:rules:slides">Study guides and slides</h1>
 
 <p>
-DocOnce has good support for creating slides from ordinary documents
-with running text. Rather than speaking about slides, we think of
+DocOnce has good support for creating slides. Especially if you
+have ordinary DocOnce documents
+with running text, it is an efficient process to strip down this
+text to a slide format.
+
+<p>
+Rather than speaking about slides, we think of
 <em>study guides</em> where the material is presented in a very condensed,
 effective, summarizing form for overview, use in lectures, and
 repetition. The slide format is a good way of writing study guides,
@@ -174,14 +191,29 @@ made more effective for self-study when overview and repetition are
 necessary - with a particular emphasis on gaining understanding.
 
 <p>
-It is, of course, a very challenging balance between enough
-information for self-study by reading slides and overwhelmingly much
-text and information in slides for oral presentations. Text must
-anyway be minimized all the way on slides, and the reader of a study
-guide is supposed to also be a reader of the underlying running text
-in the chapter.
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Slides can easily be too crowded or too empty.</b>
+<p>
+It is a very challenging balance between enough
+information for self-study by reading slides and the modest amount
+of information you want in slides for oral presentations.
+For a talk, you will (very) have little text on slides and rely
+on figures. This is not so effective in a teaching and study guide
+setting. Some text is indeed necessary, but it has to be minimized.
+Michael Alley's <a href="http://writing.engr.psu.edu/slides.html" target="_self">evidence-assertion</a>
+slide design is effective: summarize the slide's key point in a heading over
+1-2 lines, use figures/equations/code effectively, and work on minimizing
+text.
+<!-- With an ultimate construction of headings, the table of contents of -->
+<!-- slides will list all the key points of the material. -->
 
-<h2 id="___sec19">Slide directory </h2>
+<p>
+Make it an assumption that the reader of a study guide is also
+a reader of the underlying running text in the chapter.
+</div>
+
+
+<h2 id="___sec24">Slide directory </h2>
 
 <p>
 For each DoOnce file in the chapter <code>ch2</code> it can be wise to make a
@@ -210,7 +242,7 @@ like
 <span style="color: #228B22"># #include &quot;lec-ch2/part3.do.txt&quot;</span>
 </pre></div>
 
-<h2 id="___sec20">Generating slides from running text </h2>
+<h2 id="___sec25">Generating slides from running text </h2>
 
 <p>
 The author has the following work flow for generating slides for a
@@ -285,7 +317,39 @@ in live presentations can only be tested by speaking to them (making a
 rough draft of a video podcast is a very effective way of testing
 the slides' quality).
 
-<h2 id="___sec21">Compiling slides </h2>
+<h2 id="___sec26">Slides as IPython/Jupyter notebooks </h2>
+
+<p>
+I would add a fourth requirement to the list in the previous
+section: a study guide should also be available
+as an IPython/Jupyter notebook for experimentation, extension, and
+personal notes. This is technically
+straightforward by just generating a notebook from the slide source,
+but a notebook puts some constraints
+on code snippets and figure such that it is meaningful to execute
+all the code. Moreover, many figures are inlined and appear as a result
+executing code in a notebook. While other formats will show a code
+snippet and then the corresponding figure, the notebook can leave
+the figure out and let it appear as the code cell is executed.
+Technically in DocOnce, this is solved by putting a <code>FIGURE</code> construction
+inside an <code># #if FORMAT</code> test (or <code>% if FORMAT</code> if Mako branches are
+preferred). If `FORMAT != 'ipynb``, you have a <code>FIGURE</code> line, otherwise
+the preceding code cell is supposed to generate the figure.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Notebook from a chapter or from slides?</b>
+<p>
+The book's running text can also be converted to a notebook. However,
+the notebook then consists of very much text and often a lot of
+cross-referencing because this is the typically writing style of a book
+chapter. This style is not so effective for a notebook. Stripped text
+with focus on formulas, code, and figures is more ideal for a notebook
+and this is the style of a study guide realized by slides.
+</div>
+
+
+<h2 id="___sec27">Compiling slides </h2>
 
 <p>
 There is a quite general script in <code>doc/src/chapters/make_slides.sh</code> for
@@ -331,7 +395,7 @@ The <code>make_slides.sh</code> script compiles a variety of slides:
  <li> Remark (Markdown) slides for viewing in a browser.</li>
 </ul>
 
-<h2 id="___sec22">IPython/Jupyter notebooks </h2>
+<h2 id="___sec28">IPython/Jupyter notebooks </h2>
 
 <p>
 Since DocOnce documents can be translated to IPython/Jupyter notebooks,

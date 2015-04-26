@@ -76,3 +76,10 @@
    note:      \emph{http://hplgit.github.io/setup4book-doconce/doc/pub/rules/html}
    url:       http://hplgit.github.io/setup4book-doconce/doc/pub/rules/html
    entrytype: misc
+** Debugging in {Python}
+   key:       Langtangen_TCSE6_debug
+   author:    H. P. Langtangen
+   status:    published
+   note:      \emph{http://hplgit.github.io/primer.html/doc/pub/debug}
+   url:       http://hplgit.github.io/primer.html/doc/pub/debug
+   entrytype: misc

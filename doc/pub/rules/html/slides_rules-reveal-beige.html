@@ -116,21 +116,17 @@ td.padding {
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>&nbsp;<br>
-<center><h4>Mar 31, 2015</h4></center> <!-- date -->
-<p>
-
+<center><h4>Apr 25, 2015</h4></center> <!-- date -->
 </section>
 
 
 <section>
-
 <h2>Table of contents</h2>
 
 <p>
@@ -159,25 +155,18 @@ td.padding {
 &nbsp; &nbsp; &nbsp; <a href="#___sec22"> The <code>lectures_ch2.do.txt</code> file </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec23"> The requirements to a slide collection </a><br>
 </p>
-<p>
-
 </section>
 
 
 <section>
-
 <h1 id="sec:rules:dir:struct">Directory structure for a book project</h1>
 
 <p>
 <center><p><img src="fig-rules/dirstructure.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec1">Overview of the directory structure </h2>
 
 <ul>
@@ -192,14 +181,10 @@ td.padding {
 
 Can have lots of chapters and more than one <code>book</code> directory if
 multiple books are relevant
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec2">Directory structure within a chapter </h2>
 
 <p>
@@ -219,14 +204,10 @@ Each chapter has a short nickname used in file and directory names.
 The directories <code>src-ch2</code>, <code>fig-ch2</code>, <code>mov-ch2</code>, and similar may have
 any subdirectory structure, but the names should as indicated here since
 the setup for DocOnce books has many tools relying on the naming convention.
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec3">The total directory structure </h2>
 
 <p>
@@ -262,13 +243,10 @@ Here is a big project:
         ipynb
     book
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec4">The <code>book</code> directory </h2>
 
 <ul>
@@ -276,14 +254,10 @@ Here is a big project:
  <p><li> <code>book.do.txt</code> includes chapters from <code>../chapters/ch2/ch2.do.txt</code>, etc</li>
  <p><li> Scripts for compiling, spell checking, ...</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h1 id="___sec5">Newcommands </h1>
 
 <ul>
@@ -329,27 +303,18 @@ preprocess -DFORMAT=html ../newcommands.p.tex &gt; newcommands.tex
 Do not use newcommands for general typesetting commands, use
 Mako functions instead - they work for all output formats.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h1 id="setup:rules:book:assembly">Assembling different pieces to a book</h1>
 
 <p>
 <center><p><img src="fig-rules/assembly.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec7">Organization of DocOnce chapter files </h2>
 
 <ul>
@@ -373,13 +338,10 @@ Mako functions instead - they work for all output formats.
 
 <span style="color: #228B22"># #include &quot;part3.do.txt&quot;</span>
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec8">Compiling a chapter requires a wrapper file with title, author, ... </h2>
 
 <p>
@@ -404,13 +366,10 @@ To compile a stand-alone document for the chapter, create
 
 BIBFILE: ../papers.pub
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec9">Figures and source code </h2>
 
 <ul>
@@ -429,14 +388,10 @@ Optional directories:
  <p><li> <code>mov-ch2</code>: movies in various formats</li>
  <p><li> <code>exer-ch2</code>: answers to exercises, project work, etc.</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec10">Assembly of chapters to a book </h2>
 
 <p>
@@ -454,14 +409,10 @@ DocOnce = <em>Document Once, Include Anywhere</em>
    latex error in a chapter than going from <code>book.tex</code> to the relevant
    <code>.do.txt</code> file</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec11">A <code>book.do.txt</code> file </h2>
 
 <p>
@@ -495,13 +446,10 @@ DocOnce = <em>Document Once, Include Anywhere</em>
 
 BIBFILE: ../papers.pub
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec12">The book file relies much on running preprocessors </h2>
 
 <ul>
@@ -512,14 +460,10 @@ BIBFILE: ../papers.pub
  <p><li> The effect of Mako variables and functions are seen in
    <code>tmp_mako__book.do.txt</code> (input to <code>doconce</code> translation)</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec13">The <code>book</code> directory must be coupled to source and figure directories </h2>
 
 <p>
@@ -564,13 +508,10 @@ Auto-generation of all links (if <code>chapters=</code> is set correctly in <cod
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">scripts</span>
 &gt;&gt;&gt; scripts.make_links()
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec14">About figures when publishing HTML </h2>
 
 <ul>
@@ -579,26 +520,18 @@ Auto-generation of all links (if <code>chapters=</code> is set correctly in <cod
  <p><li> There must be a <code>fig-ch2</code> subdirectory</li>
  <p><li> <em>Copy</em> <code>chapters/ch2/fig-ch2</code> to the directory where the HTML files are published</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h1 id="___sec15">Tools </h1>
 
 <p>
 <center><p><img src="fig-rules/tools.png" align="bottom" width=400></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec16">Making a new chapter </h2>
 
 <ul>
@@ -614,14 +547,10 @@ Auto-generation of all links (if <code>chapters=</code> is set correctly in <cod
  <p><li> Include <code>../chapters/nickname/nickname.do.txt</code> with chapter heading
    in <code>doc/src/book/book.doc.txt</code></li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec17">Compiling a chapter </h2>
 
 <p>
@@ -655,14 +584,10 @@ HTML versions of the chapter. Just call this as
 </pre></div>
 <p>
 Three HTML versions with an <code>index.html</code> table of contents are generated
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec18">Compiling the book </h2>
 
 <p>
@@ -686,14 +611,10 @@ About book styles and tools:
  <p><li> <code>pack_Springer.sh</code> packs all needed LaTeX book files for publishing
    with Springer</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h1 id="___sec19">Study guides and slides </h1>
 
 <p>
@@ -705,14 +626,10 @@ About book styles and tools:
    repetition</li>
  <p><li> Slides: a good way of writing study guides</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec20">Why is it so challenging to convert a chapter to slides? </h2>
 
 <p>
@@ -726,14 +643,10 @@ Balance:
 <p>
 
 Many iterations and use of slides in teaching over and over again are needed!
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec21">Slide directory </h2>
 
 <p>
@@ -758,14 +671,10 @@ Compile slides:
 <p>
 Note the possibility to turn the <code>TOC</code> on and off: Beamer has its own
 table of contents, while HTML5 slides may benefit from having one
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec22">The <code>lectures_ch2.do.txt</code> file </h2>
 
 <p>
@@ -786,13 +695,10 @@ table of contents, while HTML5 slides may benefit from having one
 
 <span style="color: #228B22"># #include &quot;lec-ch2/part3.do.txt&quot;</span>
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec23">The requirements to a slide collection </h2>
 
 <p>
@@ -814,10 +720,6 @@ Rules:
  <p><li> Make slides as visual as feasible</li>
  <p><li> Use references to the underlying chapter text for details</li>
 </ul>
-<p>
-
-
-
 </section>
 
 

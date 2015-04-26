@@ -20,6 +20,10 @@ References
    `http://hplgit.github.io/primer.html/doc/pub/looplist <http://hplgit.github.io/primer.html/doc/pub/looplist>`_.
 
 .. [Ref3]
+   **H. P. Langtangen**. Debugging in Python,
+   `http://hplgit.github.io/primer.html/doc/pub/debug <http://hplgit.github.io/primer.html/doc/pub/debug>`_.
+
+.. [Ref4]
    **H. P. Langtangen**. Some document,
    `http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html <http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html>`_.
 

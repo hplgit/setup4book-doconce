@@ -80,52 +80,64 @@ $(function () {
                1,
                'sec:rules:dir:struct',
                'sec:rules:dir:struct'),
-              (' Newcommands ', 1, None, '___sec1'),
+              (' Principles and conventions ', 1, None, '___sec1'),
+              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
+              (' Programming style ', 2, None, '___sec3'),
+              (' Degree of modularization ', 2, None, '___sec4'),
+              (' Student guide (slides) style ', 2, None, '___sec5'),
+              (' Style in exercises, problems, and projects ',
+               2,
+               None,
+               '___sec6'),
               (' Assembling different pieces to a book ',
                1,
                'setup:rules:book:assembly',
                'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec3'),
-              (' Figures and source code ', 2, None, '___sec4'),
-              (' Assembly of chapters to a book ', 2, None, '___sec5'),
-              (' Tools ', 1, None, '___sec6'),
-              (' Making a new chapter ', 2, None, '___sec7'),
-              (' Compiling the chapter ', 2, None, '___sec8'),
-              (' PDF ', 3, None, '___sec9'),
-              (' HTML ', 3, None, '___sec10'),
-              (' IPython notebook ', 3, None, '___sec11'),
-              (' Cleaning Files ', 3, None, '___sec12'),
-              (' About figures when publishing HTML ', 2, None, '___sec13'),
-              (' Compiling the book ', 2, None, '___sec14'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec15'),
-              (' Cross-referencing across chapters ', 1, None, '___sec16'),
+              (' Organization of a chapter ', 2, None, '___sec8'),
+              (' Figures and source code ', 2, None, '___sec9'),
+              (' Assembly of chapters to a book ', 2, None, '___sec10'),
+              (' Tools ', 1, None, '___sec11'),
+              (' Making a new chapter ', 2, None, '___sec12'),
+              (' Compiling the chapter ', 2, None, '___sec13'),
+              (' PDF ', 3, None, '___sec14'),
+              (' HTML ', 3, None, '___sec15'),
+              (' IPython notebook ', 3, None, '___sec16'),
+              (' Cleaning Files ', 3, None, '___sec17'),
+              (' About figures when publishing HTML ', 2, None, '___sec18'),
+              (' Compiling the book ', 2, None, '___sec19'),
+              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
+              (' Cross-referencing across chapters ', 1, None, '___sec21'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec17'),
-              (' Study guides and slides ', 1, None, '___sec18'),
-              (' Slide directory ', 2, None, '___sec19'),
-              (' Generating slides from running text ', 2, None, '___sec20'),
-              (' Compiling slides ', 2, None, '___sec21'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec22'),
+               '___sec22'),
+              (' Study guides and slides ',
+               1,
+               'setup:rules:slides',
+               'setup:rules:slides'),
+              (' Slide directory ', 2, None, '___sec24'),
+              (' Generating slides from running text ', 2, None, '___sec25'),
+              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
+              (' Compiling slides ', 2, None, '___sec27'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
               (' Writing in private repository while publishing in public ',
                1,
                None,
-               '___sec23'),
+               '___sec29'),
               (' Special features for teaching material ',
                1,
                None,
-               '___sec24'),
-              (' Admonitions ', 2, None, '___sec25'),
-              (' Simple box ', 2, None, '___sec26'),
-              (' Embedded interactive code ', 2, None, '___sec27'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
-              (' The `pyscpro` code environment ', 3, None, '___sec29'),
-              (' Exercises ', 2, None, '___sec30'),
-              (' Quote ', 2, None, '___sec31'),
-              (' Quiz ', 2, None, '___sec32'),
-              (' What about a video lecture? ', 2, None, '___sec33'),
-              (' References ', 1, None, '___sec34')]}
+               '___sec30'),
+              (' Admonitions ', 2, None, '___sec31'),
+              (' Simple box ', 2, None, '___sec32'),
+              (' Embedded interactive code ', 2, None, '___sec33'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
+              (' The `pyscpro` code environment ', 3, None, '___sec35'),
+              (' Exercises ', 2, None, '___sec36'),
+              (' Quote ', 2, None, '___sec37'),
+              (' Quiz ', 2, None, '___sec38'),
+              (' What about a video lecture? ', 2, None, '___sec39'),
+              (' References ', 1, None, '___sec40')]}
 end of tocinfo -->
 
 <body>
@@ -161,7 +173,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1 id="___sec6">Tools </h1>
+<h1 id="___sec11">Tools </h1>
 
 <p>
 You can start a new, future, potential book project by simply copying
@@ -169,7 +181,7 @@ the directory structure of the <a href="https://github.com/hplgit/setup4book-doc
 the instructions below to start writing and adapting the structure to
 your project's needs.
 
-<h2 id="___sec7">Making a new chapter </h2>
+<h2 id="___sec12">Making a new chapter </h2>
 
 <p>
 Under <code>doc/src/chapters</code>
@@ -195,9 +207,9 @@ with the chapter main document (<code>main_mychap</code>) as argument. Optional
 arguments for running <code>doconce format pdflatex</code> can be given to
 <code>../make.sh</code> in <code>make.sh</code> if needed (e.g., --encoding=utf8`).
 
-<h2 id="___sec8">Compiling the chapter </h2>
+<h2 id="___sec13">Compiling the chapter </h2>
 
-<h3 id="___sec9">PDF </h3>
+<h3 id="___sec14">PDF </h3>
 
 <p>
 To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
@@ -267,7 +279,7 @@ configuration file <code>doc/chapters/.ptex2tex.cfg</code> to be copied by
 <code>doc/chapters/make.sh</code> to the chapter directory prior to running
 `ptex2tex.)
 
-<h3 id="___sec10">HTML </h3>
+<h3 id="___sec15">HTML </h3>
 
 <p>
 There is also a script <code>doc/src/chapters/make_html.sh</code> for making
@@ -346,7 +358,7 @@ and publish it in <code>doc/pub/index.html</code>.
 </div>
 
 
-<h3 id="___sec11">IPython notebook </h3>
+<h3 id="___sec16">IPython notebook </h3>
 
 <p>
 Although there is no benefit from interactive computing and visualization
@@ -359,7 +371,7 @@ in the present document, we may produce an IPython notebook for the fun of it:
           CHAPTER=document BOOK=document APPENDIX=document
 </pre></div>
 
-<h3 id="___sec12">Cleaning Files </h3>
+<h3 id="___sec17">Cleaning Files </h3>
 
 <p>
 The <code>make*.sh</code> files generate a lot of files that can easily
@@ -367,7 +379,7 @@ be regenerated and that are normally removed from the chapter
 directories. The script <code>sh ../clean.sh</code> can be run in any
 chapter directory to clean up redundant files.
 
-<h2 id="___sec13">About figures when publishing HTML </h2>
+<h2 id="___sec18">About figures when publishing HTML </h2>
 
 <p>
 There will be <code>&lt;img src=fig-ch2/fig1.png&gt;</code> type of tags in HTML code
@@ -377,7 +389,7 @@ produced by DocOnce, so it is very important to ensure that the
 chapter source directory to some publishing directory that stores all
 the files necessary for accessing the entire HTML document on the web.
 
-<h2 id="___sec14">Compiling the book </h2>
+<h2 id="___sec19">Compiling the book </h2>
 
 <p>
 Go to <code>doc/src/book</code> and run <code>make.sh</code> to compile the book. This requires
@@ -401,7 +413,7 @@ in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling <code>book.do.txt</code> or actually extending the DocOnce source code.
 
-<h3 id="___sec15">HTML/Sphinx versions of the book </h3>
+<h3 id="___sec20">HTML/Sphinx versions of the book </h3>
 
 <p>
 It is easy to make a standard HTML version of the <code>book.do.txt</code>

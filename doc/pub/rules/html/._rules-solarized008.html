@@ -80,52 +80,64 @@ $(function () {
                1,
                'sec:rules:dir:struct',
                'sec:rules:dir:struct'),
-              (' Newcommands ', 1, None, '___sec1'),
+              (' Principles and conventions ', 1, None, '___sec1'),
+              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
+              (' Programming style ', 2, None, '___sec3'),
+              (' Degree of modularization ', 2, None, '___sec4'),
+              (' Student guide (slides) style ', 2, None, '___sec5'),
+              (' Style in exercises, problems, and projects ',
+               2,
+               None,
+               '___sec6'),
               (' Assembling different pieces to a book ',
                1,
                'setup:rules:book:assembly',
                'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec3'),
-              (' Figures and source code ', 2, None, '___sec4'),
-              (' Assembly of chapters to a book ', 2, None, '___sec5'),
-              (' Tools ', 1, None, '___sec6'),
-              (' Making a new chapter ', 2, None, '___sec7'),
-              (' Compiling the chapter ', 2, None, '___sec8'),
-              (' PDF ', 3, None, '___sec9'),
-              (' HTML ', 3, None, '___sec10'),
-              (' IPython notebook ', 3, None, '___sec11'),
-              (' Cleaning Files ', 3, None, '___sec12'),
-              (' About figures when publishing HTML ', 2, None, '___sec13'),
-              (' Compiling the book ', 2, None, '___sec14'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec15'),
-              (' Cross-referencing across chapters ', 1, None, '___sec16'),
+              (' Organization of a chapter ', 2, None, '___sec8'),
+              (' Figures and source code ', 2, None, '___sec9'),
+              (' Assembly of chapters to a book ', 2, None, '___sec10'),
+              (' Tools ', 1, None, '___sec11'),
+              (' Making a new chapter ', 2, None, '___sec12'),
+              (' Compiling the chapter ', 2, None, '___sec13'),
+              (' PDF ', 3, None, '___sec14'),
+              (' HTML ', 3, None, '___sec15'),
+              (' IPython notebook ', 3, None, '___sec16'),
+              (' Cleaning Files ', 3, None, '___sec17'),
+              (' About figures when publishing HTML ', 2, None, '___sec18'),
+              (' Compiling the book ', 2, None, '___sec19'),
+              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
+              (' Cross-referencing across chapters ', 1, None, '___sec21'),
               (' Syntax of generalized cross-references ',
                2,
                None,
-               '___sec17'),
-              (' Study guides and slides ', 1, None, '___sec18'),
-              (' Slide directory ', 2, None, '___sec19'),
-              (' Generating slides from running text ', 2, None, '___sec20'),
-              (' Compiling slides ', 2, None, '___sec21'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec22'),
+               '___sec22'),
+              (' Study guides and slides ',
+               1,
+               'setup:rules:slides',
+               'setup:rules:slides'),
+              (' Slide directory ', 2, None, '___sec24'),
+              (' Generating slides from running text ', 2, None, '___sec25'),
+              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
+              (' Compiling slides ', 2, None, '___sec27'),
+              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
               (' Writing in private repository while publishing in public ',
                1,
                None,
-               '___sec23'),
+               '___sec29'),
               (' Special features for teaching material ',
                1,
                None,
-               '___sec24'),
-              (' Admonitions ', 2, None, '___sec25'),
-              (' Simple box ', 2, None, '___sec26'),
-              (' Embedded interactive code ', 2, None, '___sec27'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec28'),
-              (' The `pyscpro` code environment ', 3, None, '___sec29'),
-              (' Exercises ', 2, None, '___sec30'),
-              (' Quote ', 2, None, '___sec31'),
-              (' Quiz ', 2, None, '___sec32'),
-              (' What about a video lecture? ', 2, None, '___sec33'),
-              (' References ', 1, None, '___sec34')]}
+               '___sec30'),
+              (' Admonitions ', 2, None, '___sec31'),
+              (' Simple box ', 2, None, '___sec32'),
+              (' Embedded interactive code ', 2, None, '___sec33'),
+              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
+              (' The `pyscpro` code environment ', 3, None, '___sec35'),
+              (' Exercises ', 2, None, '___sec36'),
+              (' Quote ', 2, None, '___sec37'),
+              (' Quiz ', 2, None, '___sec38'),
+              (' What about a video lecture? ', 2, None, '___sec39'),
+              (' References ', 1, None, '___sec40')]}
 end of tocinfo -->
 
 <body>
@@ -160,7 +172,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h1 id="___sec24">Special features for teaching material </h1>
+<h1 id="___sec30">Special features for teaching material </h1>
 
 <p>
 DocOnce offers some special features that can greatly aid development
@@ -181,7 +193,7 @@ These are briefly exemplified below. If you are mainly interested in how
 to structure DocOnce-based books, you can safely jump to
 the section <a href="._rules-solarized003.html#setup:rules:book:assembly">Assembling different pieces to a book</a>.
 
-<h2 id="___sec25">Admonitions </h2>
+<h2 id="___sec31">Admonitions </h2>
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal">
@@ -198,7 +210,7 @@ in the name).
 </div>
 
 
-<h2 id="___sec26">Simple box </h2>
+<h2 id="___sec32">Simple box </h2>
 
 <p>
 Put a box around something important:
@@ -212,9 +224,9 @@ $$ 1 + 1 = 2 $$
 <!-- end box -->
 
 
-<h2 id="___sec27">Embedded interactive code </h2>
+<h2 id="___sec33">Embedded interactive code </h2>
 
-<h3 id="___sec28">The <code>pyoptpro</code> code environment </h3>
+<h3 id="___sec34">The <code>pyoptpro</code> code environment </h3>
 
 <p>
 To illustrate program flow, you can step through code
@@ -231,7 +243,7 @@ In HTML and Sphinx format this code can be stepped through in
 the browser, while
 in LaTeX one gets a link to a web page with this functionality.
 
-<h3 id="___sec29">The <code>pyscpro</code> code environment </h3>
+<h3 id="___sec35">The <code>pyscpro</code> code environment </h3>
 
 <p>
 The <a href="https://sagecell.sagemath.org/" target="_self">SageMathCell</a> server
@@ -268,7 +280,7 @@ show()
 HTML and Sphinx output has such interactive Sage Cells,
 while other output formats can just show the code.
 
-<h2 id="___sec30">Exercises </h2>
+<h2 id="___sec36">Exercises </h2>
 
 <p>
 <div class="alert alert-block alert-summary alert-text-normal">
@@ -293,7 +305,7 @@ extra tagging for exercises. Important features are:
 </div>
 
 
-<h2 id="___sec31">Quote </h2>
+<h2 id="___sec37">Quote </h2>
 
 <p>
 There is also a <em>quote</em> environment (invisible box with larger
@@ -313,7 +325,7 @@ margins).
 </blockquote>
 
 
-<h2 id="___sec32">Quiz </h2>
+<h2 id="___sec38">Quiz </h2>
 
 <p>
 <!-- --- previous heading type: subsection -->
@@ -423,12 +435,11 @@ LaTeX output can feature the choices only (no answer, no explanation:
 (<code>--without_solutions</code>) or both the answer and all explanations
 (the case in this demo).
 
-<h2 id="___sec33">What about a video lecture? </h2>
+<h2 id="___sec39">What about a video lecture? </h2>
 
 <p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
-
 
 <p>
 <div class="alert alert-block alert-question alert-text-normal">
@@ -438,12 +449,15 @@ Can you think of applications of the above mentioned features?
 </div>
 
 
-<h1 id="___sec34">References </h1>
+<h1 id="___sec40">References </h1>
 
 <p>
 <!-- begin bibliography -->
 
 <ol>
+ <li> <div id="Langtangen_TCSE6_debug"></div> <b>H. P. Langtangen</b>. 
+    Debugging in Python,
+    <a href="http://hplgit.github.io/primer.html/doc/pub/debug" target="_self"><tt>http://hplgit.github.io/primer.html/doc/pub/debug</tt></a>.</li>
  <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     fourth edition,
