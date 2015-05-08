@@ -1,6 +1,6 @@
 !split
 ======= Directory structure for a book project =======
-label{sec:rules:dir:struct}
+label{setup:rules:dir_struct}
 
 FIGURE: [fig-rules/dirstructure, width=600 frac=0.8]
 
@@ -117,7 +117,7 @@ Mako functions instead - they work for all output formats.
 
 !split
 ======= Assembling different pieces to a book =======
-label{setup:rules:book:assembly}
+label{setup:rules:book_assembly}
 
 FIGURE: [fig-rules/assembly, width=600 frac=0.8]
 

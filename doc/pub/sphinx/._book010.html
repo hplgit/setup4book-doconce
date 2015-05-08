@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,7 +9,7 @@
     
     <title>Special features for teaching material</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -46,7 +45,11 @@
     <link rel="top" title="How to Use DocOnce to Write Books" href="index.html" />
     <link rel="next" title="Appendix: Use of Mako to aid book writing" href="._book011.html" />
     <link rel="prev" title="Writing in private repository while publishing in public" href="._book009.html" />
- 
+
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
   
        <style type="text/css">
          div.admonition {
@@ -96,7 +99,7 @@ of effective teaching material:</p>
 </div></blockquote>
 <p>These are briefly exemplified below. If you are mainly interested in how
 to structure DocOnce-based books, you can safely jump to
-the section <a class="reference internal" href="._book005.html#setup-rules-book-assembly"><em>Assembling different pieces to a book</em></a>.</p>
+the section <span class="xref std std-ref">setup:rules:book:assembly</span>.</p>
 <div class="section" id="admonitions">
 <h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-use-admonitions admonition" id="index-0">
@@ -107,7 +110,7 @@ DocOnce features special
 <em>notice</em>, <em>warning</em>, <em>summary</em>,
 and <em>question</em> boxes for  called admonitions. These can be typeset in a
 variety of versions, depending on the output format
-(check out <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> and the many options with <tt class="docutils literal"><span class="pre">admon</span></tt>
+(check out <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and the many options with <code class="docutils literal"><span class="pre">admon</span></code>
 in the name).</p>
 </div>
 </div>
@@ -117,15 +120,15 @@ in the name).</p>
 <div class="math">
 \[1 + 1 = 2\]</div>
 <p><strong>Note:</strong>
-Simple boxes are not supported in format <tt class="docutils literal"><span class="pre">sphinx</span></tt>.</p>
+Simple boxes are not supported in format <code class="docutils literal"><span class="pre">sphinx</span></code>.</p>
 </div>
 <div class="section" id="embedded-interactive-code">
 <h2>Embedded interactive code<a class="headerlink" href="#embedded-interactive-code" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-2"></span><div class="section" id="the-pyoptpro-code-environment">
-<span id="index-3"></span><h3>The <tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment<a class="headerlink" href="#the-pyoptpro-code-environment" title="Permalink to this headline">¶</a></h3>
+<span id="index-3"></span><h3>The <code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment<a class="headerlink" href="#the-pyoptpro-code-environment" title="Permalink to this headline">¶</a></h3>
 <p>To illustrate program flow, you can step through code
 (as in a debugger, just more illustrative) using the
-<tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment. Here is an example:</p>
+<code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment. Here is an example:</p>
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
 </iframe><p>In HTML and Sphinx format this code can be stepped through in
@@ -133,10 +136,10 @@ the browser, while
 in LaTeX one gets a link to a web page with this functionality.</p>
 </div>
 <div class="section" id="the-pyscpro-code-environment">
-<h3>The <tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment<a class="headerlink" href="#the-pyscpro-code-environment" title="Permalink to this headline">¶</a></h3>
+<h3>The <code class="docutils literal"><span class="pre">pyscpro</span></code> code environment<a class="headerlink" href="#the-pyscpro-code-environment" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://sagecell.sagemath.org/">SageMathCell</a> server
 enables live Python code in web documents. Using the
-<tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment, Python code can be embedded in a
+<code class="docutils literal"><span class="pre">pyscpro</span></code> code environment, Python code can be embedded in a
 for interactive computing:</p>
 <div class='sage'><script type='text/x-sage'>import random
 a = random.randint(1, 7)
@@ -237,8 +240,8 @@ RunestoneInteractive books (Sphinx) offers a
 button for the same purpose, but the explanation can only be
 plain text so any math or code block makes the explanation empty.
 LaTeX output can feature the choices only (no answer, no explanation:
-<tt class="docutils literal"><span class="pre">--without_solutions</span> <span class="pre">--without_answers</span></tt>), the short answer only
-(<tt class="docutils literal"><span class="pre">--without_solutions</span></tt>) or both the answer and all explanations
+<code class="docutils literal"><span class="pre">--without_solutions</span> <span class="pre">--without_answers</span></code>), the short answer only
+(<code class="docutils literal"><span class="pre">--without_solutions</span></code>) or both the answer and all explanations
 (the case in this demo).</p>
 </div>
 <div class="section" id="what-about-a-video-lecture">
@@ -256,19 +259,14 @@ LaTeX output can feature the choices only (no answer, no explanation:
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <center>
-            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
-              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_logo_transparent.png" alt="Logo"/>
-            </a></p>
-            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Special features for teaching material</a><ul>
 <li><a class="reference internal" href="#admonitions">Admonitions</a></li>
 <li><a class="reference internal" href="#simple-box">Simple box</a></li>
 <li><a class="reference internal" href="#embedded-interactive-code">Embedded interactive code</a><ul>
-<li><a class="reference internal" href="#the-pyoptpro-code-environment">The <tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment</a></li>
-<li><a class="reference internal" href="#the-pyscpro-code-environment">The <tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment</a></li>
+<li><a class="reference internal" href="#the-pyoptpro-code-environment">The <code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment</a></li>
+<li><a class="reference internal" href="#the-pyscpro-code-environment">The <code class="docutils literal"><span class="pre">pyscpro</span></code> code environment</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#exercises">Exercises</a></li>
@@ -307,26 +305,20 @@ LaTeX output can feature the choices only (no answer, no explanation:
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="._book011.html" title="Appendix: Use of Mako to aid book writing"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="._book009.html" title="Writing in private repository while publishing in public"
-             >previous</a> |</li>
-        <li><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015, Hans Petter Langtangen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/._book010.txt"
+          rel="nofollow">Page source</a></li>
     </div>
-<div class="wrapper">
-  <div class="footer">
-  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
-  </div>
-</div>
 
+    
+
+    
   </body>
 </html>

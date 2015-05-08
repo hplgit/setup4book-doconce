@@ -5,7 +5,7 @@
 
 .. !split
 
-.. _setup:rules:book:assembly:
+.. _setup:rules:book_assembly:
 
 Assembling different pieces to a book
 =====================================
@@ -13,6 +13,8 @@ Assembling different pieces to a book
 Many smaller writings in the DocOnce format can be assembled
 into a single, large document such as a book or thesis.
 The recipe for doing this appears below.
+
+.. _setup:rules:book_assembly:org:
 
 Organization of a chapter
 -------------------------
@@ -90,7 +92,7 @@ Figures and source code
 
 .. index:: source code directory
 
-As described in the section :ref:`sec:rules:dir:struct`, we recommend to put
+As described in the section :ref:`setup:rules:dir_struct`, we recommend to put
 figures and source codes (to be included in the document) in separate
 directories. Although such directories could have natural names like
 ``fig`` and ``src``, it will cause trouble if we do not use unique names

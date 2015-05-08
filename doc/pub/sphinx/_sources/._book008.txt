@@ -163,6 +163,22 @@ in live presentations can only be tested by speaking to them (making a
 rough draft of a video podcast is a very effective way of testing
 the slides' quality).
 
+
+.. admonition:: Tip: use quizzes to define a sufficient preparation level
+
+   You want students to study the slides/study guide before a lecture.
+   To measure to what extent this is done, you can insert multiple-choice
+   questions about the most basic concepts in the slides (using the DocOnce
+   ``quiz`` environment). With `quiztools <https://github.com/hplgit/quiztools>`__ you can extract all such
+   multiple-choice questions, create online games with Kahoot, and
+   let the students answer with their smart phones at the beginning of
+   a lecture.
+   The scores are visible to all on the main screen and communicate the
+   preparation level.
+
+
+
+
 Slides as IPython/Jupyter notebooks
 -----------------------------------
 

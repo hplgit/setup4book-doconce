@@ -1,6 +1,6 @@
 #!/bin/sh
 set -x
-# Experimental RunestoneInteractive book - under development
+
 name=book
 CHAPTER=chapter
 BOOK=book
@@ -28,16 +28,18 @@ system doconce sphinx_dir theme=$theme dirname=sphinx-${theme} $name
 doconce replace _static/uio_logo.png https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_logo_transparent.png sphinx-${theme}/_themes/uio/layout.html
 system python automake_sphinx.py
 
-# Generate and compile RunestoneInteractive
-system doconce format sphinx $name --runestone $opt --sphinx_keep_splits -DRUNESTONE
-system doconce split_rst $name
-system doconce sphinx_dir theme=cbc dirname=runestone $name
-system python automake_sphinx.py --runestone
+# Generate and compile RunestoneInteractive book
+# (temporarily not available after their setup changed)
+# see bin/doconce and update generation of automake_sphinx.py
+#system doconce format sphinx $name --runestone $opt --sphinx_keep_splits -DRUNESTONE
+#system doconce split_rst $name
+#system doconce sphinx_dir theme=cbc dirname=runestone $name
+#system python automake_sphinx.py --runestone
 
 # Publish
 dest=../../pub
 rm -rf $dest/sphinx*
 cp -r sphinx-${theme}/_build/html $dest/sphinx
-cp -r runestone/RunestoneTools/build $dest/sphinx-runestone
+#cp -r runestone/RunestoneTools/build $dest/sphinx-runestone
 cd $dest
 git add sphinx-*

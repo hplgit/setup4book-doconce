@@ -67,8 +67,8 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 1,
  'sections': [(' Directory structure for a book project ',
                1,
-               'sec:rules:dir:struct',
-               'sec:rules:dir:struct'),
+               'setup:rules:dir_struct',
+               'setup:rules:dir_struct'),
               (' Overview of the directory structure ', 2, None, '___sec1'),
               (' Directory structure within a chapter ', 2, None, '___sec2'),
               (' The total directory structure ', 2, None, '___sec3'),
@@ -76,8 +76,8 @@ div { text-align: justify; text-justify: inter-word; }
               (' Newcommands ', 1, None, '___sec5'),
               (' Assembling different pieces to a book ',
                1,
-               'setup:rules:book:assembly',
-               'setup:rules:book:assembly'),
+               'setup:rules:book_assembly',
+               'setup:rules:book_assembly'),
               (' Organization of DocOnce chapter files ', 2, None, '___sec7'),
               (' Compiling a chapter requires a wrapper file with title, author, ... ',
                2,
@@ -134,20 +134,20 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 26, 2015</h4></center> <!-- date -->
+<center><h4>May 8, 2015</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
 <h2>Table of contents</h2>
 
 <p>
-<a href="#sec:rules:dir:struct"> Directory structure for a book project </a><br>
+<a href="#setup:rules:dir_struct"> Directory structure for a book project </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Overview of the directory structure </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Directory structure within a chapter </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> The total directory structure </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec4"> The <code>book</code> directory </a><br>
 <a href="#___sec5"> Newcommands </a><br>
-<a href="#setup:rules:book:assembly"> Assembling different pieces to a book </a><br>
+<a href="#setup:rules:book_assembly"> Assembling different pieces to a book </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Organization of DocOnce chapter files </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec8"> Compiling a chapter requires a wrapper file with title, author, ... </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> Figures and source code </a><br>
@@ -169,7 +169,7 @@ end of tocinfo -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1 id="sec:rules:dir:struct">Directory structure for a book project</h1>
+<h1 id="setup:rules:dir_struct">Directory structure for a book project</h1>
 
 <p>
 <center><p><img src="fig-rules/dirstructure.png" align="bottom" width=600></p></center>
@@ -313,7 +313,7 @@ Mako functions instead - they work for all output formats.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1 id="setup:rules:book:assembly">Assembling different pieces to a book</h1>
+<h1 id="setup:rules:book_assembly">Assembling different pieces to a book</h1>
 
 <p>
 <center><p><img src="fig-rules/assembly.png" align="bottom" width=600></p></center>

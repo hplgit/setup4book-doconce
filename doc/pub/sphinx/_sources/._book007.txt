@@ -50,7 +50,7 @@ chapter:
 
 .. code-block:: doconce
 
-        The world's most famous equation is ref[(ref{fake:Emc2})][in
+        The world's most famous equation is ref[(ref{setup:fake:Emc2})][in
         cite{Langtangen_dobook_fake}][
         as found in the document "Some document":
         "http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"

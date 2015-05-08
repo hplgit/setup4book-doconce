@@ -5,6 +5,8 @@
 
 .. !split
 
+.. _setup:rules:conv:
+
 Principles and conventions
 ==========================
 
@@ -17,6 +19,8 @@ needs rules to make the work flow and end product coherent. This means one
 must agree upon
 
  * mathematical notation
+
+ * conventions for labels in cross referencing
 
  * programming style
 
@@ -58,6 +62,8 @@ deal with the bullet list above.
 
 
 
+
+.. _setup:rules:conv:newcommands:
 
 Mathematical notation and newcommands
 -------------------------------------
@@ -167,6 +173,63 @@ useful constructs in a ``newcommands.p.tex`` file:
         \newcommand{\Real}{\mathbb{R}}
         \newcommand{\Integerp}{\mathbb{N}}
         \newcommand{\Integer}{\mathbb{Z}}
+
+.. _setup:rules:conv:labels:
+
+Label conventions
+-----------------
+
+Books usually contain large amounts of cross referencing using
+labels (logical names) for sections, equations, exercises,
+and literature references.
+I strongly recommend to introduce conventions for how to construct
+labels as it makes it much easier to find the name of a new label and
+understand what a given label refers to.
+
+My chapter names are of the form ``ch:name``, where ``name`` is the
+nickname of the chapter (this nickname is used for many other purposes
+also, see the section :ref:`setup:rules:book_assembly:org`).
+Section and subsection names are of the form
+
+.. code-block:: text
+
+        projectname:chaptername:sectionname:subsectionname
+
+where the names are short nicknames. Each short name may contain
+underscores to separate words. For example, the present section
+has label ``setup:rules:conv:labels``, where ``setup`` is the nickname of the
+project (this book), ``rules`` is the nickname of the present chapter,
+``conv`` is the nickname of the present section, and
+``label`` is the nickname of the subsection.
+The section :ref:`setup:rules:book_assembly:org`
+has label ``setup:rules:book_assembly:org``, where ``book_assembly`` is
+the nickname of the section using underscore to separate two words.
+Sometimes I leave out the project name.
+
+Equations may start with the current subsection label and
+continued with ``eq:name``, where ``name`` is some logical name for
+the equation. Figures are given the same type of name, except that
+the postfix is ``fig:name``. For exercises I use ``exer:name`` as postfix
+in the labels. Equations and figures within an exercise have extended
+names such as ``setup:rules:exer:eq:uv_relation``.
+
+Bibliographic references can take the forms ``author_year``,
+``author1_author2_year``, ``author1_etal_year``. An alternative is
+to use names that reflect the topic:
+``topic:paper`` or ``topic:url``, e.g., ``IPython:paper`` for a ]paper on IPython
+or ``IPython:url`` for the IPython website.
+
+You can run ``doconce list_labels *.do.txt`` to get a list of lables,
+categorized under the various section headings, in your DocOnce
+documents.  This command quickly reveals if a clean-up of label names
+is necessary.  You can redirect the output of the command to a file
+and then add a second column with new label names. This file can be
+used with the command ``doconce replace_from_file`` to perform
+substitutions from old to new labels.
+
+Compilation of DocOnce files can make use of the option
+``--latex_labels_in_margin`` to get the label names of equations
+and sections to be printed in the margin.
 
 Programming style
 -----------------

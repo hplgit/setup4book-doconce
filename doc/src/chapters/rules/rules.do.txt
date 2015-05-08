@@ -3,7 +3,7 @@ The setup can of course be used for proceedings and theses as well.
 
 !split
 ======= Directory structure =======
-label{sec:rules:dir:struct}
+label{setup:rules:dir_struct}
 
 idx{figure directory}
 idx{movie directory}
@@ -58,13 +58,14 @@ Under `book`, we typically have a document `book.do.txt` for the complete
 book. This is a file with a lot of `# #include "...do.txt"`
 statements for the Preprocess preprocessor for
 including the files for the various chapters, see Section
-ref{setup:rules:book:assembly} for details. Additional files
+ref{setup:rules:book_assembly} for details. Additional files
 in the `book` directory include make files for compiling the book,
 scripts for packing the book for publishing, perhaps an errata document, etc.
 
 
 !split
 ======= Principles and conventions =======
+label{setup:rules:conv}
 
 When starting a bigger project like one or more book projects, alone or
 with others, it is wise to sit down and agree upon some basic principles
@@ -75,6 +76,7 @@ needs rules to make the work flow and end product coherent. This means one
 must agree upon
 
  * mathematical notation
+ * conventions for labels in cross referencing
  * programming style
  * degree of modularization
  * writing style
@@ -107,6 +109,8 @@ document the authors are writing on.
 !enotice
 
 ===== Mathematical notation and newcommands =====
+label{setup:rules:conv:newcommands}
+
 
 idx{newcommands}
 
@@ -206,6 +210,62 @@ useful constructs in a `newcommands.p.tex` file:
 \newcommand{\Integerp}{\mathbb{N}}
 \newcommand{\Integer}{\mathbb{Z}}
 !ec
+
+===== Label conventions =====
+label{setup:rules:conv:labels}
+
+Books usually contain large amounts of cross referencing using
+labels (logical names) for sections, equations, exercises,
+and literature references.
+I strongly recommend to introduce conventions for how to construct
+labels as it makes it much easier to find the name of a new label and
+understand what a given label refers to.
+
+My chapter names are of the form `ch:name`, where `name` is the
+nickname of the chapter (this nickname is used for many other purposes
+also, see Section ref{setup:rules:book_assembly:org}).
+Section and subsection names are of the form
+
+!bc
+projectname:chaptername:sectionname:subsectionname
+!ec
+where the names are short nicknames. Each short name may contain
+underscores to separate words. For example, the present section
+has label `setup:rules:conv:labels`, where `setup` is the nickname of the
+project (this book), `rules` is the nickname of the present chapter,
+`conv` is the nickname of the present section, and
+`label` is the nickname of the subsection.
+Section ref{setup:rules:book_assembly:org}
+has label `setup:rules:book_assembly:org`, where `book_assembly` is
+the nickname of the section using underscore to separate two words.
+Sometimes I leave out the project name.
+
+Equations may start with the current subsection label and
+continued with `eq:name`, where `name` is some logical name for
+the equation. Figures are given the same type of name, except that
+the postfix is `fig:name`. For exercises I use `exer:name` as postfix
+in the labels. Equations and figures within an exercise have extended
+names such as `setup:rules:exer:eq:uv_relation`.
+
+Bibliographic references can take the forms `author_year`,
+`author1_author2_year`, `author1_etal_year`. An alternative is
+to use names that reflect the topic:
+`topic:paper` or `topic:url`, e.g., `IPython:paper` for a ]paper on IPython
+or `IPython:url` for the IPython website.
+
+You can run `doconce list_labels *.do.txt` to get a list of lables,
+categorized under the various section headings, in your DocOnce
+documents.  This command quickly reveals if a clean-up of label names
+is necessary.  You can redirect the output of the command to a file
+and then add a second column with new label names. This file can be
+used with the command `doconce replace_from_file` to perform
+substitutions from old to new labels.
+
+Compilation of DocOnce files can make use of the option
+`--latex_labels_in_margin` to get the label names of equations
+and sections to be printed in the margin.
+
+
 
 ===== Programming style =====
 
@@ -372,14 +432,14 @@ separate document.
 
 !split
 ======= Assembling different pieces to a book =======
-label{setup:rules:book:assembly}
+label{setup:rules:book_assembly}
 
 Many smaller writings in the DocOnce format can be assembled
 into a single, large document such as a book or thesis.
 The recipe for doing this appears below.
 
 ===== Organization of a chapter =====
-
+label{setup:rules:book_assembly:org}
 idx{chapter!organization}
 idx{chapter!files}
 
@@ -430,7 +490,7 @@ idx{movie directory}
 idx{video directory}
 idx{source code directory}
 
-As described in Section ref{sec:rules:dir:struct}, we recommend to put
+As described in Section ref{setup:rules:dir_struct}, we recommend to put
 figures and source codes (to be included in the document) in separate
 directories. Although such directories could have natural names like
 `fig` and `src`, it will cause trouble if we do not use unique names
@@ -820,7 +880,7 @@ Here is an example on a generalized reference to an equation in another
 ${CHAPTER}:
 
 !bc do
-The world's most famous equation is ref[(ref{fake:Emc2})][in
+The world's most famous equation is ref[(ref{setup:fake:Emc2})][in
 cite{Langtangen_dobook_fake}][
 as found in the document "Some document":
 "http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"
@@ -829,7 +889,7 @@ cite{Langtangen_dobook_fake}].
 This sentence is rendered as follows in the present format (`${FORMAT}`):
 
 !bbox
-The world's most famous equation is ref[(ref{fake:Emc2})][in
+The world's most famous equation is ref[(ref{setup:fake:Emc2})][in
 cite{Langtangen_dobook_fake}][
 as found in the document "Some document":
 "http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"
@@ -956,6 +1016,19 @@ slides as a study guide is easy to accomplish. The slides' properties
 in live presentations can only be tested by speaking to them (making a
 rough draft of a video podcast is a very effective way of testing
 the slides' quality).
+
+!bnotice Tip: use quizzes to define a sufficient preparation level
+You want students to study the slides/study guide before a lecture.
+To measure to what extent this is done, you can insert multiple-choice
+questions about the most basic concepts in the slides (using the DocOnce
+`quiz` environment). With "quiztools":
+"https://github.com/hplgit/quiztools" you can extract all such
+multiple-choice questions, create online games with Kahoot, and
+let the students answer with their smart phones at the beginning of
+a lecture.
+The scores are visible to all on the main screen and communicate the
+preparation level.
+!enotice
 
 ===== Slides as IPython/Jupyter notebooks =====
 

@@ -2,14 +2,14 @@ This is just a fake chapter used to exemplify cross referencing
 across chapters.
 
 ======= Equations =======
-label{sec:eqs}
+label{setup:fake:eqs}
 
 Here is the world's most famous equation:
 
 !bt
 \begin{equation}
 E = mc^2
-label{fake:Emc2}
+label{setup:fake:Emc2}
 \end{equation}
 !et
 It is mentioned here so that we can refer to it from another ${CHAPTER},
