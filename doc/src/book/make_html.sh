@@ -38,7 +38,8 @@ system python automake_sphinx.py
 
 # Publish
 dest=../../pub
-rm -rf $dest/sphinx*
+rm -rf $dest/sphinx
+#rm -rf $dest/sphinx-runestone
 cp -r sphinx-${theme}/_build/html $dest/sphinx
 #cp -r runestone/RunestoneTools/build $dest/sphinx-runestone
 cd $dest
