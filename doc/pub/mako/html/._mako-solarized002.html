@@ -61,18 +61,20 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Use of variables ', 1, None, '___sec0'),
-              (" How to speak about ``this chapter'' ", 2, None, '___sec1'),
-              (' How to make several variants of the text ',
+ 'sections': [('Use of variables', 1, None, '___sec0'),
+              ("How to speak about ``this chapter''", 2, None, '___sec1'),
+              ('How to make several variants of the text',
                1,
                None,
                '___sec2'),
-              (' Use of Mako/Python functions ', 1, None, '___sec3'),
-              (' How to treat multiple programming languages in the same text ',
+              ("Mako's Python functions", 1, None, '___sec3'),
+              ('Basics of Mako functions', 2, None, '___sec4'),
+              ('How to treat multiple programming languages in the same text',
                2,
                None,
-               '___sec4'),
-              (' References ', 1, None, '___sec5')]}
+               '___sec5'),
+              ('Another example', 3, None, '___sec6'),
+              ('References', 1, None, '___sec7')]}
 end of tocinfo -->
 
 <body>
@@ -105,11 +107,11 @@ you can simply write
 <p>
 <!-- begin verbatim block  pycod-->
 <pre><code>In this
-%% if ALONE:
+% if ALONE:
 rather small
-%% else:
+% else:
 large
-%% endif
+% endif
 ${BOOK}
 </code></pre>
 <!-- end verbatim block -->
@@ -137,17 +139,17 @@ standard strings:
 
 <p>
 <!-- begin verbatim block  pycod-->
-<pre><code>%% if SOME_STRING_VARIABLE in ('value1', 'value2'):
+<pre><code>% if SOME_STRING_VARIABLE in ('value1', 'value2'):
 some running text
-%% endif
+% endif
 
 ...
 
-%% if not SOME_BOOLEAN_VARIABLE:
+% if not SOME_BOOLEAN_VARIABLE:
 some other running text
-%% else:
+% else:
 yet more different text
-%% endif
+% endif
 </code></pre>
 <!-- end verbatim block -->
 
@@ -157,13 +159,13 @@ of text by testing on some variable you do not intend to define:
 
 <p>
 <!-- begin verbatim block  pycod-->
-<pre><code>%% if EXTRA:
+<pre><code>% if EXTRA:
 This is
 text that
 will never
 appear in the
 output.
-%% endif
+% endif
 </code></pre>
 <!-- end verbatim block -->
 
@@ -178,22 +180,22 @@ variables
 
 <p>
 <!-- begin verbatim block  pycod-->
-<pre><code>%% if COURSE == 'IT1713':
+<pre><code>% if COURSE == 'IT1713':
 # Specific text for a course IT1713
 ...
-%% elif COURSE == 'IT1713b':
+% elif COURSE == 'IT1713b':
 # Specific text for a the special IT1713b variant of the course
 ...
-%% elif COURSE == 'general':
+% elif COURSE == 'general':
 # General text when the chapter is a stand-alone document
 ...
-%% elif COURSE == 'book1':
+% elif COURSE == 'book1':
 # Text when course is a part of a particular book
 ...
-%% elif COURSE == 'book2':
+% elif COURSE == 'book2':
 # Text when course is a part of another book
 ...
-%% endif
+% endif
 </code></pre>
 <!-- end verbatim block -->
 

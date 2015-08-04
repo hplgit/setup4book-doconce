@@ -15,7 +15,7 @@ of effective teaching material:
 
 These are briefly exemplified below. If you are mainly interested in how
 to structure DocOnce-based books, you can safely jump to
-Section ref{setup:rules:book:assembly}.
+Section ref{setup:rules:book_assembly}.
 
 ===== Admonitions =====
 

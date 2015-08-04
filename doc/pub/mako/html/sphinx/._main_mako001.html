@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -93,13 +93,13 @@ inappropriate if the chapter is a stand-alone document. Then you would
 rather say &#8220;this document&#8221;. Similarly, &#8220;this book&#8221; must read
 &#8220;this document&#8221; in a stand-alone chapter.
 We have resolved this issue by introducing
-Mako variables <tt class="docutils literal"><span class="pre">CHAPTER</span></tt>, <tt class="docutils literal"><span class="pre">BOOK</span></tt>, and <tt class="docutils literal"><span class="pre">APPENDIX</span></tt> such that you
+Mako variables <code class="docutils literal"><span class="pre">CHAPTER</span></code>, <code class="docutils literal"><span class="pre">BOOK</span></code>, and <code class="docutils literal"><span class="pre">APPENDIX</span></code> such that you
 write</p>
 <div class="highlight-doconce"><div class="highlight"><pre>In this ${BOOK}, the convention is to use boldface for vectors.
 </pre></div>
 </div>
-<p>For this to work, you need to define <tt class="docutils literal"><span class="pre">CHAPTER</span></tt>, <tt class="docutils literal"><span class="pre">BOOK</span></tt>, and <tt class="docutils literal"><span class="pre">APPENDIX</span></tt>
-as variables on the command line as part of the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command:</p>
+<p>For this to work, you need to define <code class="docutils literal"><span class="pre">CHAPTER</span></code>, <code class="docutils literal"><span class="pre">BOOK</span></code>, and <code class="docutils literal"><span class="pre">APPENDIX</span></code>
+as variables on the command line as part of the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex ch2 --latex_code_style=pyg \
           CHAPTER=document BOOK=document APPENDIX=document
 </pre></div>
@@ -109,9 +109,9 @@ as variables on the command line as part of the <tt class="docutils literal"><sp
           CHAPTER=chapter BOOK=chapter APPENDIX=appendix
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">make.sh</span></tt> files for found in <tt class="docutils literal"><span class="pre">doc/src/chapter/make.sh</span></tt> and
-<tt class="docutils literal"><span class="pre">doc/src/book/make.sh</span></tt> make proper definitions of
-<tt class="docutils literal"><span class="pre">CHAPTER</span></tt>, <tt class="docutils literal"><span class="pre">BOOK</span></tt>, and <tt class="docutils literal"><span class="pre">APPENDIX</span></tt>.</p>
+<p>The <code class="docutils literal"><span class="pre">make*.sh</span></code> files found in <code class="docutils literal"><span class="pre">doc/src/chapter/</span></code> and
+<code class="docutils literal"><span class="pre">doc/src/book</span></code> make proper definitions of
+<code class="docutils literal"><span class="pre">CHAPTER</span></code>, <code class="docutils literal"><span class="pre">BOOK</span></code>, and <code class="docutils literal"><span class="pre">APPENDIX</span></code>.</p>
 </div>
 </div>
 

@@ -1,17 +1,20 @@
 .. !split
 
-Use of Mako/Python functions
-============================
+Mako's Python functions
+=======================
 
 .. index:: functions in mako
 
 .. index::
    single: mako; functions
 
-Such if tests are fine to handle larger portions of text. What if you
+The if tests above are fine to handle larger portions of text. What if you
 need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,
 is then more appropriate.
+
+Basics of Mako functions
+------------------------
 
 Here is a definition of a suitable Mako function, which must be
 defined inside
@@ -237,6 +240,12 @@ Switching to ``CODE=Matlab`` gives
         by other programs, this function has to reside in a file
         \Verb!sampler_vec.py!.
 
+Another example
+~~~~~~~~~~~~~~~
+
+The manual contains a useful `example <http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature>`__
+on how to use Mako to implement
+the nomenclature functionality in the LaTeX package ``nomencl``.
 References
 ==========
 

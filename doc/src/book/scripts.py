@@ -24,6 +24,7 @@ def chapter_visitor(action=None, chapters=chapters):
     for chapter in chapters:
         destination = os.path.join(prefix, chapter)
         if os.path.isdir(destination):
+            print 'visiting directory', destination
             os.chdir(destination)
             action_function()
             os.chdir(thisdir)

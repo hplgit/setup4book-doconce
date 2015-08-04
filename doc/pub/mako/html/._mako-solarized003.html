@@ -61,18 +61,20 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Use of variables ', 1, None, '___sec0'),
-              (" How to speak about ``this chapter'' ", 2, None, '___sec1'),
-              (' How to make several variants of the text ',
+ 'sections': [('Use of variables', 1, None, '___sec0'),
+              ("How to speak about ``this chapter''", 2, None, '___sec1'),
+              ('How to make several variants of the text',
                1,
                None,
                '___sec2'),
-              (' Use of Mako/Python functions ', 1, None, '___sec3'),
-              (' How to treat multiple programming languages in the same text ',
+              ("Mako's Python functions", 1, None, '___sec3'),
+              ('Basics of Mako functions', 2, None, '___sec4'),
+              ('How to treat multiple programming languages in the same text',
                2,
                None,
-               '___sec4'),
-              (' References ', 1, None, '___sec5')]}
+               '___sec5'),
+              ('Another example', 3, None, '___sec6'),
+              ('References', 1, None, '___sec7')]}
 end of tocinfo -->
 
 <body>
@@ -91,13 +93,15 @@ end of tocinfo -->
 <p>
 <!-- !split -->
 
-<h1 id="___sec3">Use of Mako/Python functions </h1>
+<h1 id="___sec3">Mako's Python functions </h1>
 
 <p>
-Such if tests are fine to handle larger portions of text. What if you
+The if tests above are fine to handle larger portions of text. What if you
 need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,
 is then more appropriate.
+
+<h2 id="___sec4">Basics of Mako functions </h2>
 
 <p>
 Here is a definition of a suitable Mako function, which must be
@@ -166,7 +170,7 @@ type employs a slightly different syntax and is exemplified in the file
 </div>
 
 
-<h2 id="___sec4">How to treat multiple programming languages in the same text </h2>
+<h2 id="___sec5">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -175,7 +179,7 @@ as the name of the language and use if tests for larger portions
 of code and text, and Mako functions for shorter inline texts,
 to handle text that depends on the value of <code>CODE</code>.
 The author has successfully co-written such a <a href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html" target="_self">book</a>
-<a href="#Lange_Langtangen_2015">[1]</a>
+<a href="#Linge_Langtangen_2015">[1]</a>
 for mathematical programming with either Python or Matlab - the version
 is set when running <code>doconce format</code>.
 
@@ -340,13 +344,20 @@ by other programs, this function has to reside in a file
 </code></pre>
 <!-- end verbatim block -->
 
-<h1 id="___sec5">References </h1>
+<h3 id="___sec6">Another example </h3>
+
+<p>
+The manual contains a useful <a href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature" target="_self">example</a>
+on how to use Mako to implement
+the nomenclature functionality in the LaTeX package <code>nomencl</code>.
+
+<h1 id="___sec7">References </h1>
 
 <p>
 <!-- begin bibliography -->
 
 <ol>
- <li> <div id="Lange_Langtangen_2015"></div> <b>S. Linge and H. P. Langtangen</b>. 
+ <li> <div id="Linge_Langtangen_2015"></div> <b>S. Linge and H. P. Langtangen</b>. 
     <em>Programming for Computations</em>,
     2015,
     <a href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/" target="_self"><tt>http://hplgit.github.io/Programming-for-Computations/pub/p4c/</tt></a>.</li>

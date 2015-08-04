@@ -67,11 +67,11 @@ you can simply write
 
 !bc pycod
 In this
-%% if ALONE:
+% if ALONE:
 rather small
-%% else:
+% else:
 large
-%% endif
+% endif
 ${BOOK}
 !ec
 Running `doconce format` with the option `-DALONE` will turn `ALONE` to
@@ -92,17 +92,17 @@ Mako variables can be defined/undefined (boolean variables) or be
 standard strings:
 
 !bc pycod
-%% if SOME_STRING_VARIABLE in ('value1', 'value2'):
+% if SOME_STRING_VARIABLE in ('value1', 'value2'):
 some running text
-%% endif
+% endif
 
 ...
 
-%% if not SOME_BOOLEAN_VARIABLE:
+% if not SOME_BOOLEAN_VARIABLE:
 some other running text
-%% else:
+% else:
 yet more different text
-%% endif
+% endif
 !ec
 
 ## Note: Mako instructions need double %% in code blocks (otherwise
@@ -112,13 +112,13 @@ With Mako variables, you can easily comment out large portions
 of text by testing on some variable you do not intend to define:
 
 !bc pycod
-%% if EXTRA:
+% if EXTRA:
 This is
 text that
 will never
 appear in the
 output.
-%% endif
+% endif
 !ec
 
 Also, it is straightforward to write more than one version of a
@@ -130,34 +130,36 @@ All this is easily done by if tests on appropriately defined Mako
 variables
 
 !bc pycod
-%% if COURSE == 'IT1713':
+% if COURSE == 'IT1713':
 # Specific text for a course IT1713
 ...
-%% elif COURSE == 'IT1713b':
+% elif COURSE == 'IT1713b':
 # Specific text for a the special IT1713b variant of the course
 ...
-%% elif COURSE == 'general':
+% elif COURSE == 'general':
 # General text when the chapter is a stand-alone document
 ...
-%% elif COURSE == 'book1':
+% elif COURSE == 'book1':
 # Text when course is a part of a particular book
 ...
-%% elif COURSE == 'book2':
+% elif COURSE == 'book2':
 # Text when course is a part of another book
 ...
-%% endif
+% endif
 !ec
 
 !split
-======= Use of Mako/Python functions =======
+======= Mako's Python functions =======
 
 idx{functions in mako}
 idx{mako!functions}
 
-Such if tests are fine to handle larger portions of text. What if you
+The if tests above are fine to handle larger portions of text. What if you
 need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,
 is then more appropriate.
+
+===== Basics of Mako functions =====
 
 Here is a definition of a suitable Mako function, which must be
 defined inside
@@ -206,7 +208,7 @@ of code and text, and Mako functions for shorter inline texts,
 to handle text that depends on the value of `CODE`.
 The author has successfully co-written such a "book":
 "http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html"
-cite{Lange_Langtangen_2015}
+cite{Linge_Langtangen_2015}
 for mathematical programming with either Python or Matlab - the version
 is set when running `doconce format`.
 
@@ -355,3 +357,9 @@ implementation in function \Verb!sampler_vec! to be reused
 by other programs, this function has to reside in a file
 \Verb!sampler_vec.py!.
 !ec
+
+=== Another example ===
+
+The manual contains a useful "example": "http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature"
+on how to use Mako to implement
+the nomenclature functionality in the LaTeX package `nomencl`.

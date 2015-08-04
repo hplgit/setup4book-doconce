@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Use of Mako/Python functions</title>
+    <title>Mako’s Python functions</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -74,15 +74,17 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="use-of-mako-python-functions">
-<h1>Use of Mako/Python functions<a class="headerlink" href="#use-of-mako-python-functions" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="index-0"></span><p id="index-1">Such if tests are fine to handle larger portions of text. What if you
+  <div class="section" id="mako-s-python-functions">
+<h1>Mako&#8217;s Python functions<a class="headerlink" href="#mako-s-python-functions" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><p id="index-1">The if tests above are fine to handle larger portions of text. What if you
 need to have four versions of just one word or very short text?
 A Mako function, defined as a standard Python function,
 is then more appropriate.</p>
+<div class="section" id="basics-of-mako-functions">
+<h2>Basics of Mako functions<a class="headerlink" href="#basics-of-mako-functions" title="Permalink to this headline">¶</a></h2>
 <p>Here is a definition of a suitable Mako function, which must be
 defined inside
-<tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt> tags, using standard Python code:</p>
+<code class="docutils literal"><span class="pre">&lt;%</span></code> and <code class="docutils literal"><span class="pre">%&gt;</span></code> tags, using standard Python code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;%</span>
 <span class="k">def</span> <span class="nf">chversion</span><span class="p">(</span><span class="n">text_IT1413</span><span class="p">,</span> <span class="n">text_IT1713b</span><span class="p">,</span> <span class="n">text_general</span><span class="p">,</span>
               <span class="n">text_book1</span><span class="p">,</span> <span class="n">text_book2</span><span class="p">):</span>
@@ -101,10 +103,10 @@ defined inside
 <span class="o">%&gt;</span>
 </pre></div>
 </div>
-<p>In the running text you can call <tt class="docutils literal"><span class="pre">chversion</span></tt> with five arguments,
-corresponding to the desired text in the five cases, and when <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
-is run, the value of <tt class="docutils literal"><span class="pre">COURSE</span></tt> determines which of the five cases that is used.
-Here is an example on DocOnce text with a function call to <tt class="docutils literal"><span class="pre">chversion</span></tt>:</p>
+<p>In the running text you can call <code class="docutils literal"><span class="pre">chversion</span></code> with five arguments,
+corresponding to the desired text in the five cases, and when <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
+is run, the value of <code class="docutils literal"><span class="pre">COURSE</span></code> determines which of the five cases that is used.
+Here is an example on DocOnce text with a function call to <code class="docutils literal"><span class="pre">chversion</span></code>:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>It is extremely important to define the term *cure* accurately.
 Here we mean ${chversion(&#39;handle&#39;, &#39;handle&#39;,
 &#39;resolve&#39;, &#39;treat&#39;, &#39;resolve&#39;)}.
@@ -130,17 +132,18 @@ string&quot;&quot;&quot;,
 type employs a slightly different syntax and is exemplified in the file
 <a class="reference external" href="http://tinyurl.com/kukz8pt/index_files-do.txt">doc/src/chapters/index_files.do.txt</a>. We refer to the <a class="reference external" href="http://docs.makotemplates.org/en/latest/syntax.html">Mako syntax documentation</a> for more information.</p>
 </div>
+</div>
 <div class="section" id="how-to-treat-multiple-programming-languages-in-the-same-text">
 <h2>How to treat multiple programming languages in the same text<a class="headerlink" href="#how-to-treat-multiple-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
 <p>With these ideas, it becomes straightforward to write a book that
-has its program examples in multiple languages. Introduce <tt class="docutils literal"><span class="pre">CODE</span></tt>
+has its program examples in multiple languages. Introduce <code class="docutils literal"><span class="pre">CODE</span></code>
 as the name of the language and use if tests for larger portions
 of code and text, and Mako functions for shorter inline texts,
-to handle text that depends on the value of <tt class="docutils literal"><span class="pre">CODE</span></tt>.
+to handle text that depends on the value of <code class="docutils literal"><span class="pre">CODE</span></code>.
 The author has successfully co-written such a <a class="reference external" href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html">book</a>
 <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>
 for mathematical programming with either Python or Matlab - the version
-is set when running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>.</p>
+is set when running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.</p>
 <p>Here is an example of text, in the style of the mention book,
 where there are small differences
 depending on the programming language:</p>
@@ -172,11 +175,11 @@ by other programs, this function has to reside in a file
 choose between a Python or Matlab relevant text:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">src</span></tt> for picking a filename with the right extension (<tt class="docutils literal"><span class="pre">.py</span></tt> or <tt class="docutils literal"><span class="pre">.m</span></tt>)</li>
-<li><tt class="docutils literal"><span class="pre">copyfile</span></tt> for constructing the right <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> line for a Python or
+<li><code class="docutils literal"><span class="pre">src</span></code> for picking a filename with the right extension (<code class="docutils literal"><span class="pre">.py</span></code> or <code class="docutils literal"><span class="pre">.m</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">copyfile</span></code> for constructing the right <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> line for a Python or
 Matlab source code file</li>
-<li><tt class="docutils literal"><span class="pre">text2</span></tt> for picking the first (Python) or second (Matlab) argument</li>
-<li><tt class="docutils literal"><span class="pre">verb2</span></tt> for picking the first (Python) or second (Matlab) argument typeset in
+<li><code class="docutils literal"><span class="pre">text2</span></code> for picking the first (Python) or second (Matlab) argument</li>
+<li><code class="docutils literal"><span class="pre">verb2</span></code> for picking the first (Python) or second (Matlab) argument typeset in
 inline verbatim font</li>
 </ul>
 </div></blockquote>
@@ -256,7 +259,7 @@ that we can call all the file&#39;s functions from other programs,
 including \Verb!sampler_vec!.
 </pre></div>
 </div>
-<p>Switching to <tt class="docutils literal"><span class="pre">CODE=Matlab</span></tt> gives</p>
+<p>Switching to <code class="docutils literal"><span class="pre">CODE=Matlab</span></code> gives</p>
 <div class="highlight-text"><div class="highlight"><pre>The following Matlab function \Verb!sampler! does the job
 (see the file
 \href{{https://github.com/myuser/myproject/src/`sampler.m`}}{
@@ -281,10 +284,13 @@ by other programs, this function has to reside in a file
 \Verb!sampler_vec.py!.
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="another-example">
+<h3>Another example<a class="headerlink" href="#another-example" title="Permalink to this headline">¶</a></h3>
+<p>The manual contains a useful <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature">example</a>
+on how to use Mako to implement
+the nomenclature functionality in the LaTeX package <code class="docutils literal"><span class="pre">nomencl</span></code>.
+References
+==========</p>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -293,6 +299,8 @@ by other programs, this function has to reside in a file
 <a class="reference external" href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/">http://hplgit.github.io/Programming-for-Computations/pub/p4c/</a>.</td></tr>
 </tbody>
 </table>
+</div>
+</div>
 </div>
 
 
@@ -308,11 +316,14 @@ by other programs, this function has to reside in a file
             </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Use of Mako/Python functions</a><ul>
-<li><a class="reference internal" href="#how-to-treat-multiple-programming-languages-in-the-same-text">How to treat multiple programming languages in the same text</a></li>
+<li><a class="reference internal" href="#">Mako&#8217;s Python functions</a><ul>
+<li><a class="reference internal" href="#basics-of-mako-functions">Basics of Mako functions</a></li>
+<li><a class="reference internal" href="#how-to-treat-multiple-programming-languages-in-the-same-text">How to treat multiple programming languages in the same text</a><ul>
+<li><a class="reference internal" href="#another-example">Another example</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 
   <h4>Previous topic</h4>
