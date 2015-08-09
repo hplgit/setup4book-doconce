@@ -60,7 +60,8 @@ TOC: off
 
 ======= Preliminary notes for a future textbook =======
 
- * "Traditional LaTeX Book": "book.pdf"
+ * "Traditional LaTeX PDF book": "book.pdf"
+ * "HTML Bootstrap ebook": "book.html"
  * "Sphinx ebook": "sphinx/index.html"
  * "RunestoneInteractive ebook": "sphinx-runestone/index.html"
 

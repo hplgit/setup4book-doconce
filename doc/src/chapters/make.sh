@@ -85,7 +85,7 @@ mv -f ${mainname}.pdf ${nickname}.pdf  # drop main_ prefix in PDF
 dest=/some/repo/some/where
 dest=../../../pub
 if [ ! -d $dest ]; then
-exit 0  # drop publishig
+exit 0  # drop publishing
 fi
 dest=$dest/$nickname
 if [ ! -d $dest ]; then
@@ -94,5 +94,9 @@ if [ ! -d $dest ]; then
   mkdir $dest/html
 fi
 cp ${nickname}*.pdf $dest/pdf/
+
+# If published in an external repo and the current writing repo is
+# private, all the source files for programs need to be copied to
+# the publishing repo as well.
 
 # Could make other versions, A4, 2 pages per sheet, etc.

@@ -1,6 +1,7 @@
 import sys, re, os, shutil, glob
 
 chapters = "rules preface mako fake".split()
+chaptersdir = 'chapters'
 
 ignored_files = '*.o *.so *.a *.pyc *.bak *.swp *~ .*~ *.old tmp* temp* .#* \\#* *.log *.dvi *.aux *.blg *.idx *.nav *.out *.toc *.snm *.vrb *.cproject *.project .DS_Store Trash'.split()
 
@@ -19,7 +20,7 @@ def chapter_visitor(action=None, chapters=chapters):
     elif callable(action):
         action_function = action
 
-    prefix = os.path.join(os.pardir, 'chapters')
+    prefix = os.path.join(os.pardir, chaptersdir)
     thisdir = os.getcwd()
     for chapter in chapters:
         destination = os.path.join(prefix, chapter)
@@ -56,7 +57,7 @@ def compile_chapters():
 
 def make_links(chapters=chapters):
     """Make links to all src-* and fig-* dirs for all chapters."""
-    prefix = os.path.join(os.pardir, 'chapters')
+    prefix = os.path.join(os.pardir, chaptersdir)
     for chapter in chapters:
         destination = os.path.join(prefix, chapter)
         subdirs = [tp + '-' + chapter for tp in 'fig', 'src', 'mov', 'exer']
@@ -85,7 +86,7 @@ def pack_src(root='src', tarfile='book-examples.tar.gz', chapters=chapters):
     shutil.rmtree(root)
     os.mkdir(root)
     os.chdir(root)
-    prefix = os.path.join(os.pardir, os.pardir, 'chapters')
+    prefix = os.path.join(os.pardir, os.pardir, chaptersdir)
     thisdir = os.getcwd()
     for chapter in chapters:
         src = 'src-' + chapter
@@ -107,7 +108,7 @@ def pack_src(root='src', tarfile='book-examples.tar.gz', chapters=chapters):
 
 def externaldocuments():
     # Find all candidate documents in ../chapters/*
-    prefix = os.path.join(os.pardir, 'chapters')
+    prefix = os.path.join(os.pardir, chaptersdir)
     #dirs = [name for name in os.listdir(prefix)
     #        if os.path.isdir(os.path.join(prefix, name))]
     dirs = chapters[:]

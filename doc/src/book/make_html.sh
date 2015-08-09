@@ -19,6 +19,10 @@ preprocess -DFORMAT=html ../chapters/newcommands.p.tex > newcommands_keep.tex
 
 opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
+# Compile HTML Bootstrap book
+system doconce format html $name $opt --html_style=bootswatch_journal --html_code_style=inherit --html_output=$name
+system doconce split_html decay-book.html
+
 # Compile standard sphinx
 theme=uio
 system doconce format sphinx $name $opt --sphinx_keep_splits
@@ -38,9 +42,19 @@ system python automake_sphinx.py
 
 # Publish
 dest=../../pub
+cp $name.html ._${name}*.html $dest
+figdirs="fig-* mov-*"
+for figdir in $figdirs; do
+    # slash important for copying files in links to dirs
+    if [ -d $figdir/ ]; then
+        cp -r $figdir/ $dest
+    fi
+done
+
 rm -rf $dest/sphinx
 #rm -rf $dest/sphinx-runestone
 cp -r sphinx-${theme}/_build/html $dest/sphinx
 #cp -r runestone/RunestoneTools/build $dest/sphinx-runestone
+
 cd $dest
 git add sphinx-*
