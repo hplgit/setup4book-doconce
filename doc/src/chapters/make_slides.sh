@@ -36,7 +36,6 @@ cd ..
 # It is wise to first compile a plain LaTeX PDF version of
 # the sides/study gude since that will reveal potential syntax errors.
 # (HTML gives far less errors and warnings than LaTeX).
-rm -f *.aux
 system preprocess -DFORMAT=pdflatex ../newcommands.p.tex > newcommands_keep.tex
 
 system doconce format pdflatex $slidesname --latex_admon=paragraph "--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
@@ -45,6 +44,7 @@ doconce replace 'section{' 'section*{' ${slidesname}.tex
 # Remove |\pause| in code blocks when not using beamer
 doconce subst '\|\\pause\|\n' '' ${slidesname}.tex
 
+rm -rf ${slidesname}.aux
 system pdflatex $slidesname
 system pdflatex $slidesname
 cp -f $slidesname.pdf ${slidesname}-plain.pdf

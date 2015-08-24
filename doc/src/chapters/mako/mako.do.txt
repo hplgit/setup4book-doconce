@@ -105,9 +105,6 @@ yet more different text
 % endif
 !ec
 
-## Note: Mako instructions need double %% in code blocks (otherwise
-## Mako interprets them as Mako instructions...)
-
 With Mako variables, you can easily comment out large portions
 of text by testing on some variable you do not intend to define:
 
