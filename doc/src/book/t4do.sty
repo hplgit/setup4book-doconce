@@ -105,7 +105,8 @@
       \@headskip22pt
     \fi
     \setbox0\vbox{%
-        \begin{minipage}[t]{101mm}
+        %hpl: Reduce 90mm if chapter no is placed too far to the right
+        \begin{minipage}[t]{90mm}
           \hyphenpenalty \@M
           \interlinepenalty\@M
           \raggedright
@@ -346,7 +347,7 @@
    \def\@evenhead{\hspace*{-0.5mm}\vbox to\headheight{\hsize117mm\hbox
 to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
                   \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}\hss}
-   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize118.5mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize117.0mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
                   \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
    \def\chaptermark##1{\markboth{{\if@chapnum %\ifnum\c@secnumdepth>\m@ne
       \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\if@chapnum %\ifnum\c@secnumdepth>\m@ne
