@@ -7,9 +7,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Special features for teaching material</title>
+    <title>Book versions with and without solutions to exercises</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -43,13 +43,9 @@
 
     
     <link rel="top" title="How to Use DocOnce to Write Books" href="index.html" />
-    <link rel="next" title="Appendix: Use of Mako to aid book writing" href="._book011.html" />
+    <link rel="next" title="Special features for teaching material" href="._book011.html" />
     <link rel="prev" title="Writing in private repository while publishing in public" href="._book009.html" />
-
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+ 
   
        <style type="text/css">
          div.admonition {
@@ -59,197 +55,93 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="._book011.html" title="Appendix: Use of Mako to aid book writing"
+          <a href="._book011.html" title="Special features for teaching material"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="._book009.html" title="Writing in private repository while publishing in public"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
-  <div class="section" id="special-features-for-teaching-material">
-<h1>Special features for teaching material<a class="headerlink" href="#special-features-for-teaching-material" title="Permalink to this headline">¶</a></h1>
-<p>DocOnce offers some special features that can greatly aid development
-of effective teaching material:</p>
-<blockquote>
-<div><ul class="simple">
-<li>fancy admonitions</li>
-<li>simple boxes</li>
-<li>interactive code blocks</li>
-<li>hidden code blocks</li>
-<li>exercises</li>
-<li>multiple-choice questions or quizzes</li>
-<li>movies</li>
-<li>quotes</li>
-</ul>
-</div></blockquote>
-<p>These are briefly exemplified below. If you are mainly interested in how
-to structure DocOnce-based books, you can safely jump to
-the section <span class="xref std std-ref">setup:rules:book:assembly</span>.</p>
-<div class="section" id="admonitions">
-<h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-use-admonitions admonition" id="index-0">
-<p class="first admonition-title">Use admonitions</p>
-<p class="last">Need to notify, warn, summarize, ask a question, give a tip,
-dive into less important details, or really emphasize a result?
-DocOnce features special
-<em>notice</em>, <em>warning</em>, <em>summary</em>,
-and <em>question</em> boxes for  called admonitions. These can be typeset in a
-variety of versions, depending on the output format
-(check out <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and the many options with <code class="docutils literal"><span class="pre">admon</span></code>
-in the name).</p>
-</div>
-</div>
-<div class="section" id="simple-box">
-<h2>Simple box<a class="headerlink" href="#simple-box" title="Permalink to this headline">¶</a></h2>
-<p id="index-1">Put a box around something important:</p>
-<div class="math">
-\[1 + 1 = 2\]</div>
-<p><strong>Note:</strong>
-Simple boxes are not supported in format <code class="docutils literal"><span class="pre">sphinx</span></code>.</p>
-</div>
-<div class="section" id="embedded-interactive-code">
-<h2>Embedded interactive code<a class="headerlink" href="#embedded-interactive-code" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-2"></span><div class="section" id="the-pyoptpro-code-environment">
-<span id="index-3"></span><h3>The <code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment<a class="headerlink" href="#the-pyoptpro-code-environment" title="Permalink to this headline">¶</a></h3>
-<p>To illustrate program flow, you can step through code
-(as in a debugger, just more illustrative) using the
-<code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment. Here is an example:</p>
-<iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
-</iframe><p>In HTML and Sphinx format this code can be stepped through in
-the browser, while
-in LaTeX one gets a link to a web page with this functionality.</p>
-</div>
-<div class="section" id="the-pyscpro-code-environment">
-<h3>The <code class="docutils literal"><span class="pre">pyscpro</span></code> code environment<a class="headerlink" href="#the-pyscpro-code-environment" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://sagecell.sagemath.org/">SageMathCell</a> server
-enables live Python code in web documents. Using the
-<code class="docutils literal"><span class="pre">pyscpro</span></code> code environment, Python code can be embedded in a
-for interactive computing:</p>
-<div class='sage'><script type='text/x-sage'>import random
-a = random.randint(1, 7)
-print a</script></div><p>We can even plot:</p>
-<div class='sage'><script type='text/x-sage'>from numpy import *
-from matplotlib.pyplot import *
-
-x = linspace(-2*pi, 2*pi, 801)
-y = exp(-0.1*x**2)*sin(4*x)
-plot(x, y)
-show()</script></div><p>HTML and Sphinx output has such interactive Sage Cells,
-while other output formats can just show the code.</p>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-exercise-environments admonition" id="index-4">
-<p class="first admonition-title">Exercise environments</p>
-<p>DocOnce supports <em>exercise subsections</em>, which are subsections with some
-extra tagging for exercises. Important features are:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li>exercises can be divided into subexercises</li>
-<li>one may specify filename(s) for delivering the answer to an exercise</li>
-<li>one may specify filename(s) for the solution of an exercise</li>
-<li>one may specify a remark (fun facts, comments)</li>
-<li>one or more hints can be given to an exercise or subexercise
-(can be hidden in certain output formats)</li>
-<li>any exercise or subexercise can have a solution field</li>
-<li>any exercise or subexercise can have an answer field (very condensed solution)</li>
-<li>solutions and answers can be removed from the document at compile time</li>
-<li>exercises can have one of four titles: Exercise, Project, Problem, or
-Example</li>
-</ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="quote">
-<h2>Quote<a class="headerlink" href="#quote" title="Permalink to this headline">¶</a></h2>
-<p>There is also a <em>quote</em> environment (invisible box with larger
-margins).</p>
-<blockquote>
-<div><p>We&#8217;re programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We&#8217;re not excited by incremental renovation: tinkering, improving, planting flower beds.</p>
-<p>There&#8217;s a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:
-<strong>It&#8217;s harder to read code than to write it.</strong>
-This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it&#8217;s easier and more fun than figuring out how the old function works.</p>
-<p><a class="reference external" href="http://www.joelonsoftware.com/articles/fog0000000069.html">Joel Spolsky</a>, 2000</p>
-</div></blockquote>
-</div>
-<div class="section" id="quiz">
-<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-5"></span><span class="target" id="index-6"></span><p><strong>Question:</strong> Does DocOnce feature multiple-choice questions or quizzes?</p>
-<p><strong>Choice A:</strong> Yes. <abbr title="Right!">?</abbr> <abbr title="See the quiz manual (&lt;http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).">#</abbr></p>
-<p><strong>Choice B:</strong> No. <abbr title="Wrong!">?</abbr></p>
-<p>Quite often we need mathematics and computer code in questions and
-answers.</p>
-<p><strong>Question:</strong> Compute the integral</p>
-<div class="math">
-\[\int_0^{2\pi} e^{-x}\sin^2 x\,dx\]</div>
-<p>and report the formula in verbatim LaTeX code,</p>
-<div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"> ... </span><span class="s">\]</span>
+  <div class="section" id="book-versions-with-and-without-solutions-to-exercises">
+<h1>Book versions with and without solutions to exercises<a class="headerlink" href="#book-versions-with-and-without-solutions-to-exercises" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="index-0"></span><p id="index-1">It is easy to turn solutions to exercises on or off by the options
+<code class="docutils literal"><span class="pre">--without_solutions</span></code> (for <code class="docutils literal"><span class="pre">!bsol</span></code> environments) and <code class="docutils literal"><span class="pre">--without_answers</span></code>
+(for <code class="docutils literal"><span class="pre">!bans</span></code> environments). One often wants to publish a book
+without solutions to exercises, but also make versions with solutions.
+One possibility is to password protect the versions with solutions.</p>
+<p>It can be wise to create a very complicated filename for the files
+that may be shown in a browser with the URL visible for a class.
+One possibility
+is to create a 40 long SHA1 string as filename and start it with a dot
+to also make it invisible in most operating systems.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">hash</span><span class="o">=</span>82dee82e1274a586571086dca04d00308d3a0d86
+<span class="nv">html</span><span class="o">=</span>.trash&lt;built-in <span class="k">function</span> <span class="nb">hash</span>&gt;
+doconce format html book --html_output<span class="o">=</span><span class="nv">$html</span> ...
 </pre></div>
 </div>
-<p><strong>Choice A:</strong> There is no closed-form formula for this integral. <abbr title="Wrong!">?</abbr> <abbr title="Maybe you fiddled around with pen and paper the wrong way... Try sympy!">#</abbr></p>
-<p><strong>Choice B:</strong> .. code-block:: python</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>
-<span class="go">-2*exp(-2*pi)/5 + 2/5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-<span class="go">&#39;- \\frac{2}{5 e^{2 \\pi}} + \\frac{2}{5}&#39;</span>
+<p>The file following file, called <code class="docutils literal"><span class="pre">password.html</span></code>, presents an empty page
+with a button for providing a password, and if approved, the first
+page of the book opens up.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="c">&lt;!-- password protected HTML page ---&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">function</span> <span class="nx">passWord</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">testV</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">pass1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s1">&#39;Please enter your password&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">testV</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">pass1</span><span class="p">)</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">pass1</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;PASSWORD&quot;</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;You Got it Right!&#39;</span><span class="p">);</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;DESTINATION.html&#39;</span><span class="p">);</span>
+<span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">testV</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">pass1</span> <span class="o">=</span>
+<span class="nx">prompt</span><span class="p">(</span><span class="s1">&#39;Access denied - password incorrect!&#39;</span><span class="p">,</span> <span class="s1">&#39;Password&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">pass1</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span><span class="o">!=</span><span class="s2">&quot;password&quot;</span> <span class="o">&amp;</span> <span class="nx">testV</span> <span class="o">==</span><span class="mi">3</span><span class="p">)</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">return</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;center&gt;</span>
+<span class="nt">&lt;form&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;Enter Protected Area&quot;</span> <span class="na">onClick=</span><span class="s">&quot;passWord()&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
 </pre></div>
 </div>
-<p>so the answer is</p>
-<div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"></span>
-<span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb"> e^{</span><span class="m">2</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb">}} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb">} </span><span class="s">\]</span> :abbr:`? (Right!)`
+<p>Suppose your HTML file with solutions that you want to password protect has the
+name <code class="docutils literal"><span class="pre">book-sol.html</span></code>. Then you can simply do</p>
+<div class="highlight-bash"><div class="highlight"><pre>cp password.html book-sol.html
+doconce replace DESTINATION <span class="s2">&quot;</span><span class="nv">$html</span><span class="s2">&quot;</span> book-sol.html
+doconce replace PASSWORD <span class="s2">&quot;s!m!art|pass@word&quot;</span> book-sol.html
 </pre></div>
 </div>
-<p><strong>Choice C:</strong> .. code-block:: latex</p>
-<blockquote>
-<div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
-- frac{3}{4 e^{2 pi}} + frac{3}{4} ] <abbr title="Wrong!">?</abbr> <abbr title="Something went wrong here with the fractions...">#</abbr></div></blockquote>
-<p><strong>Choice D:</strong> .. code-block:: latex</p>
-<blockquote>
-<div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
-- {2over5}{5 exp^{2 pi}} + frac{2}{5} ] <abbr title="Wrong!">?</abbr> <abbr title="Well, the math is correct, but the LaTeX code lacks two backslashes, and over is old-fashioned, use frac{}{} in 2015.">#</abbr></div></blockquote>
-<p>The typesetting of a quiz depends on the output format.
-One can in plain HTML
-and Sphinx formats
-hover over the choice and get a pop-up tooltip with the
-right answer and an explanation (if defined).
-The explanation can only show plain text, so it is empty if it
-contains math or code blocks, or figures.
-With HTML Bootstrap styles one can click on a symbol to open up
-the answer and the explanation.
-RunestoneInteractive books (Sphinx) offers a
-button for the same purpose, but the explanation can only be
-plain text so any math or code block makes the explanation empty.
-LaTeX output can feature the choices only (no answer, no explanation:
-<code class="docutils literal"><span class="pre">--without_solutions</span> <span class="pre">--without_answers</span></code>), the short answer only
-(<code class="docutils literal"><span class="pre">--without_solutions</span></code>) or both the answer and all explanations
-(the case in this demo).</p>
-</div>
-<div class="section" id="what-about-a-video-lecture">
-<h2>What about a video lecture?<a class="headerlink" href="#what-about-a-video-lecture" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-7"></span><span class="target" id="index-8"></span><iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe><div class="admonition-question admonition">
-<p class="first admonition-title">Question</p>
-<p class="last">Can you think of applications of the above mentioned features?</p>
-</div>
+<p>A PDF file can easily be password protected with the use of the <code class="docutils literal"><span class="pre">pdftk</span></code>
+tool. If <code class="docutils literal"><span class="pre">book.pdf</span></code> is with solutions, <code class="docutils literal"><span class="pre">book-sol.pdf</span></code> will also require
+a password <code class="docutils literal"><span class="pre">a!4</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pdftk book.pdf output book-sol.pdf owner_pw foo user_pw <span class="s2">&quot;a!4&quot;</span>
+</pre></div>
 </div>
 </div>
 
@@ -257,41 +149,30 @@ LaTeX output can feature the choices only (no answer, no explanation:
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Special features for teaching material</a><ul>
-<li><a class="reference internal" href="#admonitions">Admonitions</a></li>
-<li><a class="reference internal" href="#simple-box">Simple box</a></li>
-<li><a class="reference internal" href="#embedded-interactive-code">Embedded interactive code</a><ul>
-<li><a class="reference internal" href="#the-pyoptpro-code-environment">The <code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment</a></li>
-<li><a class="reference internal" href="#the-pyscpro-code-environment">The <code class="docutils literal"><span class="pre">pyscpro</span></code> code environment</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#exercises">Exercises</a></li>
-<li><a class="reference internal" href="#quote">Quote</a></li>
-<li><a class="reference internal" href="#quiz">Quiz</a></li>
-<li><a class="reference internal" href="#what-about-a-video-lecture">What about a video lecture?</a></li>
-</ul>
-</li>
-</ul>
-
+            <center>
+            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
+              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_logo_transparent.png" alt="Logo"/>
+            </a></p>
+            </center>
   <h4>Previous topic</h4>
   <p class="topless"><a href="._book009.html"
                         title="previous chapter">Writing in private repository while publishing in public</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._book011.html"
-                        title="next chapter">Appendix: Use of Mako to aid book writing</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/._book010.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">Special features for teaching material</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._book010.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -305,20 +186,26 @@ LaTeX output can feature the choices only (no answer, no explanation:
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015, Hans Petter Langtangen.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
-      
-      |
-      <a href="_sources/._book010.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._book011.html" title="Special features for teaching material"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._book009.html" title="Writing in private repository while publishing in public"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
+      </ul>
     </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
+  </div>
+</div>
 
-    
-
-    
   </body>
 </html>

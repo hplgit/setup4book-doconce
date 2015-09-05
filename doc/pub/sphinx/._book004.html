@@ -9,7 +9,7 @@
     
     <title>Principles and conventions</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -45,11 +45,7 @@
     <link rel="top" title="How to Use DocOnce to Write Books" href="index.html" />
     <link rel="next" title="Assembling different pieces to a book" href="._book005.html" />
     <link rel="prev" title="Directory structure" href="._book003.html" />
-
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+ 
   
        <style type="text/css">
          div.admonition {
@@ -59,8 +55,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -72,14 +68,14 @@
         <li class="right" >
           <a href="._book003.html" title="Directory structure"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="principles-and-conventions">
 <span id="setup-rules-conv"></span><h1>Principles and conventions<a class="headerlink" href="#principles-and-conventions" title="Permalink to this headline">¶</a></h1>
@@ -224,7 +220,7 @@ labels as it makes it much easier to find the name of a new label and
 understand what a given label refers to.</p>
 <p>My chapter names are of the form <code class="docutils literal"><span class="pre">ch:name</span></code>, where <code class="docutils literal"><span class="pre">name</span></code> is the
 nickname of the chapter (this nickname is used for many other purposes
-also, see the section <a class="reference internal" href="._book005.html#setup-rules-book-assembly-org"><span>Organization of a chapter</span></a>).
+also, see the section <a class="reference internal" href="._book005.html#setup-rules-book-assembly-org"><span class="std std-ref">Organization of a chapter</span></a>).
 Section and subsection names are of the form</p>
 <div class="highlight-text"><div class="highlight"><pre>projectname:chaptername:sectionname:subsectionname
 </pre></div>
@@ -235,7 +231,7 @@ has label <code class="docutils literal"><span class="pre">setup:rules:conv:labe
 project (this book), <code class="docutils literal"><span class="pre">rules</span></code> is the nickname of the present chapter,
 <code class="docutils literal"><span class="pre">conv</span></code> is the nickname of the present section, and
 <code class="docutils literal"><span class="pre">label</span></code> is the nickname of the subsection.
-The section <a class="reference internal" href="._book005.html#setup-rules-book-assembly-org"><span>Organization of a chapter</span></a>
+The section <a class="reference internal" href="._book005.html#setup-rules-book-assembly-org"><span class="std std-ref">Organization of a chapter</span></a>
 has label <code class="docutils literal"><span class="pre">setup:rules:book_assembly:org</span></code>, where <code class="docutils literal"><span class="pre">book_assembly</span></code> is
 the nickname of the section using underscore to separate two words.
 Sometimes I leave out the project name.</p>
@@ -276,7 +272,7 @@ minimizing the vertical length of programs in books).
 Fortunately, for Python there is are nice tools for checking that
 a code follows the PEP8 rules, e.g.,
 <a class="reference external" href="https://flake8.readthedocs.org/en/2.0/">Flake8</a> (see
-<a class="reference internal" href="._book012.html#ref3" id="id1">[Ref3]</a> for an intro).</p>
+<a class="reference internal" href="._book013.html#ref3" id="id1">[Ref3]</a> for an intro).</p>
 <p>For any programming language it is key to agree on how to use
 white space in indentation, style of loops, identifier
 names (<code class="docutils literal"><span class="pre">my_funtcion</span></code> vs <code class="docutils literal"><span class="pre">myFunction</span></code> vs <code class="docutils literal"><span class="pre">MyFunction</span></code>), white space
@@ -353,7 +349,7 @@ a different team is behind the present chapter.</p>
 <p>This note suggests to develop a book together with a <em>study guide</em>, i.e.,
 a summarizing version of the material. An effective format of a study
 guide is a set of slides, ideally a set that can be used both for
-teaching and for self-study. The section <a class="reference internal" href="._book008.html#setup-rules-slides"><span>Study guides and slides</span></a> explains
+teaching and for self-study. The section <a class="reference internal" href="._book008.html#setup-rules-slides"><span class="std std-ref">Study guides and slides</span></a> explains
 some infrastructure for producing DocOnce slides.</p>
 <p>Some prefer to develop slides for a study guide first and then use this
 as a skeleton for writing the running text of a chapter. Others prefer
@@ -362,7 +358,7 @@ to produce the slides from the running text.</p>
 Slides for reading are not so sensitive to the style, but if the slides
 are also intended to be used in teaching, the style becomes key.
 Some comments on style are provided in box in the introduction to
-the section <a class="reference internal" href="._book008.html#setup-rules-slides"><span>Study guides and slides</span></a>. Rather than having boring headings a la
+the section <a class="reference internal" href="._book008.html#setup-rules-slides"><span class="std std-ref">Study guides and slides</span></a>. Rather than having boring headings a la
 <em>Assumptions</em>, followed by a bullet list of assumptions,
 I recommend to summarize the most important information in a 1-2 line
 heading, e.g., <em>We assume a homogeneous material and no external forcing</em>.
@@ -422,8 +418,13 @@ separate document.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
+              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_logo_transparent.png" alt="Logo"/>
+            </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Principles and conventions</a><ul>
@@ -443,15 +444,17 @@ separate document.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._book005.html"
                         title="next chapter">Assembling different pieces to a book</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/._book004.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._book004.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -465,20 +468,26 @@ separate document.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015, Hans Petter Langtangen.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
-      
-      |
-      <a href="_sources/._book004.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._book005.html" title="Assembling different pieces to a book"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="._book003.html" title="Directory structure"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">How to Use DocOnce to Write Books</a> &raquo;</li> 
+      </ul>
     </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
+  </div>
+</div>
 
-    
-
-    
   </body>
 </html>

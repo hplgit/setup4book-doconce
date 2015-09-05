@@ -1,8 +1,3 @@
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. !split
 
 Cross-referencing across chapters
@@ -50,7 +45,7 @@ chapter:
 
 .. code-block:: doconce
 
-        The world's most famous equation is ref[(ref{setup:fake:Emc2})][in
+        The world's most famous equation is ref[(ref{setup:fake:Emc2})][ in
         cite{Langtangen_dobook_fake}][
         as found in the document "Some document":
         "http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake"
@@ -73,4 +68,21 @@ found in the `DocOnce manual <http://hplgit.github.io/doconce/doc/pub/manual/htm
 In particular, one has to insert ``# Externaldocuments:`` commands in
 all ``main_*.do.txt`` files that includes files with generalized
 references.
+
+
+.. admonition:: Tip: Limit generalized references to those strictly needed
+
+   Books often contain a lot of cross references, and making generalized
+   references out of all them can be quite some job. A convenient way
+   of saving boring work
+   is to enclose nice-to-have, yet not strictly needed, references in
+   Mako or Preprocess if statements (typically ``if BOOK == "book"``) such
+   that they appear in the full book but not in individual chapters.
+   
+   However, if individual chapters in HTML are to be one official format
+   of the book, you should make the chapters identical to the book and
+   make generalized references out of all references to other chapters.
+
+
+
 

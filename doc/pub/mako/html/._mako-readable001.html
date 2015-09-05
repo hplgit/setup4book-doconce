@@ -96,6 +96,68 @@ Writing chapters that can both live their individual lives and be part of
 a book faces some challenges for which we have some nice solutions
 in the coming sections.
 
+<p>
+The easiest way to utilize Mako is to introduce variables in the text.
+For example, one can introduce a variable <code>COPYRIGHT</code>
+for the type of copyright desired
+for authors. Most Mako variables in this text are upper case, but
+any legal variable name in Python is also a legal name in Mako.
+In the DocOnce source file we can replace the variable by its content
+by writing <code>${COPYRIGHT}</code>:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> AUTHOR: H. P. Langtangen ${COPYRIGHT} at Simula &amp; UiO
+</pre></div>
+<p>
+The content of the variable can either be set at the command line
+as part of the <code>doconce format</code> command,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc COPYRIGHT=&#39;{copyright|CC BY}&#39;
+</pre></div>
+<p>
+or hardcoded in the DocOnce file (as a standard Python variable) inside
+the <code>&lt;%...%&gt;</code> directives (before the first use of the variable):
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;%
+COPYRIGHT = &#39;{copyright|This work is released under a BSD license.}&#39;
+%&gt;
+</pre></div>
+<p>
+By having the copyright as a variable, we can use this variable for all
+authors to ensure consistency of copyrights, and we can easily compile
+different versions of the documents with different copyrights by just
+changing <code>COPYRIGHT=</code> on the command line.
+
+<p>
+Mako variables can be used in loops and if tests.
+DocOnce always defines a variable <code>FORMAT</code> holding the chosen output
+format. This variable is often used for emitting different text depending
+on the format, e.g.,
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">See
+% if FORMAT in (&#39;latex&#39;, &#39;pdflatex&#39;):
+Section ref{mysec}
+% elif FORMAT == &#39;html&#39;:
+<span style="color: #008000">ref{mysec}</span>
+% elif FORMAT == &#39;sphinx&#39;:
+<span style="color: #008000">ref{mysec}</span>
+% else:
+the previous section
+% endif
+for more information.
+</pre></div>
+
 <h2 id="___sec1">How to speak about &quot;this chapter&quot; </h2>
 
 <p>

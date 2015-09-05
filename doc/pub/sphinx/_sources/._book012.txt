@@ -1,29 +1,15 @@
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. !split
 
-References
-==========
+.. _ch:mako:
 
-.. [Ref1]
-   **H. P. Langtangen**. *A Primer on Scientific Programming With Python*,
-   fourth edition,
-   *Texts in Computational Science and Engineering*,
-   Springer,
-   2014.
+Appendix: Use of Mako to aid book writing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-.. [Ref2]
-   **H. P. Langtangen**. Loops and lists,
-   `http://hplgit.github.io/primer.html/doc/pub/looplist <http://hplgit.github.io/primer.html/doc/pub/looplist>`_.
-
-.. [Ref3]
-   **H. P. Langtangen**. Debugging in Python,
-   `http://hplgit.github.io/primer.html/doc/pub/debug <http://hplgit.github.io/primer.html/doc/pub/debug>`_.
-
-.. [Ref4]
-   **H. P. Langtangen**. Some document,
-   `http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html <http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html>`_.
+**Remark.**
+Documents that contain raw Mako code in verbatim code blocks cannot
+also be processed by Mako, and this is the case with the ``mako``
+chapter. Since we need Mako for processing the rest of this book
+document, we are forced to compile the ``mako`` chapter as a stand-alone
+document (with the ``--no_mako`` option) and let this appendix be just a
+link to the `this stand-alone document <http://hplgit.github.io/setup4book-doconce/doc/pub/mako/html/index.html>`__.
 

@@ -4,9 +4,9 @@
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-.. Note on the Springer T2 style: here we use the modifications
+.. Note on the Springer T4 style: here we use the modifications
 
-.. introduced in t2do.sty and svmonodo.sty (both are bundled with DocOnce).
+.. introduced in t4do.sty and svmonodo.sty (both are bundled with DocOnce).
 
 .. Document title:
 
@@ -14,7 +14,7 @@ How to Use DocOnce to Write Books
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 8, 2015
+:Date: Sep 5, 2015
 
 .. Externaldocuments: ../chapters/fake/main_fake
 

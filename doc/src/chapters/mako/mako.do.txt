@@ -16,6 +16,56 @@ Writing chapters that can both live their individual lives and be part of
 a book faces some challenges for which we have some nice solutions
 in the coming sections.
 
+The easiest way to utilize Mako is to introduce variables in the text.
+For example, one can introduce a variable `COPYRIGHT`
+for the type of copyright desired
+for authors. Most Mako variables in this text are upper case, but
+any legal variable name in Python is also a legal name in Mako.
+In the DocOnce source file we can replace the variable by its content
+by writing `${COPYRIGHT}`:
+
+!bc do
+ AUTHOR: H. P. Langtangen ${COPYRIGHT} at Simula & UiO
+!ec
+The content of the variable can either be set at the command line
+as part of the `doconce format` command,
+
+!bc sys
+Terminal> doconce format html mydoc COPYRIGHT='{copyright|CC BY}'
+!ec
+or hardcoded in the DocOnce file (as a standard Python variable) inside
+the `<%...%>` directives (before the first use of the variable):
+
+!bc do
+<%
+COPYRIGHT = '{copyright|This work is released under a BSD license.}'
+%>
+!ec
+
+By having the copyright as a variable, we can use this variable for all
+authors to ensure consistency of copyrights, and we can easily compile
+different versions of the documents with different copyrights by just
+changing `COPYRIGHT=` on the command line.
+
+Mako variables can be used in loops and if tests.
+DocOnce always defines a variable `FORMAT` holding the chosen output
+format. This variable is often used for emitting different text depending
+on the format, e.g.,
+
+!bc do
+See
+% if FORMAT in ('latex', 'pdflatex'):
+Section ref{mysec}
+% elif FORMAT == 'html':
+ref{mysec}
+% elif FORMAT == 'sphinx':
+ref{mysec}
+% else:
+the previous section
+% endif
+for more information.
+!ec
+
 ===== How to speak about ``this chapter'' =====
 
 idx{`CHAPTER`}

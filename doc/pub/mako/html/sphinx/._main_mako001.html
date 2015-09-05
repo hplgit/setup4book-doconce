@@ -85,6 +85,49 @@ actually a computer program where you can use variables and functions.</p>
 <p>Writing chapters that can both live their individual lives and be part of
 a book faces some challenges for which we have some nice solutions
 in the coming sections.</p>
+<p>The easiest way to utilize Mako is to introduce variables in the text.
+For example, one can introduce a variable <code class="docutils literal"><span class="pre">COPYRIGHT</span></code>
+for the type of copyright desired
+for authors. Most Mako variables in this text are upper case, but
+any legal variable name in Python is also a legal name in Mako.
+In the DocOnce source file we can replace the variable by its content
+by writing <code class="docutils literal"><span class="pre">${COPYRIGHT}</span></code>:</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">AUTHOR:</span> H. P. Langtangen ${COPYRIGHT} at Simula &amp; UiO
+</pre></div>
+</div>
+<p>The content of the variable can either be set at the command line
+as part of the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command,</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc COPYRIGHT=&#39;{copyright|CC BY}&#39;
+</pre></div>
+</div>
+<p>or hardcoded in the DocOnce file (as a standard Python variable) inside
+the <code class="docutils literal"><span class="pre">&lt;%...%&gt;</span></code> directives (before the first use of the variable):</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;%
+COPYRIGHT = &#39;{copyright|This work is released under a BSD license.}&#39;
+%&gt;
+</pre></div>
+</div>
+<p>By having the copyright as a variable, we can use this variable for all
+authors to ensure consistency of copyrights, and we can easily compile
+different versions of the documents with different copyrights by just
+changing <code class="docutils literal"><span class="pre">COPYRIGHT=</span></code> on the command line.</p>
+<p>Mako variables can be used in loops and if tests.
+DocOnce always defines a variable <code class="docutils literal"><span class="pre">FORMAT</span></code> holding the chosen output
+format. This variable is often used for emitting different text depending
+on the format, e.g.,</p>
+<div class="highlight-doconce"><div class="highlight"><pre>See
+% if FORMAT in (&#39;latex&#39;, &#39;pdflatex&#39;):
+Section ref{mysec}
+% elif FORMAT == &#39;html&#39;:
+<span class="nb">ref{mysec}</span>
+% elif FORMAT == &#39;sphinx&#39;:
+<span class="nb">ref{mysec}</span>
+% else:
+the previous section
+% endif
+for more information.
+</pre></div>
+</div>
 <div class="section" id="how-to-speak-about-this-chapter">
 <h2>How to speak about &#8220;this chapter&#8221;<a class="headerlink" href="#how-to-speak-about-this-chapter" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-2"></span><span class="target" id="index-3"></span><p id="index-4">In a book you will often need the phrase &#8220;this chapter&#8221;, but his is

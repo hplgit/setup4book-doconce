@@ -1,8 +1,3 @@
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. !split
 
 .. _ch:structure:

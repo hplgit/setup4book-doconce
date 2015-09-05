@@ -22,6 +22,7 @@ Contents:
    ._book010
    ._book011
    ._book012
+   ._book013
 
 
 Indices and tables

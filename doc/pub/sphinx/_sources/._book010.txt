@@ -1,297 +1,82 @@
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. !split
 
-Special features for teaching material
-======================================
-
-DocOnce offers some special features that can greatly aid development
-of effective teaching material:
-
- * fancy admonitions
-
- * simple boxes
-
- * interactive code blocks
-
- * hidden code blocks
-
- * exercises
-
- * multiple-choice questions or quizzes
-
- * movies
-
- * quotes
-
-These are briefly exemplified below. If you are mainly interested in how
-to structure DocOnce-based books, you can safely jump to
-the section :ref:`setup:rules:book:assembly`.
-
-Admonitions
------------
-
-.. index:: admonitions
-
-
-.. admonition:: Use admonitions
-
-   Need to notify, warn, summarize, ask a question, give a tip,
-   dive into less important details, or really emphasize a result?
-   DocOnce features special
-   *notice*, *warning*, *summary*,
-   and *question* boxes for  called admonitions. These can be typeset in a
-   variety of versions, depending on the output format
-   (check out ``doconce format --help`` and the many options with ``admon``
-   in the name).
-
-
-
-
-Simple box
-----------
-
-.. index:: bbox box
-
-Put a box around something important:
-
-
-.. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so since the admon needs a title
-   (the box formatting is therefore just ignored)
-
-
-.. math::
-         1 + 1 = 2
-
-
-**Note:**
-Simple boxes are not supported in format ``sphinx``.
-
-Embedded interactive code
--------------------------
-
-.. index:: interactive code
-
-.. index:: pyoptpro interactive code
-
-The ``pyoptpro`` code environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To illustrate program flow, you can step through code
-(as in a debugger, just more illustrative) using the
-``pyoptpro`` code environment. Here is an example:
-
-.. raw:: html
-
-        <iframe width="950" height="500" frameborder="0"
-                src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
-        </iframe>
-
-In HTML and Sphinx format this code can be stepped through in
-the browser, while
-in LaTeX one gets a link to a web page with this functionality.
-
-The ``pyscpro`` code environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The `SageMathCell <https://sagecell.sagemath.org/>`__ server
-enables live Python code in web documents. Using the
-``pyscpro`` code environment, Python code can be embedded in a
-for interactive computing:
-
-.. sagecellserver::
-
-        import random
-        a = random.randint(1, 7)
-        print a
-
-We can even plot:
-
-.. sagecellserver::
-
-        from numpy import *
-        from matplotlib.pyplot import *
-        
-        x = linspace(-2*pi, 2*pi, 801)
-        y = exp(-0.1*x**2)*sin(4*x)
-        plot(x, y)
-        show()
-
-HTML and Sphinx output has such interactive Sage Cells,
-while other output formats can just show the code.
-
-Exercises
----------
-
-.. index:: exercises in DocOnce
-
-
-.. admonition:: Exercise environments
-
-   DocOnce supports *exercise subsections*, which are subsections with some
-   extra tagging for exercises. Important features are:
-   
-    * exercises can be divided into subexercises
-   
-    * one may specify filename(s) for delivering the answer to an exercise
-   
-    * one may specify filename(s) for the solution of an exercise
-   
-    * one may specify a remark (fun facts, comments)
-   
-    * one or more hints can be given to an exercise or subexercise
-      (can be hidden in certain output formats)
-   
-    * any exercise or subexercise can have a solution field
-   
-    * any exercise or subexercise can have an answer field (very condensed solution)
-   
-    * solutions and answers can be removed from the document at compile time
-   
-    * exercises can have one of four titles: Exercise, Project, Problem, or
-      Example
-
-
-
-
-Quote
------
-
-There is also a *quote* environment (invisible box with larger
-margins).
-
-
-..
-
-    We're programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We're not excited by incremental renovation: tinkering, improving, planting flower beds.
-    
-    There's a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:
-    **It's harder to read code than to write it.**
-    This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it's easier and more fun than figuring out how the old function works.
-    
-    `Joel Spolsky <http://www.joelonsoftware.com/articles/fog0000000069.html>`__, 2000
-
-
-
-Quiz
-----
-
-.. index:: quiz
-
-.. index:: multiple-choice questions
-
-.. --- previous heading type: subsection
-
-
-
-.. begin quiz
-
-
-
-**Question:** Does DocOnce feature multiple-choice questions or quizzes?
-
-
-**Choice A:** Yes. :abbr:`? (Right!)` :abbr:`# (See the quiz manual (<http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).)`
-
-**Choice B:** No. :abbr:`? (Wrong!)`
-
-.. end quiz
-
-
-
-Quite often we need mathematics and computer code in questions and
-answers.
-
-
-
-.. begin quiz
-
-
-
-**Question:** Compute the integral
-
-.. math::
-         \int_0^{2\pi} e^{-x}\sin^2 x\,dx 
-
-and report the formula in verbatim LaTeX code,
-
-.. code-block:: latex
-
-        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx = ... \]
-
-
-**Choice A:** There is no closed-form formula for this integral. :abbr:`? (Wrong!)` :abbr:`# (Maybe you fiddled around with pen and paper the wrong way... Try sympy!)`
-
-**Choice B:** .. code-block:: python
-
-        >>> from sympy import *
-        >>> x = symbols('x')
-        >>> F = integrate(exp(-x)*sin(x)**2, (x, 0, 2*pi))
-        >>> F
-        -2*exp(-2*pi)/5 + 2/5
-        >>> latex(F)
-        '- \\frac{2}{5 e^{2 \\pi}} + \\frac{2}{5}'
-
-so the answer is
-
-.. code-block:: latex
-
-        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
-        - \frac{2}{5 e^{2 \pi}} + \frac{2}{5} \] :abbr:`? (Right!)`
-
-**Choice C:** .. code-block:: latex
-
-        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
-        - \frac{3}{4 e^{2 \pi}} + \frac{3}{4} \] :abbr:`? (Wrong!)` :abbr:`# (Something went wrong here with the fractions...)`
-
-**Choice D:** .. code-block:: latex
-
-        \[ \int_0^{2\pi} e^{-x}\sin^2 x\,dx =
-        - {2\over5}{5 exp^{2 pi}} + \frac{2}{5} \] :abbr:`? (Wrong!)` :abbr:`# (Well, the math is correct, but the LaTeX code lacks two backslashes, and \over is old-fashioned, use \frac{}{} in 2015.)`
-
-.. end quiz
-
-
-
-The typesetting of a quiz depends on the output format.
-One can in plain HTML
-and Sphinx formats
-hover over the choice and get a pop-up tooltip with the
-right answer and an explanation (if defined).
-The explanation can only show plain text, so it is empty if it
-contains math or code blocks, or figures.
-With HTML Bootstrap styles one can click on a symbol to open up
-the answer and the explanation.
-RunestoneInteractive books (Sphinx) offers a
-button for the same purpose, but the explanation can only be
-plain text so any math or code block makes the explanation empty.
-LaTeX output can feature the choices only (no answer, no explanation:
-``--without_solutions --without_answers``), the short answer only
-(``--without_solutions``) or both the answer and all explanations
-(the case in this demo).
-
-What about a video lecture?
----------------------------
-
-.. index:: video in DocOnce
-
-.. index:: embedded video in DocOnce
-
-.. index:: movie in DocOnce
-
-.. raw:: html
-        
-        <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
-
-
-.. admonition:: Question
-
-   Can you think of applications of the above mentioned features?
-
-
-
+Book versions with and without solutions to exercises
+=====================================================
+
+.. index:: solutions to exercises
+
+.. index:: --without_solutions
+
+It is easy to turn solutions to exercises on or off by the options
+``--without_solutions`` (for ``!bsol`` environments) and ``--without_answers``
+(for ``!bans`` environments). One often wants to publish a book
+without solutions to exercises, but also make versions with solutions.
+One possibility is to password protect the versions with solutions.
+
+It can be wise to create a very complicated filename for the files
+that may be shown in a browser with the URL visible for a class.
+One possibility
+is to create a 40 long SHA1 string as filename and start it with a dot
+to also make it invisible in most operating systems.
+
+.. code-block:: bash
+
+        hash=82dee82e1274a586571086dca04d00308d3a0d86
+        html=.trash<built-in function hash>
+        doconce format html book --html_output=$html ...
+
+The file following file, called ``password.html``, presents an empty page
+with a button for providing a password, and if approved, the first
+page of the book opens up.
+
+.. code-block:: html
+
+        <html>
+        <body>
+        <!-- password protected HTML page --->
+        <script>
+        function passWord() {
+        var testV = 1;
+        var pass1 = prompt('Please enter your password',' ');
+        while (testV < 3) {
+        if (!pass1)
+        history.go(-1);
+        if (pass1.toLowerCase() == "PASSWORD") {
+        alert('You Got it Right!');
+        window.open('DESTINATION.html');
+        break;
+        }
+        testV += 1;
+        var pass1 =
+        prompt('Access denied - password incorrect!', 'Password');
+        }
+        if (pass1.toLowerCase()!="password" & testV ==3)
+        history.go(-1);
+        return " ";
+        }
+        </script>
+        <center>
+        <form>
+        <input type="button" value="Enter Protected Area" onClick="passWord()">
+        </form>
+        </center>
+        </body>
+        </html>
+
+Suppose your HTML file with solutions that you want to password protect has the
+name ``book-sol.html``. Then you can simply do
+
+.. code-block:: bash
+
+        cp password.html book-sol.html
+        doconce replace DESTINATION "$html" book-sol.html
+        doconce replace PASSWORD "s!m!art|pass@word" book-sol.html
+
+A PDF file can easily be password protected with the use of the ``pdftk``
+tool. If ``book.pdf`` is with solutions, ``book-sol.pdf`` will also require
+a password ``a!4``:
+
+.. code-block:: bash
+
+        pdftk book.pdf output book-sol.pdf owner_pw foo user_pw "a!4"
 

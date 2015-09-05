@@ -21,7 +21,7 @@ opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
 
 # Compile HTML Bootstrap book
 system doconce format html $name $opt --html_style=bootswatch_journal --html_code_style=inherit --html_output=$name
-system doconce split_html decay-book.html
+system doconce split_html $name.html
 
 # Compile standard sphinx
 theme=uio

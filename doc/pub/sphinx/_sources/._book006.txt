@@ -37,7 +37,7 @@ wrapper file ``main_mychap.do.txt`` such that you can compile this chapter
 as a stand-alone document. You also get ``make.sh`` which calls ``../make.sh``
 with the chapter main document (``main_mychap``) as argument. Optional
 arguments for running ``doconce format pdflatex`` can be given to
-``../make.sh`` in ``make.sh`` if needed (e.g., --encoding=utf8`).
+``../make.sh`` in ``make.sh`` if needed (e.g., ``--encoding=utf8``).
 
 Compiling the chapter
 ---------------------
@@ -71,6 +71,14 @@ version for printing appear as footnotes (and just hyperlinks with
 a dark blue color in the electronic version). The two files are
 named ``mychap.pdf`` and ``mychap-4print.pdf``, respectively, and
 copied to ``doc/pub/mychap/pdf`` for publishing.
+
+.. code-block:: bash
+
+        cp new_dictionary.txt~ .dict4spell.txt
+
+(Make sure ``.dict4spell.txt`` is version controlled by Git.)
+The ``make.sh`` script will not proceed with compilation of the documents
+before the spell check is run without errors.
 
 
 .. admonition:: Tip: use tinyurl.com for shortening long URLs
@@ -106,6 +114,18 @@ it gives cleaner LaTeX code). (With ``ptex2tex`` one would need a common
 configuration file ``doc/chapters/.ptex2tex.cfg`` to be copied by
 ``doc/chapters/make.sh`` to the chapter directory prior to running
 `ptex2tex.)
+
+Automatic spell checking
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``make.sh`` first runs a spell check using ``doconce spellcheck``.
+The first time you run this command there will be many "misspellings"
+because of unregistered (scientific) words in the dictionary and maybe
+also because some words are actually misspelled. Invoke the
+``misspellings.txt |nbsp| `` file to see a list of all misspellings. Correct
+mistakes in the original documents and run the ``make.sh`` script again.
+When ``misspellings.txt |nbsp| `` at some point contains acceptable words only,
+you update the dictionary by
 
 .. index:: make_html.sh
 
@@ -170,8 +190,10 @@ HTML or Sphinx styles.
    
    .. code-block:: text
    
-           Terminal> doconce format html index_files --html_style=bootstrap \ 
-                     --html_links_in_new_window --html_bootstrap_navbar=off
+           Terminal> doconce format html index_files \ 
+                     --html_style=bootstrap \ 
+                     --html_links_in_new_window \ 
+           	  --html_bootstrap_navbar=off
    
    and publish it in ``doc/pub/index.html``.
 
@@ -228,7 +250,7 @@ pack all files of the entire book projects for publishing with Springer
 (``pack_Springer.sh``).
 
 The current book layout created by ``make.sh`` makes use of a (now outdated)
-Springer T2 style for textbooks (requires the ``.cls`` and ``.sty`` files in
+Springer T4 style for textbooks (requires the ``.cls`` and ``.sty`` files in
 the ``book`` directory). Other Springer styles supported by DocOnce
 are Lecture Notes in Computational Science and Engineering (monographs
 and proceedings),
