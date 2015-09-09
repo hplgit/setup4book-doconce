@@ -3,4 +3,10 @@
 # PDF
 bash make.sh
 # HTML
-bash ../make_html.sh main_mako --no_mako --no_preprocess
+bash ../make_html.sh main_mako --no_mako
+# Must do a hack because of # #include examples in the file
+# (preprocess will try to include...so we write # INCLUDE instead
+# and edit here)
+doconce replace '# INCLUDE' '# #include' *.html ._*.html sphinx-uio/_build/html/*.html sphinx-uio/_build/html/.*.html
+dest=../../../pub/mako/html
+doconce replace '# INCLUDE' '# #include' $dest/*.html $dest/._*.html $dest/sphinx/*.html $dest/sphinx/.*.html

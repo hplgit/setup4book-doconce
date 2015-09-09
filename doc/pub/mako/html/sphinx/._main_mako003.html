@@ -132,6 +132,113 @@ type employs a slightly different syntax and is exemplified in the file
 <a class="reference external" href="http://tinyurl.com/kukz8pt/index_files-do.txt">doc/src/chapters/index_files.do.txt</a>. We refer to the <a class="reference external" href="http://docs.makotemplates.org/en/latest/syntax.html">Mako syntax documentation</a> for more information.</p>
 </div>
 </div>
+<div class="section" id="how-to-automatically-generate-a-doconce-file-with-repetitive-structure">
+<span id="mako-pyscripts"></span><h2>How to automatically generate a DocOnce file with repetitive structure<a class="headerlink" href="#how-to-automatically-generate-a-doconce-file-with-repetitive-structure" title="Permalink to this headline">¶</a></h2>
+<p>To illustrate how Python and Mako can be used to efficiently
+generate repetitive structures with a minimum of manual work,
+we consider the following case. Suppose you have a DocOnce document
+made up of a number of sections, where the DocOnce source of each section
+resides in a subdirectory with name <code class="docutils literal"><span class="pre">issueX</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> is an integer
+counter. You want to create a &#8220;master&#8221; DocOnce file that includes
+all the sections, e.g..</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= Issue 1 =======</span>
+
+<span class="c"># #include &quot;issue1/issue.do.txt&quot;</span>
+
+<span class="gh">======= Issue 2 =======</span>
+
+<span class="c"># #include &quot;issue2/issue.do.txt&quot;</span>
+
+<span class="gh">======= Issue 3 =======</span>
+
+<span class="c"># #include &quot;issue3/issue.do.txt&quot;</span>
+</pre></div>
+</div>
+<p>Maybe issues come and go, and so do the subdirectories, implying that
+one should automate the making of the above content of the master
+document.</p>
+<p>Generating a set of sections via Mako is easy:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;%
+sections = range(1, 8)
+%&gt;
+
+% for i in sections:
+<span class="gh">======= Issue ${i} =======</span>
+% endfor
+</pre></div>
+</div>
+<p>Unfortunately, we cannot write</p>
+<div class="highlight-doconce"><div class="highlight"><pre>% for i in sections:
+<span class="gh">======= Issue ${i} =======</span>
+
+<span class="c"># #include &quot;issue${i}/issue.do.txt&quot;</span>
+% endfor
+</pre></div>
+</div>
+<p>because the <code class="docutils literal"><span class="pre">#include</span></code> statement is run by Preprocess <em>prior</em> to
+Mako&#8217;s interpretation of the file.
+Instead, we can generate (parts of) the master file in a separate
+Python script. This makes it also easier to check which subdirectories
+we have and set up the contents of sections based on the file
+structure:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span>
+<span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;master_section.do.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">subdirs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;issue*&#39;</span><span class="p">)</span>
+<span class="c"># Run through all issue* subdirectory names in sorted sequence</span>
+<span class="k">for</span> <span class="n">subdir</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">subdirs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">subdir</span><span class="p">):</span>               <span class="c"># directory?</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s">&#39;issue.do.txt&#39;</span><span class="p">):</span>  <span class="c"># file?</span>
+            <span class="c"># Extract number X from &quot;issueX&quot; name:</span>
+            <span class="n">no</span> <span class="o">=</span> <span class="n">subdir</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">======= Issue </span><span class="si">%s</span><span class="s"> =======</span>
+
+<span class="s"># #include &quot;</span><span class="si">%s</span><span class="s">/issue.do.txt&quot;</span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">no</span><span class="p">,</span> <span class="n">subdir</span><span class="p">))</span>
+<span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The master file can now just do an include of <code class="docutils literal"><span class="pre">master_sections.do.txt</span></code>.
+If the make script for compiling DocOnce to various formats first
+runs the script above, the <code class="docutils literal"><span class="pre">master_sections.do.txt</span></code> contents are
+up-to-date with the current file structure, and the contents
+automatically propagate to the master document.</p>
+<p>There is one potential problem in the above example: the <code class="docutils literal"><span class="pre">issue.do.txt</span></code>
+files may include figures with local paths. For example,
+<code class="docutils literal"><span class="pre">issue5/issue.do.txt</span></code> contains</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="nb">FIGURE: [fig/myfig, width=500 frac=0.8] My figure. label{my:fig}</span>
+</pre></div>
+</div>
+<p>When compiling the master document, no <code class="docutils literal"><span class="pre">fig/myfig.png</span></code> is found because
+the correct path, relative to the master document&#8217;s directory,
+is <code class="docutils literal"><span class="pre">issue5/fig/myfig.png</span></code>. The same problem arises if there are
+source code inclusion statements like <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span> <span class="pre">src/myprog.f</span></code>.
+The master document would then need <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span> <span class="pre">issue5/src/myprog.f</span></code>.
+The best way out of these problems is</p>
+<ol class="arabic simple">
+<li>Let figure and source code directories have a unique name,
+say <code class="docutils literal"><span class="pre">fig5</span></code> and <code class="docutils literal"><span class="pre">src5</span></code> in this example.</li>
+<li>Create links from the master document&#8217;s directory to
+all the <code class="docutils literal"><span class="pre">fig*</span></code> and <code class="docutils literal"><span class="pre">src*</span></code> subdirectories.</li>
+</ol>
+<p>Point 2 can be automated:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">subdirs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;issue*&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">subdir</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">subdirs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">subdir</span><span class="p">):</span>
+        <span class="n">no</span> <span class="o">=</span> <span class="n">subdir</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
+        <span class="n">figdir</span> <span class="o">=</span> <span class="s">&#39;fig&#39;</span> <span class="o">+</span> <span class="n">no</span>
+        <span class="n">srcdir</span> <span class="o">=</span> <span class="s">&#39;src&#39;</span> <span class="o">+</span> <span class="n">no</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">figdir</span><span class="p">):</span>
+           <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">figdir</span><span class="p">)</span>
+               <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">figdir</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">srcdir</span><span class="p">):</span>
+           <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">srcdir</span><span class="p">)</span>
+               <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">figdir</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This little case study shows the power of using scripts
+to assist the writing process.</p>
+</div>
 <div class="section" id="how-to-treat-multiple-programming-languages-in-the-same-text">
 <h2>How to treat multiple programming languages in the same text<a class="headerlink" href="#how-to-treat-multiple-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
 <p>With these ideas, it becomes straightforward to write a book that
@@ -317,6 +424,7 @@ References
   <ul>
 <li><a class="reference internal" href="#">Mako&#8217;s Python functions</a><ul>
 <li><a class="reference internal" href="#basics-of-mako-functions">Basics of Mako functions</a></li>
+<li><a class="reference internal" href="#how-to-automatically-generate-a-doconce-file-with-repetitive-structure">How to automatically generate a DocOnce file with repetitive structure</a></li>
 <li><a class="reference internal" href="#how-to-treat-multiple-programming-languages-in-the-same-text">How to treat multiple programming languages in the same text</a><ul>
 <li><a class="reference internal" href="#another-example">Another example</a></li>
 </ul>

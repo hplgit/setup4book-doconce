@@ -69,12 +69,16 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec2'),
               ("Mako's Python functions", 1, None, '___sec3'),
               ('Basics of Mako functions', 2, None, '___sec4'),
+              ('How to automatically generate a DocOnce file with repetitive structure',
+               2,
+               'mako:pyscripts',
+               'mako:pyscripts'),
               ('How to treat multiple programming languages in the same text',
                2,
                None,
-               '___sec5'),
-              ('Another example', 3, None, '___sec6'),
-              ('References', 1, None, '___sec7')]}
+               '___sec6'),
+              ('Another example', 3, None, '___sec7'),
+              ('References', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -170,7 +174,141 @@ type employs a slightly different syntax and is exemplified in the file
 </div>
 
 
-<h2 id="___sec5">How to treat multiple programming languages in the same text </h2>
+<h2 id="mako:pyscripts">How to automatically generate a DocOnce file with repetitive structure</h2>
+
+<p>
+To illustrate how Python and Mako can be used to efficiently
+generate repetitive structures with a minimum of manual work,
+we consider the following case. Suppose you have a DocOnce document
+made up of a number of sections, where the DocOnce source of each section
+resides in a subdirectory with name <code>issueX</code>, where <code>X</code> is an integer
+counter. You want to create a &quot;master&quot; DocOnce file that includes
+all the sections, e.g..
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>======= Issue 1 =======
+
+# #include &quot;issue1/issue.do.txt&quot;
+
+======= Issue 2 =======
+
+# #include &quot;issue2/issue.do.txt&quot;
+
+======= Issue 3 =======
+
+# #include &quot;issue3/issue.do.txt&quot;
+</code></pre>
+<!-- end verbatim block -->
+Maybe issues come and go, and so do the subdirectories, implying that
+one should automate the making of the above content of the master
+document.
+
+<p>
+Generating a set of sections via Mako is easy:
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>&lt;%
+sections = range(1, 8)
+%&gt;
+
+% for i in sections:
+======= Issue ${i} =======
+% endfor
+</code></pre>
+<!-- end verbatim block -->
+Unfortunately, we cannot write
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>% for i in sections:
+======= Issue ${i} =======
+
+# #include &quot;issue${i}/issue.do.txt&quot;
+% endfor
+</code></pre>
+<!-- end verbatim block -->
+because the <code>#include</code> statement is run by Preprocess <em>prior</em> to
+Mako's interpretation of the file.
+Instead, we can generate (parts of) the master file in a separate
+Python script. This makes it also easier to check which subdirectories
+we have and set up the contents of sections based on the file
+structure:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import os, glob
+outfile = open('master_section.do.txt', 'w')
+subdirs = glob.glob('issue*')
+# Run through all issue* subdirectory names in sorted sequence
+for subdir in sorted(subdirs):
+    if os.path.isdir(subdir):               # directory?
+        if os.path.isfile('issue.do.txt'):  # file?
+	    # Extract number X from &quot;issueX&quot; name:
+	    no = subdir[5:]
+	    outfile.write(&quot;&quot;&quot;
+======= Issue %s =======
+
+# #include &quot;%s/issue.do.txt&quot;
+&quot;&quot;&quot; % (no, subdir))
+outfile.close()
+</code></pre>
+<!-- end verbatim block -->
+The master file can now just do an include of <code>master_sections.do.txt</code>.
+If the make script for compiling DocOnce to various formats first
+runs the script above, the <code>master_sections.do.txt</code> contents are
+up-to-date with the current file structure, and the contents
+automatically propagate to the master document.
+
+<p>
+There is one potential problem in the above example: the <code>issue.do.txt</code>
+files may include figures with local paths. For example,
+<code>issue5/issue.do.txt</code> contains
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>FIGURE: [fig/myfig, width=500 frac=0.8] My figure. label{my:fig}
+</code></pre>
+<!-- end verbatim block -->
+When compiling the master document, no <code>fig/myfig.png</code> is found because
+the correct path, relative to the master document's directory,
+is <code>issue5/fig/myfig.png</code>. The same problem arises if there are
+source code inclusion statements like <code>@@@CODE src/myprog.f</code>.
+The master document would then need <code>@@@CODE issue5/src/myprog.f</code>.
+The best way out of these problems is
+
+<ol>
+<li> Let figure and source code directories have a unique name,
+   say <code>fig5</code> and <code>src5</code> in this example.</li>
+<li> Create links from the master document's directory to
+   all the <code>fig*</code> and <code>src*</code> subdirectories.</li>
+</ol>
+
+Point 2 can be automated:
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>subdirs = glob.glob('issue*')
+for subdir in sorted(subdirs):
+    if os.path.isdir(subdir):
+        no = subdir[5:]
+        figdir = 'fig' + no
+        srcdir = 'src' + no
+	if not os.path.islink(figdir):
+	   path = os.path.join(subdir, figdir)
+	       os.symlink(figdir, path)
+	if not os.path.islink(srcdir):
+	   path = os.path.join(subdir, srcdir)
+	       os.symlink(figdir, path)
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+This little case study shows the power of using scripts
+to assist the writing process.
+
+<h2 id="___sec6">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -344,14 +482,14 @@ by other programs, this function has to reside in a file
 </code></pre>
 <!-- end verbatim block -->
 
-<h3 id="___sec6">Another example </h3>
+<h3 id="___sec7">Another example </h3>
 
 <p>
 The manual contains a useful <a href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature" target="_self">example</a>
 on how to use Mako to implement
 the nomenclature functionality in the LaTeX package <code>nomencl</code>.
 
-<h1 id="___sec7">References </h1>
+<h1 id="___sec8">References </h1>
 
 <p>
 <!-- begin bibliography -->

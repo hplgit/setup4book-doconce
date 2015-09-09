@@ -31,12 +31,16 @@ Automatically generated HTML file from DocOnce source
                '___sec2'),
               ("Mako's Python functions", 1, None, '___sec3'),
               ('Basics of Mako functions', 2, None, '___sec4'),
+              ('How to automatically generate a DocOnce file with repetitive structure',
+               2,
+               'mako:pyscripts',
+               'mako:pyscripts'),
               ('How to treat multiple programming languages in the same text',
                2,
                None,
-               '___sec5'),
-              ('Another example', 3, None, '___sec6'),
-              ('References', 1, None, '___sec7')]}
+               '___sec6'),
+              ('Another example', 3, None, '___sec7'),
+              ('References', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -62,9 +66,10 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="._mako-bootstrap002.html#___sec2" style="font-size: 80%;"><b>How to make several variants of the text</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Mako's Python functions</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basics of Mako functions</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat multiple programming languages in the same text</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another example</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="#mako:pyscripts" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to automatically generate a DocOnce file with repetitive structure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat multiple programming languages in the same text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another example</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -154,7 +159,145 @@ type employs a slightly different syntax and is exemplified in the file
 </div>
 
 
-<h2 id="___sec5">How to treat multiple programming languages in the same text </h2>
+<h2 id="mako:pyscripts">How to automatically generate a DocOnce file with repetitive structure</h2>
+
+<p>
+To illustrate how Python and Mako can be used to efficiently
+generate repetitive structures with a minimum of manual work,
+we consider the following case. Suppose you have a DocOnce document
+made up of a number of sections, where the DocOnce source of each section
+resides in a subdirectory with name <code>issueX</code>, where <code>X</code> is an integer
+counter. You want to create a &quot;master&quot; DocOnce file that includes
+all the sections, e.g..
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= Issue 1 =======</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;issue1/issue.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= Issue 2 =======</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;issue2/issue.do.txt&quot;</span>
+
+<span style="color: #000080; font-weight: bold">======= Issue 3 =======</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;issue3/issue.do.txt&quot;</span>
+</pre></div>
+<p>
+Maybe issues come and go, and so do the subdirectories, implying that
+one should automate the making of the above content of the master
+document.
+
+<p>
+Generating a set of sections via Mako is easy:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;%
+sections = range(1, 8)
+%&gt;
+
+% for i in sections:
+<span style="color: #000080; font-weight: bold">======= Issue ${i} =======</span>
+% endfor
+</pre></div>
+<p>
+Unfortunately, we cannot write
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">% for i in sections:
+<span style="color: #000080; font-weight: bold">======= Issue ${i} =======</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;issue${i}/issue.do.txt&quot;</span>
+% endfor
+</pre></div>
+<p>
+because the <code>#include</code> statement is run by Preprocess <em>prior</em> to
+Mako's interpretation of the file.
+Instead, we can generate (parts of) the master file in a separate
+Python script. This makes it also easier to check which subdirectories
+we have and set up the contents of sections based on the file
+structure:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">glob</span>
+outfile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;master_section.do.txt&#39;</span>, <span style="color: #BA2121">&#39;w&#39;</span>)
+subdirs <span style="color: #666666">=</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;issue*&#39;</span>)
+<span style="color: #408080; font-style: italic"># Run through all issue* subdirectory names in sorted sequence</span>
+<span style="color: #008000; font-weight: bold">for</span> subdir <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">sorted</span>(subdirs):
+    <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(subdir):               <span style="color: #408080; font-style: italic"># directory?</span>
+        <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(<span style="color: #BA2121">&#39;issue.do.txt&#39;</span>):  <span style="color: #408080; font-style: italic"># file?</span>
+	    <span style="color: #408080; font-style: italic"># Extract number X from &quot;issueX&quot; name:</span>
+	    no <span style="color: #666666">=</span> subdir[<span style="color: #666666">5</span>:]
+	    outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&quot;&quot;&quot;</span>
+<span style="color: #BA2121">======= Issue </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> =======</span>
+
+<span style="color: #BA2121"># #include &quot;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">/issue.do.txt&quot;</span>
+<span style="color: #BA2121">&quot;&quot;&quot;</span> <span style="color: #666666">%</span> (no, subdir))
+outfile<span style="color: #666666">.</span>close()
+</pre></div>
+<p>
+The master file can now just do an include of <code>master_sections.do.txt</code>.
+If the make script for compiling DocOnce to various formats first
+runs the script above, the <code>master_sections.do.txt</code> contents are
+up-to-date with the current file structure, and the contents
+automatically propagate to the master document.
+
+<p>
+There is one potential problem in the above example: the <code>issue.do.txt</code>
+files may include figures with local paths. For example,
+<code>issue5/issue.do.txt</code> contains
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">FIGURE: [fig/myfig, width=500 frac=0.8] My figure. label{my:fig}</span>
+</pre></div>
+<p>
+When compiling the master document, no <code>fig/myfig.png</code> is found because
+the correct path, relative to the master document's directory,
+is <code>issue5/fig/myfig.png</code>. The same problem arises if there are
+source code inclusion statements like <code>@@@CODE src/myprog.f</code>.
+The master document would then need <code>@@@CODE issue5/src/myprog.f</code>.
+The best way out of these problems is
+
+<ol>
+<li> Let figure and source code directories have a unique name,
+   say <code>fig5</code> and <code>src5</code> in this example.</li>
+<li> Create links from the master document's directory to
+   all the <code>fig*</code> and <code>src*</code> subdirectories.</li>
+</ol>
+
+Point 2 can be automated:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">subdirs <span style="color: #666666">=</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;issue*&#39;</span>)
+<span style="color: #008000; font-weight: bold">for</span> subdir <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">sorted</span>(subdirs):
+    <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isdir(subdir):
+        no <span style="color: #666666">=</span> subdir[<span style="color: #666666">5</span>:]
+        figdir <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;fig&#39;</span> <span style="color: #666666">+</span> no
+        srcdir <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;src&#39;</span> <span style="color: #666666">+</span> no
+	<span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>islink(figdir):
+	   path <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(subdir, figdir)
+	       os<span style="color: #666666">.</span>symlink(figdir, path)
+	<span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>islink(srcdir):
+	   path <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(subdir, srcdir)
+	       os<span style="color: #666666">.</span>symlink(figdir, path)
+</pre></div>
+<p>
+This little case study shows the power of using scripts
+to assist the writing process.
+
+<h2 id="___sec6">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -328,14 +471,14 @@ by other programs, this function has to reside in a file
 \Verb!sampler_vec.py!.
 </pre></div>
 
-<h3 id="___sec6">Another example </h3>
+<h3 id="___sec7">Another example </h3>
 
 <p>
 The manual contains a useful <a href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature" target="_self">example</a>
 on how to use Mako to implement
 the nomenclature functionality in the LaTeX package <code>nomencl</code>.
 
-<h1 id="___sec7">References </h1>
+<h1 id="___sec8">References </h1>
 
 <p>
 <!-- begin bibliography -->

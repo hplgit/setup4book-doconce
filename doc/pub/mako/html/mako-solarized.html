@@ -7,6 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Use of Mako to aid book writing">
+<meta name="keywords" content="variables in mako,mako variables,if tests in mako,boolean in mako,mako if tests,mako boolean,functions in mako,mako functions">
 
 <title>Use of Mako to aid book writing</title>
 
@@ -25,6 +26,32 @@ pre {
   border: 0pt solid #93a1a1;
   box-shadow: none;
 }
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -33,7 +60,25 @@ div { text-align: justify; text-justify: inter-word; }
 </head>
 
 <!-- tocinfo
-{'highest level': 1, 'sections': [('References', 1, None, '___sec0')]}
+{'highest level': 1,
+ 'sections': [('Use of variables', 1, None, '___sec0'),
+              ("How to speak about ``this chapter''", 2, None, '___sec1'),
+              ('How to make several variants of the text',
+               1,
+               None,
+               '___sec2'),
+              ("Mako's Python functions", 1, None, '___sec3'),
+              ('Basics of Mako functions', 2, None, '___sec4'),
+              ('How to automatically generate a DocOnce file with repetitive structure',
+               2,
+               'mako:pyscripts',
+               'mako:pyscripts'),
+              ('How to treat multiple programming languages in the same text',
+               2,
+               None,
+               '___sec6'),
+              ('Another example', 3, None, '___sec7'),
+              ('References', 1, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -44,6 +89,7 @@ end of tocinfo -->
 <!-- begin top navigation -->
 <table style="width: 100%"><tr><td>
 </td><td>
+<div style="text-align: right;"><a href="._mako-solarized001.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end top navigation -->
 </p>
@@ -75,27 +121,30 @@ end of tocinfo -->
 <h2>Table of contents</h2>
 
 <p>
-<a href="#___sec0"> References </a><br>
+<a href="._mako-solarized001.html#___sec0"> Use of variables </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized001.html#___sec1"> How to speak about &quot;this chapter&quot; </a><br>
+<a href="._mako-solarized002.html#___sec2"> How to make several variants of the text </a><br>
+<a href="._mako-solarized003.html#___sec3"> Mako's Python functions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized003.html#___sec4"> Basics of Mako functions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized003.html#mako:pyscripts"> How to automatically generate a DocOnce file with repetitive structure </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._mako-solarized003.html#___sec6"> How to treat multiple programming languages in the same text </a><br>
+<a href="._mako-solarized003.html#___sec8"> References </a><br>
 </p>
 <p>
 <!-- No common Mako variables and functions here since we cannot run mako -->
 
 <p>
 <!-- Running text -->
-<!-- #include "mako.do.txt" -->
-
-<h1 id="___sec0">References </h1>
-
-<p>
-<!-- begin bibliography -->
+This document describes the work flow and how we can utilize many
+nice DocOnce features when writing chapters for a future, potential book
+project.
 
 <p>
-<!-- end bibliography -->
-
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 </td><td>
+<div style="text-align: right;"><a href="._mako-solarized001.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

@@ -13,6 +13,7 @@ Use of Mako to aid book writing
 
 .. Running text
 
-.. #include "mako.do.txt"
-
+This document describes the work flow and how we can utilize many
+nice DocOnce features when writing chapters for a future, potential book
+project.
 

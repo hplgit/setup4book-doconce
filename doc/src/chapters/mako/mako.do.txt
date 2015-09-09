@@ -260,15 +260,15 @@ all the sections, e.g..
 !bc do
 ======= Issue 1 =======
 
-# #include "issue1/issue.do.txt"
+# INCLUDE "issue1/issue.do.txt"
 
 ======= Issue 2 =======
 
-# #include "issue2/issue.do.txt"
+# INCLUDE "issue2/issue.do.txt"
 
 ======= Issue 3 =======
 
-# #include "issue3/issue.do.txt"
+# INCLUDE "issue3/issue.do.txt"
 !ec
 Maybe issues come and go, and so do the subdirectories, implying that
 one should automate the making of the above content of the master
@@ -291,7 +291,7 @@ Unfortunately, we cannot write
 % for i in sections:
 ======= Issue ${i} =======
 
-# #include "issue${i}/issue.do.txt"
+# INCLUDE "issue${i}/issue.do.txt"
 % endfor
 !ec
 because the `#include` statement is run by Preprocess *prior* to
@@ -314,7 +314,7 @@ for subdir in sorted(subdirs):
 	    outfile.write("""
 ======= Issue %s =======
 
-# #include "%s/issue.do.txt"
+# INCLUDE "%s/issue.do.txt"
 """ % (no, subdir))
 outfile.close()
 !ec
