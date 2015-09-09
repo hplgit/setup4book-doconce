@@ -285,7 +285,7 @@ The best way out of these problems is
    all the <code>fig*</code> and <code>src*</code> subdirectories.</li>
 </ol>
 
-Point 2 can be automated:
+Point 2 can be automated by a little Python script:
 
 <p>
 <!-- begin verbatim block  pycod-->
@@ -306,7 +306,10 @@ for subdir in sorted(subdirs):
 
 <p>
 This little case study shows the power of using scripts
-to assist the writing process.
+to assist the writing process. Although Mako is very useful,
+turning to a separate Python program that generates text is
+even more useful. It is also much easier to debug a Python
+program than Mako code.
 
 <h2 id="___sec6">How to treat multiple programming languages in the same text </h2>
 

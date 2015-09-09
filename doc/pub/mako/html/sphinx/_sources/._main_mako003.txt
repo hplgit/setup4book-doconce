@@ -181,7 +181,7 @@ The best way out of these problems is
 2. Create links from the master document's directory to
    all the ``fig*`` and ``src*`` subdirectories.
 
-Point 2 can be automated:
+Point 2 can be automated by a little Python script:
 
 .. code-block:: python
 
@@ -199,7 +199,10 @@ Point 2 can be automated:
         	       os.symlink(figdir, path)
 
 This little case study shows the power of using scripts
-to assist the writing process.
+to assist the writing process. Although Mako is very useful,
+turning to a separate Python program that generates text is
+even more useful. It is also much easier to debug a Python
+program than Mako code.
 
 How to treat multiple programming languages in the same text
 ------------------------------------------------------------

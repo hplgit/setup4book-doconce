@@ -221,7 +221,7 @@ say <code class="docutils literal"><span class="pre">fig5</span></code> and <cod
 <li>Create links from the master document&#8217;s directory to
 all the <code class="docutils literal"><span class="pre">fig*</span></code> and <code class="docutils literal"><span class="pre">src*</span></code> subdirectories.</li>
 </ol>
-<p>Point 2 can be automated:</p>
+<p>Point 2 can be automated by a little Python script:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">subdirs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;issue*&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">subdir</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">subdirs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">subdir</span><span class="p">):</span>
@@ -237,7 +237,10 @@ all the <code class="docutils literal"><span class="pre">fig*</span></code> and 
 </pre></div>
 </div>
 <p>This little case study shows the power of using scripts
-to assist the writing process.</p>
+to assist the writing process. Although Mako is very useful,
+turning to a separate Python program that generates text is
+even more useful. It is also much easier to debug a Python
+program than Mako code.</p>
 </div>
 <div class="section" id="how-to-treat-multiple-programming-languages-in-the-same-text">
 <h2>How to treat multiple programming languages in the same text<a class="headerlink" href="#how-to-treat-multiple-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
