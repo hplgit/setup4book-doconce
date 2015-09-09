@@ -3,4 +3,4 @@
 # PDF
 bash make.sh
 # HTML
-bash ../make_html.sh main_mako --no_mako
+bash ../make_html.sh main_mako --no_mako --no_preprocess

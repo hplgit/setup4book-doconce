@@ -246,6 +246,124 @@ type employs a slightly different syntax and is exemplified in the file
 "`doc/src/chapters/index_files.do.txt`": "http://tinyurl.com/kukz8pt/index_files-do.txt". We refer to the "Mako syntax documentation": "http://docs.makotemplates.org/en/latest/syntax.html" for more information.
 !enotice
 
+===== How to automatically generate a DocOnce file with repetitive structure =====
+label{mako:pyscripts}
+
+To illustrate how Python and Mako can be used to efficiently
+generate repetitive structures with a minimum of manual work,
+we consider the following case. Suppose you have a DocOnce document
+made up of a number of sections, where the DocOnce source of each section
+resides in a subdirectory with name `issueX`, where `X` is an integer
+counter. You want to create a ``master'' DocOnce file that includes
+all the sections, e.g..
+
+!bc do
+======= Issue 1 =======
+
+# #include "issue1/issue.do.txt"
+
+======= Issue 2 =======
+
+# #include "issue2/issue.do.txt"
+
+======= Issue 3 =======
+
+# #include "issue3/issue.do.txt"
+!ec
+Maybe issues come and go, and so do the subdirectories, implying that
+one should automate the making of the above content of the master
+document.
+
+Generating a set of sections via Mako is easy:
+
+!bc do
+<%
+sections = range(1, 8)
+%>
+
+% for i in sections:
+======= Issue ${i} =======
+% endfor
+!ec
+Unfortunately, we cannot write
+
+!bc do
+% for i in sections:
+======= Issue ${i} =======
+
+# #include "issue${i}/issue.do.txt"
+% endfor
+!ec
+because the `#include` statement is run by Preprocess *prior* to
+Mako's interpretation of the file.
+Instead, we can generate (parts of) the master file in a separate
+Python script. This makes it also easier to check which subdirectories
+we have and set up the contents of sections based on the file
+structure:
+
+!bc pycod
+import os, glob
+outfile = open('master_section.do.txt', 'w')
+subdirs = glob.glob('issue*')
+# Run through all issue* subdirectory names in sorted sequence
+for subdir in sorted(subdirs):
+    if os.path.isdir(subdir):               # directory?
+        if os.path.isfile('issue.do.txt'):  # file?
+	    # Extract number X from "issueX" name:
+	    no = subdir[5:]
+	    outfile.write("""
+======= Issue %s =======
+
+# #include "%s/issue.do.txt"
+""" % (no, subdir))
+outfile.close()
+!ec
+The master file can now just do an include of `master_sections.do.txt`.
+If the make script for compiling DocOnce to various formats first
+runs the script above, the `master_sections.do.txt` contents are
+up-to-date with the current file structure, and the contents
+automatically propagate to the master document.
+
+There is one potential problem in the above example: the `issue.do.txt`
+files may include figures with local paths. For example,
+`issue5/issue.do.txt` contains
+
+!bc do
+FIGURE: [fig/myfig, width=500 frac=0.8] My figure. label{my:fig}
+!ec
+When compiling the master document, no `fig/myfig.png` is found because
+the correct path, relative to the master document's directory,
+is `issue5/fig/myfig.png`. The same problem arises if there are
+source code inclusion statements like `@@@CODE src/myprog.f`.
+The master document would then need `@@@CODE issue5/src/myprog.f`.
+The best way out of these problems is
+
+ o Let figure and source code directories have a unique name,
+   say `fig5` and `src5` in this example.
+ o Create links from the master document's directory to
+   all the `fig*` and `src*` subdirectories.
+
+Point 2 can be automated:
+
+!bc pycod
+subdirs = glob.glob('issue*')
+for subdir in sorted(subdirs):
+    if os.path.isdir(subdir):
+        no = subdir[5:]
+        figdir = 'fig' + no
+        srcdir = 'src' + no
+	if not os.path.islink(figdir):
+	   path = os.path.join(subdir, figdir)
+	       os.symlink(figdir, path)
+	if not os.path.islink(srcdir):
+	   path = os.path.join(subdir, srcdir)
+	       os.symlink(figdir, path)
+!ec
+
+This little case study shows the power of using scripts
+to assist the writing process.
+
+
 ===== How to treat multiple programming languages in the same text =====
 
 With these ideas, it becomes straightforward to write a book that
