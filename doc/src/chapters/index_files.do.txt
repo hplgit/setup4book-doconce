@@ -88,7 +88,7 @@ ${slide_types(ch)}
 % endfor
 
 !bwarning
-The PDF files are based on LaTeX and have seldom technical
+The PDF files are based on LaTeX and seldom have technical
 failures that cannot be easily corrected.
 The HTML-based files, however, apply MathJax
 for rendering LaTeX formulas, and sometimes this technology gives rise

@@ -122,7 +122,7 @@ newcommands for vectors (arrows or boldface), matrices (uppercase
 slanted or bold?, tensors, gradient, divergence, curl, etc.
 !ewarning
 
-Files with names `newcommands*.tex` are by DocOnce treated as files
+Files with names `newcommands*.tex` are treated by DocOnce as files
 with definition of newcommands for LaTeX mathematics.  These files
 must reside in the same directory as the DocOnce source
 files. However, for a book project, I recommend to have a single
@@ -333,7 +333,7 @@ in any other format.
 ===== Degree of modularization =====
 
 My recommendation is to divide the project into as small modules as possible
-and to make this modules as independent as possible. This is a very difficult
+and to make these modules as independent as possible. This is a very difficult
 optimization problem. There is some kind of gravity force towards
 big chapters and lots of cross-references internally and to other chapters.
 For book composition and even more for course composition, smaller modules
@@ -342,7 +342,7 @@ give much higher degree of flexibility.
 To make modules independent, the degree of cross-referencing between
 modules must be modest, which forces a need to repeat material.
 Repetition breaks a strong tradition in book writing. However,
-moving away from strictly linear chapter-by-chapter book to a more
+moving away from a strictly linear chapter-by-chapter book to a more
 flexible set of modules connected in a graph, will induce repetition.
 Readers also appreciate repetition, perhaps slightly differently phrased
 with purpose, rather than being served with lots of references to
@@ -376,7 +376,7 @@ to produce the slides from the running text.
 The style of slides is even more important than the style of running text.
 Slides for reading are not so sensitive to the style, but if the slides
 are also intended to be used in teaching, the style becomes key.
-Some comments on style are provided in box in the introduction to
+Some comments on style are provided in the box in the introduction to
 Section ref{setup:rules:slides}. Rather than having boring headings a la
 *Assumptions*, followed by a bullet list of assumptions,
 I recommend to summarize the most important information in a 1-2 line
@@ -413,7 +413,7 @@ The DocOnce exercise format has several useful features:
  * (longer) complete solutions
 
 Many students struggle with identifying the
-problem setting (question) when too much information is comes at once.
+problem setting (question) when too much information comes at once.
 Hints can be effectively used to separate the question from additional
 information that is just supposed to help the reader. Remarks fulfill a similar
 purpose and can separate fun facts or information that puts the problem
@@ -443,7 +443,7 @@ label{setup:rules:book_assembly:org}
 idx{chapter!organization}
 idx{chapter!files}
 
-Suppose one chapter) of the book has the nickname `ch2` and may hold
+Suppose one chapter of the book has the nickname `ch2` and may hold
 all text or just include text in other DocOnce files, e.g.,
 `part1.do.txt`, `part2.do.txt`, and `part3.do.txt`. In this latter
 case, `ch2.do.txt` has the simple content
@@ -458,11 +458,11 @@ Note that the `ch2.do.txt` file contains just plain text without
 any `TITLE`, `AUTHOR`, or `DATE` lines and without any
 table of contents (`TOC`) and bibliography (`BIBITEM`).
 This property makes `ch2.do.txt`
-suitable for being including in other documents like a book.
+suitable for being included in other documents like a book.
 However, to compile `ch2.do.txt` to a stand-alone document,
 we normally want a title, an author,
 a date, and perhaps a table of contents.
-We also want a bibliography if any of the included files has
+We also want a bibliography if any of the included files have
 `cite` tags. To this end, we create a wrapper file, say
 `main_ch2.do.txt`[^name-main],
 with the content
@@ -960,7 +960,7 @@ necessary - with a particular emphasis on gaining understanding.
 It is a very challenging balance between enough
 information for self-study by reading slides and the modest amount
 of information you want in slides for oral presentations.
-For a talk, you will (very) have little text on slides and rely
+For a talk, you will have (very) little text on slides and rely
 on figures. This is not so effective in a teaching and study guide
 setting. Some text is indeed necessary, but it has to be minimized.
 Michael Alley's "evidence-assertion": "http://writing.engr.psu.edu/slides.html"
@@ -1003,7 +1003,7 @@ chapter file, say `part1.do.txt`.
      but slides need many more subsection headings.
    * Try to let the heading summarize explicitly a conclusion/rule from
      the slide (the slide table of contents is then a set of conclusions/rules!)
-   * Remember a `!split` right above very slide heading!
+   * Remember a `!split` right above every slide heading!
    * Compile frequently and look at the slides: they become over-full very
      quickly so there is a constant need for dividing slides into new
      ones with new headings.
@@ -1012,7 +1012,7 @@ chapter file, say `part1.do.txt`.
      *Making effective slides is the art of condensing the most
      important information in the text to a eye-catching format.*
    * Do not remove figures without a very good reason. Figures are important!
-   * Add new images to live up the presentation. In slides you may think of
+   * Add new images to liven up the presentation. In slides you may think of
      cartoons or entertaining images that would never be suitable
      in a chapter/book, but they may help attract attention,
      communicate ideas, and enhance the memory process.
@@ -1072,8 +1072,8 @@ as an IPython/Jupyter notebook for experimentation, extension, and
 personal notes. This is technically
 straightforward by just generating a notebook from the slide source,
 but a notebook puts some constraints
-on code snippets and figure such that it is meaningful to execute
-all the code. Moreover, many figures are inlined and appear as a result
+on code snippets and figures such that it is meaningful to execute
+all the code. Moreover, many figures are inlined and appear as a result of
 executing code in a notebook. While other formats will show a code
 snippet and then the corresponding figure, the notebook can leave
 the figure out and let it appear as the code cell is executed.
@@ -1170,13 +1170,13 @@ need more code to run, so one has to accept more code in the textbook.
 However, there is still a problem for the notebook with defining items
 for an index, fancy admonitions, and other elements that one would
 desire in a textbook. More experience is needed to make best practices.
-Since notebooks can be compiled Markdown, and DocOnce can read
+Since notebooks can be compiled in Markdown, and DocOnce can read
 basic Markdown input, it is possible to go from the notebook format
 to DocOnce, but this is not tested.
 
 !bnotice Remark
-More best practices from turning teaching material in
-books into notebooks are supposed to be collected here in the future.
+More best practices for turning teaching material into
+books and into notebooks are supposed to be collected here in the future.
 !enotice
 
 
