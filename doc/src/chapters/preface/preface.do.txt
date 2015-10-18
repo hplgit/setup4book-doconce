@@ -4,7 +4,7 @@ useful features:
 
  o Chapters can exist as stand-alone documents in different formats:
    * traditional LaTeX-style PDF report,
-   * web pages with various various fancy stylings (e.g., Sphinx, Bootstrap)
+   * web pages with various fancy stylings (e.g., Sphinx, Bootstrap)
      and possibility for multi-media elements,
    * IPython notebooks,
    * blog posts (not exemplified here, but "straightforward": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#blog-posts"),
