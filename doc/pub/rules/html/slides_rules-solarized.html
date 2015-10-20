@@ -60,51 +60,48 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Directory structure for a book project ',
+ 'sections': [('Directory structure for a book project',
                1,
                'setup:rules:dir_struct',
                'setup:rules:dir_struct'),
-              (' Overview of the directory structure ', 2, None, '___sec1'),
-              (' Directory structure within a chapter ', 2, None, '___sec2'),
-              (' The total directory structure ', 2, None, '___sec3'),
-              (' The `book` directory ', 2, None, '___sec4'),
-              (' Newcommands ', 1, None, '___sec5'),
-              (' Assembling different pieces to a book ',
+              ('Overview of the directory structure', 2, None, '___sec1'),
+              ('Directory structure within a chapter', 2, None, '___sec2'),
+              ('The total directory structure', 2, None, '___sec3'),
+              ('The `book` directory', 2, None, '___sec4'),
+              ('Newcommands', 1, None, '___sec5'),
+              ('Assembling different pieces to a book',
                1,
                'setup:rules:book_assembly',
                'setup:rules:book_assembly'),
-              (' Organization of DocOnce chapter files ', 2, None, '___sec7'),
-              (' Compiling a chapter requires a wrapper file with title, author, ... ',
+              ('Organization of DocOnce chapter files', 2, None, '___sec7'),
+              ('Compiling a chapter requires a wrapper file with title, author, ...',
                2,
                None,
                '___sec8'),
-              (' Figures and source code ', 2, None, '___sec9'),
-              (' Assembly of chapters to a book ', 2, None, '___sec10'),
-              (' A `book.do.txt` file ', 2, None, '___sec11'),
-              (' The book file relies much on running preprocessors ',
+              ('Figures and source code', 2, None, '___sec9'),
+              ('Assembly of chapters to a book', 2, None, '___sec10'),
+              ('A `book.do.txt` file', 2, None, '___sec11'),
+              ('The book file relies much on running preprocessors',
                2,
                None,
                '___sec12'),
-              (' The `book` directory must be coupled to source and figure directories ',
+              ('The `book` directory must be coupled to source and figure directories',
                2,
                None,
                '___sec13'),
-              (' About figures when publishing HTML ', 2, None, '___sec14'),
-              (' Tools ', 1, None, '___sec15'),
-              (' Making a new chapter ', 2, None, '___sec16'),
-              (' Compiling a chapter ', 2, None, '___sec17'),
-              (' Compiling the book ', 2, None, '___sec18'),
-              (' Study guides and slides ', 1, None, '___sec19'),
-              (' Why is it so challenging to convert a chapter to slides? ',
+              ('About figures when publishing HTML', 2, None, '___sec14'),
+              ('Tools', 1, None, '___sec15'),
+              ('Making a new chapter', 2, None, '___sec16'),
+              ('Compiling a chapter', 2, None, '___sec17'),
+              ('Compiling the book', 2, None, '___sec18'),
+              ('Study guides and slides', 1, None, '___sec19'),
+              ('Why is it so challenging to convert a chapter to slides?',
                2,
                None,
                '___sec20'),
-              (' Slide directory ', 2, None, '___sec21'),
-              (' The `lectures_ch2.do.txt` file ', 2, None, '___sec22'),
-              (' The requirements to a slide collection ',
-               2,
-               None,
-               '___sec23')]}
+              ('Slide directory', 2, None, '___sec21'),
+              ('The `lectures_ch2.do.txt` file', 2, None, '___sec22'),
+              ('The requirements to a slide collection', 2, None, '___sec23')]}
 end of tocinfo -->
 
 <body>
@@ -128,8 +125,10 @@ end of tocinfo -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>
-<center><h4>May 8, 2015</h4></center> <!-- date -->
+<center><h4>Oct 20, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
@@ -184,7 +183,7 @@ end of tocinfo -->
 </ul>
 
 Can have lots of chapters and more than one <code>book</code> directory if
-multiple books are relevant
+multiple books are relevant.
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -287,8 +286,8 @@ Here is a big project:
 <h1 id="___sec5">Newcommands </h1>
 
 <ul>
- <p><li> Files <code>newcommands*.tex</code> are by DocOnce treated as files
-   with definition of newcommands for LaTeX <em>mathematics</em></li>
+ <p><li> Files <code>newcommands*.tex</code> are treated by DocOnce as files
+   with definitions of newcommands for LaTeX <em>mathematics</em></li>
  <p><li> Must be in the directory where <code>doconce format</code> is run</li>
  <p><li> Use a common <code>newcommands.p.tex</code> for all chapters</li>
  <p><li> <code>.p.tex</code> indicates that it can be run by preprocess and contain
@@ -428,7 +427,7 @@ BIBFILE: ../papers.pub
 </ul>
 
 Important that figure and source code files have chapter-unique names
-when combining all files to a book. Use <code>fig-nickname</code> and <code>src-nickname</code>.
+when combining all files into a book. Use <code>fig-nickname</code> and <code>src-nickname</code>.
 
 <p>
 Optional directories:
@@ -652,7 +651,7 @@ HTML versions of the chapter. Just call this as
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; bash ../make_html.sh main_mychap
 </pre></div>
 </td></tr></table><p>
-Three HTML versions with an <code>index.html</code> table of contents are generated
+Three HTML versions with an <code>index.html</code> table of contents are generated.
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -736,7 +735,7 @@ Compile slides:
 </pre></div>
 </td></tr></table><p>
 Note the possibility to turn the <code>TOC</code> on and off: Beamer has its own
-table of contents, while HTML5 slides may benefit from having one
+table of contents, while HTML5 slides may benefit from having one.
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>

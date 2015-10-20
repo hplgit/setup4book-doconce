@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,solutions to exercises,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -46,68 +46,81 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Directory structure ',
+ 'sections': [('Directory structure',
                1,
-               'sec:rules:dir:struct',
-               'sec:rules:dir:struct'),
-              (' Principles and conventions ', 1, None, '___sec1'),
-              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
-              (' Programming style ', 2, None, '___sec3'),
-              (' Degree of modularization ', 2, None, '___sec4'),
-              (' Student guide (slides) style ', 2, None, '___sec5'),
-              (' Style in exercises, problems, and projects ',
+               'setup:rules:dir_struct',
+               'setup:rules:dir_struct'),
+              ('Principles and conventions',
+               1,
+               'setup:rules:conv',
+               'setup:rules:conv'),
+              ('Mathematical notation and newcommands',
+               2,
+               'setup:rules:conv:newcommands',
+               'setup:rules:conv:newcommands'),
+              ('Label conventions',
+               2,
+               'setup:rules:conv:labels',
+               'setup:rules:conv:labels'),
+              ('Programming style', 2, None, '___sec4'),
+              ('Degree of modularization', 2, None, '___sec5'),
+              ('Student guide (slides) style', 2, None, '___sec6'),
+              ('Style in exercises, problems, and projects',
                2,
                None,
-               '___sec6'),
-              (' Assembling different pieces to a book ',
+               '___sec7'),
+              ('Assembling different pieces to a book',
                1,
-               'setup:rules:book:assembly',
-               'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec8'),
-              (' Figures and source code ', 2, None, '___sec9'),
-              (' Assembly of chapters to a book ', 2, None, '___sec10'),
-              (' Tools ', 1, None, '___sec11'),
-              (' Making a new chapter ', 2, None, '___sec12'),
-              (' Compiling the chapter ', 2, None, '___sec13'),
-              (' PDF ', 3, None, '___sec14'),
-              (' HTML ', 3, None, '___sec15'),
-              (' IPython notebook ', 3, None, '___sec16'),
-              (' Cleaning Files ', 3, None, '___sec17'),
-              (' About figures when publishing HTML ', 2, None, '___sec18'),
-              (' Compiling the book ', 2, None, '___sec19'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
-              (' Cross-referencing across chapters ', 1, None, '___sec21'),
-              (' Syntax of generalized cross-references ',
+               'setup:rules:book_assembly',
+               'setup:rules:book_assembly'),
+              ('Organization of a chapter',
                2,
+               'setup:rules:book_assembly:org',
+               'setup:rules:book_assembly:org'),
+              ('Figures and source code', 2, None, '___sec10'),
+              ('Assembly of chapters to a book', 2, None, '___sec11'),
+              ('Tools', 1, None, '___sec12'),
+              ('Making a new chapter', 2, None, '___sec13'),
+              ('Compiling the chapter to LaTeX and PDF', 2, None, '___sec14'),
+              ('Cleaning Files', 3, None, '___sec15'),
+              ('Automatic spell checking', 2, None, '___sec16'),
+              ('Compiling the chapter to HTML', 2, None, '___sec17'),
+              ('Compiling the chapter to a notebook', 2, None, '___sec18'),
+              ('About figures when publishing HTML', 2, None, '___sec19'),
+              ('Compiling the book', 2, None, '___sec20'),
+              ('HTML/Sphinx versions of the book', 3, None, '___sec21'),
+              ('Cross-referencing across chapters (or books)',
+               1,
                None,
                '___sec22'),
-              (' Study guides and slides ',
+              ('Study guides and slides',
                1,
                'setup:rules:slides',
                'setup:rules:slides'),
-              (' Slide directory ', 2, None, '___sec24'),
-              (' Generating slides from running text ', 2, None, '___sec25'),
-              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
-              (' Compiling slides ', 2, None, '___sec27'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
-              (' Writing in private repository while publishing in public ',
+              ('Slide directory', 2, None, '___sec24'),
+              ('Generating slides from running text', 2, None, '___sec25'),
+              ('Slides as IPython/Jupyter notebooks', 2, None, '___sec26'),
+              ('Compiling slides', 2, None, '___sec27'),
+              ('IPython/Jupyter notebooks', 2, None, '___sec28'),
+              ('Writing in private repository while publishing in public',
                1,
                None,
                '___sec29'),
-              (' Special features for teaching material ',
+              ('Book versions with and without solutions to exercises',
                1,
                None,
                '___sec30'),
-              (' Admonitions ', 2, None, '___sec31'),
-              (' Simple box ', 2, None, '___sec32'),
-              (' Embedded interactive code ', 2, None, '___sec33'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
-              (' The `pyscpro` code environment ', 3, None, '___sec35'),
-              (' Exercises ', 2, None, '___sec36'),
-              (' Quote ', 2, None, '___sec37'),
-              (' Quiz ', 2, None, '___sec38'),
-              (' What about a video lecture? ', 2, None, '___sec39'),
-              (' References ', 1, None, '___sec40')]}
+              ('Special features for teaching material', 1, None, '___sec31'),
+              ('Admonitions', 2, None, '___sec32'),
+              ('Simple box', 2, None, '___sec33'),
+              ('Embedded interactive code', 2, None, '___sec34'),
+              ('The `pyoptpro` code environment', 3, None, '___sec35'),
+              ('The `pyscpro` code environment', 3, None, '___sec36'),
+              ('Exercises', 2, None, '___sec37'),
+              ('Quote', 2, None, '___sec38'),
+              ('Quiz', 2, None, '___sec39'),
+              ('What about a video lecture?', 2, None, '___sec40'),
+              ('References', 1, None, '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -150,15 +163,16 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#___sec1" style="font-size: 80%;">Principles and conventions</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap004.html#___sec11" style="font-size: 80%;">Tools</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec21" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#setup:rules:dir_struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#setup:rules:conv" style="font-size: 80%;">Principles and conventions</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book_assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap004.html#___sec12" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec22" style="font-size: 80%;">Cross-referencing across chapters (or books)</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap006.html#setup:rules:slides" style="font-size: 80%;">Study guides and slides</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap007.html#___sec29" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">Special features for teaching material</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">Book versions with and without solutions to exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap009.html#___sec31" style="font-size: 80%;">Special features for teaching material</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap009.html#___sec41" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -174,357 +188,99 @@ $$
 <a name="part0008"></a>
 <!-- !split -->
 
-<h1 id="___sec30">Special features for teaching material </h1>
+<h1 id="___sec30">Book versions with and without solutions to exercises </h1>
 
 <p>
-DocOnce offers some special features that can greatly aid development
-of effective teaching material:
-
-<ul>
- <li> fancy admonitions</li>
- <li> simple boxes</li>
- <li> interactive code blocks</li>
- <li> hidden code blocks</li>
- <li> exercises</li>
- <li> multiple-choice questions or quizzes</li>
- <li> movies</li>
- <li> quotes</li>
-</ul>
-
-These are briefly exemplified below. If you are mainly interested in how
-to structure DocOnce-based books, you can safely jump to
-the section <a href="._rules-bootstrap003.html#setup:rules:book:assembly">Assembling different pieces to a book</a>.
-
-<h2 id="___sec31">Admonitions </h2>
+It is easy to turn solutions to exercises on or off by the options
+<code>--without_solutions</code> (for <code>!bsol</code> environments) and <code>--without_answers</code>
+(for <code>!bans</code> environments). One often wants to publish a book
+without solutions to exercises, but also make versions with solutions.
+One possibility is to password protect the versions with solutions.
 
 <p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Use admonitions!</b>
-Need to notify, warn, summarize, ask a question, give a tip,
-dive into less important details, or really emphasize a result?
-DocOnce features special
-<em>notice</em>, <em>warning</em>, <em>summary</em>,
-and <em>question</em> boxes for  called admonitions. These can be typeset in a
-variety of versions, depending on the output format
-(check out <code>doconce format --help</code> and the many options with <code>admon</code>
-in the name).
-</div>
-
-
-<h2 id="___sec32">Simple box </h2>
-
-<p>
-Put a box around something important:
+It can be wise to create a very complicated filename for the files
+that may be shown in a browser with the URL visible for a class.
+One possibility
+is to create a 40 long SHA1 string as filename and start it with a dot
+to also make it invisible in most operating systems.
 
 <p>
 
-<!-- begin box -->
-<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
-$$ 1 + 1 = 2 $$
-</div>
-<!-- end box -->
-
-
-<h2 id="___sec33">Embedded interactive code </h2>
-
-<h3 id="___sec34">The <code>pyoptpro</code> code environment </h3>
-
-<p>
-To illustrate program flow, you can step through code
-(as in a debugger, just more illustrative) using the
-<code>pyoptpro</code> code environment. Here is an example:
-
-<p>
-
-<iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
-</iframe>
-<p>
-In HTML and Sphinx format this code can be stepped through in
-the browser, while
-in LaTeX one gets a link to a web page with this functionality.
-
-<h3 id="___sec35">The <code>pyscpro</code> code environment </h3>
-
-<p>
-The <a href="https://sagecell.sagemath.org/" target="_self">SageMathCell</a> server
-enables live Python code in web documents. Using the
-<code>pyscpro</code> code environment, Python code can be embedded in a
-for interactive computing:
-
-<p>
-
-
-<div class="compute"><script type="text/x-sage">
-import random
-a = random.randint(1, 7)
-print a
-
-</script></div>
-<p>
-We can even plot:
-
-<p>
-
-
-<div class="compute"><script type="text/x-sage">
-from numpy import *
-from matplotlib.pyplot import *
-
-x = linspace(-2*pi, 2*pi, 801)
-y = exp(-0.1*x**2)*sin(4*x)
-plot(x, y)
-show()
-
-</script></div>
-<p>
-HTML and Sphinx output has such interactive Sage Cells,
-while other output formats can just show the code.
-
-<h2 id="___sec36">Exercises </h2>
-
-<p>
-<div class="alert alert-block alert-warning alert-text-normal"><b>Exercise environments.</b>
-DocOnce supports <em>exercise subsections</em>, which are subsections with some
-extra tagging for exercises. Important features are:
-
-<ul>
- <li> exercises can be divided into subexercises</li>
- <li> one may specify filename(s) for delivering the answer to an exercise</li>
- <li> one may specify filename(s) for the solution of an exercise</li>
- <li> one may specify a remark (fun facts, comments)</li>
- <li> one or more hints can be given to an exercise or subexercise
-   (can be hidden in certain output formats)</li>
- <li> any exercise or subexercise can have a solution field</li>
- <li> any exercise or subexercise can have an answer field (very condensed solution)</li>
- <li> solutions and answers can be removed from the document at compile time</li>
- <li> exercises can have one of four titles: Exercise, Project, Problem, or
-   Example</li>
-</ul>
-</div>
-
-
-<h2 id="___sec37">Quote </h2>
-
-<p>
-There is also a <em>quote</em> environment (invisible box with larger
-margins).
-
-<p>
-<blockquote>
-    We're programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We're not excited by incremental renovation: tinkering, improving, planting flower beds.
-    
-    <p>
-    There's a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:
-    <b>It's harder to read code than to write it.</b>
-    This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it's easier and more fun than figuring out how the old function works.
-    
-    <p>
-    <a href="http://www.joelonsoftware.com/articles/fog0000000069.html" target="_self">Joel Spolsky</a>, 2000
-</blockquote>
-
-
-<h2 id="___sec38">Quiz </h2>
-
-<p>
-<!-- --- previous heading type: subsection -->
-<!-- begin quiz -->
-<hr>
-<p>
-<b>Question:</b> Does DocOnce feature multiple-choice questions or quizzes?</p>
-
-<p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_A" style="font-size: 80%;"></a>
-&nbsp;<b>Choice A:</b>
-Yes.
-<div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_A">
-<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
-See the <a href="http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html" target="_self">quiz manual</a>.
-</div></p>
-</div>
-</p>
-
-<p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_B" style="font-size: 80%;"></a>
-&nbsp;<b>Choice B:</b>
-No.
-<div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_B">
-<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-Wrong!
-</div></p>
-</div>
-</p>
-<!-- end quiz -->
-
-
-<p>
-Quite often we need mathematics and computer code in questions and
-answers.
-
-<p>
-<!-- begin quiz -->
-<hr>
-<p>
-<b>Question:</b> Compute the integral
-
-$$ \int_0^{2\pi} e^{-x}\sin^2 x\,dx $$
-
-and report the formula in verbatim LaTeX code,
-
-<p>
-
-<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\int</span><span style="color: #008000">_</span><span style="color: #666666">0</span><span style="color: #008000">^{</span><span style="color: #666666">2</span><span style="color: #19177C">\pi</span><span style="color: #008000">} e^{</span><span style="color: #666666">-</span><span style="color: #008000">x}</span><span style="color: #19177C">\sin</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #008000"> x</span><span style="color: #19177C">\,</span><span style="color: #008000">dx </span><span style="color: #666666">=</span><span style="color: #008000"> ... </span><span style="color: #BA2121">\]</span>
-</pre></div>
-<p></p>
-
-<p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_2_A" style="font-size: 80%;"></a>
-&nbsp;<b>Choice A:</b>
-There is no closed-form formula for this integral.
-<div class="collapse-group">
-<p><div class="collapse" id="quiz_id_2_A">
-<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-Maybe you fiddled around with pen and paper the wrong way... Try <code>sympy</code>!
-</div></p>
-</div>
-</p>
-
-<p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_2_B" style="font-size: 80%;"></a>
-&nbsp;<b>Choice B:</b>
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;x&#39;</span>)
-<span style="color: #666666">&gt;&gt;&gt;</span> F <span style="color: #666666">=</span> integrate(exp(<span style="color: #666666">-</span>x)<span style="color: #666666">*</span>sin(x)<span style="color: #666666">**2</span>, (x, <span style="color: #666666">0</span>, <span style="color: #666666">2*</span>pi))
-<span style="color: #666666">&gt;&gt;&gt;</span> F
-<span style="color: #666666">-2*</span>exp(<span style="color: #666666">-2*</span>pi)<span style="color: #666666">/5</span> <span style="color: #666666">+</span> <span style="color: #666666">2/5</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> latex(F)
-<span style="color: #BA2121">&#39;- </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">frac{2}{5 e^{2 </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">pi}} + </span><span style="color: #BB6622; font-weight: bold">\\</span><span style="color: #BA2121">frac{2}{5}&#39;</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">hash</span><span style="color: #666666">=</span>82dee82e1274a586571086dca04d00308d3a0d86
+<span style="color: #19177C">html</span><span style="color: #666666">=</span>.trash&lt;built-in <span style="color: #008000; font-weight: bold">function</span> <span style="color: #008000">hash</span>&gt;
+doconce format html book --html_output<span style="color: #666666">=</span><span style="color: #19177C">$html</span> ...
 </pre></div>
 <p>
-so the answer is
+The file following file, called <code>password.html</code>, presents an empty page
+with a button for providing a password, and if approved, the first
+page of the book opens up.
 
 <p>
 
-<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\int</span><span style="color: #008000">_</span><span style="color: #666666">0</span><span style="color: #008000">^{</span><span style="color: #666666">2</span><span style="color: #19177C">\pi</span><span style="color: #008000">} e^{</span><span style="color: #666666">-</span><span style="color: #008000">x}</span><span style="color: #19177C">\sin</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #008000"> x</span><span style="color: #19177C">\,</span><span style="color: #008000">dx </span><span style="color: #666666">=</span><span style="color: #008000"></span>
-<span style="color: #666666">-</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">2</span><span style="color: #008000">}{</span><span style="color: #666666">5</span><span style="color: #008000"> e^{</span><span style="color: #666666">2</span><span style="color: #008000"> </span><span style="color: #19177C">\pi</span><span style="color: #008000">}} </span><span style="color: #666666">+</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">2</span><span style="color: #008000">}{</span><span style="color: #666666">5</span><span style="color: #008000">} </span><span style="color: #BA2121">\]</span>
+<!-- code=html (!bc htmlpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;body&gt;</span>
+<span style="color: #408080; font-style: italic">&lt;!-- password protected HTML page ---&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+<span style="color: #008000; font-weight: bold">function</span> passWord() {
+<span style="color: #008000; font-weight: bold">var</span> testV <span style="color: #666666">=</span> <span style="color: #666666">1</span>;
+<span style="color: #008000; font-weight: bold">var</span> pass1 <span style="color: #666666">=</span> prompt(<span style="color: #BA2121">&#39;Please enter your password&#39;</span>,<span style="color: #BA2121">&#39; &#39;</span>);
+<span style="color: #008000; font-weight: bold">while</span> (testV <span style="color: #666666">&lt;</span> <span style="color: #666666">3</span>) {
+<span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">!</span>pass1)
+history.go(<span style="color: #666666">-1</span>);
+<span style="color: #008000; font-weight: bold">if</span> (pass1.toLowerCase() <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;PASSWORD&quot;</span>) {
+alert(<span style="color: #BA2121">&#39;You Got it Right!&#39;</span>);
+<span style="color: #008000">window</span>.open(<span style="color: #BA2121">&#39;DESTINATION.html&#39;</span>);
+<span style="color: #008000; font-weight: bold">break</span>;
+}
+testV <span style="color: #666666">+=</span> <span style="color: #666666">1</span>;
+<span style="color: #008000; font-weight: bold">var</span> pass1 <span style="color: #666666">=</span>
+prompt(<span style="color: #BA2121">&#39;Access denied - password incorrect!&#39;</span>, <span style="color: #BA2121">&#39;Password&#39;</span>);
+}
+<span style="color: #008000; font-weight: bold">if</span> (pass1.toLowerCase()<span style="color: #666666">!=</span><span style="color: #BA2121">&quot;password&quot;</span> <span style="color: #666666">&amp;</span> testV <span style="color: #666666">==3</span>)
+history.go(<span style="color: #666666">-1</span>);
+<span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">&quot; &quot;</span>;
+}
+<span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;center&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;form&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;input</span> <span style="color: #7D9029">type=</span><span style="color: #BA2121">&quot;button&quot;</span> <span style="color: #7D9029">value=</span><span style="color: #BA2121">&quot;Enter Protected Area&quot;</span> <span style="color: #7D9029">onClick=</span><span style="color: #BA2121">&quot;passWord()&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/form&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/center&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
 <p>
-<div class="collapse-group">
-<p><div class="collapse" id="quiz_id_2_B">
-<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
-Correct!
-</div></p>
-</div>
-</p>
+Suppose your HTML file with solutions that you want to password protect has the
+name <code>book-sol.html</code>. Then you can simply do
 
 <p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_2_C" style="font-size: 80%;"></a>
-&nbsp;<b>Choice C:</b>
-<p>
 
-<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\int</span><span style="color: #008000">_</span><span style="color: #666666">0</span><span style="color: #008000">^{</span><span style="color: #666666">2</span><span style="color: #19177C">\pi</span><span style="color: #008000">} e^{</span><span style="color: #666666">-</span><span style="color: #008000">x}</span><span style="color: #19177C">\sin</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #008000"> x</span><span style="color: #19177C">\,</span><span style="color: #008000">dx </span><span style="color: #666666">=</span><span style="color: #008000"></span>
-<span style="color: #666666">-</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">3</span><span style="color: #008000">}{</span><span style="color: #666666">4</span><span style="color: #008000"> e^{</span><span style="color: #666666">2</span><span style="color: #008000"> </span><span style="color: #19177C">\pi</span><span style="color: #008000">}} </span><span style="color: #666666">+</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">3</span><span style="color: #008000">}{</span><span style="color: #666666">4</span><span style="color: #008000">} </span><span style="color: #BA2121">\]</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cp password.html book-sol.html
+doconce replace DESTINATION <span style="color: #BA2121">&quot;</span><span style="color: #19177C">$html</span><span style="color: #BA2121">&quot;</span> book-sol.html
+doconce replace PASSWORD <span style="color: #BA2121">&quot;s!m!art|pass@word&quot;</span> book-sol.html
 </pre></div>
 <p>
-<div class="collapse-group">
-<p><div class="collapse" id="quiz_id_2_C">
-<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-Something went wrong here with the fractions...
-</div></p>
-</div>
-</p>
+A PDF file can easily be password protected with the use of the <code>pdftk</code>
+tool. If <code>book.pdf</code> is with solutions, <code>book-sol.pdf</code> will also require
+a password <code>a!4</code>:
 
 <p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_2_D" style="font-size: 80%;"></a>
-&nbsp;<b>Choice D:</b>
-<p>
 
-<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121">\[</span><span style="color: #008000"> </span><span style="color: #19177C">\int</span><span style="color: #008000">_</span><span style="color: #666666">0</span><span style="color: #008000">^{</span><span style="color: #666666">2</span><span style="color: #19177C">\pi</span><span style="color: #008000">} e^{</span><span style="color: #666666">-</span><span style="color: #008000">x}</span><span style="color: #19177C">\sin</span><span style="color: #008000">^</span><span style="color: #666666">2</span><span style="color: #008000"> x</span><span style="color: #19177C">\,</span><span style="color: #008000">dx </span><span style="color: #666666">=</span><span style="color: #008000"></span>
-<span style="color: #666666">-</span><span style="color: #008000"> {</span><span style="color: #666666">2</span><span style="color: #19177C">\over</span><span style="color: #666666">5</span><span style="color: #008000">}{</span><span style="color: #666666">5</span><span style="color: #008000"> exp^{</span><span style="color: #666666">2</span><span style="color: #008000"> pi}} </span><span style="color: #666666">+</span><span style="color: #008000"> </span><span style="color: #19177C">\frac</span><span style="color: #008000">{</span><span style="color: #666666">2</span><span style="color: #008000">}{</span><span style="color: #666666">5</span><span style="color: #008000">} </span><span style="color: #BA2121">\]</span>
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pdftk book.pdf output book-sol.pdf owner_pw foo user_pw <span style="color: #BA2121">&quot;a!4&quot;</span>
 </pre></div>
 <p>
-<div class="collapse-group">
-<p><div class="collapse" id="quiz_id_2_D">
-<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-Well, the math is correct, but the LaTeX code lacks two backslashes,
-and <code>\over</code> is old-fashioned, use <code>\frac{}{}</code> in 2015.
-</div></p>
-</div>
-</p>
-<!-- end quiz -->
-
-
-<p>
-The typesetting of a quiz depends on the output format.
-One can in plain HTML
-and Sphinx formats
-hover over the choice and get a pop-up tooltip with the
-right answer and an explanation (if defined).
-The explanation can only show plain text, so it is empty if it
-contains math or code blocks, or figures.
-With HTML Bootstrap styles one can click on a symbol to open up
-the answer and the explanation.
-RunestoneInteractive books (Sphinx) offers a
-button for the same purpose, but the explanation can only be
-plain text so any math or code block makes the explanation empty.
-LaTeX output can feature the choices only (no answer, no explanation:
-<code>--without_solutions --without_answers</code>), the short answer only
-(<code>--without_solutions</code>) or both the answer and all explanations
-(the case in this demo).
-
-<h2 id="___sec39">What about a video lecture? </h2>
-
-<p>
-
-<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
-
-<p>
-<div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
-Can you think of applications of the above mentioned features?
-</div>
-
-
-<h1 id="___sec40">References </h1>
-
-<p>
-<!-- begin bibliography -->
-
-<ol>
- <li> <div id="Langtangen_TCSE6_debug"></div> <b>H. P. Langtangen</b>. 
-    Debugging in Python,
-    <a href="http://hplgit.github.io/primer.html/doc/pub/debug" target="_self"><tt>http://hplgit.github.io/primer.html/doc/pub/debug</tt></a>.</li>
- <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
-    <em>A Primer on Scientific Programming With Python</em>,
-    fourth edition,
-    <em>Texts in Computational Science and Engineering</em>,
-    Springer,
-    2014.</li>
- <li> <div id="Langtangen_dobook_fake"></div> <b>H. P. Langtangen</b>. 
-    Some document,
-    <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html" target="_self"><tt>http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html</tt></a>.</li>
-</ol>
-
-<!-- end bibliography -->
-
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._rules-bootstrap007.html">&larr; Prev</a>
+  </li>
+  <li class="next">
+    <a href="._rules-bootstrap009.html">Next &rarr;</a>
   </li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

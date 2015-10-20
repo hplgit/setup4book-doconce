@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,solutions to exercises,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -76,68 +76,81 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Directory structure ',
+ 'sections': [('Directory structure',
                1,
-               'sec:rules:dir:struct',
-               'sec:rules:dir:struct'),
-              (' Principles and conventions ', 1, None, '___sec1'),
-              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
-              (' Programming style ', 2, None, '___sec3'),
-              (' Degree of modularization ', 2, None, '___sec4'),
-              (' Student guide (slides) style ', 2, None, '___sec5'),
-              (' Style in exercises, problems, and projects ',
+               'setup:rules:dir_struct',
+               'setup:rules:dir_struct'),
+              ('Principles and conventions',
+               1,
+               'setup:rules:conv',
+               'setup:rules:conv'),
+              ('Mathematical notation and newcommands',
+               2,
+               'setup:rules:conv:newcommands',
+               'setup:rules:conv:newcommands'),
+              ('Label conventions',
+               2,
+               'setup:rules:conv:labels',
+               'setup:rules:conv:labels'),
+              ('Programming style', 2, None, '___sec4'),
+              ('Degree of modularization', 2, None, '___sec5'),
+              ('Student guide (slides) style', 2, None, '___sec6'),
+              ('Style in exercises, problems, and projects',
                2,
                None,
-               '___sec6'),
-              (' Assembling different pieces to a book ',
+               '___sec7'),
+              ('Assembling different pieces to a book',
                1,
-               'setup:rules:book:assembly',
-               'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec8'),
-              (' Figures and source code ', 2, None, '___sec9'),
-              (' Assembly of chapters to a book ', 2, None, '___sec10'),
-              (' Tools ', 1, None, '___sec11'),
-              (' Making a new chapter ', 2, None, '___sec12'),
-              (' Compiling the chapter ', 2, None, '___sec13'),
-              (' PDF ', 3, None, '___sec14'),
-              (' HTML ', 3, None, '___sec15'),
-              (' IPython notebook ', 3, None, '___sec16'),
-              (' Cleaning Files ', 3, None, '___sec17'),
-              (' About figures when publishing HTML ', 2, None, '___sec18'),
-              (' Compiling the book ', 2, None, '___sec19'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
-              (' Cross-referencing across chapters ', 1, None, '___sec21'),
-              (' Syntax of generalized cross-references ',
+               'setup:rules:book_assembly',
+               'setup:rules:book_assembly'),
+              ('Organization of a chapter',
                2,
+               'setup:rules:book_assembly:org',
+               'setup:rules:book_assembly:org'),
+              ('Figures and source code', 2, None, '___sec10'),
+              ('Assembly of chapters to a book', 2, None, '___sec11'),
+              ('Tools', 1, None, '___sec12'),
+              ('Making a new chapter', 2, None, '___sec13'),
+              ('Compiling the chapter to LaTeX and PDF', 2, None, '___sec14'),
+              ('Cleaning Files', 3, None, '___sec15'),
+              ('Automatic spell checking', 2, None, '___sec16'),
+              ('Compiling the chapter to HTML', 2, None, '___sec17'),
+              ('Compiling the chapter to a notebook', 2, None, '___sec18'),
+              ('About figures when publishing HTML', 2, None, '___sec19'),
+              ('Compiling the book', 2, None, '___sec20'),
+              ('HTML/Sphinx versions of the book', 3, None, '___sec21'),
+              ('Cross-referencing across chapters (or books)',
+               1,
                None,
                '___sec22'),
-              (' Study guides and slides ',
+              ('Study guides and slides',
                1,
                'setup:rules:slides',
                'setup:rules:slides'),
-              (' Slide directory ', 2, None, '___sec24'),
-              (' Generating slides from running text ', 2, None, '___sec25'),
-              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
-              (' Compiling slides ', 2, None, '___sec27'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
-              (' Writing in private repository while publishing in public ',
+              ('Slide directory', 2, None, '___sec24'),
+              ('Generating slides from running text', 2, None, '___sec25'),
+              ('Slides as IPython/Jupyter notebooks', 2, None, '___sec26'),
+              ('Compiling slides', 2, None, '___sec27'),
+              ('IPython/Jupyter notebooks', 2, None, '___sec28'),
+              ('Writing in private repository while publishing in public',
                1,
                None,
                '___sec29'),
-              (' Special features for teaching material ',
+              ('Book versions with and without solutions to exercises',
                1,
                None,
                '___sec30'),
-              (' Admonitions ', 2, None, '___sec31'),
-              (' Simple box ', 2, None, '___sec32'),
-              (' Embedded interactive code ', 2, None, '___sec33'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
-              (' The `pyscpro` code environment ', 3, None, '___sec35'),
-              (' Exercises ', 2, None, '___sec36'),
-              (' Quote ', 2, None, '___sec37'),
-              (' Quiz ', 2, None, '___sec38'),
-              (' What about a video lecture? ', 2, None, '___sec39'),
-              (' References ', 1, None, '___sec40')]}
+              ('Special features for teaching material', 1, None, '___sec31'),
+              ('Admonitions', 2, None, '___sec32'),
+              ('Simple box', 2, None, '___sec33'),
+              ('Embedded interactive code', 2, None, '___sec34'),
+              ('The `pyoptpro` code environment', 3, None, '___sec35'),
+              ('The `pyscpro` code environment', 3, None, '___sec36'),
+              ('Exercises', 2, None, '___sec37'),
+              ('Quote', 2, None, '___sec38'),
+              ('Quiz', 2, None, '___sec39'),
+              ('What about a video lecture?', 2, None, '___sec40'),
+              ('References', 1, None, '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -194,30 +207,35 @@ $$
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>
-<center><h4>Apr 26, 2015</h4></center> <!-- date -->
+<center><h4>Oct 20, 2015</h4></center> <!-- date -->
+<br>
 
 <h2>Table of contents</h2>
 
 <p>
-<a href="._rules-solarized001.html#sec:rules:dir:struct"> Directory structure </a><br>
-<a href="._rules-solarized002.html#___sec1"> Principles and conventions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec2"> Mathematical notation and newcommands </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec3"> Programming style </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec4"> Degree of modularization </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec5"> Student guide (slides) style </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec6"> Style in exercises, problems, and projects </a><br>
-<a href="._rules-solarized003.html#setup:rules:book:assembly"> Assembling different pieces to a book </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized003.html#___sec8"> Organization of a chapter </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized003.html#___sec9"> Figures and source code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized003.html#___sec10"> Assembly of chapters to a book </a><br>
-<a href="._rules-solarized004.html#___sec11"> Tools </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec12"> Making a new chapter </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec13"> Compiling the chapter </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec18"> About figures when publishing HTML </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec19"> Compiling the book </a><br>
-<a href="._rules-solarized005.html#___sec21"> Cross-referencing across chapters </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized005.html#___sec22"> Syntax of generalized cross-references </a><br>
+<a href="._rules-solarized001.html#setup:rules:dir_struct"> Directory structure </a><br>
+<a href="._rules-solarized002.html#setup:rules:conv"> Principles and conventions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#setup:rules:conv:newcommands"> Mathematical notation and newcommands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#setup:rules:conv:labels"> Label conventions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec4"> Programming style </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec5"> Degree of modularization </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec6"> Student guide (slides) style </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized002.html#___sec7"> Style in exercises, problems, and projects </a><br>
+<a href="._rules-solarized003.html#setup:rules:book_assembly"> Assembling different pieces to a book </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized003.html#setup:rules:book_assembly:org"> Organization of a chapter </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized003.html#___sec10"> Figures and source code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized003.html#___sec11"> Assembly of chapters to a book </a><br>
+<a href="._rules-solarized004.html#___sec12"> Tools </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec13"> Making a new chapter </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec14"> Compiling the chapter to LaTeX and PDF </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec16"> Automatic spell checking </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec17"> Compiling the chapter to HTML </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec18"> Compiling the chapter to a notebook </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec19"> About figures when publishing HTML </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized004.html#___sec20"> Compiling the book </a><br>
+<a href="._rules-solarized005.html#___sec22"> Cross-referencing across chapters (or books) </a><br>
 <a href="._rules-solarized006.html#setup:rules:slides"> Study guides and slides </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._rules-solarized006.html#___sec24"> Slide directory </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._rules-solarized006.html#___sec25"> Generating slides from running text </a><br>
@@ -225,15 +243,16 @@ $$
 &nbsp; &nbsp; &nbsp; <a href="._rules-solarized006.html#___sec27"> Compiling slides </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._rules-solarized006.html#___sec28"> IPython/Jupyter notebooks </a><br>
 <a href="._rules-solarized007.html#___sec29"> Writing in private repository while publishing in public </a><br>
-<a href="._rules-solarized008.html#___sec30"> Special features for teaching material </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec31"> Admonitions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec32"> Simple box </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec33"> Embedded interactive code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec36"> Exercises </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec37"> Quote </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec38"> Quiz </a><br>
-&nbsp; &nbsp; &nbsp; <a href="._rules-solarized008.html#___sec39"> What about a video lecture? </a><br>
-<a href="._rules-solarized008.html#___sec40"> References </a><br>
+<a href="._rules-solarized008.html#___sec30"> Book versions with and without solutions to exercises </a><br>
+<a href="._rules-solarized009.html#___sec31"> Special features for teaching material </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec32"> Admonitions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec33"> Simple box </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec34"> Embedded interactive code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec37"> Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec38"> Quote </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec39"> Quiz </a><br>
+&nbsp; &nbsp; &nbsp; <a href="._rules-solarized009.html#___sec40"> What about a video lecture? </a><br>
+<a href="._rules-solarized009.html#___sec41"> References </a><br>
 </p>
 <p>
 <!-- Externaldocuments: ../fake/main_fake -->

@@ -13,7 +13,7 @@ useful features:
 
    * traditional LaTeX-style PDF report,
 
-   * web pages with various various fancy stylings (e.g., Sphinx, Bootstrap)
+   * web pages with various fancy stylings (e.g., Sphinx, Bootstrap)
      and possibility for multi-media elements,
 
    * IPython notebooks,

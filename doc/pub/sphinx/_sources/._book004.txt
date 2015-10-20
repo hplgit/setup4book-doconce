@@ -77,7 +77,7 @@ Mathematical notation and newcommands
 
 
 
-Files with names ``newcommands*.tex`` are by DocOnce treated as files
+Files with names ``newcommands*.tex`` are treated by DocOnce as files
 with definition of newcommands for LaTeX mathematics.  These files
 must reside in the same directory as the DocOnce source
 files. However, for a book project, I recommend to have a single
@@ -214,7 +214,7 @@ to use names that reflect the topic:
 ``topic:paper`` or ``topic:url``, e.g., ``IPython:paper`` for a ]paper on IPython
 or ``IPython:url`` for the IPython website.
 
-You can run ``doconce list_labels *.do.txt`` to get a list of lables,
+You can run ``doconce list_labels *.do.txt`` to get a list of labels,
 categorized under the various section headings, in your DocOnce
 documents.  This command quickly reveals if a clean-up of label names
 is necessary.  You can redirect the output of the command to a file
@@ -298,7 +298,7 @@ Degree of modularization
 ------------------------
 
 My recommendation is to divide the project into as small modules as possible
-and to make this modules as independent as possible. This is a very difficult
+and to make these modules as independent as possible. This is a very difficult
 optimization problem. There is some kind of gravity force towards
 big chapters and lots of cross-references internally and to other chapters.
 For book composition and even more for course composition, smaller modules
@@ -307,7 +307,7 @@ give much higher degree of flexibility.
 To make modules independent, the degree of cross-referencing between
 modules must be modest, which forces a need to repeat material.
 Repetition breaks a strong tradition in book writing. However,
-moving away from strictly linear chapter-by-chapter book to a more
+moving away from a strictly linear chapter-by-chapter book to a more
 flexible set of modules connected in a graph, will induce repetition.
 Readers also appreciate repetition, perhaps slightly differently phrased
 with purpose, rather than being served with lots of references to
@@ -346,7 +346,7 @@ to produce the slides from the running text.
 The style of slides is even more important than the style of running text.
 Slides for reading are not so sensitive to the style, but if the slides
 are also intended to be used in teaching, the style becomes key.
-Some comments on style are provided in box in the introduction to
+Some comments on style are provided in the box in the introduction to
 the section :ref:`setup:rules:slides`. Rather than having boring headings a la
 *Assumptions*, followed by a bullet list of assumptions,
 I recommend to summarize the most important information in a 1-2 line
@@ -390,7 +390,7 @@ The DocOnce exercise format has several useful features:
  * (longer) complete solutions
 
 Many students struggle with identifying the
-problem setting (question) when too much information is comes at once.
+problem setting (question) when too much information comes at once.
 Hints can be effectively used to separate the question from additional
 information that is just supposed to help the reader. Remarks fulfill a similar
 purpose and can separate fun facts or information that puts the problem

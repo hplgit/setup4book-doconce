@@ -1,7 +1,7 @@
 .. !split
 
-Cross-referencing across chapters
-=================================
+Cross-referencing across chapters (or books)
+============================================
 
 .. index:: cross-referencing
 
@@ -32,9 +32,6 @@ has generalized this feature so it works for non-LaTeX formats as well.
 It is called *generalized cross-references*. You can then write
 such references across chapters and get all labels right whether you
 produce the entire book or individual chapters.
-
-Syntax of generalized cross-references
---------------------------------------
 
 .. index:: ref generalized reference
 

@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cross-referencing across chapters</title>
+    <title>Cross-referencing across chapters (or books)</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -56,8 +55,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,23 +68,23 @@
         <li class="right" >
           <a href="._main_rules004.html" title="Tools"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Directory and file structure</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
-  <div class="section" id="cross-referencing-across-chapters">
-<h1>Cross-referencing across chapters<a class="headerlink" href="#cross-referencing-across-chapters" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cross-referencing-across-chapters-or-books">
+<h1>Cross-referencing across chapters (or books)<a class="headerlink" href="#cross-referencing-across-chapters-or-books" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="index-0"></span><p id="index-1">A fundamental problem when writing a book <em>and</em> stand-alone chapters
 arises with cross-referencing. In a book file it makes sense to refer
 to an equation in any chapter, say (4.23), while in a stand-alone
 chapter references to equations or sections in other stand-alone
 documents will not work. That is, LaTeX has a native mechanism for
-this, the <tt class="docutils literal"><span class="pre">xr</span></tt> package, where one can register a set of <tt class="docutils literal"><span class="pre">.aux</span></tt> files
+this, the <code class="docutils literal"><span class="pre">xr</span></code> package, where one can register a set of <code class="docutils literal"><span class="pre">.aux</span></code> files
 for other LaTeX documents and refer directly to these labels and get
 them right. It is then possible to write something like</p>
 <div class="highlight-latex"><div class="highlight"><pre>see (<span class="k">\eqref</span><span class="nb">{</span>sec:results:u:eq<span class="nb">}</span>) in <span class="k">\cite</span><span class="nb">{</span>Hansen<span class="nb">_</span>2011b<span class="nb">}</span>
@@ -95,32 +94,41 @@ them right. It is then possible to write something like</p>
 <div class="highlight-text"><div class="highlight"><pre>see (2.37) in [12]
 </pre></div>
 </div>
-<p>provided our <tt class="docutils literal"><span class="pre">.tex</span></tt> file contains <tt class="docutils literal"><span class="pre">\externaldocument{myother}</span></tt>
-and the label <tt class="docutils literal"><span class="pre">sec:results:u:eq</span></tt> is defined in <tt class="docutils literal"><span class="pre">myother.aux</span></tt>. DocOnce
+<p>provided our <code class="docutils literal"><span class="pre">.tex</span></code> file contains <code class="docutils literal"><span class="pre">\externaldocument{myother}</span></code>
+and the label <code class="docutils literal"><span class="pre">sec:results:u:eq</span></code> is defined in <code class="docutils literal"><span class="pre">myother.aux</span></code>. DocOnce
 has generalized this feature so it works for non-LaTeX formats as well.
 It is called <em>generalized cross-references</em>. You can then write
 such references across chapters and get all labels right whether you
 produce the entire book or individual chapters.</p>
-<div class="section" id="syntax-of-generalized-cross-references">
-<h2>Syntax of generalized cross-references<a class="headerlink" href="#syntax-of-generalized-cross-references" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-2"></span><p id="index-3">Here is an example on a generalized reference to an equation in another
 document:</p>
-<div class="highlight-doconce"><div class="highlight"><pre>The world&#39;s most famous equation is ref[(ref{fake:Emc2})][in
+<div class="highlight-doconce"><div class="highlight"><pre>The world&#39;s most famous equation is ref[(ref{setup:fake:Emc2})][ in
 cite{Langtangen_dobook_fake}][
 as found in the document &quot;Some document&quot;:
 <span class="s">&quot;http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake&quot;</span>
 cite{Langtangen_dobook_fake}].
 </pre></div>
 </div>
-<p>This sentence is rendered as follows in the present format (<tt class="docutils literal"><span class="pre">sphinx</span></tt>):</p>
+<p>This sentence is rendered as follows in the present format (<code class="docutils literal"><span class="pre">sphinx</span></code>):</p>
 <p>The world&#8217;s most famous equation is
 as found in the document <a class="reference external" href="http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake">Some document</a>
-<a class="reference internal" href="._main_rules008.html#ref3" id="id1">[Ref3]</a>.</p>
+<a class="reference internal" href="._main_rules009.html#ref3" id="id1">[Ref3]</a>.</p>
 <p>More detailed information about generalized cross-references is
 found in the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-cross-referencing">DocOnce manual</a>.
-In particular, one has to insert <tt class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></tt> commands in
-all <tt class="docutils literal"><span class="pre">main_*.do.txt</span></tt> files that includes files with generalized
+In particular, one has to insert <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> commands in
+all <code class="docutils literal"><span class="pre">main_*.do.txt</span></code> files that includes files with generalized
 references.</p>
+<div class="admonition-tip-limit-generalized-references-to-those-strictly-needed admonition">
+<p class="first admonition-title">Tip: Limit generalized references to those strictly needed</p>
+<p>Books often contain a lot of cross references, and making generalized
+references out of all them can be quite some job. A convenient way
+of saving boring work
+is to enclose nice-to-have, yet not strictly needed, references in
+Mako or Preprocess if statements (typically <code class="docutils literal"><span class="pre">if</span> <span class="pre">BOOK</span> <span class="pre">==</span> <span class="pre">&quot;book&quot;</span></code>) such
+that they appear in the full book but not in individual chapters.</p>
+<p class="last">However, if individual chapters in HTML are to be one official format
+of the book, you should make the chapters identical to the book and
+make generalized references out of all references to other chapters.</p>
 </div>
 </div>
 
@@ -128,36 +136,30 @@ references.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
               <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png" alt="Logo"/>
             </a></p>
             </center>
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Cross-referencing across chapters</a><ul>
-<li><a class="reference internal" href="#syntax-of-generalized-cross-references">Syntax of generalized cross-references</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="._main_rules004.html"
                         title="previous chapter">Tools</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_rules006.html"
                         title="next chapter">Study guides and slides</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/._main_rules005.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._main_rules005.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -171,7 +173,7 @@ references.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -183,7 +185,7 @@ references.</p>
         <li class="right" >
           <a href="._main_rules004.html" title="Tools"
              >previous</a> |</li>
-        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Directory and file structure</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

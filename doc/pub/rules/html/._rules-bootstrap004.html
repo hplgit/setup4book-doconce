@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,solutions to exercises,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -46,68 +46,81 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Directory structure ',
+ 'sections': [('Directory structure',
                1,
-               'sec:rules:dir:struct',
-               'sec:rules:dir:struct'),
-              (' Principles and conventions ', 1, None, '___sec1'),
-              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
-              (' Programming style ', 2, None, '___sec3'),
-              (' Degree of modularization ', 2, None, '___sec4'),
-              (' Student guide (slides) style ', 2, None, '___sec5'),
-              (' Style in exercises, problems, and projects ',
+               'setup:rules:dir_struct',
+               'setup:rules:dir_struct'),
+              ('Principles and conventions',
+               1,
+               'setup:rules:conv',
+               'setup:rules:conv'),
+              ('Mathematical notation and newcommands',
+               2,
+               'setup:rules:conv:newcommands',
+               'setup:rules:conv:newcommands'),
+              ('Label conventions',
+               2,
+               'setup:rules:conv:labels',
+               'setup:rules:conv:labels'),
+              ('Programming style', 2, None, '___sec4'),
+              ('Degree of modularization', 2, None, '___sec5'),
+              ('Student guide (slides) style', 2, None, '___sec6'),
+              ('Style in exercises, problems, and projects',
                2,
                None,
-               '___sec6'),
-              (' Assembling different pieces to a book ',
+               '___sec7'),
+              ('Assembling different pieces to a book',
                1,
-               'setup:rules:book:assembly',
-               'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec8'),
-              (' Figures and source code ', 2, None, '___sec9'),
-              (' Assembly of chapters to a book ', 2, None, '___sec10'),
-              (' Tools ', 1, None, '___sec11'),
-              (' Making a new chapter ', 2, None, '___sec12'),
-              (' Compiling the chapter ', 2, None, '___sec13'),
-              (' PDF ', 3, None, '___sec14'),
-              (' HTML ', 3, None, '___sec15'),
-              (' IPython notebook ', 3, None, '___sec16'),
-              (' Cleaning Files ', 3, None, '___sec17'),
-              (' About figures when publishing HTML ', 2, None, '___sec18'),
-              (' Compiling the book ', 2, None, '___sec19'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
-              (' Cross-referencing across chapters ', 1, None, '___sec21'),
-              (' Syntax of generalized cross-references ',
+               'setup:rules:book_assembly',
+               'setup:rules:book_assembly'),
+              ('Organization of a chapter',
                2,
+               'setup:rules:book_assembly:org',
+               'setup:rules:book_assembly:org'),
+              ('Figures and source code', 2, None, '___sec10'),
+              ('Assembly of chapters to a book', 2, None, '___sec11'),
+              ('Tools', 1, None, '___sec12'),
+              ('Making a new chapter', 2, None, '___sec13'),
+              ('Compiling the chapter to LaTeX and PDF', 2, None, '___sec14'),
+              ('Cleaning Files', 3, None, '___sec15'),
+              ('Automatic spell checking', 2, None, '___sec16'),
+              ('Compiling the chapter to HTML', 2, None, '___sec17'),
+              ('Compiling the chapter to a notebook', 2, None, '___sec18'),
+              ('About figures when publishing HTML', 2, None, '___sec19'),
+              ('Compiling the book', 2, None, '___sec20'),
+              ('HTML/Sphinx versions of the book', 3, None, '___sec21'),
+              ('Cross-referencing across chapters (or books)',
+               1,
                None,
                '___sec22'),
-              (' Study guides and slides ',
+              ('Study guides and slides',
                1,
                'setup:rules:slides',
                'setup:rules:slides'),
-              (' Slide directory ', 2, None, '___sec24'),
-              (' Generating slides from running text ', 2, None, '___sec25'),
-              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
-              (' Compiling slides ', 2, None, '___sec27'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
-              (' Writing in private repository while publishing in public ',
+              ('Slide directory', 2, None, '___sec24'),
+              ('Generating slides from running text', 2, None, '___sec25'),
+              ('Slides as IPython/Jupyter notebooks', 2, None, '___sec26'),
+              ('Compiling slides', 2, None, '___sec27'),
+              ('IPython/Jupyter notebooks', 2, None, '___sec28'),
+              ('Writing in private repository while publishing in public',
                1,
                None,
                '___sec29'),
-              (' Special features for teaching material ',
+              ('Book versions with and without solutions to exercises',
                1,
                None,
                '___sec30'),
-              (' Admonitions ', 2, None, '___sec31'),
-              (' Simple box ', 2, None, '___sec32'),
-              (' Embedded interactive code ', 2, None, '___sec33'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
-              (' The `pyscpro` code environment ', 3, None, '___sec35'),
-              (' Exercises ', 2, None, '___sec36'),
-              (' Quote ', 2, None, '___sec37'),
-              (' Quiz ', 2, None, '___sec38'),
-              (' What about a video lecture? ', 2, None, '___sec39'),
-              (' References ', 1, None, '___sec40')]}
+              ('Special features for teaching material', 1, None, '___sec31'),
+              ('Admonitions', 2, None, '___sec32'),
+              ('Simple box', 2, None, '___sec33'),
+              ('Embedded interactive code', 2, None, '___sec34'),
+              ('The `pyoptpro` code environment', 3, None, '___sec35'),
+              ('The `pyscpro` code environment', 3, None, '___sec36'),
+              ('Exercises', 2, None, '___sec37'),
+              ('Quote', 2, None, '___sec38'),
+              ('Quiz', 2, None, '___sec39'),
+              ('What about a video lecture?', 2, None, '___sec40'),
+              ('References', 1, None, '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -150,15 +163,16 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#___sec1" style="font-size: 80%;">Principles and conventions</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">Tools</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec21" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#setup:rules:dir_struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#setup:rules:conv" style="font-size: 80%;">Principles and conventions</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book_assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec22" style="font-size: 80%;">Cross-referencing across chapters (or books)</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap006.html#setup:rules:slides" style="font-size: 80%;">Study guides and slides</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap007.html#___sec29" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec30" style="font-size: 80%;">Special features for teaching material</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec40" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec30" style="font-size: 80%;">Book versions with and without solutions to exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap009.html#___sec31" style="font-size: 80%;">Special features for teaching material</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap009.html#___sec41" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -174,7 +188,7 @@ $$
 <a name="part0004"></a>
 <!-- !split -->
 
-<h1 id="___sec11">Tools </h1>
+<h1 id="___sec12">Tools </h1>
 
 <p>
 You can start a new, future, potential book project by simply copying
@@ -182,7 +196,7 @@ the directory structure of the <a href="https://github.com/hplgit/setup4book-doc
 the instructions below to start writing and adapting the structure to
 your project's needs.
 
-<h2 id="___sec12">Making a new chapter </h2>
+<h2 id="___sec13">Making a new chapter </h2>
 
 <p>
 Under <code>doc/src/chapters</code>
@@ -206,11 +220,9 @@ wrapper file <code>main_mychap.do.txt</code> such that you can compile this chap
 as a stand-alone document. You also get <code>make.sh</code> which calls <code>../make.sh</code>
 with the chapter main document (<code>main_mychap</code>) as argument. Optional
 arguments for running <code>doconce format pdflatex</code> can be given to
-<code>../make.sh</code> in <code>make.sh</code> if needed (e.g., --encoding=utf8`).
+<code>../make.sh</code> in <code>make.sh</code> if needed (e.g., <code>--encoding=utf8</code>).
 
-<h2 id="___sec13">Compiling the chapter </h2>
-
-<h3 id="___sec14">PDF </h3>
+<h2 id="___sec14">Compiling the chapter to LaTeX and PDF </h2>
 
 <p>
 To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
@@ -272,13 +284,57 @@ The suggested <code>make.sh</code> file
 applies the <code>--latex_code_style=</code> option to <code>doconce format</code>
 for specifying the typesetting of blocks of computer code in LaTeX.
 Originally, DocOnce applied the <code>ptex2tex</code> program to select such
-typesetting, but the new method is more flexible and simpler (in that
-it gives cleaner LaTeX code). (With <code>ptex2tex</code> one would need a common
-configuration file <code>doc/chapters/.ptex2tex.cfg</code> to be copied by
+typesetting, but the new method is more flexible and simpler in that
+it gives cleaner LaTeX code. (With <code>ptex2tex</code> one would need a common
+configuration file <code>.ptex2tex.cfg</code> in
+<code>doc/chapters</code> to be copied by
 <code>doc/chapters/make.sh</code> to the chapter directory prior to running
 `ptex2tex.)
 
-<h3 id="___sec15">HTML </h3>
+<h3 id="___sec15">Cleaning Files </h3>
+
+<p>
+The <code>make*.sh</code> files generate a lot of files that can easily
+be regenerated and that are normally removed from the chapter
+directories. The script <code>sh ../clean.sh</code> can be run in any
+chapter directory to clean up redundant files.
+
+<h2 id="___sec16">Automatic spell checking </h2>
+
+<p>
+The <code>make.sh</code> first runs a spell check using <code>doconce spellcheck</code>.
+The first time you run this command there will be many &quot;misspellings&quot;
+because of unregistered (scientific) words in the dictionary and maybe
+also because some words are actually misspelled. Invoke the
+<code>misspellings.txt&nbsp;</code> file to see a list of all misspellings. Correct
+mistakes in the original documents and run the <code>make.sh</code> script again.
+When <code>misspellings.txt&nbsp;</code> at some point contains acceptable words only,
+you update the dictionary by
+
+<p>
+
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">cp new_dictionary.txt~ .dict4spell.txt
+</pre></div>
+<p>
+Make sure <code>.dict4spell.txt</code> is version controlled by Git.
+The <code>make.sh</code> script will not proceed with compilation of the documents
+before the spell check is run without errors.
+
+<p>
+Finding misspellings can sometimes be a challenge. For a document named
+<code>mydoc.do.txt</code>, the spell check is carried out on a stripped version,
+named <code>tmp_stripped_mydoc.do.txt</code>. Look into this file for misspellings
+that are not obvious. Strange misspellings such as <code>APlu</code> or similar
+usually arise from missing dollar sign around mathematical formulas.
+Formulas are stripped away in <code>tmp_stripped_mydoc.do.txt</code>, but if a
+dollar sign is missing, mathematical formulas become words subject
+to spell checking. To find the relevant file containing
+a particular misspelling listed in <code>misspellings.txt&nbsp;</code>, you may look
+into the file-wise list of misspellings: the misspellings in <code>mydoc.do.txt</code>
+are listed in <code>tmp_misspelled_mydoc.do.txt&nbsp;</code>.
+
+<h2 id="___sec17">Compiling the chapter to HTML </h2>
 
 <p>
 There is also a script <code>doc/src/chapters/make_html.sh</code> for making
@@ -347,15 +403,17 @@ so you will normally compile this manually now and then as
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; doconce format html index_files --html_style=bootstrap \ 
-          --html_links_in_new_window --html_bootstrap_navbar=off
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; doconce format html index_files \ 
+          --html_style=bootstrap \ 
+          --html_links_in_new_window \ 
+	  --html_bootstrap_navbar=off
 </pre></div>
 <p>
 and publish it in <code>doc/pub/index.html</code>.
 </div>
 
 
-<h3 id="___sec16">IPython notebook </h3>
+<h2 id="___sec18">Compiling the chapter to a notebook </h2>
 
 <p>
 Although there is no benefit from interactive computing and visualization
@@ -368,15 +426,7 @@ in the present document, we may produce an IPython notebook for the fun of it:
           CHAPTER=document BOOK=document APPENDIX=document
 </pre></div>
 
-<h3 id="___sec17">Cleaning Files </h3>
-
-<p>
-The <code>make*.sh</code> files generate a lot of files that can easily
-be regenerated and that are normally removed from the chapter
-directories. The script <code>sh ../clean.sh</code> can be run in any
-chapter directory to clean up redundant files.
-
-<h2 id="___sec18">About figures when publishing HTML </h2>
+<h2 id="___sec19">About figures when publishing HTML </h2>
 
 <p>
 There will be <code>&lt;img src=fig-ch2/fig1.png&gt;</code> type of tags in HTML code
@@ -386,7 +436,7 @@ produced by DocOnce, so it is very important to ensure that the
 chapter source directory to some publishing directory that stores all
 the files necessary for accessing the entire HTML document on the web.
 
-<h2 id="___sec19">Compiling the book </h2>
+<h2 id="___sec20">Compiling the book </h2>
 
 <p>
 Go to <code>doc/src/book</code> and run <code>make.sh</code> to compile the book. This requires
@@ -401,7 +451,7 @@ pack all files of the entire book projects for publishing with Springer
 
 <p>
 The current book layout created by <code>make.sh</code> makes use of a (now outdated)
-Springer T2 style for textbooks (requires the <code>.cls</code> and <code>.sty</code> files in
+Springer T4 style for textbooks (requires the <code>.cls</code> and <code>.sty</code> files in
 the <code>book</code> directory). Other Springer styles supported by DocOnce
 are Lecture Notes in Computational Science and Engineering (monographs
 and proceedings),
@@ -410,7 +460,7 @@ in Physics. Other book styles will require some manual work, either
 working out a LaTeX preamble for a special style and use that when
 compiling <code>book.do.txt</code> or actually extending the DocOnce source code.
 
-<h3 id="___sec20">HTML/Sphinx versions of the book </h3>
+<h3 id="___sec21">HTML/Sphinx versions of the book </h3>
 
 <p>
 It is easy to make a standard HTML version of the <code>book.do.txt</code>

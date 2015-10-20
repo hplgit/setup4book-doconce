@@ -1,11 +1,6 @@
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. !split
 
-.. _sec:rules:dir:struct:
+.. _setup:rules:dir_struct:
 
 Directory structure
 ===================
@@ -66,7 +61,7 @@ answers to exercises, etc.
 Under ``book``, we typically have a document ``book.do.txt`` for the complete
 book. This is a file with a lot of ``# #include "...do.txt"``
 statements for the Preprocess preprocessor for
-including the files for the various chapters, see the section :ref:`setup:rules:book:assembly` for details. Additional files
+including the files for the various chapters, see the section :ref:`setup:rules:book_assembly` for details. Additional files
 in the ``book`` directory include make files for compiling the book,
 scripts for packing the book for publishing, perhaps an errata document, etc.
 

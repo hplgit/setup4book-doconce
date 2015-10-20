@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,solutions to exercises,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -46,68 +46,81 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Directory structure ',
+ 'sections': [('Directory structure',
                1,
-               'sec:rules:dir:struct',
-               'sec:rules:dir:struct'),
-              (' Principles and conventions ', 1, None, '___sec1'),
-              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
-              (' Programming style ', 2, None, '___sec3'),
-              (' Degree of modularization ', 2, None, '___sec4'),
-              (' Student guide (slides) style ', 2, None, '___sec5'),
-              (' Style in exercises, problems, and projects ',
+               'setup:rules:dir_struct',
+               'setup:rules:dir_struct'),
+              ('Principles and conventions',
+               1,
+               'setup:rules:conv',
+               'setup:rules:conv'),
+              ('Mathematical notation and newcommands',
+               2,
+               'setup:rules:conv:newcommands',
+               'setup:rules:conv:newcommands'),
+              ('Label conventions',
+               2,
+               'setup:rules:conv:labels',
+               'setup:rules:conv:labels'),
+              ('Programming style', 2, None, '___sec4'),
+              ('Degree of modularization', 2, None, '___sec5'),
+              ('Student guide (slides) style', 2, None, '___sec6'),
+              ('Style in exercises, problems, and projects',
                2,
                None,
-               '___sec6'),
-              (' Assembling different pieces to a book ',
+               '___sec7'),
+              ('Assembling different pieces to a book',
                1,
-               'setup:rules:book:assembly',
-               'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec8'),
-              (' Figures and source code ', 2, None, '___sec9'),
-              (' Assembly of chapters to a book ', 2, None, '___sec10'),
-              (' Tools ', 1, None, '___sec11'),
-              (' Making a new chapter ', 2, None, '___sec12'),
-              (' Compiling the chapter ', 2, None, '___sec13'),
-              (' PDF ', 3, None, '___sec14'),
-              (' HTML ', 3, None, '___sec15'),
-              (' IPython notebook ', 3, None, '___sec16'),
-              (' Cleaning Files ', 3, None, '___sec17'),
-              (' About figures when publishing HTML ', 2, None, '___sec18'),
-              (' Compiling the book ', 2, None, '___sec19'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
-              (' Cross-referencing across chapters ', 1, None, '___sec21'),
-              (' Syntax of generalized cross-references ',
+               'setup:rules:book_assembly',
+               'setup:rules:book_assembly'),
+              ('Organization of a chapter',
                2,
+               'setup:rules:book_assembly:org',
+               'setup:rules:book_assembly:org'),
+              ('Figures and source code', 2, None, '___sec10'),
+              ('Assembly of chapters to a book', 2, None, '___sec11'),
+              ('Tools', 1, None, '___sec12'),
+              ('Making a new chapter', 2, None, '___sec13'),
+              ('Compiling the chapter to LaTeX and PDF', 2, None, '___sec14'),
+              ('Cleaning Files', 3, None, '___sec15'),
+              ('Automatic spell checking', 2, None, '___sec16'),
+              ('Compiling the chapter to HTML', 2, None, '___sec17'),
+              ('Compiling the chapter to a notebook', 2, None, '___sec18'),
+              ('About figures when publishing HTML', 2, None, '___sec19'),
+              ('Compiling the book', 2, None, '___sec20'),
+              ('HTML/Sphinx versions of the book', 3, None, '___sec21'),
+              ('Cross-referencing across chapters (or books)',
+               1,
                None,
                '___sec22'),
-              (' Study guides and slides ',
+              ('Study guides and slides',
                1,
                'setup:rules:slides',
                'setup:rules:slides'),
-              (' Slide directory ', 2, None, '___sec24'),
-              (' Generating slides from running text ', 2, None, '___sec25'),
-              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
-              (' Compiling slides ', 2, None, '___sec27'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
-              (' Writing in private repository while publishing in public ',
+              ('Slide directory', 2, None, '___sec24'),
+              ('Generating slides from running text', 2, None, '___sec25'),
+              ('Slides as IPython/Jupyter notebooks', 2, None, '___sec26'),
+              ('Compiling slides', 2, None, '___sec27'),
+              ('IPython/Jupyter notebooks', 2, None, '___sec28'),
+              ('Writing in private repository while publishing in public',
                1,
                None,
                '___sec29'),
-              (' Special features for teaching material ',
+              ('Book versions with and without solutions to exercises',
                1,
                None,
                '___sec30'),
-              (' Admonitions ', 2, None, '___sec31'),
-              (' Simple box ', 2, None, '___sec32'),
-              (' Embedded interactive code ', 2, None, '___sec33'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
-              (' The `pyscpro` code environment ', 3, None, '___sec35'),
-              (' Exercises ', 2, None, '___sec36'),
-              (' Quote ', 2, None, '___sec37'),
-              (' Quiz ', 2, None, '___sec38'),
-              (' What about a video lecture? ', 2, None, '___sec39'),
-              (' References ', 1, None, '___sec40')]}
+              ('Special features for teaching material', 1, None, '___sec31'),
+              ('Admonitions', 2, None, '___sec32'),
+              ('Simple box', 2, None, '___sec33'),
+              ('Embedded interactive code', 2, None, '___sec34'),
+              ('The `pyoptpro` code environment', 3, None, '___sec35'),
+              ('The `pyscpro` code environment', 3, None, '___sec36'),
+              ('Exercises', 2, None, '___sec37'),
+              ('Quote', 2, None, '___sec38'),
+              ('Quiz', 2, None, '___sec39'),
+              ('What about a video lecture?', 2, None, '___sec40'),
+              ('References', 1, None, '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -150,15 +163,16 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#sec:rules:dir:struct" style="font-size: 80%;">Directory structure</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#___sec1" style="font-size: 80%;">Principles and conventions</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book:assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap004.html#___sec11" style="font-size: 80%;">Tools</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec21" style="font-size: 80%;">Cross-referencing across chapters</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap001.html#setup:rules:dir_struct" style="font-size: 80%;">Directory structure</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap002.html#setup:rules:conv" style="font-size: 80%;">Principles and conventions</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap003.html#setup:rules:book_assembly" style="font-size: 80%;">Assembling different pieces to a book</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap004.html#___sec12" style="font-size: 80%;">Tools</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap005.html#___sec22" style="font-size: 80%;">Cross-referencing across chapters (or books)</a></li>
      <!-- navigation toc: --> <li><a href="#setup:rules:slides" style="font-size: 80%;">Study guides and slides</a></li>
      <!-- navigation toc: --> <li><a href="._rules-bootstrap007.html#___sec29" style="font-size: 80%;">Writing in private repository while publishing in public</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec30" style="font-size: 80%;">Special features for teaching material</a></li>
-     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec40" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap008.html#___sec30" style="font-size: 80%;">Book versions with and without solutions to exercises</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap009.html#___sec31" style="font-size: 80%;">Special features for teaching material</a></li>
+     <!-- navigation toc: --> <li><a href="._rules-bootstrap009.html#___sec41" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -196,7 +210,7 @@ necessary - with a particular emphasis on gaining understanding.
 It is a very challenging balance between enough
 information for self-study by reading slides and the modest amount
 of information you want in slides for oral presentations.
-For a talk, you will (very) have little text on slides and rely
+For a talk, you will have (very) little text on slides and rely
 on figures. This is not so effective in a teaching and study guide
 setting. Some text is indeed necessary, but it has to be minimized.
 Michael Alley's <a href="http://writing.engr.psu.edu/slides.html" target="_self">evidence-assertion</a>
@@ -263,7 +277,7 @@ chapter file, say <code>part1.do.txt</code>.
      but slides need many more subsection headings.</li>
    <li> Try to let the heading summarize explicitly a conclusion/rule from
      the slide (the slide table of contents is then a set of conclusions/rules!)</li>
-   <li> Remember a <code>!split</code> right above very slide heading!</li>
+   <li> Remember a <code>!split</code> right above every slide heading!</li>
    <li> Compile frequently and look at the slides: they become over-full very
      quickly so there is a constant need for dividing slides into new
      ones with new headings.</li>
@@ -272,7 +286,7 @@ chapter file, say <code>part1.do.txt</code>.
      <em>Making effective slides is the art of condensing the most
      important information in the text to a eye-catching format.</em></li>
    <li> Do not remove figures without a very good reason. Figures are important!</li>
-   <li> Add new images to live up the presentation. In slides you may think of
+   <li> Add new images to liven up the presentation. In slides you may think of
      cartoons or entertaining images that would never be suitable
      in a chapter/book, but they may help attract attention,
      communicate ideas, and enhance the memory process.</li>
@@ -316,6 +330,20 @@ in live presentations can only be tested by speaking to them (making a
 rough draft of a video podcast is a very effective way of testing
 the slides' quality).
 
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: use quizzes to define a sufficient preparation level.</b>
+You want students to study the slides/study guide before a lecture.
+To measure to what extent this is done, you can insert multiple-choice
+questions about the most basic concepts in the slides (using the DocOnce
+<code>quiz</code> environment). With <a href="https://github.com/hplgit/quiztools" target="_self">quiztools</a> you can extract all such
+multiple-choice questions, create online games with Kahoot, and
+let the students answer with their smart phones at the beginning of
+a lecture.
+The scores are visible to all on the main screen and communicate the
+preparation level.
+</div>
+
+
 <h2 id="___sec26">Slides as IPython/Jupyter notebooks </h2>
 
 <p>
@@ -325,8 +353,8 @@ as an IPython/Jupyter notebook for experimentation, extension, and
 personal notes. This is technically
 straightforward by just generating a notebook from the slide source,
 but a notebook puts some constraints
-on code snippets and figure such that it is meaningful to execute
-all the code. Moreover, many figures are inlined and appear as a result
+on code snippets and figures such that it is meaningful to execute
+all the code. Moreover, many figures are inlined and appear as a result of
 executing code in a notebook. While other formats will show a code
 snippet and then the corresponding figure, the notebook can leave
 the figure out and let it appear as the code cell is executed.
@@ -435,14 +463,14 @@ need more code to run, so one has to accept more code in the textbook.
 However, there is still a problem for the notebook with defining items
 for an index, fancy admonitions, and other elements that one would
 desire in a textbook. More experience is needed to make best practices.
-Since notebooks can be compiled Markdown, and DocOnce can read
+Since notebooks can be compiled in Markdown, and DocOnce can read
 basic Markdown input, it is possible to go from the notebook format
 to DocOnce, but this is not tested.
 
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Remark.</b>
-More best practices from turning teaching material in
-books into notebooks are supposed to be collected here in the future.
+More best practices for turning teaching material into
+books and into notebooks are supposed to be collected here in the future.
 </div>
 
 

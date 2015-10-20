@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -56,8 +55,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -69,17 +68,17 @@
         <li class="right" >
           <a href="._main_rules001.html" title="Directory structure"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Directory and file structure</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="principles-and-conventions">
-<h1>Principles and conventions<a class="headerlink" href="#principles-and-conventions" title="Permalink to this headline">¶</a></h1>
+<span id="setup-rules-conv"></span><h1>Principles and conventions<a class="headerlink" href="#principles-and-conventions" title="Permalink to this headline">¶</a></h1>
 <p>When starting a bigger project like one or more book projects, alone or
 with others, it is wise to sit down and agree upon some basic principles
 and conventions. This note is about a technical infrastructure for writing
@@ -90,6 +89,7 @@ must agree upon</p>
 <blockquote>
 <div><ul class="simple">
 <li>mathematical notation</li>
+<li>conventions for labels in cross referencing</li>
 <li>programming style</li>
 <li>degree of modularization</li>
 <li>writing style</li>
@@ -118,7 +118,7 @@ fancy admonitions or syntax highlighting is not visible in the
 document the authors are writing on.</p>
 </div>
 <div class="section" id="mathematical-notation-and-newcommands">
-<h2>Mathematical notation and newcommands<a class="headerlink" href="#mathematical-notation-and-newcommands" title="Permalink to this headline">¶</a></h2>
+<span id="setup-rules-conv-newcommands"></span><h2>Mathematical notation and newcommands<a class="headerlink" href="#mathematical-notation-and-newcommands" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-use-a-common-mathematical-notation admonition" id="index-0">
 <p class="first admonition-title">Use a common mathematical notation</p>
 <p class="last">I strongly recommend to spend considerable time on constructing a
@@ -127,20 +127,20 @@ notation for the project (and future projects). Think about
 newcommands for vectors (arrows or boldface), matrices (uppercase
 slanted or bold?, tensors, gradient, divergence, curl, etc.</p>
 </div>
-<p>Files with names <tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt> are by DocOnce treated as files
+<p>Files with names <code class="docutils literal"><span class="pre">newcommands*.tex</span></code> are treated by DocOnce as files
 with definition of newcommands for LaTeX mathematics.  These files
 must reside in the same directory as the DocOnce source
 files. However, for a book project, I recommend to have a single
 newcommands file shared by all chapters.  This file is placed in
-<tt class="docutils literal"><span class="pre">doc/src/chapters/newcommands.p.tex</span></tt> and copied to a specific chapter
+<code class="docutils literal"><span class="pre">doc/src/chapters/newcommands.p.tex</span></code> and copied to a specific chapter
 by the make script for that chapter. The extension of the file is
-<tt class="docutils literal"><span class="pre">.p.tex</span></tt>, indicating that the file has to be <em>preprocessed</em> by
-<tt class="docutils literal"><span class="pre">preprocess</span></tt> prior to being copied. The reason is that one
+<code class="docutils literal"><span class="pre">.p.tex</span></code>, indicating that the file has to be <em>preprocessed</em> by
+<code class="docutils literal"><span class="pre">preprocess</span></code> prior to being copied. The reason is that one
 occasionally wants the definitions of the newcommands to depend on the
 output format: standard LaTeX or MathJax.  For example, subscripts in
-<tt class="docutils literal"><span class="pre">mbox</span></tt> font look best with footnotesize font in plain LaTeX, while the
-larger <tt class="docutils literal"><span class="pre">small</span></tt> font is more appropriate for MathJax. We can then put
-the following definitions in <tt class="docutils literal"><span class="pre">newcommands.p.tex</span></tt>:</p>
+<code class="docutils literal"><span class="pre">mbox</span></code> font look best with footnotesize font in plain LaTeX, while the
+larger <code class="docutils literal"><span class="pre">small</span></code> font is more appropriate for MathJax. We can then put
+the following definitions in <code class="docutils literal"><span class="pre">newcommands.p.tex</span></code>:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span class="c">% #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</span>
 <span class="c">% Use footnotesize in subscripts</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\subsc</span><span class="nb">}</span>[2]<span class="nb">{</span>#1<span class="nb">_{</span><span class="k">\mbox</span><span class="nb">{</span><span class="k">\footnotesize</span> #2<span class="nb">}}}</span>
@@ -150,7 +150,7 @@ the following definitions in <tt class="docutils literal"><span class="pre">newc
 <span class="c">% #endif</span>
 </pre></div>
 </div>
-<p>The make script will then run <tt class="docutils literal"><span class="pre">preprocess</span></tt> on this file,
+<p>The make script will then run <code class="docutils literal"><span class="pre">preprocess</span></code> on this file,
 typically</p>
 <div class="highlight-bash"><div class="highlight"><pre>preprocess -DFORMAT<span class="o">=</span>pdflatex ../newcommands.p.tex &gt; newcommands.tex
 <span class="c"># or</span>
@@ -167,7 +167,7 @@ code as these are confined
 to the LaTeX format. Use instead Mako functions.</p>
 </div>
 <p>Here is an example on some
-useful constructs in a <tt class="docutils literal"><span class="pre">newcommands.p.tex</span></tt> file:</p>
+useful constructs in a <code class="docutils literal"><span class="pre">newcommands.p.tex</span></code> file:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\halfi</span><span class="nb">}{{</span>1/2<span class="nb">}}</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\half</span><span class="nb">}{</span><span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}}</span>
 <span class="k">\newcommand</span><span class="nb">{</span><span class="k">\tp</span><span class="nb">}{</span><span class="k">\thinspace</span> .<span class="nb">}</span>  <span class="c">% right space after equations</span>
@@ -210,6 +210,53 @@ useful constructs in a <tt class="docutils literal"><span class="pre">newcommand
 </pre></div>
 </div>
 </div>
+<div class="section" id="label-conventions">
+<span id="setup-rules-conv-labels"></span><h2>Label conventions<a class="headerlink" href="#label-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Books usually contain large amounts of cross referencing using
+labels (logical names) for sections, equations, exercises,
+and literature references.
+I strongly recommend to introduce conventions for how to construct
+labels as it makes it much easier to find the name of a new label and
+understand what a given label refers to.</p>
+<p>My chapter names are of the form <code class="docutils literal"><span class="pre">ch:name</span></code>, where <code class="docutils literal"><span class="pre">name</span></code> is the
+nickname of the chapter (this nickname is used for many other purposes
+also, see the section <a class="reference internal" href="._main_rules003.html#setup-rules-book-assembly-org"><span class="std std-ref">Organization of a chapter</span></a>).
+Section and subsection names are of the form</p>
+<div class="highlight-text"><div class="highlight"><pre>projectname:chaptername:sectionname:subsectionname
+</pre></div>
+</div>
+<p>where the names are short nicknames. Each short name may contain
+underscores to separate words. For example, the present section
+has label <code class="docutils literal"><span class="pre">setup:rules:conv:labels</span></code>, where <code class="docutils literal"><span class="pre">setup</span></code> is the nickname of the
+project (this book), <code class="docutils literal"><span class="pre">rules</span></code> is the nickname of the present chapter,
+<code class="docutils literal"><span class="pre">conv</span></code> is the nickname of the present section, and
+<code class="docutils literal"><span class="pre">label</span></code> is the nickname of the subsection.
+The section <a class="reference internal" href="._main_rules003.html#setup-rules-book-assembly-org"><span class="std std-ref">Organization of a chapter</span></a>
+has label <code class="docutils literal"><span class="pre">setup:rules:book_assembly:org</span></code>, where <code class="docutils literal"><span class="pre">book_assembly</span></code> is
+the nickname of the section using underscore to separate two words.
+Sometimes I leave out the project name.</p>
+<p>Equations may start with the current subsection label and
+continued with <code class="docutils literal"><span class="pre">eq:name</span></code>, where <code class="docutils literal"><span class="pre">name</span></code> is some logical name for
+the equation. Figures are given the same type of name, except that
+the postfix is <code class="docutils literal"><span class="pre">fig:name</span></code>. For exercises I use <code class="docutils literal"><span class="pre">exer:name</span></code> as postfix
+in the labels. Equations and figures within an exercise have extended
+names such as <code class="docutils literal"><span class="pre">setup:rules:exer:eq:uv_relation</span></code>.</p>
+<p>Bibliographic references can take the forms <code class="docutils literal"><span class="pre">author_year</span></code>,
+<code class="docutils literal"><span class="pre">author1_author2_year</span></code>, <code class="docutils literal"><span class="pre">author1_etal_year</span></code>. An alternative is
+to use names that reflect the topic:
+<code class="docutils literal"><span class="pre">topic:paper</span></code> or <code class="docutils literal"><span class="pre">topic:url</span></code>, e.g., <code class="docutils literal"><span class="pre">IPython:paper</span></code> for a ]paper on IPython
+or <code class="docutils literal"><span class="pre">IPython:url</span></code> for the IPython website.</p>
+<p>You can run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">list_labels</span> <span class="pre">*.do.txt</span></code> to get a list of labels,
+categorized under the various section headings, in your DocOnce
+documents.  This command quickly reveals if a clean-up of label names
+is necessary.  You can redirect the output of the command to a file
+and then add a second column with new label names. This file can be
+used with the command <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace_from_file</span></code> to perform
+substitutions from old to new labels.</p>
+<p>Compilation of DocOnce files can make use of the option
+<code class="docutils literal"><span class="pre">--latex_labels_in_margin</span></code> to get the label names of equations
+and sections to be printed in the margin.</p>
+</div>
 <div class="section" id="programming-style">
 <h2>Programming style<a class="headerlink" href="#programming-style" title="Permalink to this headline">¶</a></h2>
 <p>It is fundamental for a book project to stick to one well-defined
@@ -225,10 +272,10 @@ minimizing the vertical length of programs in books).
 Fortunately, for Python there is are nice tools for checking that
 a code follows the PEP8 rules, e.g.,
 <a class="reference external" href="https://flake8.readthedocs.org/en/2.0/">Flake8</a> (see
-<a class="reference internal" href="._main_rules008.html#ref1" id="id1">[Ref1]</a> for an intro).</p>
+<a class="reference internal" href="._main_rules009.html#ref1" id="id1">[Ref1]</a> for an intro).</p>
 <p>For any programming language it is key to agree on how to use
 white space in indentation, style of loops, identifier
-names (<tt class="docutils literal"><span class="pre">my_funtcion</span></tt> vs <tt class="docutils literal"><span class="pre">myFunction</span></tt> vs <tt class="docutils literal"><span class="pre">MyFunction</span></tt>), white space
+names (<code class="docutils literal"><span class="pre">my_funtcion</span></code> vs <code class="docutils literal"><span class="pre">myFunction</span></code> vs <code class="docutils literal"><span class="pre">MyFunction</span></code>), white space
 in function argument lists, etc.</p>
 <div class="admonition-tip-make-a-1-1-mapping-between-mathematics-and-code admonition">
 <p class="first admonition-title">Tip: make a 1-1 mapping between mathematics and code</p>
@@ -237,17 +284,17 @@ the problem it is going to solve in mathematics first. Reuse terms
 and notation in the program, and try to make the key statements in the code
 as close as possible to the mathematical formulation.</p>
 </div>
-<p>Typesetting of computer code in DocOnce makes use of the <tt class="docutils literal"><span class="pre">!bc</span></tt> construction
-and a named environment, e.g., <tt class="docutils literal"><span class="pre">pycod</span></tt> for a Python snippet and <tt class="docutils literal"><span class="pre">pypro</span></tt>
+<p>Typesetting of computer code in DocOnce makes use of the <code class="docutils literal"><span class="pre">!bc</span></code> construction
+and a named environment, e.g., <code class="docutils literal"><span class="pre">pycod</span></code> for a Python snippet and <code class="docutils literal"><span class="pre">pypro</span></code>
 for a complete Python program. Users are often confused if a set of
 statements in a text can be executed as they stand or not. That is why
-we have introduced the <tt class="docutils literal"><span class="pre">cod</span></tt> and <tt class="docutils literal"><span class="pre">pro</span></tt> environments: <tt class="docutils literal"><span class="pre">cod</span></tt> is for just some
-code, while <tt class="docutils literal"><span class="pre">pro</span></tt> is for a complete program that will run. You may
-choose the typesetting to be different for the <tt class="docutils literal"><span class="pre">cod</span></tt> and <tt class="docutils literal"><span class="pre">pro</span></tt> environments.</p>
+we have introduced the <code class="docutils literal"><span class="pre">cod</span></code> and <code class="docutils literal"><span class="pre">pro</span></code> environments: <code class="docutils literal"><span class="pre">cod</span></code> is for just some
+code, while <code class="docutils literal"><span class="pre">pro</span></code> is for a complete program that will run. You may
+choose the typesetting to be different for the <code class="docutils literal"><span class="pre">cod</span></code> and <code class="docutils literal"><span class="pre">pro</span></code> environments.</p>
 <p>When preparing text for IPython/Jupyter notebooks, a code snippet cannot
 run unless previous snippets contain the necessary code. Sometimes this
 forces you to include more code than would be natural in a book.
-There is a third type of environment, <tt class="docutils literal"><span class="pre">hid</span></tt>, that can be used to
+There is a third type of environment, <code class="docutils literal"><span class="pre">hid</span></code>, that can be used to
 insert code segments that are to be hidden in text, but present in
 notebooks to enable execution of future snippets. For example,</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="c"># Need to import to run next snippet</span>
@@ -271,7 +318,7 @@ in any other format.</p>
 <div class="section" id="degree-of-modularization">
 <h2>Degree of modularization<a class="headerlink" href="#degree-of-modularization" title="Permalink to this headline">¶</a></h2>
 <p>My recommendation is to divide the project into as small modules as possible
-and to make this modules as independent as possible. This is a very difficult
+and to make these modules as independent as possible. This is a very difficult
 optimization problem. There is some kind of gravity force towards
 big chapters and lots of cross-references internally and to other chapters.
 For book composition and even more for course composition, smaller modules
@@ -279,7 +326,7 @@ give much higher degree of flexibility.</p>
 <p>To make modules independent, the degree of cross-referencing between
 modules must be modest, which forces a need to repeat material.
 Repetition breaks a strong tradition in book writing. However,
-moving away from strictly linear chapter-by-chapter book to a more
+moving away from a strictly linear chapter-by-chapter book to a more
 flexible set of modules connected in a graph, will induce repetition.
 Readers also appreciate repetition, perhaps slightly differently phrased
 with purpose, rather than being served with lots of references to
@@ -302,7 +349,7 @@ a different team is behind the present chapter.</p>
 <p>This note suggests to develop a book together with a <em>study guide</em>, i.e.,
 a summarizing version of the material. An effective format of a study
 guide is a set of slides, ideally a set that can be used both for
-teaching and for self-study. The section <a class="reference internal" href="._main_rules006.html#setup-rules-slides"><em>Study guides and slides</em></a> explains
+teaching and for self-study. The section <a class="reference internal" href="._main_rules006.html#setup-rules-slides"><span class="std std-ref">Study guides and slides</span></a> explains
 some infrastructure for producing DocOnce slides.</p>
 <p>Some prefer to develop slides for a study guide first and then use this
 as a skeleton for writing the running text of a chapter. Others prefer
@@ -310,8 +357,8 @@ to produce the slides from the running text.</p>
 <p>The style of slides is even more important than the style of running text.
 Slides for reading are not so sensitive to the style, but if the slides
 are also intended to be used in teaching, the style becomes key.
-Some comments on style are provided in box in the introduction to
-the section <a class="reference internal" href="._main_rules006.html#setup-rules-slides"><em>Study guides and slides</em></a>. Rather than having boring headings a la
+Some comments on style are provided in the box in the introduction to
+the section <a class="reference internal" href="._main_rules006.html#setup-rules-slides"><span class="std std-ref">Study guides and slides</span></a>. Rather than having boring headings a la
 <em>Assumptions</em>, followed by a bullet list of assumptions,
 I recommend to summarize the most important information in a 1-2 line
 heading, e.g., <em>We assume a homogeneous material and no external forcing</em>.
@@ -350,7 +397,7 @@ exercise, problem, and project above.)</p>
 </ul>
 </div></blockquote>
 <p>Many students struggle with identifying the
-problem setting (question) when too much information is comes at once.
+problem setting (question) when too much information comes at once.
 Hints can be effectively used to separate the question from additional
 information that is just supposed to help the reader. Remarks fulfill a similar
 purpose and can separate fun facts or information that puts the problem
@@ -371,7 +418,7 @@ separate document.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
@@ -382,6 +429,7 @@ separate document.</p>
   <ul>
 <li><a class="reference internal" href="#">Principles and conventions</a><ul>
 <li><a class="reference internal" href="#mathematical-notation-and-newcommands">Mathematical notation and newcommands</a></li>
+<li><a class="reference internal" href="#label-conventions">Label conventions</a></li>
 <li><a class="reference internal" href="#programming-style">Programming style</a></li>
 <li><a class="reference internal" href="#degree-of-modularization">Degree of modularization</a></li>
 <li><a class="reference internal" href="#student-guide-slides-style">Student guide (slides) style</a></li>
@@ -396,15 +444,17 @@ separate document.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_rules003.html"
                         title="next chapter">Assembling different pieces to a book</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/._main_rules002.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._main_rules002.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -418,7 +468,7 @@ separate document.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -430,7 +480,7 @@ separate document.</p>
         <li class="right" >
           <a href="._main_rules001.html" title="Directory structure"
              >previous</a> |</li>
-        <li><a href="index.html">Directory and file structure</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Directory and file structure</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

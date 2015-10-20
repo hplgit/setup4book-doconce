@@ -10,7 +10,7 @@ Directory and file structure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Apr 26, 2015
+:Date: Oct 20, 2015
 
 .. Externaldocuments: ../fake/main_fake
 

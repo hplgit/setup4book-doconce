@@ -37,15 +37,12 @@ wrapper file ``main_mychap.do.txt`` such that you can compile this chapter
 as a stand-alone document. You also get ``make.sh`` which calls ``../make.sh``
 with the chapter main document (``main_mychap``) as argument. Optional
 arguments for running ``doconce format pdflatex`` can be given to
-``../make.sh`` in ``make.sh`` if needed (e.g., --encoding=utf8`).
+``../make.sh`` in ``make.sh`` if needed (e.g., ``--encoding=utf8``).
 
-Compiling the chapter
----------------------
+Compiling the chapter to LaTeX and PDF
+--------------------------------------
 
 .. index:: make.sh
-
-PDF
-~~~
 
 To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
 we propose the convention to have a ``make.sh`` in each chapter directory.
@@ -101,16 +98,57 @@ The suggested ``make.sh`` file
 applies the ``--latex_code_style=`` option to ``doconce format``
 for specifying the typesetting of blocks of computer code in LaTeX.
 Originally, DocOnce applied the ``ptex2tex`` program to select such
-typesetting, but the new method is more flexible and simpler (in that
-it gives cleaner LaTeX code). (With ``ptex2tex`` one would need a common
-configuration file ``doc/chapters/.ptex2tex.cfg`` to be copied by
+typesetting, but the new method is more flexible and simpler in that
+it gives cleaner LaTeX code. (With ``ptex2tex`` one would need a common
+configuration file ``.ptex2tex.cfg`` in
+``doc/chapters`` to be copied by
 ``doc/chapters/make.sh`` to the chapter directory prior to running
 `ptex2tex.)
 
-.. index:: make_html.sh
+Cleaning Files
+~~~~~~~~~~~~~~
 
-HTML
-~~~~
+The ``make*.sh`` files generate a lot of files that can easily
+be regenerated and that are normally removed from the chapter
+directories. The script ``sh ../clean.sh`` can be run in any
+chapter directory to clean up redundant files.
+
+Automatic spell checking
+------------------------
+
+The ``make.sh`` first runs a spell check using ``doconce spellcheck``.
+The first time you run this command there will be many "misspellings"
+because of unregistered (scientific) words in the dictionary and maybe
+also because some words are actually misspelled. Invoke the
+``misspellings.txt |nbsp| `` file to see a list of all misspellings. Correct
+mistakes in the original documents and run the ``make.sh`` script again.
+When ``misspellings.txt |nbsp| `` at some point contains acceptable words only,
+you update the dictionary by
+
+.. code-block:: bash
+
+        cp new_dictionary.txt~ .dict4spell.txt
+
+Make sure ``.dict4spell.txt`` is version controlled by Git.
+The ``make.sh`` script will not proceed with compilation of the documents
+before the spell check is run without errors.
+
+Finding misspellings can sometimes be a challenge. For a document named
+``mydoc.do.txt``, the spell check is carried out on a stripped version,
+named ``tmp_stripped_mydoc.do.txt``. Look into this file for misspellings
+that are not obvious. Strange misspellings such as ``APlu`` or similar
+usually arise from missing dollar sign around mathematical formulas.
+Formulas are stripped away in ``tmp_stripped_mydoc.do.txt``, but if a
+dollar sign is missing, mathematical formulas become words subject
+to spell checking. To find the relevant file containing
+a particular misspelling listed in ``misspellings.txt |nbsp| ``, you may look
+into the file-wise list of misspellings: the misspellings in ``mydoc.do.txt``
+are listed in ``tmp_misspelled_mydoc.do.txt |nbsp| ``.
+
+Compiling the chapter to HTML
+-----------------------------
+
+.. index:: make_html.sh
 
 There is also a script ``doc/src/chapters/make_html.sh`` for making
 HTML versions of the chapter. Just call this as
@@ -171,8 +209,10 @@ HTML or Sphinx styles.
    
    .. code-block:: text
    
-           Terminal> doconce format html index_files --html_style=bootstrap \ 
-                     --html_links_in_new_window --html_bootstrap_navbar=off
+           Terminal> doconce format html index_files \ 
+                     --html_style=bootstrap \ 
+                     --html_links_in_new_window \ 
+           	  --html_bootstrap_navbar=off
    
    and publish it in ``doc/pub/index.html``.
 
@@ -185,8 +225,8 @@ HTML or Sphinx styles.
 
 .. index:: Jupyter notebooks
 
-IPython notebook
-~~~~~~~~~~~~~~~~
+Compiling the chapter to a notebook
+-----------------------------------
 
 Although there is no benefit from interactive computing and visualization
 in the present document, we may produce an IPython notebook for the fun of it:
@@ -197,14 +237,6 @@ in the present document, we may produce an IPython notebook for the fun of it:
                   CHAPTER=document BOOK=document APPENDIX=document
 
 .. index:: clean.sh
-
-Cleaning Files
-~~~~~~~~~~~~~~
-
-The ``make*.sh`` files generate a lot of files that can easily
-be regenerated and that are normally removed from the chapter
-directories. The script ``sh ../clean.sh`` can be run in any
-chapter directory to clean up redundant files.
 
 About figures when publishing HTML
 ----------------------------------
@@ -229,7 +261,7 @@ pack all files of the entire book projects for publishing with Springer
 (``pack_Springer.sh``).
 
 The current book layout created by ``make.sh`` makes use of a (now outdated)
-Springer T2 style for textbooks (requires the ``.cls`` and ``.sty`` files in
+Springer T4 style for textbooks (requires the ``.cls`` and ``.sty`` files in
 the ``book`` directory). Other Springer styles supported by DocOnce
 are Lecture Notes in Computational Science and Engineering (monographs
 and proceedings),

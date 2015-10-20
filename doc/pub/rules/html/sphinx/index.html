@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -55,8 +54,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -65,14 +64,14 @@
         <li class="right" >
           <a href="._main_rules000.html" title="Directory and file structure"
              accesskey="N">next</a> |</li>
-        <li><a href="#">Directory and file structure</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">Directory and file structure</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="directory-and-file-structure">
 <h1>Directory and file structure<a class="headerlink" href="#directory-and-file-structure" title="Permalink to this headline">¶</a></h1>
@@ -83,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="._main_rules001.html">Directory structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="._main_rules002.html">Principles and conventions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules002.html#mathematical-notation-and-newcommands">Mathematical notation and newcommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules002.html#label-conventions">Label conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules002.html#programming-style">Programming style</a></li>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules002.html#degree-of-modularization">Degree of modularization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules002.html#student-guide-slides-style">Student guide (slides) style</a></li>
@@ -97,24 +97,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="._main_rules004.html">Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#making-a-new-chapter">Making a new chapter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#compiling-the-chapter">Compiling the chapter</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules004.html#pdf">PDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules004.html#html">HTML</a></li>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules004.html#ipython-notebook">IPython notebook</a></li>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules004.html#cleaning-files">Cleaning Files</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#compiling-the-chapter-to-latex-and-pdf">Compiling the chapter to LaTeX and PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#automatic-spell-checking">Automatic spell checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#compiling-the-chapter-to-html">Compiling the chapter to HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#compiling-the-chapter-to-a-notebook">Compiling the chapter to a notebook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#about-figures-when-publishing-html">About figures when publishing HTML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#compiling-the-book">Compiling the book</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules004.html#html-sphinx-versions-of-the-book">HTML/Sphinx versions of the book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules004.html#compiling-the-book">Compiling the book</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="._main_rules005.html">Cross-referencing across chapters</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules005.html#syntax-of-generalized-cross-references">Syntax of generalized cross-references</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="._main_rules005.html">Cross-referencing across chapters (or books)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="._main_rules006.html">Study guides and slides</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules006.html#slide-directory">Slide directory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="._main_rules006.html#generating-slides-from-running-text">Generating slides from running text</a></li>
@@ -124,30 +115,25 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="._main_rules007.html">Writing in private repository while publishing in public</a></li>
-<li class="toctree-l1"><a class="reference internal" href="._main_rules008.html">Special features for teaching material</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#admonitions">Admonitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#simple-box">Simple box</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#embedded-interactive-code">Embedded interactive code</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules008.html#the-pyoptpro-code-environment">The <tt class="docutils literal"><span class="pre">pyoptpro</span></tt> code environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="._main_rules008.html#the-pyscpro-code-environment">The <tt class="docutils literal"><span class="pre">pyscpro</span></tt> code environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="._main_rules008.html">Book versions with and without solutions to exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="._main_rules009.html">Special features for teaching material</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#admonitions">Admonitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#simple-box">Simple box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#embedded-interactive-code">Embedded interactive code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#quote">Quote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#quiz">Quiz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="._main_rules009.html#what-about-a-video-lecture">What about a video lecture?</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#exercises">Exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#quote">Quote</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#quiz">Quiz</a></li>
-<li class="toctree-l2"><a class="reference internal" href="._main_rules008.html#what-about-a-video-lecture">What about a video lecture?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="._main_rules008.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="._main_rules009.html#references">References</a></li>
 </ul>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="index">
+<h1>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 </ul>
 </div>
 
@@ -155,7 +141,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
@@ -165,21 +151,23 @@
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Directory and file structure</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#index">Index</a></li>
 </ul>
 
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_rules000.html"
                         title="next chapter">Directory and file structure</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -193,7 +181,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -202,7 +190,7 @@
         <li class="right" >
           <a href="._main_rules000.html" title="Directory and file structure"
              >next</a> |</li>
-        <li><a href="#">Directory and file structure</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">Directory and file structure</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

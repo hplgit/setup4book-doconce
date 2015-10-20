@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Directory and file structure">
-<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
+<meta name="keywords" content="figure directory,movie directory,video directory,source code directory,nickname,newcommands,chapter organization,chapter files,figure directory,movie directory,video directory,source code directory,assembly (chapters to book),links to fig/src directories,IPython notebooks,notebooks,Jupyter notebooks,RunestoneInteractive books,sphinx,cross-referencing,generalized references,slides,study guides,IPython notebooks,notebooks,Jupyter notebooks,private repos,mirroring repos,solutions to exercises,admonitions,interactive code,exercises in DocOnce,quiz,multiple-choice questions,video in DocOnce,embedded video in DocOnce,movie in DocOnce">
 
 <title>Directory and file structure</title>
 
@@ -76,68 +76,81 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Directory structure ',
+ 'sections': [('Directory structure',
                1,
-               'sec:rules:dir:struct',
-               'sec:rules:dir:struct'),
-              (' Principles and conventions ', 1, None, '___sec1'),
-              (' Mathematical notation and newcommands ', 2, None, '___sec2'),
-              (' Programming style ', 2, None, '___sec3'),
-              (' Degree of modularization ', 2, None, '___sec4'),
-              (' Student guide (slides) style ', 2, None, '___sec5'),
-              (' Style in exercises, problems, and projects ',
+               'setup:rules:dir_struct',
+               'setup:rules:dir_struct'),
+              ('Principles and conventions',
+               1,
+               'setup:rules:conv',
+               'setup:rules:conv'),
+              ('Mathematical notation and newcommands',
+               2,
+               'setup:rules:conv:newcommands',
+               'setup:rules:conv:newcommands'),
+              ('Label conventions',
+               2,
+               'setup:rules:conv:labels',
+               'setup:rules:conv:labels'),
+              ('Programming style', 2, None, '___sec4'),
+              ('Degree of modularization', 2, None, '___sec5'),
+              ('Student guide (slides) style', 2, None, '___sec6'),
+              ('Style in exercises, problems, and projects',
                2,
                None,
-               '___sec6'),
-              (' Assembling different pieces to a book ',
+               '___sec7'),
+              ('Assembling different pieces to a book',
                1,
-               'setup:rules:book:assembly',
-               'setup:rules:book:assembly'),
-              (' Organization of a chapter ', 2, None, '___sec8'),
-              (' Figures and source code ', 2, None, '___sec9'),
-              (' Assembly of chapters to a book ', 2, None, '___sec10'),
-              (' Tools ', 1, None, '___sec11'),
-              (' Making a new chapter ', 2, None, '___sec12'),
-              (' Compiling the chapter ', 2, None, '___sec13'),
-              (' PDF ', 3, None, '___sec14'),
-              (' HTML ', 3, None, '___sec15'),
-              (' IPython notebook ', 3, None, '___sec16'),
-              (' Cleaning Files ', 3, None, '___sec17'),
-              (' About figures when publishing HTML ', 2, None, '___sec18'),
-              (' Compiling the book ', 2, None, '___sec19'),
-              (' HTML/Sphinx versions of the book ', 3, None, '___sec20'),
-              (' Cross-referencing across chapters ', 1, None, '___sec21'),
-              (' Syntax of generalized cross-references ',
+               'setup:rules:book_assembly',
+               'setup:rules:book_assembly'),
+              ('Organization of a chapter',
                2,
+               'setup:rules:book_assembly:org',
+               'setup:rules:book_assembly:org'),
+              ('Figures and source code', 2, None, '___sec10'),
+              ('Assembly of chapters to a book', 2, None, '___sec11'),
+              ('Tools', 1, None, '___sec12'),
+              ('Making a new chapter', 2, None, '___sec13'),
+              ('Compiling the chapter to LaTeX and PDF', 2, None, '___sec14'),
+              ('Cleaning Files', 3, None, '___sec15'),
+              ('Automatic spell checking', 2, None, '___sec16'),
+              ('Compiling the chapter to HTML', 2, None, '___sec17'),
+              ('Compiling the chapter to a notebook', 2, None, '___sec18'),
+              ('About figures when publishing HTML', 2, None, '___sec19'),
+              ('Compiling the book', 2, None, '___sec20'),
+              ('HTML/Sphinx versions of the book', 3, None, '___sec21'),
+              ('Cross-referencing across chapters (or books)',
+               1,
                None,
                '___sec22'),
-              (' Study guides and slides ',
+              ('Study guides and slides',
                1,
                'setup:rules:slides',
                'setup:rules:slides'),
-              (' Slide directory ', 2, None, '___sec24'),
-              (' Generating slides from running text ', 2, None, '___sec25'),
-              (' Slides as IPython/Jupyter notebooks ', 2, None, '___sec26'),
-              (' Compiling slides ', 2, None, '___sec27'),
-              (' IPython/Jupyter notebooks ', 2, None, '___sec28'),
-              (' Writing in private repository while publishing in public ',
+              ('Slide directory', 2, None, '___sec24'),
+              ('Generating slides from running text', 2, None, '___sec25'),
+              ('Slides as IPython/Jupyter notebooks', 2, None, '___sec26'),
+              ('Compiling slides', 2, None, '___sec27'),
+              ('IPython/Jupyter notebooks', 2, None, '___sec28'),
+              ('Writing in private repository while publishing in public',
                1,
                None,
                '___sec29'),
-              (' Special features for teaching material ',
+              ('Book versions with and without solutions to exercises',
                1,
                None,
                '___sec30'),
-              (' Admonitions ', 2, None, '___sec31'),
-              (' Simple box ', 2, None, '___sec32'),
-              (' Embedded interactive code ', 2, None, '___sec33'),
-              (' The `pyoptpro` code environment ', 3, None, '___sec34'),
-              (' The `pyscpro` code environment ', 3, None, '___sec35'),
-              (' Exercises ', 2, None, '___sec36'),
-              (' Quote ', 2, None, '___sec37'),
-              (' Quiz ', 2, None, '___sec38'),
-              (' What about a video lecture? ', 2, None, '___sec39'),
-              (' References ', 1, None, '___sec40')]}
+              ('Special features for teaching material', 1, None, '___sec31'),
+              ('Admonitions', 2, None, '___sec32'),
+              ('Simple box', 2, None, '___sec33'),
+              ('Embedded interactive code', 2, None, '___sec34'),
+              ('The `pyoptpro` code environment', 3, None, '___sec35'),
+              ('The `pyscpro` code environment', 3, None, '___sec36'),
+              ('Exercises', 2, None, '___sec37'),
+              ('Quote', 2, None, '___sec38'),
+              ('Quiz', 2, None, '___sec39'),
+              ('What about a video lecture?', 2, None, '___sec40'),
+              ('References', 1, None, '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -179,7 +192,7 @@ $$
 <p>
 <!-- !split -->
 
-<h1 id="___sec21">Cross-referencing across chapters </h1>
+<h1 id="___sec22">Cross-referencing across chapters (or books) </h1>
 
 <p>
 A fundamental problem when writing a book <em>and</em> stand-alone chapters
@@ -212,8 +225,6 @@ It is called <em>generalized cross-references</em>. You can then write
 such references across chapters and get all labels right whether you
 produce the entire book or individual chapters.
 
-<h2 id="___sec22">Syntax of generalized cross-references </h2>
-
 <p>
 Here is an example on a generalized reference to an equation in another
 document:
@@ -221,7 +232,7 @@ document:
 <p>
 
 <!-- code=doconce (!bc do) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">The world&#39;s most famous equation is ref[\eqref{fake:Emc2}][in
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">The world&#39;s most famous equation is ref[\eqref{setup:fake:Emc2}][ in
 cite{Langtangen_dobook_fake}][
 as found in the document &quot;Some document&quot;:
 <span style="color: #CD5555">&quot;http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake&quot;</span>
@@ -236,7 +247,7 @@ This sentence is rendered as follows in the present format (<code>html</code>):
 <div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
 The world's most famous equation is 
 as found in the document <a href="http://hplgit.gthub.io/setup4book-doconce/doc/pub/fake" target="_self">Some document</a>
-<a href="._rules-solarized008.html#Langtangen_dobook_fake">[3]</a>.
+<a href="._rules-solarized009.html#Langtangen_dobook_fake">[3]</a>.
 </div>
 <!-- end box -->
 
@@ -247,6 +258,24 @@ found in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual
 In particular, one has to insert <code># Externaldocuments:</code> commands in
 all <code>main_*.do.txt</code> files that includes files with generalized
 references.
+
+<p>
+<div class="alert alert-block alert-notice alert-text-normal">
+<b>Tip: Limit generalized references to those strictly needed.</b>
+<p>
+Books often contain a lot of cross references, and making generalized
+references out of all them can be quite some job. A convenient way
+of saving boring work
+is to enclose nice-to-have, yet not strictly needed, references in
+Mako or Preprocess if statements (typically <code>if BOOK == &quot;book&quot;</code>) such
+that they appear in the full book but not in individual chapters.
+
+<p>
+However, if individual chapters in HTML are to be one official format
+of the book, you should make the chapters identical to the book and
+make generalized references out of all references to other chapters.
+</div>
+
 
 <p>
 <p>

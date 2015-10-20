@@ -43,7 +43,7 @@
 
     
     <link rel="top" title="How to Use DocOnce to Write Books" href="index.html" />
-    <link rel="next" title="Cross-referencing across chapters" href="._book007.html" />
+    <link rel="next" title="Cross-referencing across chapters (or books)" href="._book007.html" />
     <link rel="prev" title="Assembling different pieces to a book" href="._book005.html" />
  
   
@@ -63,7 +63,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="._book007.html" title="Cross-referencing across chapters"
+          <a href="._book007.html" title="Cross-referencing across chapters (or books)"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="._book005.html" title="Assembling different pieces to a book"
@@ -104,11 +104,9 @@ with the chapter main document (<code class="docutils literal"><span class="pre"
 arguments for running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pdflatex</span></code> can be given to
 <code class="docutils literal"><span class="pre">../make.sh</span></code> in <code class="docutils literal"><span class="pre">make.sh</span></code> if needed (e.g., <code class="docutils literal"><span class="pre">--encoding=utf8</span></code>).</p>
 </div>
-<div class="section" id="compiling-the-chapter">
-<h2>Compiling the chapter<a class="headerlink" href="#compiling-the-chapter" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pdf">
-<span id="index-1"></span><h3>PDF<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
-<p>To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
+<div class="section" id="compiling-the-chapter-to-latex-and-pdf">
+<h2>Compiling the chapter to LaTeX and PDF<a class="headerlink" href="#compiling-the-chapter-to-latex-and-pdf" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
 we propose the convention to have a <code class="docutils literal"><span class="pre">make.sh</span></code> in each chapter directory.
 This <code class="docutils literal"><span class="pre">make.sh</span></code> can in most cases just call up a common <code class="docutils literal"><span class="pre">../make.sh</span></code>
 script,</p>
@@ -127,12 +125,6 @@ version for printing appear as footnotes (and just hyperlinks with
 a dark blue color in the electronic version). The two files are
 named <code class="docutils literal"><span class="pre">mychap.pdf</span></code> and <code class="docutils literal"><span class="pre">mychap-4print.pdf</span></code>, respectively, and
 copied to <code class="docutils literal"><span class="pre">doc/pub/mychap/pdf</span></code> for publishing.</p>
-<div class="highlight-bash"><div class="highlight"><pre>cp new_dictionary.txt~ .dict4spell.txt
-</pre></div>
-</div>
-<p>(Make sure <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code> is version controlled by Git.)
-The <code class="docutils literal"><span class="pre">make.sh</span></code> script will not proceed with compilation of the documents
-before the spell check is run without errors.</p>
 <div class="admonition-tip-use-tinyurl-com-for-shortening-long-urls admonition">
 <p class="first admonition-title">Tip: use tinyurl.com for shortening long URLs</p>
 <p>When compiling a document to LaTeX for <em>printing on paper</em> (<code class="docutils literal"><span class="pre">--device=paper</span></code>),
@@ -157,14 +149,22 @@ The suggested <code class="docutils literal"><span class="pre">make.sh</span></c
 applies the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 for specifying the typesetting of blocks of computer code in LaTeX.
 Originally, DocOnce applied the <code class="docutils literal"><span class="pre">ptex2tex</span></code> program to select such
-typesetting, but the new method is more flexible and simpler (in that
-it gives cleaner LaTeX code). (With <code class="docutils literal"><span class="pre">ptex2tex</span></code> one would need a common
-configuration file <code class="docutils literal"><span class="pre">doc/chapters/.ptex2tex.cfg</span></code> to be copied by
+typesetting, but the new method is more flexible and simpler in that
+it gives cleaner LaTeX code. (With <code class="docutils literal"><span class="pre">ptex2tex</span></code> one would need a common
+configuration file <code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code> in
+<code class="docutils literal"><span class="pre">doc/chapters</span></code> to be copied by
 <code class="docutils literal"><span class="pre">doc/chapters/make.sh</span></code> to the chapter directory prior to running
 <a href="#id1"><span class="problematic" id="id2">`</span></a>ptex2tex.)</p>
+<div class="section" id="cleaning-files">
+<h3>Cleaning Files<a class="headerlink" href="#cleaning-files" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">make*.sh</span></code> files generate a lot of files that can easily
+be regenerated and that are normally removed from the chapter
+directories. The script <code class="docutils literal"><span class="pre">sh</span> <span class="pre">../clean.sh</span></code> can be run in any
+chapter directory to clean up redundant files.</p>
+</div>
 </div>
 <div class="section" id="automatic-spell-checking">
-<h3>Automatic spell checking<a class="headerlink" href="#automatic-spell-checking" title="Permalink to this headline">¶</a></h3>
+<h2>Automatic spell checking<a class="headerlink" href="#automatic-spell-checking" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">make.sh</span></code> first runs a spell check using <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code>.
 The first time you run this command there will be many &#8220;misspellings&#8221;
 because of unregistered (scientific) words in the dictionary and maybe
@@ -173,10 +173,27 @@ also because some words are actually misspelled. Invoke the
 <span class="pre">mistakes</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">original</span> <span class="pre">documents</span> <span class="pre">and</span> <span class="pre">run</span> <span class="pre">the</span> <span class="pre">``make.sh</span></code> script again.
 When <a href="#id3"><span class="problematic" id="id4">``</span></a>misspellings.txt&nbsp;`` at some point contains acceptable words only,
 you update the dictionary by</p>
+<div class="highlight-bash"><div class="highlight"><pre>cp new_dictionary.txt~ .dict4spell.txt
+</pre></div>
 </div>
-<div class="section" id="html">
-<span id="index-2"></span><h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
-<p>There is also a script <code class="docutils literal"><span class="pre">doc/src/chapters/make_html.sh</span></code> for making
+<p>Make sure <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code> is version controlled by Git.
+The <code class="docutils literal"><span class="pre">make.sh</span></code> script will not proceed with compilation of the documents
+before the spell check is run without errors.</p>
+<p>Finding misspellings can sometimes be a challenge. For a document named
+<code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>, the spell check is carried out on a stripped version,
+named <code class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></code>. Look into this file for misspellings
+that are not obvious. Strange misspellings such as <code class="docutils literal"><span class="pre">APlu</span></code> or similar
+usually arise from missing dollar sign around mathematical formulas.
+Formulas are stripped away in <code class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></code>, but if a
+dollar sign is missing, mathematical formulas become words subject
+to spell checking. To find the relevant file containing
+a particular misspelling listed in <code class="docutils literal"><span class="pre">misspellings.txt</span> <span class="pre">|nbsp|</span> <span class="pre">``,</span> <span class="pre">you</span> <span class="pre">may</span> <span class="pre">look</span>
+<span class="pre">into</span> <span class="pre">the</span> <span class="pre">file-wise</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">misspellings:</span> <span class="pre">the</span> <span class="pre">misspellings</span> <span class="pre">in</span> <span class="pre">``mydoc.do.txt</span></code>
+are listed in <a href="#id5"><span class="problematic" id="id6">``</span></a>tmp_misspelled_mydoc.do.txt&nbsp;<a href="#id7"><span class="problematic" id="id8">``</span></a>.</p>
+</div>
+<div class="section" id="compiling-the-chapter-to-html">
+<h2>Compiling the chapter to HTML<a class="headerlink" href="#compiling-the-chapter-to-html" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">There is also a script <code class="docutils literal"><span class="pre">doc/src/chapters/make_html.sh</span></code> for making
 HTML versions of the chapter. Just call this as</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; bash ../make_html.sh main_mychap
 </pre></div>
@@ -231,8 +248,8 @@ so you will normally compile this manually now and then as</p>
 <p class="last">and publish it in <code class="docutils literal"><span class="pre">doc/pub/index.html</span></code>.</p>
 </div>
 <span class="target" id="index-3"></span><span class="target" id="index-4"></span></div>
-<div class="section" id="ipython-notebook">
-<span id="index-5"></span><h3>IPython notebook<a class="headerlink" href="#ipython-notebook" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="compiling-the-chapter-to-a-notebook">
+<span id="index-5"></span><h2>Compiling the chapter to a notebook<a class="headerlink" href="#compiling-the-chapter-to-a-notebook" title="Permalink to this headline">¶</a></h2>
 <p>Although there is no benefit from interactive computing and visualization
 in the present document, we may produce an IPython notebook for the fun of it:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format ipynb main_rules \
@@ -240,16 +257,8 @@ in the present document, we may produce an IPython notebook for the fun of it:</
 </pre></div>
 </div>
 </div>
-<div class="section" id="cleaning-files">
-<span id="index-6"></span><h3>Cleaning Files<a class="headerlink" href="#cleaning-files" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">make*.sh</span></code> files generate a lot of files that can easily
-be regenerated and that are normally removed from the chapter
-directories. The script <code class="docutils literal"><span class="pre">sh</span> <span class="pre">../clean.sh</span></code> can be run in any
-chapter directory to clean up redundant files.</p>
-</div>
-</div>
 <div class="section" id="about-figures-when-publishing-html">
-<h2>About figures when publishing HTML<a class="headerlink" href="#about-figures-when-publishing-html" title="Permalink to this headline">¶</a></h2>
+<span id="index-6"></span><h2>About figures when publishing HTML<a class="headerlink" href="#about-figures-when-publishing-html" title="Permalink to this headline">¶</a></h2>
 <p>There will be <code class="docutils literal"><span class="pre">&lt;img</span> <span class="pre">src=fig-ch2/fig1.png&gt;</span></code> type of tags in HTML code
 produced by DocOnce, so it is very important to ensure that the
 <em>published</em> <code class="docutils literal"><span class="pre">.html</span></code> files have access to a subdirectory
@@ -307,14 +316,13 @@ Sphinx version of the book. Actually, it generates two versions</p>
   <ul>
 <li><a class="reference internal" href="#">Tools</a><ul>
 <li><a class="reference internal" href="#making-a-new-chapter">Making a new chapter</a></li>
-<li><a class="reference internal" href="#compiling-the-chapter">Compiling the chapter</a><ul>
-<li><a class="reference internal" href="#pdf">PDF</a></li>
-<li><a class="reference internal" href="#automatic-spell-checking">Automatic spell checking</a></li>
-<li><a class="reference internal" href="#html">HTML</a></li>
-<li><a class="reference internal" href="#ipython-notebook">IPython notebook</a></li>
+<li><a class="reference internal" href="#compiling-the-chapter-to-latex-and-pdf">Compiling the chapter to LaTeX and PDF</a><ul>
 <li><a class="reference internal" href="#cleaning-files">Cleaning Files</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#automatic-spell-checking">Automatic spell checking</a></li>
+<li><a class="reference internal" href="#compiling-the-chapter-to-html">Compiling the chapter to HTML</a></li>
+<li><a class="reference internal" href="#compiling-the-chapter-to-a-notebook">Compiling the chapter to a notebook</a></li>
 <li><a class="reference internal" href="#about-figures-when-publishing-html">About figures when publishing HTML</a></li>
 <li><a class="reference internal" href="#compiling-the-book">Compiling the book</a><ul>
 <li><a class="reference internal" href="#html-sphinx-versions-of-the-book">HTML/Sphinx versions of the book</a></li>
@@ -329,7 +337,7 @@ Sphinx version of the book. Actually, it generates two versions</p>
                         title="previous chapter">Assembling different pieces to a book</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="._book007.html"
-                        title="next chapter">Cross-referencing across chapters</a></p>
+                        title="next chapter">Cross-referencing across chapters (or books)</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -361,7 +369,7 @@ Sphinx version of the book. Actually, it generates two versions</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="._book007.html" title="Cross-referencing across chapters"
+          <a href="._book007.html" title="Cross-referencing across chapters (or books)"
              >next</a> |</li>
         <li class="right" >
           <a href="._book005.html" title="Assembling different pieces to a book"

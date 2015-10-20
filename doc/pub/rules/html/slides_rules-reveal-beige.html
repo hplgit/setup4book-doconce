@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -121,8 +129,10 @@ td.padding {
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>May 8, 2015</h4></center> <!-- date -->
+<center><h4>Oct 20, 2015</h4></center> <!-- date -->
+<br>
 </section>
 
 
@@ -180,7 +190,7 @@ td.padding {
 <p>
 
 Can have lots of chapters and more than one <code>book</code> directory if
-multiple books are relevant
+multiple books are relevant.
 </section>
 
 
@@ -261,8 +271,8 @@ Here is a big project:
 <h1 id="___sec5">Newcommands </h1>
 
 <ul>
- <p><li> Files <code>newcommands*.tex</code> are by DocOnce treated as files
-   with definition of newcommands for LaTeX <em>mathematics</em></li>
+ <p><li> Files <code>newcommands*.tex</code> are treated by DocOnce as files
+   with definitions of newcommands for LaTeX <em>mathematics</em></li>
  <p><li> Must be in the directory where <code>doconce format</code> is run</li>
  <p><li> Use a common <code>newcommands.p.tex</code> for all chapters</li>
  <p><li> <code>.p.tex</code> indicates that it can be run by preprocess and contain
@@ -379,7 +389,7 @@ BIBFILE: ../papers.pub
 <p>
 
 Important that figure and source code files have chapter-unique names
-when combining all files to a book. Use <code>fig-nickname</code> and <code>src-nickname</code>.
+when combining all files into a book. Use <code>fig-nickname</code> and <code>src-nickname</code>.
 
 <p>
 Optional directories:
@@ -583,7 +593,7 @@ HTML versions of the chapter. Just call this as
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; bash ../make_html.sh main_mychap
 </pre></div>
 <p>
-Three HTML versions with an <code>index.html</code> table of contents are generated
+Three HTML versions with an <code>index.html</code> table of contents are generated.
 </section>
 
 
@@ -670,7 +680,7 @@ Compile slides:
 </pre></div>
 <p>
 Note the possibility to turn the <code>TOC</code> on and off: Beamer has its own
-table of contents, while HTML5 slides may benefit from having one
+table of contents, while HTML5 slides may benefit from having one.
 </section>
 
 
@@ -728,7 +738,7 @@ Rules:
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

@@ -253,7 +253,7 @@ to use names that reflect the topic:
 `topic:paper` or `topic:url`, e.g., `IPython:paper` for a ]paper on IPython
 or `IPython:url` for the IPython website.
 
-You can run `doconce list_labels *.do.txt` to get a list of lables,
+You can run `doconce list_labels *.do.txt` to get a list of labels,
 categorized under the various section headings, in your DocOnce
 documents.  This command quickly reveals if a clean-up of label names
 is necessary.  You can redirect the output of the command to a file
@@ -644,11 +644,9 @@ with the chapter main document (`main_mychap`) as argument. Optional
 arguments for running `doconce format pdflatex` can be given to
 `../make.sh` in `make.sh` if needed (e.g., `--encoding=utf8`).
 
-===== Compiling the chapter =====
+===== Compiling the chapter to LaTeX and PDF =====
 
 idx{`make.sh`}
-
-=== PDF ===
 
 To make a stand-alone document of a chapter, by compiling to LaTeX and PDF,
 we propose the convention to have a `make.sh` in each chapter directory.
@@ -672,14 +670,6 @@ version for printing appear as footnotes (and just hyperlinks with
 a dark blue color in the electronic version). The two files are
 named `mychap.pdf` and `mychap-4print.pdf`, respectively, and
 copied to `doc/pub/mychap/pdf` for publishing.
-
-
-!bc shpro
-cp new_dictionary.txt~ .dict4spell.txt
-!ec
-(Make sure `.dict4spell.txt` is version controlled by Git.)
-The `make.sh` script will not proceed with compilation of the documents
-before the spell check is run without errors.
 
 !bnotice Tip: use tinyurl.com for shortening long URLs
 When compiling a document to LaTeX for *printing on paper* (`--device=paper`),
@@ -706,13 +696,22 @@ The suggested `make.sh` file
 applies the `--latex_code_style=` option to `doconce format`
 for specifying the typesetting of blocks of computer code in LaTeX.
 Originally, DocOnce applied the `ptex2tex` program to select such
-typesetting, but the new method is more flexible and simpler (in that
-it gives cleaner LaTeX code). (With `ptex2tex` one would need a common
-configuration file `doc/chapters/.ptex2tex.cfg` to be copied by
+typesetting, but the new method is more flexible and simpler in that
+it gives cleaner LaTeX code. (With `ptex2tex` one would need a common
+configuration file `.ptex2tex.cfg` in
+`doc/chapters` to be copied by
 `doc/chapters/make.sh` to the chapter directory prior to running
 `ptex2tex.)
 
-=== Automatic spell checking ===
+=== Cleaning Files ===
+
+The `make*.sh` files generate a lot of files that can easily
+be regenerated and that are normally removed from the chapter
+directories. The script `sh ../clean.sh` can be run in any
+chapter directory to clean up redundant files.
+
+
+===== Automatic spell checking =====
 
 The `make.sh` first runs a spell check using `doconce spellcheck`.
 The first time you run this command there will be many ``misspellings''
@@ -723,10 +722,29 @@ mistakes in the original documents and run the `make.sh` script again.
 When `misspellings.txt~` at some point contains acceptable words only,
 you update the dictionary by
 
+!bc shpro
+cp new_dictionary.txt~ .dict4spell.txt
+!ec
+Make sure `.dict4spell.txt` is version controlled by Git.
+The `make.sh` script will not proceed with compilation of the documents
+before the spell check is run without errors.
+
+Finding misspellings can sometimes be a challenge. For a document named
+`mydoc.do.txt`, the spell check is carried out on a stripped version,
+named `tmp_stripped_mydoc.do.txt`. Look into this file for misspellings
+that are not obvious. Strange misspellings such as `APlu` or similar
+usually arise from missing dollar sign around mathematical formulas.
+Formulas are stripped away in `tmp_stripped_mydoc.do.txt`, but if a
+dollar sign is missing, mathematical formulas become words subject
+to spell checking. To find the relevant file containing
+a particular misspelling listed in `misspellings.txt~`, you may look
+into the file-wise list of misspellings: the misspellings in `mydoc.do.txt`
+are listed in `tmp_misspelled_mydoc.do.txt~`.
+
+
+===== Compiling the chapter to HTML =====
 
 idx{`make_html.sh`}
-
-=== HTML ===
 
 There is also a script `doc/src/chapters/make_html.sh` for making
 HTML versions of the chapter. Just call this as
@@ -796,7 +814,7 @@ idx{IPython notebooks}
 idx{notebooks}
 idx{Jupyter notebooks}
 
-=== IPython notebook ===
+===== Compiling the chapter to a notebook =====
 
 Although there is no benefit from interactive computing and visualization
 in the present document, we may produce an IPython notebook for the fun of it:
@@ -809,12 +827,6 @@ Terminal> doconce format ipynb main_rules \
 
 idx{`clean.sh`}
 
-=== Cleaning Files ===
-
-The `make*.sh` files generate a lot of files that can easily
-be regenerated and that are normally removed from the chapter
-directories. The script `sh ../clean.sh` can be run in any
-chapter directory to clean up redundant files.
 
 ===== About figures when publishing HTML =====
 
@@ -862,7 +874,7 @@ Sphinx version of the book. Actually, it generates two versions
 
 
 !split
-======= Cross-referencing across chapters =======
+======= Cross-referencing across chapters (or books) =======
 
 idx{cross-referencing}
 idx{generalized references}
@@ -891,8 +903,6 @@ It is called *generalized cross-references*. You can then write
 such references across chapters and get all labels right whether you
 produce the entire book or individual chapters.
 
-
-===== Syntax of generalized cross-references =====
 
 idx{`ref` generalized reference}
 idx{`refch` generalized reference}

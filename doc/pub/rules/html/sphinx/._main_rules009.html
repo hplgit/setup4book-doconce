@@ -1,0 +1,357 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Special features for teaching material</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Directory and file structure" href="index.html" />
+    <link rel="prev" title="Book versions with and without solutions to exercises" href="._main_rules008.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="._main_rules008.html" title="Book versions with and without solutions to exercises"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="special-features-for-teaching-material">
+<h1>Special features for teaching material<a class="headerlink" href="#special-features-for-teaching-material" title="Permalink to this headline">¶</a></h1>
+<p>DocOnce offers some special features that can greatly aid development
+of effective teaching material:</p>
+<blockquote>
+<div><ul class="simple">
+<li>fancy admonitions</li>
+<li>simple boxes</li>
+<li>interactive code blocks</li>
+<li>hidden code blocks</li>
+<li>exercises</li>
+<li>multiple-choice questions or quizzes</li>
+<li>movies</li>
+<li>quotes</li>
+</ul>
+</div></blockquote>
+<p>These are briefly exemplified below. If you are mainly interested in how
+to structure DocOnce-based books, you can safely jump to
+the section <a class="reference internal" href="._main_rules003.html#setup-rules-book-assembly"><span class="std std-ref">Assembling different pieces to a book</span></a>.</p>
+<div class="section" id="admonitions">
+<h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-use-admonitions admonition" id="index-0">
+<p class="first admonition-title">Use admonitions</p>
+<p class="last">Need to notify, warn, summarize, ask a question, give a tip,
+dive into less important details, or really emphasize a result?
+DocOnce features special
+<em>notice</em>, <em>warning</em>, <em>summary</em>,
+and <em>question</em> boxes called admonitions. These can be typeset in a
+variety of versions, depending on the output format
+(check out <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and the many options with <code class="docutils literal"><span class="pre">admon</span></code>
+in the name).</p>
+</div>
+</div>
+<div class="section" id="simple-box">
+<h2>Simple box<a class="headerlink" href="#simple-box" title="Permalink to this headline">¶</a></h2>
+<p id="index-1">Put a box around something important:</p>
+<div class="math">
+\[1 + 1 = 2\]</div>
+<p><strong>Note:</strong>
+Simple boxes are not supported in format <code class="docutils literal"><span class="pre">sphinx</span></code>.</p>
+</div>
+<div class="section" id="embedded-interactive-code">
+<h2>Embedded interactive code<a class="headerlink" href="#embedded-interactive-code" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-2"></span><div class="section" id="the-pyoptpro-code-environment">
+<span id="index-3"></span><h3>The <code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment<a class="headerlink" href="#the-pyoptpro-code-environment" title="Permalink to this headline">¶</a></h3>
+<p>To illustrate program flow, you can step through code
+(as in a debugger, just more illustrative) using the
+<code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment. Here is an example:</p>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0Ai+%3D+0%0Awhile+i+%3C%3D+n%3A%0A++++print+i%0A++++i+%2B%3D+1&curInstr=0&py=2&cumulative=false">
+</iframe><p>In HTML and Sphinx format this code can be stepped through in
+the browser, while
+in LaTeX one gets a link to a web page with this functionality.</p>
+</div>
+<div class="section" id="the-pyscpro-code-environment">
+<h3>The <code class="docutils literal"><span class="pre">pyscpro</span></code> code environment<a class="headerlink" href="#the-pyscpro-code-environment" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://sagecell.sagemath.org/">SageMathCell</a> server
+enables live Python code in web documents. Using the
+<code class="docutils literal"><span class="pre">pyscpro</span></code> code environment, Python code can be embedded in a
+for interactive computing:</p>
+<div class='sage'><script type='text/x-sage'>import random
+a = random.randint(1, 7)
+print a</script></div><p>We can even plot:</p>
+<div class='sage'><script type='text/x-sage'>from numpy import *
+from matplotlib.pyplot import *
+
+x = linspace(-2*pi, 2*pi, 801)
+y = exp(-0.1*x**2)*sin(4*x)
+plot(x, y)
+show()</script></div><p>HTML and Sphinx output has such interactive Sage Cells,
+while other output formats can just show the code.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-exercise-environments admonition" id="index-4">
+<p class="first admonition-title">Exercise environments</p>
+<p>DocOnce supports <em>exercise subsections</em>, which are subsections with some
+extra tagging for exercises. Important features are:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>exercises can be divided into subexercises</li>
+<li>one may specify filename(s) for delivering the answer to an exercise</li>
+<li>one may specify filename(s) for the solution of an exercise</li>
+<li>one may specify a remark (fun facts, comments)</li>
+<li>one or more hints can be given to an exercise or subexercise
+(can be hidden in certain output formats)</li>
+<li>any exercise or subexercise can have a solution field</li>
+<li>any exercise or subexercise can have an answer field (very condensed solution)</li>
+<li>solutions and answers can be removed from the document at compile time</li>
+<li>exercises can have one of four titles: Exercise, Project, Problem, or
+Example</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="quote">
+<h2>Quote<a class="headerlink" href="#quote" title="Permalink to this headline">¶</a></h2>
+<p>There is also a <em>quote</em> environment (invisible box with larger
+margins).</p>
+<blockquote>
+<div><p>We&#8217;re programmers. Programmers are, in their hearts, architects, and the first thing they want to do when they get to a site is to bulldoze the place flat and build something grand. We&#8217;re not excited by incremental renovation: tinkering, improving, planting flower beds.</p>
+<p>There&#8217;s a subtle reason that programmers always want to throw away the code and start over. The reason is that they think the old code is a mess. And here is the interesting observation: they are probably wrong. The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:
+<strong>It&#8217;s harder to read code than to write it.</strong>
+This is why code reuse is so hard. This is why everybody on your team has a different function they like to use for splitting strings into arrays of strings. They write their own function because it&#8217;s easier and more fun than figuring out how the old function works.</p>
+<p><a class="reference external" href="http://www.joelonsoftware.com/articles/fog0000000069.html">Joel Spolsky</a>, 2000</p>
+</div></blockquote>
+</div>
+<div class="section" id="quiz">
+<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-5"></span><span class="target" id="index-6"></span><p><strong>Question:</strong> Does DocOnce feature multiple-choice questions or quizzes?</p>
+<p><strong>Choice A:</strong> Yes.</p>
+<p><abbr title="Right!">?</abbr> <abbr title="See the quiz manual (&lt;http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html).">#</abbr></p>
+<p><strong>Choice B:</strong> No.</p>
+<p><abbr title="Wrong!">?</abbr></p>
+<p>Quite often we need mathematics and computer code in questions and
+answers.</p>
+<p><strong>Question:</strong> Compute the integral</p>
+<div class="math">
+\[\int_0^{2\pi} e^{-x}\sin^2 x\,dx\]</div>
+<p>and report the formula in verbatim LaTeX code,</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"> ... </span><span class="s">\]</span>
+</pre></div>
+</div>
+<p><strong>Choice A:</strong> There is no closed-form formula for this integral.</p>
+<p><abbr title="Wrong!">?</abbr> <abbr title="Maybe you fiddled around with pen and paper the wrong way... Try sympy!">#</abbr></p>
+<p><strong>Choice B:</strong> .. code-block:: python</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">integrate</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>
+<span class="go">-2*exp(-2*pi)/5 + 2/5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latex</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+<span class="go">&#39;- \\frac{2}{5 e^{2 \\pi}} + \\frac{2}{5}&#39;</span>
+</pre></div>
+</div>
+<p>so the answer is</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="sb">\[</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^{</span><span class="m">2</span><span class="nv">\pi</span><span class="nb">} e^{</span><span class="o">-</span><span class="nb">x}</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nb"> x</span><span class="nv">\,</span><span class="nb">dx </span><span class="o">=</span><span class="nb"></span>
+<span class="o">-</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb"> e^{</span><span class="m">2</span><span class="nb"> </span><span class="nv">\pi</span><span class="nb">}} </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">}{</span><span class="m">5</span><span class="nb">} </span><span class="s">\]</span>
+</pre></div>
+</div>
+<p><abbr title="Right!">?</abbr></p>
+<p><strong>Choice C:</strong> .. code-block:: latex</p>
+<blockquote>
+<div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
+- frac{3}{4 e^{2 pi}} + frac{3}{4} ]</div></blockquote>
+<p><abbr title="Wrong!">?</abbr> <abbr title="Something went wrong here with the fractions...">#</abbr></p>
+<p><strong>Choice D:</strong> .. code-block:: latex</p>
+<blockquote>
+<div>[ int_0^{2pi} e^{-x}sin^2 x,dx =
+- {2over5}{5 exp^{2 pi}} + frac{2}{5} ]</div></blockquote>
+<p><abbr title="Wrong!">?</abbr> <abbr title="Well, the math is correct, but the LaTeX code lacks two backslashes, and over is old-fashioned, use frac{}{} in 2015.">#</abbr></p>
+<p>The typesetting of a quiz depends on the output format.
+One can output in plain HTML
+and Sphinx formats,
+hover over the choice and get a pop-up tooltip with the
+right answer and an explanation (if defined).
+The explanation can only show plain text, so it is empty if it
+contains math or code blocks, or figures.
+With HTML Bootstrap styles one can click on a symbol to open up
+the answer and the explanation.
+RunestoneInteractive books (Sphinx) offers a
+button for the same purpose, but the explanation can only be
+plain text so any math or code block makes the explanation empty.
+LaTeX output can feature the choices only (no answer, no explanation:
+<code class="docutils literal"><span class="pre">--without_solutions</span> <span class="pre">--without_answers</span></code>), the short answer only
+(<code class="docutils literal"><span class="pre">--without_solutions</span></code>) or both the answer and all explanations
+(the case in this demo).</p>
+</div>
+<div class="section" id="what-about-a-video-lecture">
+<h2>What about a video lecture?<a class="headerlink" href="#what-about-a-video-lecture" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="index-7"></span><span class="target" id="index-8"></span><iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe><div class="admonition-question admonition">
+<p class="first admonition-title">Question</p>
+<p class="last">Can you think of applications of the above mentioned features?</p>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<table class="docutils citation" frame="void" id="ref1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref1]</td><td><strong>H. P. Langtangen</strong>. Debugging in Python,
+<a class="reference external" href="http://hplgit.github.io/primer.html/doc/pub/debug">http://hplgit.github.io/primer.html/doc/pub/debug</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="ref2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref2]</td><td><strong>H. P. Langtangen</strong>. <em>A Primer on Scientific Programming With Python</em>,
+fourth edition,
+<em>Texts in Computational Science and Engineering</em>,
+Springer,
+2014.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="ref3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ref3]</td><td><strong>H. P. Langtangen</strong>. Some document,
+<a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html">http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html</a>.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
+              <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Special features for teaching material</a><ul>
+<li><a class="reference internal" href="#admonitions">Admonitions</a></li>
+<li><a class="reference internal" href="#simple-box">Simple box</a></li>
+<li><a class="reference internal" href="#embedded-interactive-code">Embedded interactive code</a><ul>
+<li><a class="reference internal" href="#the-pyoptpro-code-environment">The <code class="docutils literal"><span class="pre">pyoptpro</span></code> code environment</a></li>
+<li><a class="reference internal" href="#the-pyscpro-code-environment">The <code class="docutils literal"><span class="pre">pyscpro</span></code> code environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+<li><a class="reference internal" href="#quote">Quote</a></li>
+<li><a class="reference internal" href="#quiz">Quiz</a></li>
+<li><a class="reference internal" href="#what-about-a-video-lecture">What about a video lecture?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="._main_rules008.html"
+                        title="previous chapter">Book versions with and without solutions to exercises</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/._main_rules009.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="._main_rules008.html" title="Book versions with and without solutions to exercises"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Directory and file structure</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://www.mn.uio.no/english/"><img src="_static/uio_banner.png" width="20%"><a>
+  </div>
+</div>
+
+  </body>
+</html>

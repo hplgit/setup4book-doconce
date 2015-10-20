@@ -15,6 +15,7 @@ Newcommands
 PDF
 Preprocess
 RunestoneInteractive
+SHA
 SageMathCell
 Simula
 Spolsky
@@ -27,6 +28,7 @@ newcommand
 newcommands
 preprocess
 preprocessed
+quiztools
 solarized
 subexercise
 subexercises

@@ -38,7 +38,7 @@ Admonitions
    dive into less important details, or really emphasize a result?
    DocOnce features special
    *notice*, *warning*, *summary*,
-   and *question* boxes for  called admonitions. These can be typeset in a
+   and *question* boxes called admonitions. These can be typeset in a
    variety of versions, depending on the output format
    (check out ``doconce format --help`` and the many options with ``admon``
    in the name).
@@ -265,8 +265,8 @@ so the answer is
 
 
 The typesetting of a quiz depends on the output format.
-One can in plain HTML
-and Sphinx formats
+One can output in plain HTML
+and Sphinx formats,
 hover over the choice and get a pop-up tooltip with the
 right answer and an explanation (if defined).
 The explanation can only show plain text, so it is empty if it

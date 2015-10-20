@@ -20,7 +20,7 @@ Organization of a chapter
 .. index::
    single: chapter; files
 
-Suppose one chapter) of the book has the nickname ``ch2`` and may hold
+Suppose one chapter of the book has the nickname ``ch2`` and may hold
 all text or just include text in other DocOnce files, e.g.,
 ``part1.do.txt``, ``part2.do.txt``, and ``part3.do.txt``. In this latter
 case, ``ch2.do.txt`` has the simple content
@@ -37,11 +37,11 @@ Note that the ``ch2.do.txt`` file contains just plain text without
 any ``TITLE``, ``AUTHOR``, or ``DATE`` lines and without any
 table of contents (``TOC``) and bibliography (``BIBITEM``).
 This property makes ``ch2.do.txt``
-suitable for being including in other documents like a book.
+suitable for being included in other documents like a book.
 However, to compile ``ch2.do.txt`` to a stand-alone document,
 we normally want a title, an author,
 a date, and perhaps a table of contents.
-We also want a bibliography if any of the included files has
+We also want a bibliography if any of the included files have
 ``cite`` tags. To this end, we create a wrapper file, say
 ``main_ch2.do.txt`` [#name-main]_,
 with the content

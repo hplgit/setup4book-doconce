@@ -127,7 +127,7 @@ notation for the project (and future projects). Think about
 newcommands for vectors (arrows or boldface), matrices (uppercase
 slanted or bold?, tensors, gradient, divergence, curl, etc.</p>
 </div>
-<p>Files with names <code class="docutils literal"><span class="pre">newcommands*.tex</span></code> are by DocOnce treated as files
+<p>Files with names <code class="docutils literal"><span class="pre">newcommands*.tex</span></code> are treated by DocOnce as files
 with definition of newcommands for LaTeX mathematics.  These files
 must reside in the same directory as the DocOnce source
 files. However, for a book project, I recommend to have a single
@@ -246,7 +246,7 @@ names such as <code class="docutils literal"><span class="pre">setup:rules:exer:
 to use names that reflect the topic:
 <code class="docutils literal"><span class="pre">topic:paper</span></code> or <code class="docutils literal"><span class="pre">topic:url</span></code>, e.g., <code class="docutils literal"><span class="pre">IPython:paper</span></code> for a ]paper on IPython
 or <code class="docutils literal"><span class="pre">IPython:url</span></code> for the IPython website.</p>
-<p>You can run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">list_labels</span> <span class="pre">*.do.txt</span></code> to get a list of lables,
+<p>You can run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">list_labels</span> <span class="pre">*.do.txt</span></code> to get a list of labels,
 categorized under the various section headings, in your DocOnce
 documents.  This command quickly reveals if a clean-up of label names
 is necessary.  You can redirect the output of the command to a file
@@ -318,7 +318,7 @@ in any other format.</p>
 <div class="section" id="degree-of-modularization">
 <h2>Degree of modularization<a class="headerlink" href="#degree-of-modularization" title="Permalink to this headline">¶</a></h2>
 <p>My recommendation is to divide the project into as small modules as possible
-and to make this modules as independent as possible. This is a very difficult
+and to make these modules as independent as possible. This is a very difficult
 optimization problem. There is some kind of gravity force towards
 big chapters and lots of cross-references internally and to other chapters.
 For book composition and even more for course composition, smaller modules
@@ -326,7 +326,7 @@ give much higher degree of flexibility.</p>
 <p>To make modules independent, the degree of cross-referencing between
 modules must be modest, which forces a need to repeat material.
 Repetition breaks a strong tradition in book writing. However,
-moving away from strictly linear chapter-by-chapter book to a more
+moving away from a strictly linear chapter-by-chapter book to a more
 flexible set of modules connected in a graph, will induce repetition.
 Readers also appreciate repetition, perhaps slightly differently phrased
 with purpose, rather than being served with lots of references to
@@ -357,7 +357,7 @@ to produce the slides from the running text.</p>
 <p>The style of slides is even more important than the style of running text.
 Slides for reading are not so sensitive to the style, but if the slides
 are also intended to be used in teaching, the style becomes key.
-Some comments on style are provided in box in the introduction to
+Some comments on style are provided in the box in the introduction to
 the section <a class="reference internal" href="._book008.html#setup-rules-slides"><span class="std std-ref">Study guides and slides</span></a>. Rather than having boring headings a la
 <em>Assumptions</em>, followed by a bullet list of assumptions,
 I recommend to summarize the most important information in a 1-2 line
@@ -397,7 +397,7 @@ exercise, problem, and project above.)</p>
 </ul>
 </div></blockquote>
 <p>Many students struggle with identifying the
-problem setting (question) when too much information is comes at once.
+problem setting (question) when too much information comes at once.
 Hints can be effectively used to separate the question from additional
 information that is just supposed to help the reader. Remarks fulfill a similar
 purpose and can separate fun facts or information that puts the problem
