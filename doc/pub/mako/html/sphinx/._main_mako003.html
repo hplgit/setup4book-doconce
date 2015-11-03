@@ -250,7 +250,7 @@ in various parts of the document. Here is a very simple example:
 <span class="pre">``This</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">introduction</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">institution's</span> <span class="pre">internal</span> <span class="pre">users.''</span>
 <span class="pre">Just</span> <span class="pre">one</span> <span class="pre">word</span> <span class="pre">differs.</span> <span class="pre">We</span> <span class="pre">put</span> <span class="pre">the</span> <span class="pre">text</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">separate</span> <span class="pre">file</span> <span class="pre">for</span> <span class="pre">inclusion</span>
 <span class="pre">(since</span> <span class="pre">real</span> <span class="pre">examples</span> <span class="pre">probably</span> <span class="pre">have</span> <span class="pre">longer</span> <span class="pre">texts</span> <span class="pre">that</span> <span class="pre">are</span> <span class="pre">more</span> <span class="pre">convenient</span>
-<span class="pre">to</span> <span class="pre">collect</span> <span class="pre">in</span> <span class="pre">separate</span> <span class="pre">files).</span> <span class="pre">Moreover,</span> <span class="pre">we</span> <span class="pre">paramerize</span> <span class="pre">the</span> <span class="pre">word</span>
+<span class="pre">to</span> <span class="pre">collect</span> <span class="pre">in</span> <span class="pre">separate</span> <span class="pre">files).</span> <span class="pre">Moreover,</span> <span class="pre">we</span> <span class="pre">parameterize</span> <span class="pre">the</span> <span class="pre">word</span>
 <span class="pre">that</span> <span class="pre">differs</span> <span class="pre">through</span> <span class="pre">a</span> <span class="pre">Mako</span> <span class="pre">variable</span> <span class="pre">``USER_TYPE</span></tt>.
 The <tt class="docutils literal"><span class="pre">intro.do.txt</span></tt> file then reads</p>
 <div class="highlight-text"><div class="highlight"><pre>This is an introduction for the institution&#39;s ${USER_TYPE} users.
@@ -289,7 +289,7 @@ This is an introduction for the institution&#39;s external users.
 </div>
 <p>Almost repetitive text can in many cases be parameterized by suitable
 Mako variables or Mako function calls to obtain the correct variations
-over a common theme that is placed in a single file (&#8220;docoment once&#8221;!).</p>
+over a common theme that is placed in a single file (&#8220;document once&#8221;).</p>
 </div>
 <div class="section" id="how-to-treat-multiple-programming-languages-in-the-same-text">
 <h2>How to treat multiple programming languages in the same text<a class="headerlink" href="#how-to-treat-multiple-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
@@ -483,10 +483,13 @@ int main()
 </div>
 <p>The point in this example is that we have a Mako variable <tt class="docutils literal"><span class="pre">CODE</span></tt> for
 the default language to be used, but we can also insert code in a
-specific language through the <tt class="docutils literal"><span class="pre">language</span></tt> argument to the Mako function
+specific language through the <tt class="docutils literal"><span class="pre">language</span></tt> argument in the Mako function
 <tt class="docutils literal"><span class="pre">code</span></tt>. This function can take a filename (<tt class="docutils literal"><span class="pre">filename</span></tt>) and include
 code from this file. We may make the convention that Python code is in
 <tt class="docutils literal"><span class="pre">src/py</span></tt>, C++ in <tt class="docutils literal"><span class="pre">src/cpp</span></tt>, and Fortran code in <tt class="docutils literal"><span class="pre">src/f</span></tt>.
+We just supply the filename without directory and extension, say <tt class="docutils literal"><span class="pre">apb</span></tt>,
+and the <tt class="docutils literal"><span class="pre">code</span></tt> function figures out the right directory and extension for
+us, based on the chosen default or specified language.
 Alternatively, the computer code can be supplied in a string as the
 <tt class="docutils literal"><span class="pre">code</span></tt> argument.</p>
 <p>What does the Mako function <tt class="docutils literal"><span class="pre">code</span></tt> look like? Before we show the statements,

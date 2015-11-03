@@ -215,7 +215,7 @@ in various parts of the document. Here is a very simple example:
 ``This is an introduction for the institution's internal users.''
 Just one word differs. We put the text in a separate file for inclusion
 (since real examples probably have longer texts that are more convenient
-to collect in separate files). Moreover, we paramerize the word
+to collect in separate files). Moreover, we parameterize the word
 that differs through a Mako variable ``USER_TYPE``.
 The ``intro.do.txt`` file then reads
 
@@ -260,7 +260,7 @@ After running Mako, this looks like
 
 Almost repetitive text can in many cases be parameterized by suitable
 Mako variables or Mako function calls to obtain the correct variations
-over a common theme that is placed in a single file ("docoment once"!).
+over a common theme that is placed in a single file ("document once").
 
 How to treat multiple programming languages in the same text
 ------------------------------------------------------------
@@ -471,10 +471,13 @@ strings in three different computer languages:
 
 The point in this example is that we have a Mako variable ``CODE`` for
 the default language to be used, but we can also insert code in a
-specific language through the ``language`` argument to the Mako function
+specific language through the ``language`` argument in the Mako function
 ``code``. This function can take a filename (``filename``) and include
 code from this file. We may make the convention that Python code is in
 ``src/py``, C++ in ``src/cpp``, and Fortran code in ``src/f``.
+We just supply the filename without directory and extension, say ``apb``,
+and the ``code`` function figures out the right directory and extension for
+us, based on the chosen default or specified language.
 Alternatively, the computer code can be supplied in a string as the
 ``code`` argument.
 

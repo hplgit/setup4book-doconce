@@ -325,7 +325,7 @@ in various parts of the document. Here is a very simple example:
 ``This is an introduction for the institution's internal users.''
 Just one word differs. We put the text in a separate file for inclusion
 (since real examples probably have longer texts that are more convenient
-to collect in separate files). Moreover, we paramerize the word
+to collect in separate files). Moreover, we parameterize the word
 that differs through a Mako variable <code>USER_TYPE</code>.
 The <code>intro.do.txt</code> file then reads
 
@@ -377,7 +377,7 @@ This is an introduction for the institution's external users.
 <p>
 Almost repetitive text can in many cases be parameterized by suitable
 Mako variables or Mako function calls to obtain the correct variations
-over a common theme that is placed in a single file (&quot;docoment once&quot;!).
+over a common theme that is placed in a single file (&quot;document once&quot;).
 
 <h2 id="___sec7">How to treat multiple programming languages in the same text </h2>
 
@@ -601,10 +601,13 @@ int main()
 <p>
 The point in this example is that we have a Mako variable <code>CODE</code> for
 the default language to be used, but we can also insert code in a
-specific language through the <code>language</code> argument to the Mako function
+specific language through the <code>language</code> argument in the Mako function
 <code>code</code>. This function can take a filename (<code>filename</code>) and include
 code from this file. We may make the convention that Python code is in
 <code>src/py</code>, C++ in <code>src/cpp</code>, and Fortran code in <code>src/f</code>.
+We just supply the filename without directory and extension, say <code>apb</code>,
+and the <code>code</code> function figures out the right directory and extension for
+us, based on the chosen default or specified language.
 Alternatively, the computer code can be supplied in a string as the
 <code>code</code> argument.
 

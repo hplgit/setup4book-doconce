@@ -57,6 +57,9 @@ system doconce format pdflatex ${mainname} $opt --device=paper --latex_admon_col
 doconce replace 'linecolor=black,' 'linecolor=darkblue,' ${mainname}.tex
 doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' ${mainname}.tex
 doconce replace '# INCLUDE' '# #include' ${mainname}.tex
+# Special fix for unwanted footnote in URLs in tex demo code
+doconce subst 'sampler\.py\}\\footnote.+' 'sampler.py}}' ${mainname}.tex
+doconce subst 'sampler\.m\}\\footnote.+' 'sampler.m}}' ${mainname}.tex
 
 rm -rf ${mainname}.aux ${mainname}.ind ${mainname}.idx ${mainname}.bbl ${mainname}.toc ${mainname}.loe
 system pdflatex ${mainname}
