@@ -73,12 +73,17 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                'mako:pyscripts',
                'mako:pyscripts'),
+              ('How to deal with almost repetitive structure',
+               2,
+               'mako:almost:repeat',
+               'mako:almost:repeat'),
               ('How to treat multiple programming languages in the same text',
                2,
                None,
-               '___sec6'),
-              ('Another example', 3, None, '___sec7'),
-              ('References', 1, None, '___sec8')]}
+               '___sec7'),
+              ('Another example', 3, None, '___sec8'),
+              ('Yet another example', 3, None, '___sec9'),
+              ('References', 1, None, '___sec10')]}
 end of tocinfo -->
 
 <body>
@@ -311,7 +316,70 @@ turning to a separate Python program that generates text is
 even more useful. It is also much easier to debug a Python
 program than Mako code.
 
-<h2 id="___sec6">How to treat multiple programming languages in the same text </h2>
+<h2 id="mako:almost:repeat">How to deal with almost repetitive structure</h2>
+
+<p>
+Sometimes you have a text, say some introduction, that is almost equal
+in various parts of the document. Here is a very simple example:
+``This is an introduction for the institution's external users.'' versus
+``This is an introduction for the institution's internal users.''
+Just one word differs. We put the text in a separate file for inclusion
+(since real examples probably have longer texts that are more convenient
+to collect in separate files). Moreover, we paramerize the word
+that differs through a Mako variable <code>USER_TYPE</code>.
+The <code>intro.do.txt</code> file then reads
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>This is an introduction for the institution's ${USER_TYPE} users.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+The <code>USER_TYPE</code> variable can either be set on the command line or in
+the document that includes <code>intro.do.txt</code> (prior to the include statement).
+Suppose we have a master document that needs to include <code>intro.do.txt</code>
+twice with both values of <code>USER_TYPE</code>:
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>&lt;% USER_TYPE = 'internal' %&gt;
+
+======= Information for ${USER_TYPE} users =======
+
+# #include &quot;intro.do.txt&quot;
+
+...
+
+&lt;% USER_TYPE = 'external' %&gt;
+
+======= Information for ${USER_TYPE} users =======
+
+# #include &quot;intro.do.txt&quot;
+</code></pre>
+<!-- end verbatim block -->
+After running Mako, this looks like
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>======= Information for internal users =======
+
+This is an introduction for the institution's internal users.
+
+...
+
+======= Information for external users =======
+
+This is an introduction for the institution's external users.
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+Almost repetitive text can in many cases be parameterized by suitable
+Mako variables or Mako function calls to obtain the correct variations
+over a common theme that is placed in a single file (&quot;docoment once&quot;!).
+
+<h2 id="___sec7">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -485,14 +553,146 @@ by other programs, this function has to reside in a file
 </code></pre>
 <!-- end verbatim block -->
 
-<h3 id="___sec7">Another example </h3>
+<h3 id="___sec8">Another example </h3>
 
 <p>
 The manual contains a useful <a href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature" target="_self">example</a>
 on how to use Mako to implement
 the nomenclature functionality in the LaTeX package <code>nomencl</code>.
 
-<h1 id="___sec8">References </h1>
+<h3 id="___sec9">Yet another example </h3>
+
+<p>
+Here is a more complicated use of Mako for dealing with code files or
+strings in three different computer languages:
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>Include a complete program in the language ${CODE}:
+
+${code(filename='apb')}
+
+Include a portion of this file:
+
+# Recall that + is reserved char in regex, must be escaped
+${code(filename='apb', from_regex='a =', to_regex=r'a \+ b')}
+
+Include a C++ program from file:
+
+${code(filename='demo', language='C++')}
+
+Include a C++ program from computer code in text:
+
+${code(language='C++', code=&quot;&quot;&quot;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+  a = 1;
+  b = 2;
+  cout &lt;&lt; a + b;
+  return 0;
+}
+&quot;&quot;&quot;)}
+</code></pre>
+<!-- end verbatim block -->
+
+<p>
+The point in this example is that we have a Mako variable <code>CODE</code> for
+the default language to be used, but we can also insert code in a
+specific language through the <code>language</code> argument to the Mako function
+<code>code</code>. This function can take a filename (<code>filename</code>) and include
+code from this file. We may make the convention that Python code is in
+<code>src/py</code>, C++ in <code>src/cpp</code>, and Fortran code in <code>src/f</code>.
+Alternatively, the computer code can be supplied in a string as the
+<code>code</code> argument.
+
+<p>
+What does the Mako function <code>code</code> look like? Before we show the statements,
+we remark that code of this complexity may be hard to debug inside
+DocOnce files. It is therefore better to put the code in a separate Python
+file and debug it externally. Here, we have put the code in <code>src/make/code.py</code>.
+In the DocOnce document we must include this file:
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>&lt;%
+# #include &quot;src/mako/code.py&quot;
+%&gt;
+</code></pre>
+<!-- end verbatim block -->
+The <code>code.py</code> file looks like
+
+<p>
+<!-- begin verbatim block  pycod-->
+<pre><code>import os
+src_path = 'src'
+
+def code(code='', filename='',
+         language=None,
+         from_regex=None, to_regex=None):
+    # code can be a filename or computer code
+    if language is None:
+        language = CODE  # Use global language if not specified
+    if language == 'Python':
+        if filename:
+            filename += '.py'
+            # Include from file
+            text = '@@@CODE src/py/%s' % filename
+            if from_regex is not None and to_regex is not None:
+                # Include just a portion of the file
+                text += ' fromto: %s@%s' % (from_regex, to_regex)
+            elif from_regex is not None and to_regex is None:
+                text += ' fromto: %s@' % (from_regex)
+        else:
+            # The code argumnet holds the actual computer code,
+            # assume it's just a code snippet (not complete program)
+            text = '!bc pycod\n%s\n!ec' % code.strip()
+    elif language == 'Fortran':
+        if filename:
+            for ext in '.f', '.f90':
+                if os.path.isfile(os.path.join(
+                                  src_path, 'f', filename + ext)):
+                    filename += ext
+                    break
+            # Include from file
+            text = '@@@CODE src/f/%s' % filename
+            if from_regex is not None and to_regex is not None:
+                # Include just a portion of the file
+                text += ' fromto: %s@%s' % (from_regex, to_regex)
+            elif from_regex is not None and to_regex is None:
+                text += ' fromto: %s@' % (from_regex)
+        else:
+            # The code argumnet holds the actual computer code,
+            # assume it's just a code snippet (not complete program)
+            text = '!bc fcod\n%s\n!ec' % code.strip()
+    elif language == 'C++':
+        if filename:
+            for ext in '.cpp', '.c++', '.cxx':
+                if os.path.isfile(os.path.join(
+                                  src_path, 'cpp', filename + ext)):
+
+                    filename += ext
+                    break
+            # Include from file
+            text = '@@@CODE src/cpp/%s' % filename
+            if from_regex is not None and to_regex is not None:
+                # Include just a portion of the file
+                text += ' fromto: %s@%s' % (from_regex, to_regex)
+            elif from_regex is not None and to_regex is None:
+                text += ' fromto: %s@' % (from_regex)
+        else:
+            # The code argumnet holds the actual computer code,
+            # assume it's just a code snippet (not complete program)
+            text = '!bc cppcod\n%s\n!ec' % code.strip()
+    else:
+        print 'language=%s is illegal' % language
+    return text
+</code></pre>
+<!-- end verbatim block -->
+
+<h1 id="___sec10">References </h1>
 
 <p>
 <!-- begin bibliography -->

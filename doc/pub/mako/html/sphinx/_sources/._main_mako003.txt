@@ -204,6 +204,64 @@ turning to a separate Python program that generates text is
 even more useful. It is also much easier to debug a Python
 program than Mako code.
 
+.. _mako:almost:repeat:
+
+How to deal with almost repetitive structure
+--------------------------------------------
+
+Sometimes you have a text, say some introduction, that is almost equal
+in various parts of the document. Here is a very simple example:
+``This is an introduction for the institution's external users.'' versus
+``This is an introduction for the institution's internal users.''
+Just one word differs. We put the text in a separate file for inclusion
+(since real examples probably have longer texts that are more convenient
+to collect in separate files). Moreover, we paramerize the word
+that differs through a Mako variable ``USER_TYPE``.
+The ``intro.do.txt`` file then reads
+
+.. code-block:: text
+
+        This is an introduction for the institution's ${USER_TYPE} users.
+
+The ``USER_TYPE`` variable can either be set on the command line or in
+the document that includes ``intro.do.txt`` (prior to the include statement).
+Suppose we have a master document that needs to include ``intro.do.txt``
+twice with both values of ``USER_TYPE``:
+
+.. code-block:: doconce
+
+        <% USER_TYPE = 'internal' %>
+        
+        ======= Information for ${USER_TYPE} users =======
+        
+        # INCLUDE "intro.do.txt"
+        
+        ...
+        
+        <% USER_TYPE = 'external' %>
+        
+        ======= Information for ${USER_TYPE} users =======
+        
+        # INCLUDE "intro.do.txt"
+
+After running Mako, this looks like
+
+.. code-block:: doconce
+
+        ======= Information for internal users =======
+        
+        This is an introduction for the institution's internal users.
+        
+        ...
+        
+        ======= Information for external users =======
+        
+        This is an introduction for the institution's external users.
+
+Almost repetitive text can in many cases be parameterized by suitable
+Mako variables or Mako function calls to obtain the correct variations
+over a common theme that is placed in a single file ("docoment once"!).
+
 How to treat multiple programming languages in the same text
 ------------------------------------------------------------
 
@@ -374,6 +432,132 @@ Another example
 The manual contains a useful `example <http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature>`__
 on how to use Mako to implement
 the nomenclature functionality in the LaTeX package ``nomencl``.
+
+Yet another example
+~~~~~~~~~~~~~~~~~~~
+
+Here is a more complicated use of Mako for dealing with code files or
+strings in three different computer languages:
+
+.. code-block:: doconce
+
+        Include a complete program in the language ${CODE}:
+        
+        ${code(filename='apb')}
+        
+        Include a portion of this file:
+        
+        # Recall that + is reserved char in regex, must be escaped
+        ${code(filename='apb', from_regex='a =', to_regex=r'a \+ b')}
+        
+        Include a C++ program from file:
+        
+        ${code(filename='demo', language='C++')}
+        
+        Include a C++ program from computer code in text:
+        
+        ${code(language='C++', code="""
+        #include <iostream>
+        using namespace std;
+        
+        int main()
+        {
+          a = 1;
+          b = 2;
+          cout << a + b;
+          return 0;
+        }
+        """)}
+
+The point in this example is that we have a Mako variable ``CODE`` for
+the default language to be used, but we can also insert code in a
+specific language through the ``language`` argument to the Mako function
+``code``. This function can take a filename (``filename``) and include
+code from this file. We may make the convention that Python code is in
+``src/py``, C++ in ``src/cpp``, and Fortran code in ``src/f``.
+Alternatively, the computer code can be supplied in a string as the
+``code`` argument.
+
+What does the Mako function ``code`` look like? Before we show the statements,
+we remark that code of this complexity may be hard to debug inside
+DocOnce files. It is therefore better to put the code in a separate Python
+file and debug it externally. Here, we have put the code in ``src/make/code.py``.
+In the DocOnce document we must include this file:
+
+.. code-block:: doconce
+
+        <%
+        # INCLUDE "src/mako/code.py"
+        %>
+
+The ``code.py`` file looks like
+
+.. code-block:: python
+
+        import os
+        src_path = 'src'
+        
+        def code(code='', filename='',
+                 language=None,
+                 from_regex=None, to_regex=None):
+            # code can be a filename or computer code
+            if language is None:
+                language = CODE  # Use global language if not specified
+            if language == 'Python':
+                if filename:
+                    filename += '.py'
+                    # Include from file
+                    text = '@@@CODE src/py/%s' % filename
+                    if from_regex is not None and to_regex is not None:
+                        # Include just a portion of the file
+                        text += ' fromto: %s@%s' % (from_regex, to_regex)
+                    elif from_regex is not None and to_regex is None:
+                        text += ' fromto: %s@' % (from_regex)
+                else:
+                    # The code argumnet holds the actual computer code,
+                    # assume it's just a code snippet (not complete program)
+                    text = '!bc pycod\n%s\n!ec' % code.strip()
+            elif language == 'Fortran':
+                if filename:
+                    for ext in '.f', '.f90':
+                        if os.path.isfile(os.path.join(
+                                          src_path, 'f', filename + ext)):
+                            filename += ext
+                            break
+                    # Include from file
+                    text = '@@@CODE src/f/%s' % filename
+                    if from_regex is not None and to_regex is not None:
+                        # Include just a portion of the file
+                        text += ' fromto: %s@%s' % (from_regex, to_regex)
+                    elif from_regex is not None and to_regex is None:
+                        text += ' fromto: %s@' % (from_regex)
+                else:
+                    # The code argumnet holds the actual computer code,
+                    # assume it's just a code snippet (not complete program)
+                    text = '!bc fcod\n%s\n!ec' % code.strip()
+            elif language == 'C++':
+                if filename:
+                    for ext in '.cpp', '.c++', '.cxx':
+                        if os.path.isfile(os.path.join(
+                                          src_path, 'cpp', filename + ext)):
+        
+                            filename += ext
+                            break
+                    # Include from file
+                    text = '@@@CODE src/cpp/%s' % filename
+                    if from_regex is not None and to_regex is not None:
+                        # Include just a portion of the file
+                        text += ' fromto: %s@%s' % (from_regex, to_regex)
+                    elif from_regex is not None and to_regex is None:
+                        text += ' fromto: %s@' % (from_regex)
+                else:
+                    # The code argumnet holds the actual computer code,
+                    # assume it's just a code snippet (not complete program)
+                    text = '!bc cppcod\n%s\n!ec' % code.strip()
+            else:
+                print 'language=%s is illegal' % language
+            return text
+
 References
 ==========
 

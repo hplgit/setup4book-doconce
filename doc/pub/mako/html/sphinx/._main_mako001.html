@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -55,8 +55,8 @@
        </style>
       </head>
     
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -68,14 +68,14 @@
         <li class="right" >
           <a href="._main_mako000.html" title="Use of Mako to aid book writing"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
+        <li><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="use-of-variables">
 <h1>Use of variables<a class="headerlink" href="#use-of-variables" title="Permalink to this headline">¶</a></h1>
@@ -86,22 +86,22 @@ actually a computer program where you can use variables and functions.</p>
 a book faces some challenges for which we have some nice solutions
 in the coming sections.</p>
 <p>The easiest way to utilize Mako is to introduce variables in the text.
-For example, one can introduce a variable <code class="docutils literal"><span class="pre">COPYRIGHT</span></code>
+For example, one can introduce a variable <tt class="docutils literal"><span class="pre">COPYRIGHT</span></tt>
 for the type of copyright desired
 for authors. Most Mako variables in this text are upper case, but
 any legal variable name in Python is also a legal name in Mako.
 In the DocOnce source file we can replace the variable by its content
-by writing <code class="docutils literal"><span class="pre">${COPYRIGHT}</span></code>:</p>
+by writing <tt class="docutils literal"><span class="pre">${COPYRIGHT}</span></tt>:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">AUTHOR:</span> H. P. Langtangen ${COPYRIGHT} at Simula &amp; UiO
 </pre></div>
 </div>
 <p>The content of the variable can either be set at the command line
-as part of the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command,</p>
+as part of the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command,</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc COPYRIGHT=&#39;{copyright|CC BY}&#39;
 </pre></div>
 </div>
 <p>or hardcoded in the DocOnce file (as a standard Python variable) inside
-the <code class="docutils literal"><span class="pre">&lt;%...%&gt;</span></code> directives (before the first use of the variable):</p>
+the <tt class="docutils literal"><span class="pre">&lt;%...%&gt;</span></tt> directives (before the first use of the variable):</p>
 <div class="highlight-doconce"><div class="highlight"><pre>&lt;%
 COPYRIGHT = &#39;{copyright|This work is released under a BSD license.}&#39;
 %&gt;
@@ -110,9 +110,9 @@ COPYRIGHT = &#39;{copyright|This work is released under a BSD license.}&#39;
 <p>By having the copyright as a variable, we can use this variable for all
 authors to ensure consistency of copyrights, and we can easily compile
 different versions of the documents with different copyrights by just
-changing <code class="docutils literal"><span class="pre">COPYRIGHT=</span></code> on the command line.</p>
+changing <tt class="docutils literal"><span class="pre">COPYRIGHT=</span></tt> on the command line.</p>
 <p>Mako variables can be used in loops and if tests.
-DocOnce always defines a variable <code class="docutils literal"><span class="pre">FORMAT</span></code> holding the chosen output
+DocOnce always defines a variable <tt class="docutils literal"><span class="pre">FORMAT</span></tt> holding the chosen output
 format. This variable is often used for emitting different text depending
 on the format, e.g.,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>See
@@ -135,13 +135,13 @@ inappropriate if the chapter is a stand-alone document. Then you would
 rather say &#8220;this document&#8221;. Similarly, &#8220;this book&#8221; must read
 &#8220;this document&#8221; in a stand-alone chapter.
 We have resolved this issue by introducing
-Mako variables <code class="docutils literal"><span class="pre">CHAPTER</span></code>, <code class="docutils literal"><span class="pre">BOOK</span></code>, and <code class="docutils literal"><span class="pre">APPENDIX</span></code> such that you
+Mako variables <tt class="docutils literal"><span class="pre">CHAPTER</span></tt>, <tt class="docutils literal"><span class="pre">BOOK</span></tt>, and <tt class="docutils literal"><span class="pre">APPENDIX</span></tt> such that you
 write</p>
 <div class="highlight-doconce"><div class="highlight"><pre>In this ${BOOK}, the convention is to use boldface for vectors.
 </pre></div>
 </div>
-<p>For this to work, you need to define <code class="docutils literal"><span class="pre">CHAPTER</span></code>, <code class="docutils literal"><span class="pre">BOOK</span></code>, and <code class="docutils literal"><span class="pre">APPENDIX</span></code>
-as variables on the command line as part of the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command:</p>
+<p>For this to work, you need to define <tt class="docutils literal"><span class="pre">CHAPTER</span></tt>, <tt class="docutils literal"><span class="pre">BOOK</span></tt>, and <tt class="docutils literal"><span class="pre">APPENDIX</span></tt>
+as variables on the command line as part of the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex ch2 --latex_code_style=pyg \
           CHAPTER=document BOOK=document APPENDIX=document
 </pre></div>
@@ -151,9 +151,9 @@ as variables on the command line as part of the <code class="docutils literal"><
           CHAPTER=chapter BOOK=chapter APPENDIX=appendix
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">make*.sh</span></code> files found in <code class="docutils literal"><span class="pre">doc/src/chapter/</span></code> and
-<code class="docutils literal"><span class="pre">doc/src/book</span></code> make proper definitions of
-<code class="docutils literal"><span class="pre">CHAPTER</span></code>, <code class="docutils literal"><span class="pre">BOOK</span></code>, and <code class="docutils literal"><span class="pre">APPENDIX</span></code>.</p>
+<p>The <tt class="docutils literal"><span class="pre">make*.sh</span></tt> files found in <tt class="docutils literal"><span class="pre">doc/src/chapter/</span></tt> and
+<tt class="docutils literal"><span class="pre">doc/src/book</span></tt> make proper definitions of
+<tt class="docutils literal"><span class="pre">CHAPTER</span></tt>, <tt class="docutils literal"><span class="pre">BOOK</span></tt>, and <tt class="docutils literal"><span class="pre">APPENDIX</span></tt>.</p>
 </div>
 </div>
 
@@ -161,7 +161,7 @@ as variables on the command line as part of the <code class="docutils literal"><
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
@@ -182,14 +182,12 @@ as variables on the command line as part of the <code class="docutils literal"><
   <h4>Next topic</h4>
   <p class="topless"><a href="._main_mako002.html"
                         title="next chapter">How to make several variants of the text</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/._main_mako001.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_mako001.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -206,7 +204,7 @@ as variables on the command line as part of the <code class="docutils literal"><
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -218,7 +216,7 @@ as variables on the command line as part of the <code class="docutils literal"><
         <li class="right" >
           <a href="._main_mako000.html" title="Use of Mako to aid book writing"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
+        <li><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

@@ -1,4 +1,3 @@
-# Use a common ../make.sh file, or do a customized build here
 # Cannot use ../make.sh because of the # INCLUDE construction
 #bash -x ../make.sh main_mako --no_mako
 

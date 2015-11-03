@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -54,8 +54,8 @@
        </style>
       </head>
     
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -64,14 +64,14 @@
         <li class="right" >
           <a href="._main_mako002.html" title="How to make several variants of the text"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
+        <li><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="mako-s-python-functions">
 <h1>Mako&#8217;s Python functions<a class="headerlink" href="#mako-s-python-functions" title="Permalink to this headline">¶</a></h1>
@@ -83,7 +83,7 @@ is then more appropriate.</p>
 <h2>Basics of Mako functions<a class="headerlink" href="#basics-of-mako-functions" title="Permalink to this headline">¶</a></h2>
 <p>Here is a definition of a suitable Mako function, which must be
 defined inside
-<code class="docutils literal"><span class="pre">&lt;%</span></code> and <code class="docutils literal"><span class="pre">%&gt;</span></code> tags, using standard Python code:</p>
+<tt class="docutils literal"><span class="pre">&lt;%</span></tt> and <tt class="docutils literal"><span class="pre">%&gt;</span></tt> tags, using standard Python code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;%</span>
 <span class="k">def</span> <span class="nf">chversion</span><span class="p">(</span><span class="n">text_IT1413</span><span class="p">,</span> <span class="n">text_IT1713b</span><span class="p">,</span> <span class="n">text_general</span><span class="p">,</span>
               <span class="n">text_book1</span><span class="p">,</span> <span class="n">text_book2</span><span class="p">):</span>
@@ -102,10 +102,10 @@ defined inside
 <span class="o">%&gt;</span>
 </pre></div>
 </div>
-<p>In the running text you can call <code class="docutils literal"><span class="pre">chversion</span></code> with five arguments,
-corresponding to the desired text in the five cases, and when <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
-is run, the value of <code class="docutils literal"><span class="pre">COURSE</span></code> determines which of the five cases that is used.
-Here is an example on DocOnce text with a function call to <code class="docutils literal"><span class="pre">chversion</span></code>:</p>
+<p>In the running text you can call <tt class="docutils literal"><span class="pre">chversion</span></tt> with five arguments,
+corresponding to the desired text in the five cases, and when <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
+is run, the value of <tt class="docutils literal"><span class="pre">COURSE</span></tt> determines which of the five cases that is used.
+Here is an example on DocOnce text with a function call to <tt class="docutils literal"><span class="pre">chversion</span></tt>:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>It is extremely important to define the term *cure* accurately.
 Here we mean ${chversion(&#39;handle&#39;, &#39;handle&#39;,
 &#39;resolve&#39;, &#39;treat&#39;, &#39;resolve&#39;)}.
@@ -138,7 +138,7 @@ type employs a slightly different syntax and is exemplified in the file
 generate repetitive structures with a minimum of manual work,
 we consider the following case. Suppose you have a DocOnce document
 made up of a number of sections, where the DocOnce source of each section
-resides in a subdirectory with name <code class="docutils literal"><span class="pre">issueX</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> is an integer
+resides in a subdirectory with name <tt class="docutils literal"><span class="pre">issueX</span></tt>, where <tt class="docutils literal"><span class="pre">X</span></tt> is an integer
 counter. You want to create a &#8220;master&#8221; DocOnce file that includes
 all the sections, e.g..</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= Issue 1 =======</span>
@@ -175,7 +175,7 @@ sections = range(1, 8)
 % endfor
 </pre></div>
 </div>
-<p>because the <code class="docutils literal"><span class="pre">#include</span></code> statement is run by Preprocess <em>prior</em> to
+<p>because the <tt class="docutils literal"><span class="pre">#include</span></tt> statement is run by Preprocess <em>prior</em> to
 Mako&#8217;s interpretation of the file.
 Instead, we can generate (parts of) the master file in a separate
 Python script. This makes it also easier to check which subdirectories
@@ -198,28 +198,28 @@ structure:</p>
 <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The master file can now just do an include of <code class="docutils literal"><span class="pre">master_sections.do.txt</span></code>.
+<p>The master file can now just do an include of <tt class="docutils literal"><span class="pre">master_sections.do.txt</span></tt>.
 If the make script for compiling DocOnce to various formats first
-runs the script above, the <code class="docutils literal"><span class="pre">master_sections.do.txt</span></code> contents are
+runs the script above, the <tt class="docutils literal"><span class="pre">master_sections.do.txt</span></tt> contents are
 up-to-date with the current file structure, and the contents
 automatically propagate to the master document.</p>
-<p>There is one potential problem in the above example: the <code class="docutils literal"><span class="pre">issue.do.txt</span></code>
+<p>There is one potential problem in the above example: the <tt class="docutils literal"><span class="pre">issue.do.txt</span></tt>
 files may include figures with local paths. For example,
-<code class="docutils literal"><span class="pre">issue5/issue.do.txt</span></code> contains</p>
+<tt class="docutils literal"><span class="pre">issue5/issue.do.txt</span></tt> contains</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="nb">FIGURE: [fig/myfig, width=500 frac=0.8] My figure. label{my:fig}</span>
 </pre></div>
 </div>
-<p>When compiling the master document, no <code class="docutils literal"><span class="pre">fig/myfig.png</span></code> is found because
+<p>When compiling the master document, no <tt class="docutils literal"><span class="pre">fig/myfig.png</span></tt> is found because
 the correct path, relative to the master document&#8217;s directory,
-is <code class="docutils literal"><span class="pre">issue5/fig/myfig.png</span></code>. The same problem arises if there are
-source code inclusion statements like <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span> <span class="pre">src/myprog.f</span></code>.
-The master document would then need <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span> <span class="pre">issue5/src/myprog.f</span></code>.
+is <tt class="docutils literal"><span class="pre">issue5/fig/myfig.png</span></tt>. The same problem arises if there are
+source code inclusion statements like <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span> <span class="pre">src/myprog.f</span></tt>.
+The master document would then need <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span> <span class="pre">issue5/src/myprog.f</span></tt>.
 The best way out of these problems is</p>
 <ol class="arabic simple">
 <li>Let figure and source code directories have a unique name,
-say <code class="docutils literal"><span class="pre">fig5</span></code> and <code class="docutils literal"><span class="pre">src5</span></code> in this example.</li>
+say <tt class="docutils literal"><span class="pre">fig5</span></tt> and <tt class="docutils literal"><span class="pre">src5</span></tt> in this example.</li>
 <li>Create links from the master document&#8217;s directory to
-all the <code class="docutils literal"><span class="pre">fig*</span></code> and <code class="docutils literal"><span class="pre">src*</span></code> subdirectories.</li>
+all the <tt class="docutils literal"><span class="pre">fig*</span></tt> and <tt class="docutils literal"><span class="pre">src*</span></tt> subdirectories.</li>
 </ol>
 <p>Point 2 can be automated by a little Python script:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">subdirs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;issue*&#39;</span><span class="p">)</span>
@@ -242,17 +242,66 @@ turning to a separate Python program that generates text is
 even more useful. It is also much easier to debug a Python
 program than Mako code.</p>
 </div>
+<div class="section" id="how-to-deal-with-almost-repetitive-structure">
+<span id="mako-almost-repeat"></span><h2>How to deal with almost repetitive structure<a class="headerlink" href="#how-to-deal-with-almost-repetitive-structure" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you have a text, say some introduction, that is almost equal
+in various parts of the document. Here is a very simple example:
+<tt class="docutils literal"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">introduction</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">institution's</span> <span class="pre">external</span> <span class="pre">users.''</span> <span class="pre">versus</span>
+<span class="pre">``This</span> <span class="pre">is</span> <span class="pre">an</span> <span class="pre">introduction</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">institution's</span> <span class="pre">internal</span> <span class="pre">users.''</span>
+<span class="pre">Just</span> <span class="pre">one</span> <span class="pre">word</span> <span class="pre">differs.</span> <span class="pre">We</span> <span class="pre">put</span> <span class="pre">the</span> <span class="pre">text</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">separate</span> <span class="pre">file</span> <span class="pre">for</span> <span class="pre">inclusion</span>
+<span class="pre">(since</span> <span class="pre">real</span> <span class="pre">examples</span> <span class="pre">probably</span> <span class="pre">have</span> <span class="pre">longer</span> <span class="pre">texts</span> <span class="pre">that</span> <span class="pre">are</span> <span class="pre">more</span> <span class="pre">convenient</span>
+<span class="pre">to</span> <span class="pre">collect</span> <span class="pre">in</span> <span class="pre">separate</span> <span class="pre">files).</span> <span class="pre">Moreover,</span> <span class="pre">we</span> <span class="pre">paramerize</span> <span class="pre">the</span> <span class="pre">word</span>
+<span class="pre">that</span> <span class="pre">differs</span> <span class="pre">through</span> <span class="pre">a</span> <span class="pre">Mako</span> <span class="pre">variable</span> <span class="pre">``USER_TYPE</span></tt>.
+The <tt class="docutils literal"><span class="pre">intro.do.txt</span></tt> file then reads</p>
+<div class="highlight-text"><div class="highlight"><pre>This is an introduction for the institution&#39;s ${USER_TYPE} users.
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">USER_TYPE</span></tt> variable can either be set on the command line or in
+the document that includes <tt class="docutils literal"><span class="pre">intro.do.txt</span></tt> (prior to the include statement).
+Suppose we have a master document that needs to include <tt class="docutils literal"><span class="pre">intro.do.txt</span></tt>
+twice with both values of <tt class="docutils literal"><span class="pre">USER_TYPE</span></tt>:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;% USER_TYPE = &#39;internal&#39; %&gt;
+
+<span class="gh">======= Information for ${USER_TYPE} users =======</span>
+
+<span class="c"># #include &quot;intro.do.txt&quot;</span>
+
+...
+
+&lt;% USER_TYPE = &#39;external&#39; %&gt;
+
+<span class="gh">======= Information for ${USER_TYPE} users =======</span>
+
+<span class="c"># #include &quot;intro.do.txt&quot;</span>
+</pre></div>
+</div>
+<p>After running Mako, this looks like</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= Information for internal users =======</span>
+
+This is an introduction for the institution&#39;s internal users.
+
+...
+
+<span class="gh">======= Information for external users =======</span>
+
+This is an introduction for the institution&#39;s external users.
+</pre></div>
+</div>
+<p>Almost repetitive text can in many cases be parameterized by suitable
+Mako variables or Mako function calls to obtain the correct variations
+over a common theme that is placed in a single file (&#8220;docoment once&#8221;!).</p>
+</div>
 <div class="section" id="how-to-treat-multiple-programming-languages-in-the-same-text">
 <h2>How to treat multiple programming languages in the same text<a class="headerlink" href="#how-to-treat-multiple-programming-languages-in-the-same-text" title="Permalink to this headline">¶</a></h2>
 <p>With these ideas, it becomes straightforward to write a book that
-has its program examples in multiple languages. Introduce <code class="docutils literal"><span class="pre">CODE</span></code>
+has its program examples in multiple languages. Introduce <tt class="docutils literal"><span class="pre">CODE</span></tt>
 as the name of the language and use if tests for larger portions
 of code and text, and Mako functions for shorter inline texts,
-to handle text that depends on the value of <code class="docutils literal"><span class="pre">CODE</span></code>.
+to handle text that depends on the value of <tt class="docutils literal"><span class="pre">CODE</span></tt>.
 The author has successfully co-written such a <a class="reference external" href="http://hplgit.github.io/Programming-for-Computations/pub/p4c/index.html">book</a>
 <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>
 for mathematical programming with either Python or Matlab - the version
-is set when running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.</p>
+is set when running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>.</p>
 <p>Here is an example of text, in the style of the mention book,
 where there are small differences
 depending on the programming language:</p>
@@ -284,11 +333,11 @@ by other programs, this function has to reside in a file
 choose between a Python or Matlab relevant text:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">src</span></code> for picking a filename with the right extension (<code class="docutils literal"><span class="pre">.py</span></code> or <code class="docutils literal"><span class="pre">.m</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">copyfile</span></code> for constructing the right <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> line for a Python or
+<li><tt class="docutils literal"><span class="pre">src</span></tt> for picking a filename with the right extension (<tt class="docutils literal"><span class="pre">.py</span></tt> or <tt class="docutils literal"><span class="pre">.m</span></tt>)</li>
+<li><tt class="docutils literal"><span class="pre">copyfile</span></tt> for constructing the right <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> line for a Python or
 Matlab source code file</li>
-<li><code class="docutils literal"><span class="pre">text2</span></code> for picking the first (Python) or second (Matlab) argument</li>
-<li><code class="docutils literal"><span class="pre">verb2</span></code> for picking the first (Python) or second (Matlab) argument typeset in
+<li><tt class="docutils literal"><span class="pre">text2</span></tt> for picking the first (Python) or second (Matlab) argument</li>
+<li><tt class="docutils literal"><span class="pre">verb2</span></tt> for picking the first (Python) or second (Matlab) argument typeset in
 inline verbatim font</li>
 </ul>
 </div></blockquote>
@@ -368,7 +417,7 @@ that we can call all the file&#39;s functions from other programs,
 including \Verb!sampler_vec!.
 </pre></div>
 </div>
-<p>Switching to <code class="docutils literal"><span class="pre">CODE=Matlab</span></code> gives</p>
+<p>Switching to <tt class="docutils literal"><span class="pre">CODE=Matlab</span></tt> gives</p>
 <div class="highlight-text"><div class="highlight"><pre>The following Matlab function \Verb!sampler! does the job
 (see the file
 \href{{https://github.com/myuser/myproject/src/`sampler.m`}}{
@@ -397,9 +446,130 @@ by other programs, this function has to reside in a file
 <h3>Another example<a class="headerlink" href="#another-example" title="Permalink to this headline">¶</a></h3>
 <p>The manual contains a useful <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature">example</a>
 on how to use Mako to implement
-the nomenclature functionality in the LaTeX package <code class="docutils literal"><span class="pre">nomencl</span></code>.
-References
-==========</p>
+the nomenclature functionality in the LaTeX package <tt class="docutils literal"><span class="pre">nomencl</span></tt>.</p>
+</div>
+<div class="section" id="yet-another-example">
+<h3>Yet another example<a class="headerlink" href="#yet-another-example" title="Permalink to this headline">¶</a></h3>
+<p>Here is a more complicated use of Mako for dealing with code files or
+strings in three different computer languages:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>Include a complete program in the language ${CODE}:
+
+${code(filename=&#39;apb&#39;)}
+
+Include a portion of this file:
+
+<span class="c"># Recall that + is reserved char in regex, must be escaped</span>
+${code(filename=&#39;apb&#39;, from_regex=&#39;a =&#39;, to_regex=r&#39;a \+ b&#39;)}
+
+Include a C++ program from file:
+
+${code(filename=&#39;demo&#39;, language=&#39;C++&#39;)}
+
+Include a C++ program from computer code in text:
+
+${code(language=&#39;C++&#39;, code=&quot;&quot;&quot;
+<span class="c">#include &lt;iostream&gt;</span>
+using namespace std;
+
+int main()
+{
+  a = 1;
+  b = 2;
+  cout &lt;&lt; a + b;
+  return 0;
+}
+<span class="s">&quot;&quot;&quot;</span>)}
+</pre></div>
+</div>
+<p>The point in this example is that we have a Mako variable <tt class="docutils literal"><span class="pre">CODE</span></tt> for
+the default language to be used, but we can also insert code in a
+specific language through the <tt class="docutils literal"><span class="pre">language</span></tt> argument to the Mako function
+<tt class="docutils literal"><span class="pre">code</span></tt>. This function can take a filename (<tt class="docutils literal"><span class="pre">filename</span></tt>) and include
+code from this file. We may make the convention that Python code is in
+<tt class="docutils literal"><span class="pre">src/py</span></tt>, C++ in <tt class="docutils literal"><span class="pre">src/cpp</span></tt>, and Fortran code in <tt class="docutils literal"><span class="pre">src/f</span></tt>.
+Alternatively, the computer code can be supplied in a string as the
+<tt class="docutils literal"><span class="pre">code</span></tt> argument.</p>
+<p>What does the Mako function <tt class="docutils literal"><span class="pre">code</span></tt> look like? Before we show the statements,
+we remark that code of this complexity may be hard to debug inside
+DocOnce files. It is therefore better to put the code in a separate Python
+file and debug it externally. Here, we have put the code in <tt class="docutils literal"><span class="pre">src/make/code.py</span></tt>.
+In the DocOnce document we must include this file:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;%
+<span class="c"># #include &quot;src/mako/code.py&quot;</span>
+%&gt;
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">code.py</span></tt> file looks like</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">src_path</span> <span class="o">=</span> <span class="s">&#39;src&#39;</span>
+
+<span class="k">def</span> <span class="nf">code</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+         <span class="n">language</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+         <span class="n">from_regex</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">to_regex</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="c"># code can be a filename or computer code</span>
+    <span class="k">if</span> <span class="n">language</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">language</span> <span class="o">=</span> <span class="n">CODE</span>  <span class="c"># Use global language if not specified</span>
+    <span class="k">if</span> <span class="n">language</span> <span class="o">==</span> <span class="s">&#39;Python&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">+=</span> <span class="s">&#39;.py&#39;</span>
+            <span class="c"># Include from file</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;@@@CODE src/py/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">filename</span>
+            <span class="k">if</span> <span class="n">from_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">to_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># Include just a portion of the file</span>
+                <span class="n">text</span> <span class="o">+=</span> <span class="s">&#39; fromto: </span><span class="si">%s</span><span class="s">@</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_regex</span><span class="p">,</span> <span class="n">to_regex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">from_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">to_regex</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">+=</span> <span class="s">&#39; fromto: </span><span class="si">%s</span><span class="s">@&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_regex</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># The code argumnet holds the actual computer code,</span>
+            <span class="c"># assume it&#39;s just a code snippet (not complete program)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;!bc pycod</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s">!ec&#39;</span> <span class="o">%</span> <span class="n">code</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">language</span> <span class="o">==</span> <span class="s">&#39;Fortran&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="s">&#39;.f&#39;</span><span class="p">,</span> <span class="s">&#39;.f90&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                                  <span class="n">src_path</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">+</span> <span class="n">ext</span><span class="p">)):</span>
+                    <span class="n">filename</span> <span class="o">+=</span> <span class="n">ext</span>
+                    <span class="k">break</span>
+            <span class="c"># Include from file</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;@@@CODE src/f/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">filename</span>
+            <span class="k">if</span> <span class="n">from_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">to_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># Include just a portion of the file</span>
+                <span class="n">text</span> <span class="o">+=</span> <span class="s">&#39; fromto: </span><span class="si">%s</span><span class="s">@</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_regex</span><span class="p">,</span> <span class="n">to_regex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">from_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">to_regex</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">+=</span> <span class="s">&#39; fromto: </span><span class="si">%s</span><span class="s">@&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_regex</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># The code argumnet holds the actual computer code,</span>
+            <span class="c"># assume it&#39;s just a code snippet (not complete program)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;!bc fcod</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s">!ec&#39;</span> <span class="o">%</span> <span class="n">code</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">language</span> <span class="o">==</span> <span class="s">&#39;C++&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="s">&#39;.cpp&#39;</span><span class="p">,</span> <span class="s">&#39;.c++&#39;</span><span class="p">,</span> <span class="s">&#39;.cxx&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                                  <span class="n">src_path</span><span class="p">,</span> <span class="s">&#39;cpp&#39;</span><span class="p">,</span> <span class="n">filename</span> <span class="o">+</span> <span class="n">ext</span><span class="p">)):</span>
+
+                    <span class="n">filename</span> <span class="o">+=</span> <span class="n">ext</span>
+                    <span class="k">break</span>
+            <span class="c"># Include from file</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;@@@CODE src/cpp/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">filename</span>
+            <span class="k">if</span> <span class="n">from_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">to_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="c"># Include just a portion of the file</span>
+                <span class="n">text</span> <span class="o">+=</span> <span class="s">&#39; fromto: </span><span class="si">%s</span><span class="s">@</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_regex</span><span class="p">,</span> <span class="n">to_regex</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">from_regex</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">to_regex</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">+=</span> <span class="s">&#39; fromto: </span><span class="si">%s</span><span class="s">@&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">from_regex</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c"># The code argumnet holds the actual computer code,</span>
+            <span class="c"># assume it&#39;s just a code snippet (not complete program)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="s">&#39;!bc cppcod</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s">!ec&#39;</span> <span class="o">%</span> <span class="n">code</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&#39;language=</span><span class="si">%s</span><span class="s"> is illegal&#39;</span> <span class="o">%</span> <span class="n">language</span>
+    <span class="k">return</span> <span class="n">text</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -409,14 +579,12 @@ References
 </tbody>
 </table>
 </div>
-</div>
-</div>
 
 
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://www.mn.uio.no/english/" title="Go to University of Oslo">
@@ -428,25 +596,26 @@ References
 <li><a class="reference internal" href="#">Mako&#8217;s Python functions</a><ul>
 <li><a class="reference internal" href="#basics-of-mako-functions">Basics of Mako functions</a></li>
 <li><a class="reference internal" href="#how-to-automatically-generate-a-doconce-file-with-repetitive-structure">How to automatically generate a DocOnce file with repetitive structure</a></li>
+<li><a class="reference internal" href="#how-to-deal-with-almost-repetitive-structure">How to deal with almost repetitive structure</a></li>
 <li><a class="reference internal" href="#how-to-treat-multiple-programming-languages-in-the-same-text">How to treat multiple programming languages in the same text</a><ul>
 <li><a class="reference internal" href="#another-example">Another example</a></li>
+<li><a class="reference internal" href="#yet-another-example">Yet another example</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#references">References</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="._main_mako002.html"
                         title="previous chapter">How to make several variants of the text</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/._main_mako003.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/._main_mako003.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -463,7 +632,7 @@ References
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -472,7 +641,7 @@ References
         <li class="right" >
           <a href="._main_mako002.html" title="How to make several variants of the text"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
+        <li><a href="index.html">Use of Mako to aid book writing</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

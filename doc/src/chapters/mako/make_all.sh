@@ -1,9 +1,9 @@
 #!/bin/sh
 # Remember --no_mako (include in make.sh)
 # PDF
-bash make.sh
+bash make.sh main_mako --no_mako --no_abort
 # HTML
-bash ../make_html.sh main_mako --no_mako
+bash ../make_html.sh main_mako --no_mako --no_abort
 # Must do a hack because of # #include examples in the file
 # (preprocess will try to include...so we write # INCLUDE instead
 # and edit here)

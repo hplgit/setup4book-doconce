@@ -35,12 +35,17 @@ Automatically generated HTML file from DocOnce source
                2,
                'mako:pyscripts',
                'mako:pyscripts'),
+              ('How to deal with almost repetitive structure',
+               2,
+               'mako:almost:repeat',
+               'mako:almost:repeat'),
               ('How to treat multiple programming languages in the same text',
                2,
                None,
-               '___sec6'),
-              ('Another example', 3, None, '___sec7'),
-              ('References', 1, None, '___sec8')]}
+               '___sec7'),
+              ('Another example', 3, None, '___sec8'),
+              ('Yet another example', 3, None, '___sec9'),
+              ('References', 1, None, '___sec10')]}
 end of tocinfo -->
 
 <body>
@@ -67,9 +72,11 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Mako's Python functions</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basics of Mako functions</a></li>
      <!-- navigation toc: --> <li><a href="#mako:pyscripts" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to automatically generate a DocOnce file with repetitive structure</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat multiple programming languages in the same text</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another example</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>References</b></a></li>
+     <!-- navigation toc: --> <li><a href="#mako:almost:repeat" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to deal with almost repetitive structure</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to treat multiple programming languages in the same text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another example</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yet another example</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;"><b>References</b></a></li>
 
         </ul>
       </li>
@@ -300,7 +307,69 @@ turning to a separate Python program that generates text is
 even more useful. It is also much easier to debug a Python
 program than Mako code.
 
-<h2 id="___sec6">How to treat multiple programming languages in the same text </h2>
+<h2 id="mako:almost:repeat">How to deal with almost repetitive structure</h2>
+
+<p>
+Sometimes you have a text, say some introduction, that is almost equal
+in various parts of the document. Here is a very simple example:
+``This is an introduction for the institution's external users.'' versus
+``This is an introduction for the institution's internal users.''
+Just one word differs. We put the text in a separate file for inclusion
+(since real examples probably have longer texts that are more convenient
+to collect in separate files). Moreover, we paramerize the word
+that differs through a Mako variable <code>USER_TYPE</code>.
+The <code>intro.do.txt</code> file then reads
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">This is an introduction for the institution&#39;s ${USER_TYPE} users.
+</pre></div>
+<p>
+The <code>USER_TYPE</code> variable can either be set on the command line or in
+the document that includes <code>intro.do.txt</code> (prior to the include statement).
+Suppose we have a master document that needs to include <code>intro.do.txt</code>
+twice with both values of <code>USER_TYPE</code>:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;% USER_TYPE = &#39;internal&#39; %&gt;
+
+<span style="color: #000080; font-weight: bold">======= Information for ${USER_TYPE} users =======</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;intro.do.txt&quot;</span>
+
+...
+
+&lt;% USER_TYPE = &#39;external&#39; %&gt;
+
+<span style="color: #000080; font-weight: bold">======= Information for ${USER_TYPE} users =======</span>
+
+<span style="color: #408080; font-style: italic"># #include &quot;intro.do.txt&quot;</span>
+</pre></div>
+<p>
+After running Mako, this looks like
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= Information for internal users =======</span>
+
+This is an introduction for the institution&#39;s internal users.
+
+...
+
+<span style="color: #000080; font-weight: bold">======= Information for external users =======</span>
+
+This is an introduction for the institution&#39;s external users.
+</pre></div>
+<p>
+Almost repetitive text can in many cases be parameterized by suitable
+Mako variables or Mako function calls to obtain the correct variations
+over a common theme that is placed in a single file (&quot;docoment once&quot;!).
+
+<h2 id="___sec7">How to treat multiple programming languages in the same text </h2>
 
 <p>
 With these ideas, it becomes straightforward to write a book that
@@ -474,14 +543,146 @@ by other programs, this function has to reside in a file
 \Verb!sampler_vec.py!.
 </pre></div>
 
-<h3 id="___sec7">Another example </h3>
+<h3 id="___sec8">Another example </h3>
 
 <p>
 The manual contains a useful <a href="http://hplgit.github.io/doconce/doc/pub/manual/._manual024.html#manual:mako:nomenclature" target="_self">example</a>
 on how to use Mako to implement
 the nomenclature functionality in the LaTeX package <code>nomencl</code>.
 
-<h1 id="___sec8">References </h1>
+<h3 id="___sec9">Yet another example </h3>
+
+<p>
+Here is a more complicated use of Mako for dealing with code files or
+strings in three different computer languages:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Include a complete program in the language ${CODE}:
+
+${code(filename=&#39;apb&#39;)}
+
+Include a portion of this file:
+
+<span style="color: #408080; font-style: italic"># Recall that + is reserved char in regex, must be escaped</span>
+${code(filename=&#39;apb&#39;, from_regex=&#39;a =&#39;, to_regex=r&#39;a \+ b&#39;)}
+
+Include a C++ program from file:
+
+${code(filename=&#39;demo&#39;, language=&#39;C++&#39;)}
+
+Include a C++ program from computer code in text:
+
+${code(language=&#39;C++&#39;, code=&quot;&quot;&quot;
+<span style="color: #408080; font-style: italic">#include &lt;iostream&gt;</span>
+using namespace std;
+
+int main()
+{
+  a = 1;
+  b = 2;
+  cout &lt;&lt; a + b;
+  return 0;
+}
+<span style="color: #BA2121">&quot;&quot;&quot;</span>)}
+</pre></div>
+<p>
+The point in this example is that we have a Mako variable <code>CODE</code> for
+the default language to be used, but we can also insert code in a
+specific language through the <code>language</code> argument to the Mako function
+<code>code</code>. This function can take a filename (<code>filename</code>) and include
+code from this file. We may make the convention that Python code is in
+<code>src/py</code>, C++ in <code>src/cpp</code>, and Fortran code in <code>src/f</code>.
+Alternatively, the computer code can be supplied in a string as the
+<code>code</code> argument.
+
+<p>
+What does the Mako function <code>code</code> look like? Before we show the statements,
+we remark that code of this complexity may be hard to debug inside
+DocOnce files. It is therefore better to put the code in a separate Python
+file and debug it externally. Here, we have put the code in <code>src/make/code.py</code>.
+In the DocOnce document we must include this file:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;%
+<span style="color: #408080; font-style: italic"># #include &quot;src/mako/code.py&quot;</span>
+%&gt;
+</pre></div>
+<p>
+The <code>code.py</code> file looks like
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
+src_path <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;src&#39;</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">code</span>(code<span style="color: #666666">=</span><span style="color: #BA2121">&#39;&#39;</span>, filename<span style="color: #666666">=</span><span style="color: #BA2121">&#39;&#39;</span>,
+         language<span style="color: #666666">=</span><span style="color: #008000">None</span>,
+         from_regex<span style="color: #666666">=</span><span style="color: #008000">None</span>, to_regex<span style="color: #666666">=</span><span style="color: #008000">None</span>):
+    <span style="color: #408080; font-style: italic"># code can be a filename or computer code</span>
+    <span style="color: #008000; font-weight: bold">if</span> language <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+        language <span style="color: #666666">=</span> CODE  <span style="color: #408080; font-style: italic"># Use global language if not specified</span>
+    <span style="color: #008000; font-weight: bold">if</span> language <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;Python&#39;</span>:
+        <span style="color: #008000; font-weight: bold">if</span> filename:
+            filename <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39;.py&#39;</span>
+            <span style="color: #408080; font-style: italic"># Include from file</span>
+            text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;@@@CODE src/py/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> filename
+            <span style="color: #008000; font-weight: bold">if</span> from_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">and</span> to_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span>:
+                <span style="color: #408080; font-style: italic"># Include just a portion of the file</span>
+                text <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39; fromto: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">@</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (from_regex, to_regex)
+            <span style="color: #008000; font-weight: bold">elif</span> from_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">and</span> to_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+                text <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39; fromto: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">@&#39;</span> <span style="color: #666666">%</span> (from_regex)
+        <span style="color: #008000; font-weight: bold">else</span>:
+            <span style="color: #408080; font-style: italic"># The code argumnet holds the actual computer code,</span>
+            <span style="color: #408080; font-style: italic"># assume it&#39;s just a code snippet (not complete program)</span>
+            text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;!bc pycod</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">!ec&#39;</span> <span style="color: #666666">%</span> code<span style="color: #666666">.</span>strip()
+    <span style="color: #008000; font-weight: bold">elif</span> language <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;Fortran&#39;</span>:
+        <span style="color: #008000; font-weight: bold">if</span> filename:
+            <span style="color: #008000; font-weight: bold">for</span> ext <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #BA2121">&#39;.f&#39;</span>, <span style="color: #BA2121">&#39;.f90&#39;</span>:
+                <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(
+                                  src_path, <span style="color: #BA2121">&#39;f&#39;</span>, filename <span style="color: #666666">+</span> ext)):
+                    filename <span style="color: #666666">+=</span> ext
+                    <span style="color: #008000; font-weight: bold">break</span>
+            <span style="color: #408080; font-style: italic"># Include from file</span>
+            text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;@@@CODE src/f/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> filename
+            <span style="color: #008000; font-weight: bold">if</span> from_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">and</span> to_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span>:
+                <span style="color: #408080; font-style: italic"># Include just a portion of the file</span>
+                text <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39; fromto: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">@</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (from_regex, to_regex)
+            <span style="color: #008000; font-weight: bold">elif</span> from_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">and</span> to_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+                text <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39; fromto: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">@&#39;</span> <span style="color: #666666">%</span> (from_regex)
+        <span style="color: #008000; font-weight: bold">else</span>:
+            <span style="color: #408080; font-style: italic"># The code argumnet holds the actual computer code,</span>
+            <span style="color: #408080; font-style: italic"># assume it&#39;s just a code snippet (not complete program)</span>
+            text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;!bc fcod</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">!ec&#39;</span> <span style="color: #666666">%</span> code<span style="color: #666666">.</span>strip()
+    <span style="color: #008000; font-weight: bold">elif</span> language <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;C++&#39;</span>:
+        <span style="color: #008000; font-weight: bold">if</span> filename:
+            <span style="color: #008000; font-weight: bold">for</span> ext <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #BA2121">&#39;.cpp&#39;</span>, <span style="color: #BA2121">&#39;.c++&#39;</span>, <span style="color: #BA2121">&#39;.cxx&#39;</span>:
+                <span style="color: #008000; font-weight: bold">if</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>isfile(os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>join(
+                                  src_path, <span style="color: #BA2121">&#39;cpp&#39;</span>, filename <span style="color: #666666">+</span> ext)):
+
+                    filename <span style="color: #666666">+=</span> ext
+                    <span style="color: #008000; font-weight: bold">break</span>
+            <span style="color: #408080; font-style: italic"># Include from file</span>
+            text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;@@@CODE src/cpp/</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> filename
+            <span style="color: #008000; font-weight: bold">if</span> from_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">and</span> to_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span>:
+                <span style="color: #408080; font-style: italic"># Include just a portion of the file</span>
+                text <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39; fromto: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">@</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (from_regex, to_regex)
+            <span style="color: #008000; font-weight: bold">elif</span> from_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">None</span> <span style="color: #AA22FF; font-weight: bold">and</span> to_regex <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+                text <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39; fromto: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">@&#39;</span> <span style="color: #666666">%</span> (from_regex)
+        <span style="color: #008000; font-weight: bold">else</span>:
+            <span style="color: #408080; font-style: italic"># The code argumnet holds the actual computer code,</span>
+            <span style="color: #408080; font-style: italic"># assume it&#39;s just a code snippet (not complete program)</span>
+            text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;!bc cppcod</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">!ec&#39;</span> <span style="color: #666666">%</span> code<span style="color: #666666">.</span>strip()
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;language=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> is illegal&#39;</span> <span style="color: #666666">%</span> language
+    <span style="color: #008000; font-weight: bold">return</span> text
+</pre></div>
+
+<h1 id="___sec10">References </h1>
 
 <p>
 <!-- begin bibliography -->
