@@ -25,6 +25,9 @@ to also make it invisible in most operating systems.
         html=.trash<built-in function hash>
         doconce format html book --html_output=$html ...
 
+Password protected files
+------------------------
+
 The file following file, called ``password.html``, presents an empty page
 with a button for providing a password, and if approved, the first
 page of the book opens up.
@@ -79,4 +82,32 @@ a password ``a!4``:
 .. code-block:: bash
 
         pdftk book.pdf output book-sol.pdf owner_pw foo user_pw "a!4"
+
+Separating the source files from published documents
+----------------------------------------------------
+
+The primary repository organization described in this document has the
+DocOnce source files in ``doc/src``, while compiled and published
+documents appear in ``doc/pub``. If the book is published without
+solutions to exercises, one will often avoid readers to dive into the
+DocOnce source files in the repository and find solutions. The author
+has two methods for dealing with this problem.
+
+The first method is simple, but not safe. The idea is to rename
+``doc/src`` to ``doc/.src``. That is, the source tree has a name starting
+with a dot (``.src``) such that the directory is invisible on Unix
+systems. However, it is visible on GitHub, and any ``ls -a`` command
+will list the source tree. A reader who really wants to find solutions
+in the DocOnce source files will most likely locate the files...
+
+Another, completely safe method is to move the ``.src`` or ``src``
+directory tree to a new, private repository when the book is to be published.
+The ``make*`` scripts must then the updated such that the directory
+where the documents are published becomes correct.
+
+One can also start out with a private repository for the source files and
+a public repository for the published files. This author, however, prefers
+to use one repository when developing major parts of a book and then
+migrate the source tree to a private repository when solutions are to be
+protected from the public.
 

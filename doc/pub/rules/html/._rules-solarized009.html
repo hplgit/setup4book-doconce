@@ -140,17 +140,22 @@ $(function () {
                1,
                None,
                '___sec30'),
-              ('Special features for teaching material', 1, None, '___sec31'),
-              ('Admonitions', 2, None, '___sec32'),
-              ('Simple box', 2, None, '___sec33'),
-              ('Embedded interactive code', 2, None, '___sec34'),
-              ('The `pyoptpro` code environment', 3, None, '___sec35'),
-              ('The `pyscpro` code environment', 3, None, '___sec36'),
-              ('Exercises', 2, None, '___sec37'),
-              ('Quote', 2, None, '___sec38'),
-              ('Quiz', 2, None, '___sec39'),
-              ('What about a video lecture?', 2, None, '___sec40'),
-              ('References', 1, None, '___sec41')]}
+              ('Password protected files', 2, None, '___sec31'),
+              ('Separating the source files from published documents',
+               2,
+               None,
+               '___sec32'),
+              ('Special features for teaching material', 1, None, '___sec33'),
+              ('Admonitions', 2, None, '___sec34'),
+              ('Simple box', 2, None, '___sec35'),
+              ('Embedded interactive code', 2, None, '___sec36'),
+              ('The `pyoptpro` code environment', 3, None, '___sec37'),
+              ('The `pyscpro` code environment', 3, None, '___sec38'),
+              ('Exercises', 2, None, '___sec39'),
+              ('Quote', 2, None, '___sec40'),
+              ('Quiz', 2, None, '___sec41'),
+              ('What about a video lecture?', 2, None, '___sec42'),
+              ('References', 1, None, '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -191,7 +196,7 @@ $$
 <p>
 <!-- !split -->
 
-<h1 id="___sec31">Special features for teaching material </h1>
+<h1 id="___sec33">Special features for teaching material </h1>
 
 <p>
 DocOnce offers some special features that can greatly aid development
@@ -212,7 +217,7 @@ These are briefly exemplified below. If you are mainly interested in how
 to structure DocOnce-based books, you can safely jump to
 the section <a href="._rules-solarized003.html#setup:rules:book_assembly">Assembling different pieces to a book</a>.
 
-<h2 id="___sec32">Admonitions </h2>
+<h2 id="___sec34">Admonitions </h2>
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal">
@@ -229,7 +234,7 @@ in the name).
 </div>
 
 
-<h2 id="___sec33">Simple box </h2>
+<h2 id="___sec35">Simple box </h2>
 
 <p>
 Put a box around something important:
@@ -243,9 +248,9 @@ $$ 1 + 1 = 2 $$
 <!-- end box -->
 
 
-<h2 id="___sec34">Embedded interactive code </h2>
+<h2 id="___sec36">Embedded interactive code </h2>
 
-<h3 id="___sec35">The <code>pyoptpro</code> code environment </h3>
+<h3 id="___sec37">The <code>pyoptpro</code> code environment </h3>
 
 <p>
 To illustrate program flow, you can step through code
@@ -262,7 +267,7 @@ In HTML and Sphinx format this code can be stepped through in
 the browser, while
 in LaTeX one gets a link to a web page with this functionality.
 
-<h3 id="___sec36">The <code>pyscpro</code> code environment </h3>
+<h3 id="___sec38">The <code>pyscpro</code> code environment </h3>
 
 <p>
 The <a href="https://sagecell.sagemath.org/" target="_self">SageMathCell</a> server
@@ -299,7 +304,7 @@ show()
 HTML and Sphinx output has such interactive Sage Cells,
 while other output formats can just show the code.
 
-<h2 id="___sec37">Exercises </h2>
+<h2 id="___sec39">Exercises </h2>
 
 <p>
 <div class="alert alert-block alert-summary alert-text-normal">
@@ -324,7 +329,7 @@ extra tagging for exercises. Important features are:
 </div>
 
 
-<h2 id="___sec38">Quote </h2>
+<h2 id="___sec40">Quote </h2>
 
 <p>
 There is also a <em>quote</em> environment (invisible box with larger
@@ -344,7 +349,7 @@ margins).
 </blockquote>
 
 
-<h2 id="___sec39">Quiz </h2>
+<h2 id="___sec41">Quiz </h2>
 
 <p>
 <!-- --- previous heading type: subsection -->
@@ -454,7 +459,7 @@ LaTeX output can feature the choices only (no answer, no explanation:
 (<code>--without_solutions</code>) or both the answer and all explanations
 (the case in this demo).
 
-<h2 id="___sec40">What about a video lecture? </h2>
+<h2 id="___sec42">What about a video lecture? </h2>
 
 <p>
 
@@ -468,7 +473,7 @@ Can you think of applications of the above mentioned features?
 </div>
 
 
-<h1 id="___sec41">References </h1>
+<h1 id="___sec43">References </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -476,6 +481,7 @@ Can you think of applications of the above mentioned features?
 <ol>
  <li> <div id="Langtangen_TCSE6_debug"></div> <b>H. P. Langtangen</b>. 
     Debugging in Python,
+    \emphhttp://hplgit.github.io/primer.html/doc/pub/debug,
     <a href="http://hplgit.github.io/primer.html/doc/pub/debug" target="_self"><tt>http://hplgit.github.io/primer.html/doc/pub/debug</tt></a>.</li>
  <li> <div id="Langtangen_2014"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
@@ -485,6 +491,7 @@ Can you think of applications of the above mentioned features?
     2014.</li>
  <li> <div id="Langtangen_dobook_fake"></div> <b>H. P. Langtangen</b>. 
     Some document,
+    \emphhttp://hplgit.github.io/setup4book-doconce/doc/pub/fake/html,
     <a href="http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html" target="_self"><tt>http://hplgit.github.io/setup4book-doconce/doc/pub/fake/html</tt></a>.</li>
 </ol>
 

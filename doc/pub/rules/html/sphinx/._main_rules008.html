@@ -94,6 +94,8 @@ to also make it invisible in most operating systems.</p>
 doconce format html book --html_output<span class="o">=</span><span class="nv">$html</span> ...
 </pre></div>
 </div>
+<div class="section" id="password-protected-files">
+<h2>Password protected files<a class="headerlink" href="#password-protected-files" title="Permalink to this headline">¶</a></h2>
 <p>The file following file, called <code class="docutils literal"><span class="pre">password.html</span></code>, presents an empty page
 with a button for providing a password, and if approved, the first
 page of the book opens up.</p>
@@ -144,6 +146,31 @@ a password <code class="docutils literal"><span class="pre">a!4</span></code>:</
 </pre></div>
 </div>
 </div>
+<div class="section" id="separating-the-source-files-from-published-documents">
+<h2>Separating the source files from published documents<a class="headerlink" href="#separating-the-source-files-from-published-documents" title="Permalink to this headline">¶</a></h2>
+<p>The primary repository organization described in this document has the
+DocOnce source files in <code class="docutils literal"><span class="pre">doc/src</span></code>, while compiled and published
+documents appear in <code class="docutils literal"><span class="pre">doc/pub</span></code>. If the book is published without
+solutions to exercises, one will often avoid readers to dive into the
+DocOnce source files in the repository and find solutions. The author
+has two methods for dealing with this problem.</p>
+<p>The first method is simple, but not safe. The idea is to rename
+<code class="docutils literal"><span class="pre">doc/src</span></code> to <code class="docutils literal"><span class="pre">doc/.src</span></code>. That is, the source tree has a name starting
+with a dot (<code class="docutils literal"><span class="pre">.src</span></code>) such that the directory is invisible on Unix
+systems. However, it is visible on GitHub, and any <code class="docutils literal"><span class="pre">ls</span> <span class="pre">-a</span></code> command
+will list the source tree. A reader who really wants to find solutions
+in the DocOnce source files will most likely locate the files...</p>
+<p>Another, completely safe method is to move the <code class="docutils literal"><span class="pre">.src</span></code> or <code class="docutils literal"><span class="pre">src</span></code>
+directory tree to a new, private repository when the book is to be published.
+The <code class="docutils literal"><span class="pre">make*</span></code> scripts must then the updated such that the directory
+where the documents are published becomes correct.</p>
+<p>One can also start out with a private repository for the source files and
+a public repository for the published files. This author, however, prefers
+to use one repository when developing major parts of a book and then
+migrate the source tree to a private repository when solutions are to be
+protected from the public.</p>
+</div>
+</div>
 
 
           </div>
@@ -156,6 +183,15 @@ a password <code class="docutils literal"><span class="pre">a!4</span></code>:</
               <img class="logo" src="https://raw.githubusercontent.com/CINPLA/logo/master/brain/cinpla_uio_logo.png" alt="Logo"/>
             </a></p>
             </center>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Book versions with and without solutions to exercises</a><ul>
+<li><a class="reference internal" href="#password-protected-files">Password protected files</a></li>
+<li><a class="reference internal" href="#separating-the-source-files-from-published-documents">Separating the source files from published documents</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="._main_rules007.html"
                         title="previous chapter">Writing in private repository while publishing in public</a></p>

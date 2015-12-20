@@ -140,17 +140,22 @@ $(function () {
                1,
                None,
                '___sec30'),
-              ('Special features for teaching material', 1, None, '___sec31'),
-              ('Admonitions', 2, None, '___sec32'),
-              ('Simple box', 2, None, '___sec33'),
-              ('Embedded interactive code', 2, None, '___sec34'),
-              ('The `pyoptpro` code environment', 3, None, '___sec35'),
-              ('The `pyscpro` code environment', 3, None, '___sec36'),
-              ('Exercises', 2, None, '___sec37'),
-              ('Quote', 2, None, '___sec38'),
-              ('Quiz', 2, None, '___sec39'),
-              ('What about a video lecture?', 2, None, '___sec40'),
-              ('References', 1, None, '___sec41')]}
+              ('Password protected files', 2, None, '___sec31'),
+              ('Separating the source files from published documents',
+               2,
+               None,
+               '___sec32'),
+              ('Special features for teaching material', 1, None, '___sec33'),
+              ('Admonitions', 2, None, '___sec34'),
+              ('Simple box', 2, None, '___sec35'),
+              ('Embedded interactive code', 2, None, '___sec36'),
+              ('The `pyoptpro` code environment', 3, None, '___sec37'),
+              ('The `pyscpro` code environment', 3, None, '___sec38'),
+              ('Exercises', 2, None, '___sec39'),
+              ('Quote', 2, None, '___sec40'),
+              ('Quiz', 2, None, '___sec41'),
+              ('What about a video lecture?', 2, None, '___sec42'),
+              ('References', 1, None, '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -215,6 +220,9 @@ to also make it invisible in most operating systems.
 <span style="color: #00688B">html</span>=.trash&lt;built-in <span style="color: #8B008B; font-weight: bold">function</span> <span style="color: #658b00">hash</span>&gt;
 doconce format html book --html_output=<span style="color: #00688B">$html</span> ...
 </pre></div>
+
+<h2 id="___sec31">Password protected files </h2>
+
 <p>
 The file following file, called <code>password.html</code>, presents an empty page
 with a button for providing a password, and if approved, the first
@@ -276,7 +284,37 @@ a password <code>a!4</code>:
 <!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">pdftk book.pdf output book-sol.pdf owner_pw foo user_pw <span style="color: #CD5555">&quot;a!4&quot;</span>
 </pre></div>
+
+<h2 id="___sec32">Separating the source files from published documents </h2>
+
 <p>
+The primary repository organization described in this document has the
+DocOnce source files in <code>doc/src</code>, while compiled and published
+documents appear in <code>doc/pub</code>. If the book is published without
+solutions to exercises, one will often avoid readers to dive into the
+DocOnce source files in the repository and find solutions. The author
+has two methods for dealing with this problem.
+
+<p>
+The first method is simple, but not safe. The idea is to rename
+<code>doc/src</code> to <code>doc/.src</code>. That is, the source tree has a name starting
+with a dot (<code>.src</code>) such that the directory is invisible on Unix
+systems. However, it is visible on GitHub, and any <code>ls -a</code> command
+will list the source tree. A reader who really wants to find solutions
+in the DocOnce source files will most likely locate the files...
+
+<p>
+Another, completely safe method is to move the <code>.src</code> or <code>src</code>
+directory tree to a new, private repository when the book is to be published.
+The <code>make*</code> scripts must then the updated such that the directory
+where the documents are published becomes correct.
+
+<p>
+One can also start out with a private repository for the source files and
+a public repository for the published files. This author, however, prefers
+to use one repository when developing major parts of a book and then
+migrate the source tree to a private repository when solutions are to be
+protected from the public.
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
