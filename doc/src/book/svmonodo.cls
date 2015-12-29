@@ -24,7 +24,7 @@
 %%   Right brace   \}     Tilde         \~}
 %%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{svmono}[2007/06/25 v5.4
+\ProvidesClass{svmonodo}[2007/06/25 v5.4
 ^^JSpringer Verlag global LaTeX document class for monographs]
 %
 % Options
@@ -139,7 +139,7 @@
 %\DeclareOption{sectrefs}{\let\secbibl=Y}
 %
 % footinfo option (provides an informatory line on every page)
-\def\SpringerMacroPackageNameA{svmono.cls}
+\def\SpringerMacroPackageNameA{svmonodo.cls}
 % \thetime, \thedate and \timstamp are macros to include
 % time, date (or both) of the TeX run in the document
 \def\maketimestamp{\count255=\time
@@ -317,16 +317,22 @@ passing it to article class \MessageBreak
 \newcommand{\partstyle}{\bfseries\boldmath}
 \newcommand{\chapnumsize}{\Large}
 \newcommand{\chapnumstyle}{\bfseries\boldmath}
-\newcommand{\chapsize}{\LArge}
+%\newcommand{\chapsize}{\LArge}
+% changed by hpl: larger font
+\newcommand{\chapsize}{\LARGE}
 \newcommand{\chapstyle}{\bfseries\boldmath}
 \newcommand{\chapauthsize}{\normalsize}
 \newcommand{\chapauthstyle}{\bfseries\boldmath}
 \newcommand{\mottosize}{\small}
 \newcommand{\mottostyle}{\itshape\unboldmath\raggedright}
-\newcommand{\secsize}{\large}
+%\newcommand{\secsize}{\large}
+% changed by hpl: larger fornt
+\newcommand{\secsize}{\Large}
 \newcommand{\secstyle}{\bfseries\boldmath}
 \newcommand{\subsecsize}{\large}
-\newcommand{\subsecstyle}{\bfseries\itshape\boldmath}
+%\newcommand{\subsecstyle}{\bfseries\itshape\boldmath}
+% changed by hpl: no itshape
+\newcommand{\subsecstyle}{\bfseries\boldmath}
 \newcommand{\subsubsecstyle}{\bfseries\boldmath}
 %
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else

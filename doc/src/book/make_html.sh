@@ -18,6 +18,7 @@ function system {
 preprocess -DFORMAT=html ../chapters/newcommands.p.tex > newcommands_keep.tex
 
 opt="CHAPTER=$CHAPTER BOOK=$BOOK APPENDIX=$APPENDIX"
+opt="$opt --exercise_numbering=chapter"
 
 # Compile HTML Bootstrap book
 system doconce format html $name $opt --html_style=bootswatch_journal --html_code_style=inherit --html_output=$name
