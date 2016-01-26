@@ -7,7 +7,7 @@ failure, output = commands.getstatusoutput('git status')
 # Find the relevant files
 src_extensions_fig = ['.pdf', '.png']
 src_extensions_src = ['.py', '.f', '.c', '.cpp', '.pyx',]
-src_extensions_txt = ['.do.txt', ]
+src_extensions_txt = ['.do.txt', '.dict4spell.txt']
 src_extensions = src_extensions_fig + src_extensions_src + \
                  src_extensions_txt
 files = []
@@ -24,10 +24,11 @@ for filename in output.splitlines():
                 if 'fig-' in filename or 'mov-' in filename:
                     files.append(filename)
             if ext in src_extensions_fig:
-                if 'src-' in filename:
+                if 'src-' in filename or 'exer-' in filename:
                     files.append(filename)
-            if ext in src_extensions_txt:
-                files.append(filename)
+            for ext in src_extensions_txt:
+                if filename.endswith(ext):
+                    files.append(filename)
 
 # git add doc/pub is never wrong...
 
